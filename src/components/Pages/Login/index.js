@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import whiteIcon from '../../../assets/whiteIcon.png';
 import './style.css';
-
 const Login = () => {
+
+  const navigate = useNavigate();
 
   return (
     <div className="App-login">
@@ -38,10 +40,10 @@ const Login = () => {
       </div>
           </div>
       <div className="clicks">
-      <input className="enviar" type="submit" value="Acessar" />
+      <input className="enviar" type="submit" value="Acessar" onClick={()=>{navigate("/home")}}/>
       <div className="help">
-          <p onClick={() => {}}>Esqueceu a senha?</p>
-          <p onClick={() => {}}>Cadastre-se</p>
+          <p onClick={() => {navigate("/")}}>Esqueceu a senha?</p>
+          <p onClick={() => {navigate("/opcao/registrar")}}>Cadastre-se</p>
       </div>
         </div>
       </form>

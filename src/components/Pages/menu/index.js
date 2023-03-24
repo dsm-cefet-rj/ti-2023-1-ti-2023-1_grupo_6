@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 import profile from '../../../assets/profile.svg';
 import home from '../../../assets/home.svg';
 import bag from '../../../assets/bag.svg';
 
 const Menu = () => {
-
+    const navigate = useNavigate()
     return (
         <div className="menu">
             <div className="buttons">
@@ -17,7 +18,7 @@ const Menu = () => {
                     <label className='text inicio'>Início</label>
                 </button>
 
-                <button className='bagButton'>
+                <button className='bagButton' onClick={()=>{navigate("/carrinho")}}>
                     <img src={bag} alt="carrinho" className="img-bag"/>
                     <label className='text carrinho'>Carrinho</label>
                 </button>

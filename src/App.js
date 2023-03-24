@@ -15,10 +15,10 @@ function App() {
         <Route path="/" element={<Login/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/carrinho" element={<Carrinho/>}/>
-        <Route path="/registrarUsuario" element={<UserRegistration/>}/>
-        <Route path="/registrarPet" element={<PetRegistration/>}/>
-        <Route path="/selecionarPet" element={<PetSelection/>}/>
-        <Route path="/registrarEstabelecimento" element={<OptionRegistration/>}/>
+        <Route path="/registrar/usuario" element={<UserRegistration/>}/>
+        <Route path="/registrar/pet" element={<PetRegistration/>}/>
+        <Route path="/selecionar/pet" element={<PetSelection/>}/>
+        <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
       </Routes>
     </Router>
   );

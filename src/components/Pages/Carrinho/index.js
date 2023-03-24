@@ -1,9 +1,10 @@
 import blueIcon from '../../../assets/blueIcon.png'; 
 import './style.css';
 import del from '../../../assets/del.png'
+import { useNavigate } from 'react-router-dom';
 
 const Carrinho = () => {
-
+    const navigate = useNavigate()
     return (
         <div className="App">
             <div className='icon'>
@@ -35,7 +36,7 @@ const Carrinho = () => {
             </div>
 
             <div className='botaoBox'>
-                <button className='botaoCancelar'>
+                <button className='botaoCancelar' onClick={()=>{navigate("/home")}}>
                     Cancelar
                 </button>
                 <button className='botaoConfirmar'>

@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 import blueIcon from '../../../assets/blueIcon.png';
 
 const UserRegistration = () => {
+  const navigate = useNavigate();
   return (
     <div className="App">
       <div id='Logo'>
@@ -35,7 +37,7 @@ const UserRegistration = () => {
             <input id='hehe' type="file" />
             </div>
             <div id='Buttons'>
-            <button id='Voltar' type="submit">Voltar</button>
+            <button id='Voltar' onClick={()=>{navigate("/opcao/registrar")}}>Voltar</button>
             <button id='Confirmar' type="submit">Confirmar</button>
             </div>
           </div>
