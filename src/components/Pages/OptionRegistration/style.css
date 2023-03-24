@@ -1,0 +1,87 @@
+html {
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+
+h1 {
+    font-size: 60px;
+}
+
+.text-registration {
+    position: relative;
+    top: 30px;
+    display: flexbox;
+}
+
+.App-Registration {
+    text-align: center;
+    justify-content: center;
+    background-color: #04ABAB;
+    height: 100vh;
+    /*Viewport Height*/
+    width: 100%;
+}
+
+.clicks {
+    position: relative;
+    top: 90px;
+    height: 200px;
+}
+
+.login {
+    background-color: #048387;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 85%;
+    margin: 0 auto;
+    height: 600px;
+}
+
+form {
+    max-height: 100%;
+    height: 600px;
+}
+
+input {
+    margin-bottom: 5px;
+    max-width: 100%;
+    border-radius: 7px;
+    border: 0;
+    background-color: #B6E0EC;
+}
+
+input:focus {
+    outline: 0;
+}
+
+.text-input {
+    font-weight: bold;
+    width: 54.5%;
+    position: relative;
+    top: 45px;
+}
+
+input[type='submit'] {
+    color: #ffff;
+    font-size: 18px;
+    margin: 25px;
+    border: 0;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #FF8802;
+    cursor: pointer;
+}
+
+input[type='submit']:hover {
+    background-color: #fe972f;
+}
+
+.back {
+    font-size: 17px;
+    margin-top: 270px;
+    cursor: pointer;
+    font-weight: bold;
+}

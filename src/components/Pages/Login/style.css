@@ -1,0 +1,129 @@
+html  {
+  color: #ffff;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+
+
+h1 {
+  font-size: 60px;
+}
+
+.App-login {
+  text-align: center;
+  justify-content: center;
+  background-color: #04ABAB;
+  height: 100vh; /*Viewport Height*/
+  width: 100%;
+}
+
+.login {
+  background-color: #048387;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 85%;
+  margin: 0 auto;
+  height: 600px;
+}
+
+form {
+  max-height: 100%;
+  height: 600px;
+}
+
+.name-login {
+  position: relative;
+  top: 30px;
+  text-transform: uppercase;
+}
+
+
+.acess-inputs {
+  position: relative;
+  top: 30px;
+}
+
+.acess label {
+  font-size: 1rem;
+  position: absolute;
+  margin-top: 20px;
+}
+
+input {
+  margin-bottom: 5px;
+  max-width: 100%;
+  border-radius: 7px;
+  border: 0;
+  background-color: #B6E0EC;
+}
+
+.acess input {
+  margin-top: 50px;
+  width: 50.5%;
+  height: 35px;
+  padding-inline: 20px;
+}
+
+
+input:focus {
+  outline: 0;
+}
+
+.save {
+  display: flex;
+  justify-content: left;
+  margin-left: 21%;
+}
+
+.enviar {
+  width: 54.5%;
+  position: relative;
+  top: 45px;
+}
+
+
+input[type='submit'] {
+  color: #ffff;
+  font-size: 18px;
+  margin: 25px;
+  border: 0;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #FF8802;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: #fe972f;
+}
+
+input[type='checkbox'] + label::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  bottom: 10px;  
+  height: 20px;
+  transform: rotate(45deg);
+
+}
+
+input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  border-radius: 3px;
+  height: 13px;
+  background-color: #fe972f;
+}
+
+.help {
+  position: relative;
+  top: 15px;
+  cursor: pointer;
+}
+
+.clicks {
+  position: relative;
+  top:25px;
+}
