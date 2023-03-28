@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import whiteIcon from '../../../assets/whiteIcon.png';
-import './style.css';
+import './../Login/style.css';
 const Login = () => {
 
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Login = () => {
       <div className="save">
         <input
           type="checkbox"
-          id="save-user"
+          className="save-user"
           name="save"
           value="save" />
           <label>Lembrar-me</label>
