@@ -7,6 +7,7 @@ import PetRegistration from './components/Pages/PetRegistration/index.js'
 import PetSelection from './components/Pages/PetSelection/index.js'
 import EstablishmentRegistration from './components/Pages/OptionRegistration/index.js'
 import OptionRegistration from './components/Pages/OptionRegistration/index.js';
+import ConsumerProfile from './components/Pages/consumerProfile/index.js'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/registrar/pet" element={<PetRegistration/>}/>
         <Route path="/selecionar/pet" element={<PetSelection/>}/>
         <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
+        <Route path="/perfil" element={<ConsumerProfile/>}/>
       </Routes>
     </Router>
   );
