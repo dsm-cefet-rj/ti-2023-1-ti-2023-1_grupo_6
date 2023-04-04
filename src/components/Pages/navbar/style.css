@@ -1,0 +1,37 @@
+.navbar {
+    height: 50px;
+    border-bottom: 1px solid #B6E0EC;
+}
+
+.ul-navbar {
+    display: flex;
+    justify-content: center; /* centralizar itens horizontalmente */
+    gap: 85px; /* espaço entre os elementos */
+}
+
+.ul-navbar ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.ul-navbar li {
+    float: left;
+    list-style-type: none;
+}
+
+.ul-navbar li a {
+    color: #048387;
+    text-decoration: none;
+    text-align: center;
+    padding: 0px 9px;
+    font-weight: bold;
+}
+
+.ul-navbar li:hover {
+    color: green;
+    background-color: #B6E0EC;
+    border-radius:20px;
+}
+    

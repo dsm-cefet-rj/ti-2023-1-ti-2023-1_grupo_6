@@ -1,0 +1,71 @@
+.lojas-petshop {
+    min-height: 100vh;
+    background-color: #048387;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    margin: 50px;
+}
+
+.loja-id {
+    background-color: red;
+    padding: 100px;
+    color: white;
+    
+}
+
+
+body {
+    margin: 0;
+    height: 100%;
+    margin: 0;
+}
+
+.text-lojas {
+    color: black;
+    position: relative;
+    margin: 0;
+}
+
+.text-loja-individual {
+    margin: 10px;
+}
+
+.lojas {
+    margin-inline: 20px;
+    display: inline-block;
+    border-bottom: 0.2px solid #048387;
+    background-color: #B6E0EC;
+    border-radius: 20px;
+    height: 550px;
+    width: 350px;
+}
+
+.ver-mais {
+    background-color: #FF8802;
+    padding: 10px;
+    border: 0;
+    border-radius: 0px 0px 20px 20px;
+    cursor: pointer;
+}
+
+.ver-mais:hover {
+    background-color: #FDA94A;
+}
+
+@media only screen and (max-width: 1799px) {
+
+    .lojas {
+        margin-bottom: 60px;
+        display: inline-block;
+        border-bottom: 0.2px solid #048387;
+        background-color: #B6E0EC;
+        border-radius: 20px;
+        height: 550px;
+        width: 350px;
+    }    
+
+}

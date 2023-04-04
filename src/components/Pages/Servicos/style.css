@@ -1,0 +1,64 @@
+.services-lojas h1 {
+    margin: 0;
+    color: #FF8802;
+}
+
+.services-lojas p {
+    margin-top: 15px;
+}
+
+.services-lojas {
+    min-height: 100vh;
+    color: black;
+}
+
+.loja {
+    height: 100vh;
+}
+
+.services-lojas p {
+    font-size: 20px;
+}
+
+.loja section {
+    border-top: 1px solid #04ABAB;
+}
+.loja section:last-child {
+    height: 44vh;
+}
+
+.ul-loja li {
+    list-style: none;
+    display: inline-table;
+}
+
+.ul-loja li img {
+    float: right;
+}
+
+.ul-loja .paragrafo-vendas {
+    overflow: hidden;
+}
+
+.preco {
+    font-weight: bold;
+}
+
+.cifrao {
+    font-weight: normal;
+    position: relative;
+    top: -.5em;
+    font-size: 13px;
+}
+
+.loja .preco .preco-antigo {
+    font-weight: normal;
+    text-decoration: line-through;
+    font-size: 15px;
+}
+
+
+.loja img {
+    width: 150px;
+    object-fit: contain;
+}

@@ -1,39 +1,142 @@
-.app {
-    display: flex;
+.App-home {
+    height: 100vh;
 }
 
 .search {
-    justify-content: center;
-}
-
-.input-search {
-    width: 70%;
-    padding-inline: 10px;
-    margin-top: 26px;
-    height: 27px;
-    
-}
-input::placeholder {
-    color: #048387;
-    opacity: 50%;
+    display: none;
 }
 
 .categories {
+    position: relative;
+    top: 50px;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;
     max-width: 100%;
 }
 
-.business {
-    position: relative;
-    top: 45px;
-    max-width: 100%;
+.categories img {
+    height: 90px;
+}
+
+
+.carousel img {
+    width: 240px;
+    max-height: 30%;
     height: 200px;
 }
 
 .img-commercial {
-    width: 100%;
+    max-width: 85%;
+    width: 85%;
+    height: 100px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .search {
+        justify-content: center;
+    }
+
+    .input-search {
+        position: relative;
+        top: 20px;
+        width: 70%;
+        padding-inline: 10px;
+        height: 27px;
+    }
+
+    .search input::placeholder {
+        color: #048387;
+        opacity: 50%;
+    }
+
+    .business {
+        position: relative;
+        top: 20px;
+    }
+
+    .carousel {
+        position: relative;
+        top: 60px;
+    }
+
+    .commercial {
+        display: none;
+    }
+}
+
+@media only screen and (min-height: 800px) and (max-width: 768px) {
+    .carousel {
+        position: relative;
+        top: 90px;
+    }
+}
+
+input.input-search-home {
+    color: #fff
+}
+
+@media only screen and (min-width: 768px) {
+    .logo-home {
+        display: none;
+    }
+
+    .categories {
+        display: none;
+    }
+    
+    .section {
+        position: relative;
+        height: 115vh;
+        background-color: #B6E0EC;
+    }
+
+    .carousel {
+        position: relative;
+    }
+
+    .img-commercial-animals {
+        margin-top: 30px;
+        height: 300px;
+        width: 78.5%;
+        border-radius: 10px;
+    }
+
+}
+
+.business h4 {
+    background-color: #048387;
+    margin: 0;
+    padding: 4px;
+}
+
+.dkjKVr,
+.cvyJEp {
+    position: relative !important;
+}
+
+.rec-carousel {
     max-width: 90%;
-    height: 120px;
+}
+
+.cqQwrw {
+    background-color: #048387 !important;
+    box-shadow: #048387 0px 0px 0px 2px !important;
+    border: 0 !important;
+}
+
+.ereApb {
+    background-color: #FDA94A !important;
+    box-shadow: #FDA94A 0px 0px 0px 2px !important;
+}
+
+.dkjKVr {
+    color: #fff !important;
+    background-color: #048387 !important;
+}
+
+
+.cvyJEp {
+    color: #fff !important;
+    background-color: #FDA94A !important;
 }

@@ -9,7 +9,7 @@ const Login = () => {
     <div className="App-login">
       <img src={whiteIcon} alt="logo"/>
       <div className="login">
-      <form>
+      <form className="form-login">
         <h2 className="name-login">login</h2>
         <div className="acess-inputs">
       <div className="acess">
