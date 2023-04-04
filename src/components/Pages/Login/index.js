@@ -40,7 +40,7 @@ const Login = () => {
       </div>
           </div>
       <div className="clicks">
-      <input className="enviar" type="submit" value="Acessar" onClick={()=>{navigate("/home")}}/>
+      <input className="enviar-login" type="submit" value="Acessar" onClick={()=>{navigate("/home")}}/>
       <div className="help">
           <p onClick={() => {navigate("/")}}>Esqueceu a senha?</p>
           <p onClick={() => {navigate("/opcao/registrar")}}>Cadastre-se</p>

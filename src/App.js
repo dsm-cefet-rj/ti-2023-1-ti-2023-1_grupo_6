@@ -10,6 +10,7 @@ import OptionRegistration from './components/Pages/OptionRegistration/index.js';
 import Lojas from './components/Pages/Lojas';
 import Servicos from './components/Pages/Servicos';
 import ConsumerProfile from './components/Pages/consumerProfile/index.js';
+import ShopRegistration from './components/Pages/ShopRegistration/index.js';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/home/lojas" element={<Lojas/>}/>
         <Route path="/home/lojas/Servicos" element={<Servicos/>}/>
         <Route path="/perfil" element={<ConsumerProfile/>}/>
+        <Route path="/registrarEstabelecimento" element={<ShopRegistration/>}/>
       </Routes>
     </Router>
   );
