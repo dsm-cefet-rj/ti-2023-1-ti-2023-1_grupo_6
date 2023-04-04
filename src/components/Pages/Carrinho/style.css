@@ -1,9 +1,37 @@
-.app {
-    display: flex;
+html .carrinho-background{
+    color: #ffff;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+  height: 100vh;
+}
+
+.carrinho-background{
+    font-weight:bold ;
+    text-align: center;
+    justify-content: center;
+    background-color: #04ABAB !important;
+    width: 100%;
+    overflow:auto;
+}
+
+.carrinho-background .background{
+    position: relative;
+    top: 20px;
+    height: 500px;
+    max-width: 85%;
+    max-height: 90%;
+}
+
+.carrinho-background{
+    max-height: 90%;
+    height: 510px;
+    border-radius: 10px;
+    background-color: #048387;
 }
 
 .textoCarrinho {
-    color: black;
+    color: white;
     font-weight: bold !important;
 }
 
@@ -14,9 +42,10 @@
 }
 
 .list-group-item {
-    color: black;
+    color: white;
     display:flex;
     font-weight: bold;
+    margin-right: 120px;
 }
 
 .listaCarrinho {
@@ -36,7 +65,7 @@
 }
 
 .pagamento {
-    color: black;
+    color: white;
     display: block;
     justify-content: center;
     margin-top: 24px;
@@ -45,7 +74,7 @@
 .botaoBox {
     display: flex;
     justify-content: space-around;
-    margin-top: 94px;
+    margin-top: 20px;
 }
 
 .botaoCancelar {
@@ -54,22 +83,29 @@
     border-radius: 5px;
     border: none;
     width: 136px;
-    height: 47px;
+    height: 30px;
     font-size: 20px;
 }
 
 .botaoConfirmar {
-    background-color: #048387;
+    background-color: #FF8802;
     color: #fff;
     font-weight: bold;
     border-radius: 5px;
     border: none;
     width: 136px;
-    height: 47px;
+    height: 30px;
     font-size: 20px;
 }
 
 .input-address{
     width: 350px;
     height: 40px;
+    color: white;
+}
+
+.img-excluir{
+    width: 10px;
+    height: 20px;
+    margin-left: 5px;
 }
