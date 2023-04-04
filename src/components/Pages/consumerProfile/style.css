@@ -1,52 +1,59 @@
-.profile {
-
+.profile-title{
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.picture {
-    display: flex;
-    justify-content: center ;
-}
-.profile-pic {
-    display: flex;
+.pic-user {
+    flex-direction: column;
     justify-content: center;
-    width: 90px !important;
-    height: 90px !important;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .form-pic-username {
-    display: block;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center ;
-    width: 50%;
+    margin-top: 50px;
 }
 
 .input-pic {
     display: none;
+    margin-top: 20px;
 }
 
-.text-input-profile {
-    font-weight: bold ;
+.profile-pic {
+    width: 90px !important;
+    height: 90px !important;
 }
 
-.profile-title {
-    color: black;
+.user-text {
+    color: #000000;
     font-weight: bold;
-    font-size: 24px;
+    align-self: center;
+    margin-top: 30px;
 }
 
 .input-username {
+    padding: 10px;
+    border-radius: 5px;
     width: 200px;
-    height: 20px;
+    max-width: 100%;
+    font-size: 16px;
+    text-align: center;
+    color: #000000;
 }
 
-.my-pets-button{
+.save-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
     background-color: #FDA94A;
+    color: #000000;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
     font-size: 16px;
-    color: black;
-    border-radius: 15%;
-    width: 164px;
-    height: 41;
-    align-items: center;
-    justify-content: center;
+    margin-top: 400px;
 }
