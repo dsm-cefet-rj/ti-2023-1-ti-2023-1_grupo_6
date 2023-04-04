@@ -93,6 +93,7 @@ input.input-search-home {
 
     .carousel {
         position: relative;
+        cursor: pointer;
     }
 
     .img-commercial-animals {
@@ -120,23 +121,23 @@ input.input-search-home {
 }
 
 .cqQwrw {
-    background-color: #048387 !important;
-    box-shadow: #048387 0px 0px 0px 2px !important;
+    background-color: #FDA94A !important;
+    box-shadow: #FDA94A 0px 0px 0px 2px !important;
     border: 0 !important;
 }
 
 .ereApb {
-    background-color: #FDA94A !important;
-    box-shadow: #FDA94A 0px 0px 0px 2px !important;
+    background-color: #048387 !important;
+    box-shadow: #048387 0px 0px 0px 2px !important;
 }
 
 .dkjKVr {
     color: #fff !important;
-    background-color: #048387 !important;
+    background-color: #FDA94A !important;
 }
 
 
 .cvyJEp {
+    background-color: #048387 !important;
     color: #fff !important;
-    background-color: #FDA94A !important;
 }

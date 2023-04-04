@@ -29,6 +29,10 @@
     padding-left: 12px;
 }
 
+button {
+    background: none;
+    border: 0;
+}
 
 .text {
     color: #048387;

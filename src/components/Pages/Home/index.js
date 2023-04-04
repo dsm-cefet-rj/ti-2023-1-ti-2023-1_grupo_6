@@ -15,7 +15,7 @@ import Menu from "../menu/index.js"
 import Carousel from "react-elastic-carousel";
 import Header from '../Header/index.js';
 import Navbar from '../navbar';
-
+import { useNavigate } from 'react-router-dom';
 
 const items = [
     { id: 1, image:<img src={petshop1} alt="pet1" width="260"/> },
@@ -28,6 +28,7 @@ const items = [
 
 
 const Home = () => {
+    const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const getItemsToShow = () => {
         if (window.innerWidth >= 1200) {
@@ -76,7 +77,7 @@ return (
             <Carousel showThumbs={false} itemsToShow={getItemsToShow()} paginationClassName="custom-carousel" className='carousel'>
                 {items.map((item) => (
                     <div key={item.id}>
-                    <h2>{item.image}</h2>
+                    <h2 onClick={() => {navigate(`/home/lojas/`)}}>{item.image}</h2>
                 </div>
                 ))}
             </Carousel>

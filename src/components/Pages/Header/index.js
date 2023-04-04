@@ -14,8 +14,8 @@ const MenuWeb = () => {
 
             <nav className = "menu-nav menu-home-profile">
             <ul className = "nav-ul">
-                <li> <a href="#" onClick={() => {navigate("/home")}}> Home </a></li>
-                <li><a href="#" onClick={() => {navigate("/")}}>Profile</a></li>
+                <li> <a href="#" onClick={() => {navigate("/home")}}>Início</a></li>
+                <li><a href="#" onClick={() => {navigate("/perfil")}}>Perfil</a></li>
             </ul>
             </nav>
         
