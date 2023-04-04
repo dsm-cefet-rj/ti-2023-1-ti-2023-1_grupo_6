@@ -3,6 +3,7 @@ import './style.css';
 import del from '../../../assets/del.png'
 import { useNavigate } from 'react-router-dom';
 
+
 const Carrinho = () => {
     const navigate = useNavigate()
     return (
