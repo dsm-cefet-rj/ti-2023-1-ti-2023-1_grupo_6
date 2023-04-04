@@ -1,4 +1,5 @@
 import './../Home/index.css';
+import styled from 'styled-components';
 import React from 'react';
 import blueIcon from '../../../assets/blueIcon.png';
 import rabbit from '../../../assets/rabbit.png';
