@@ -1,0 +1,73 @@
+.app-menu-web {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #B6E0EC;
+    align-items: center;
+    height: 100px;
+}
+
+.icon-nav{
+    margin-left: 5px;
+    padding-bottom: 17px;
+}
+
+.menu-nav{
+    display: flex;
+    width: 100%;
+    margin-left: 27px;
+}
+
+.menu-nav ul {
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* adiciona display flex para deixar os botões lado a lado */
+}
+
+.menu-home-profile {
+    position: relative;
+    bottom: 7px;
+}
+
+
+.menu-nav li {
+    float: left;
+    margin-right: 21px;
+}
+
+.menu-nav li a {
+    display: block;
+    color: #048387;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.menu-nav li a:hover {
+    background-color: none;
+    color: #0483879a;
+}
+
+.search-nav {
+    height: 30px;
+    max-width: 30%;
+    width: 700px;
+}
+
+.nav-search-carrinho {
+    width: 25%;
+}
+
+.input-search-nav {
+        position: relative;
+        bottom: 5px;
+    width: 491px;
+    padding-inline: 10px;
+    height: 30px;
+}
+
+.input-search-nav::placeholder {
+    color: #048387;
+}

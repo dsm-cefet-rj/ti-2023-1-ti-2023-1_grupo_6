@@ -8,14 +8,14 @@ return (
     <div className="App-Registration">
         <img src={whiteIcon} alt="logo"/>
         <div className="login">
-        <form>
+        <form className='login-option-registration'>
             <h2 className="text-registration">Você está se cadastrando como:</h2>
         <div className="clicks">
         <input className="text-input" type="submit" value="Consumidor" onClick={()=>{navigate("/registrar/usuario")}} />
         <input className="text-input" type="submit" value="Estabelecimento" />
             </div>
             <div className="back">
-            <p onClick={() => {navigate("/")}}>Voltar</p>
+            <p id="backk" onClick={() => {navigate("/")}}>Voltar</p>
         </div>
         </form>
             </div>
