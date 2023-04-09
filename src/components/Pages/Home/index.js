@@ -12,11 +12,9 @@ import Header from '../Header/index.js';
 import Navbar from '../navbar';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 
 const Home = () => {
-    const categorias = useSelector((state) => state.categorias);
     const lojas = useSelector((state) => state.lojas);
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
@@ -81,7 +79,7 @@ return (
                     </div>
                     ))}
                     </Carousel >
-                <div className="commercial">
+            <div className="commercial">
                     <img src={commercial} alt="animals" className="img-commercial-animals"/>
             </div>
         <Menu />

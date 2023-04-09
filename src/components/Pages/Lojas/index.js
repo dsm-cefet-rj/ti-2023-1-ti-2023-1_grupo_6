@@ -1,15 +1,12 @@
 import './style.css';
 import Menu from '../menu/index.js';
-import petshop1 from "../../../assets/petshop1.png";
-import petshop2 from "../../../assets/petshop2.png";
-import petshop3 from "../../../assets/petshop3.png";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Lojas = () => {
     const navigate = useNavigate();
     const lojas = useSelector((state) => state.lojas);
-    
+
     return (
         <div className="lojas-petshop">
                 <nav width="200px">

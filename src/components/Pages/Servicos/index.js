@@ -3,16 +3,12 @@ import './style.css';
 import Menu from "../menu/index.js"
 import Header from "../Header/index.js";
 import { useLocation } from 'react-router-dom';
-import catnip from "../../../assets/catnip-gatos.jpg";
-import brinquedo from "../../../assets/brinquedo-cat.jpg";
-import shampoo from "../../../assets/shampoo-cachorro.jpg";
-import racao from "../../../assets/racao-cachorro.jpg";
 import { useSelector } from 'react-redux';
 
     function Servicos() {
         const location = useLocation();
         const { loja } = location.state || {};
-            const lojas = useSelector((state) => state.lojas);
+        const produtos = useSelector((state) => state.produtos) ?? [];
 
         const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
 
@@ -28,17 +24,17 @@ import { useSelector } from 'react-redux';
             };
         }, 
         []);
-    
+        const getProdutosByCategoria = (categoria, produtos) => {
+            return produtos.filter((produto) => produto.categoria === categoria);
+        };
+        console.log('Produtos:', produtos);
+
 
         return (
             <div className='services-lojas'>
             {isScreenWideEnough && <Header />}
             <div className='loja'>
             <section>
-                {lojas.map((r) => (
-                <div key={r.id}>
-                </div>
-                ))}
             {loja ? (
                 
                 <div>
@@ -48,52 +44,64 @@ import { useSelector } from 'react-redux';
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
                             <section className="animais-promocoes-loja1">
-                                <h3>Promoções</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={shampoo} alt="shampoo para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Promoções', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Shampoo para cachorro</p>
-                                            <p className='preco'><span className='cifrao'>
-                                            R$</span>35,99 <span className='preco-antigo'>R$49,99</span></p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'>
+                                                <span className='cifrao'>R$</span>{produto.promocao}
+                                                {produto.valor !== produto.promocao &&
+                                                    <span className='preco-antigo'>R${produto.valor}</span>
+                                                }
+                                                </p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-servicos-loja1">
-                                <h3>Diversão</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={brinquedo} alt="brinquedo de gato" />
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Diversão', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Brinquedo para Gato</p>
-                                            <p className='preco'><span className='cifrao'>R$</span>17,59</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                             <section className="animais-compras-loja1">
-                                <h3>Rações para Gatos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={racao} alt="racao para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Ração Gormeut</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>23,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-compras-loja1">
-                                <h3>Atrativos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={catnip} alt="erva para gatos"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Catnip</p>
-                                            <p className='preco'><span className='cifrao'>R$</span>10,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                         </div>
@@ -104,52 +112,64 @@ import { useSelector } from 'react-redux';
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
                             <section className="animais-promocoes-loja2">
-                                <h3>Promoções</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={shampoo} alt="shampoo para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Promoções', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Shampoo para cachorro</p>
-                                            <p className='preco'><span className='cifrao'>
-                                            R$</span>35,99 <span className='preco-antigo'>R$49,99</span></p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'>
+                                                <span className='cifrao'>R$</span>{produto.promocao}
+                                                {produto.valor !== produto.promocao &&
+                                                    <span className='preco-antigo'>R${produto.valor}</span>
+                                                }
+                                                </p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-servicos-loja2">
-                                <h3>Diversão</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={brinquedo} alt="brinquedo de gato" />
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Diversão', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Brinquedo para Gato</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>17,59</p> 
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                             <section className="animais-compras-loja2">
-                                <h3>Rações para Gatos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={racao} alt="racao para cachorro"/>
-                                            <div className="paragrafo-vendas">
-                                            <p>Ração Gormeut</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>23,99</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <ul className="ul-loja">
+                                        {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                            <li key={produto.nome}>
+                                            <h3>{produto.categoria}</h3>
+                                            <img src={produto.img} alt={produto.nome} />
+                                                <div className="paragrafo-vendas">
+                                                    <p>{produto.nome}</p>
+                                                    <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                                </div>
+                                            </li>
+                                        ))}
+                                </ul>
                             </section>
                             <section className="animais-compras-loja2">
-                                <h3>Atrativos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={catnip} alt="erva para gatos"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Catnip</p>
-                                            <p className='preco'><span className='cifrao'>R$</span>10,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                         </div>
@@ -159,52 +179,64 @@ import { useSelector } from 'react-redux';
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
                             <section className="animais-promocoes-loja3">
-                                <h3>Promoções</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={shampoo} alt="shampoo para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Promoções', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Shampoo para cachorro</p>
-                                            <p className='preco'><span className='cifrao'>
-                                            R$</span>35,99 <span className='preco-antigo'>R$49,99</span></p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'>
+                                                <span className='cifrao'>R$</span>{produto.promocao}
+                                                {produto.valor !== produto.promocao &&
+                                                    <span className='preco-antigo'>R${produto.valor}</span>
+                                                }
+                                                </p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-servicos-loja3">
-                                <h3>Diversão</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={brinquedo} alt="brinquedo de gato" />
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Diversão', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Brinquedo para Gato</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>17,59</p> 
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                             <section className="animais-compras-loja3">
-                                <h3>Rações para Gatos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={racao} alt="racao para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Ração Gormeut</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>23,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-compras-loja3">
-                                <h3>Atrativos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={catnip} alt="erva para gatos"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Catnip</p>
-                                            <p className='preco'><span className='cifrao'>R$</span>10,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                         </div>
@@ -214,52 +246,64 @@ import { useSelector } from 'react-redux';
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
                             <section className="animais-promocoes-loja4">
-                                <h3>Promoções</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={shampoo} alt="shampoo para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Promoções', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Shampoo para cachorro</p>
-                                            <p className='preco'><span className='cifrao'>
-                                            R$</span>35,99 <span className='preco-antigo'>R$49,99</span></p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'>
+                                                <span className='cifrao'>R$</span>{produto.promocao}
+                                                {produto.valor !== produto.promocao &&
+                                                    <span className='preco-antigo'>R${produto.valor}</span>
+                                                }
+                                                </p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-servicos-loja4">
-                                <h3>Diversão</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={brinquedo} alt="brinquedo de gato" />
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Diversão', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Brinquedo para Gato</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>17,59</p> 
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                             <section className="animais-compras-loja4">
-                                <h3>Rações para Gatos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={racao} alt="racao para cachorro"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Ração Gormeut</p> 
-                                            <p className='preco'><span className='cifrao'>R$</span>23,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
-                                    </ul>
+                                    ))}
+                                </ul>
                             </section>
                             <section className="animais-compras-loja4">
-                                <h3>Atrativos</h3>
-                                    <ul className="ul-loja">
-                                        <li>
-                                            <img src={catnip} alt="erva para gatos"/>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <h3>{produto.categoria}</h3>
+                                        <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
-                                            <p>Catnip</p>
-                                            <p className='preco'><span className='cifrao'>R$</span>10,99</p>
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
                                         </li>
+                                    ))}
                                     </ul>
                             </section>
                         </div>

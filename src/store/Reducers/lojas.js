@@ -13,17 +13,18 @@ const initialState = [{
     image:<img src={petshop1} alt="pet1" width="350" height="300px"/>,
     id: '12',
     descricao: 'loja!',
-    url: "/loja-a"
+    url: "/loja-gato-pra-cachorro-pet-shop"
 },
 {
     nome: "Cachorro Pet Shop", 
     animais_atendidos: "Cachorro • Coelho • Hamster", 
-    contato: "(21) 9 999-9999",  avaliacao: "3,0 ⭐⭐⭐", 
+    contato: "(21) 9 999-9999",
+    avaliacao: "3,0 ⭐⭐⭐", 
     endereco: "Rua Gatinho Fofinho, 277",
     img: <img src={petshop2} alt="dog"/>,
     image:<img src={petshop2} alt="pet1" width="350" height="300px"/>,
     descricao: 'loja!',
-    url: "/loja-b"
+    url: "/loja-cachorro-pet-shop"
 },
 {
     nome: "Gato Pet Shop",
@@ -31,9 +32,9 @@ const initialState = [{
     avaliacao: "3,0 ⭐⭐⭐",
     endereco: "Rua Gabi , 1163",
     img: <img src={petshop3} alt="dog"/>,
-    image:<img src={petshop1} alt="pet1" width="350" height="300px"/>,
+    image:<img src={petshop3} alt="pet1" width="350" height="300px"/>,
     descricao: 'loja!',
-    url: "/loja-c"
+    url: "/loja-gato-pet-shop"
 }, {
     nome: "Pássaro Pet Shop", 
     animais_atendidos: "Pássaro • Gato • Hamster",
@@ -43,7 +44,7 @@ const initialState = [{
     img: <img src={petshop1} alt="dog"/>,
     image:<img src={petshop1} alt="pet1" width="350" height="300px"/>,
     descricao: 'loja!',
-    url: "/loja-d"
+    url: "/loja-passaro-pet-shop"
 }];
 
 const lojasSlice = createSlice({
