@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import whiteIcon from '../../../assets/whiteIcon.png';
 import './../Login/style.css';
+import { useSelector } from 'react-redux';
+
 const Login = () => {
+  const categorias = useSelector((state) => state.categorias);
+  const lojas = useSelector((state) => state.lojas);
 
   const navigate = useNavigate();
 

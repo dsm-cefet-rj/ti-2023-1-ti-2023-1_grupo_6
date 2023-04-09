@@ -7,10 +7,13 @@ import catnip from "../../../assets/catnip-gatos.jpg";
 import brinquedo from "../../../assets/brinquedo-cat.jpg";
 import shampoo from "../../../assets/shampoo-cachorro.jpg";
 import racao from "../../../assets/racao-cachorro.jpg";
-    
+import { useSelector } from 'react-redux';
+
     function Servicos() {
         const location = useLocation();
         const { loja } = location.state || {};
+            const lojas = useSelector((state) => state.lojas);
+
         const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
 
         React.useEffect(() => {
@@ -32,8 +35,12 @@ import racao from "../../../assets/racao-cachorro.jpg";
             {isScreenWideEnough && <Header />}
             <div className='loja'>
             <section>
+                {lojas.map((r) => (
+                <div key={r.id}>
+                </div>
+                ))}
             {loja ? (
-
+                
                 <div>
                     {loja.nome === 'Gato pra Cachorro Pet Shop' ? (
                         <div>

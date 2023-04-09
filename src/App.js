@@ -8,7 +8,7 @@ import PetSelection from './components/Pages/PetSelection/index.js'
 import Menu from './components/Pages/menu/index.js'
 import OptionRegistration from './components/Pages/OptionRegistration/index.js';
 import Lojas from './components/Pages/Lojas';
-import Servicos from './components/Pages/Servicos';
+import Servicos from './components/Pages/servicos/index.js';
 import ConsumerProfile from './components/Pages/consumerProfile/index.js';
 import ShopRegistration from './components/Pages/ShopRegistration/index.js';
 import Birds from './components/Pages/Birds/index.js';
@@ -16,9 +16,12 @@ import Cats from './components/Pages/Cats/index.js';
 import Hamsters from './components/Pages/Hamsters/index.js';
 import Dogs from './components/Pages/Dogs/index.js';
 import Rabbit from './components/Pages/Rabbit/index.js';
+import { Provider } from 'react-redux';
+import  store  from './store';
 
 function App() {
   return (
+<Provider store={store}>
     <Router>
       <Routes>
         <Route path="/" element={<Login/>}/>
@@ -30,7 +33,7 @@ function App() {
         <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
         <Route path="/menu" element={<Menu/>}/>
         <Route path="/home/lojas" element={<Lojas/>}/>
-        <Route path="/home/lojas/Servicos" element={<Servicos/>}/>
+        <Route path="/home/lojas/servicos/:lojaId" element={<Servicos/>}/>
         <Route path="/perfil" element={<ConsumerProfile/>}/>
         <Route path="/registrarEstabelecimento" element={<ShopRegistration/>}/>
         <Route path="/passaros" element={<Birds/>}/>
@@ -40,6 +43,7 @@ function App() {
         <Route path="/coelho" element={<Rabbit/>}/>
       </Routes>
     </Router>
+    </Provider>
   );
 }
 
