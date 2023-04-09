@@ -2,14 +2,33 @@ import './style.css';
 import whiteIcon from '../../../assets/whiteIcon.png';
 import del from '../../../assets/del.png'
 import { useNavigate } from 'react-router-dom';
-
+import Header from '../Header/index.js';
+import Menu from "../menu/index.js"
+import React from 'react';
 
 const Carrinho = () => {
     const navigate = useNavigate()
+    const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+    React.useEffect(() => {
+        const handleResize = () => {
+        setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
+        };
+
+        handleResize(); // define a largura da tela na montagem inicial do componente
+        window.addEventListener('resize', handleResize); // adiciona um listener para o evento de redimensionamento da tela
+        return () => {
+        window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
+        };
+    }, 
+    []);
+
     return (
         <div className="carrinho-background">
-            <img src={whiteIcon} alt="logo"/>
-            <div className='login'>
+            <div>
+            {isScreenWideEnough && <Header />}
+            </div>
+
+            <div className='carrinho'>
                 <form className="form-carrinho">
                     <div className='itens'> 
                         <h2 className='textoCarrinho'>Seus itens</h2>
