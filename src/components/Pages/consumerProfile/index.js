@@ -3,31 +3,27 @@ import React, { useState, useEffect, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import noAvatar from '../../../assets/noAvatar.svg'
 import Header from '../Header/index.js';
-import { AuthContext } from '../../../contexts/auth';
+import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const ConsumerProfile = () => {
-    const { user, signUp } = useContext(AuthContext);
+    const { user } = useAuth();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const [image, setImage] = useState(null);
-    const [username, setUsername] = useState(user?.username || ''); // inicializa o estado do nome de usuário com o valor armazenado no contexto de autenticação, se existir
+    const { signOut } = useAuth();
+    const { deleteAccount } = useAuth();
+    const navigate = useNavigate();
+    
 
     const handleImageChange = (event) => {
         const selectedImage = event.target.files[0];
         setImage(selectedImage);
         //função para lidar com a seleção de imagem
     }
-    const handleUsernameChange = (event) => {
-        const newUsername = event.target.value;
-        setUsername(newUsername);
-    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         //enviar imagem para o servidor
-    }
-    const handleUsernameSubmit = (event) => {
-        event.preventDefault();
-        signUp(user.email, user.password, username); // atualiza o nome de usuário no contexto de autenticação
-        // enviar nome de usuário para o servidor
     }
 
     React.useEffect(() => {
@@ -49,7 +45,7 @@ const ConsumerProfile = () => {
             {isScreenWideEnough && <Header />}
             </div>
 
-            <h1 className="profile-title">Meu Perfil</h1>
+            <h1 className="profile-title">Meu Perfil {user.name}</h1>
             <div className='pic-user'>
                 <form onSubmit={handleSubmit} className='form-pic-username'>
                     <label htmlFor="profile-pic">
@@ -67,24 +63,21 @@ const ConsumerProfile = () => {
                     className= "input-pic"
                     />
 
-                    <text className='user-text'>nome: {user.username}</text>
-                    <label htmlFor="username">
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={handleUsernameChange}
-                            className = "input-username"
-                            
-                        />
-                    </label>
+                    <text className='user-text'>nome: {user.name}</text>
+
                 </form>
             </div>
 
             <div className = "box-buttons">
                 <button type="submit" className="profile-button">Salvar</button>
-                <button className="profile-button">Sair</button>
-                <button className="profile-button">Deletar conta</button>                    
+                <button 
+                className="profile-button"
+                onClick={() => [signOut(), navigate("/")]}
+                >Sair</button>
+                <button
+                className="profile-button"
+                onClick={() => [deleteAccount(user.email), navigate("/")]}
+                >Deletar conta</button>                    
             </div>
             
         </div>
