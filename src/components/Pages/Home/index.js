@@ -26,8 +26,6 @@ const items = [
     { id: 5, image:<img src={petshop5} alt="pet5" width="260"/> },
 ];
 
-
-
 const Home = () => {
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
