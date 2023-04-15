@@ -65,10 +65,30 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("user_token");
     }
 
+    const deleteAccount = (email) => {
+        let usersStorage = JSON.parse(localStorage.getItem("users_db"));
+    
+        const filteredUsers = usersStorage?.filter((user) => user.email !== email);
+    
+        if (filteredUsers) {
+            localStorage.setItem("users_db", JSON.stringify(filteredUsers));
+    
+          // Logout user if the deleted account was the current user
+            if (user?.email === email) {
+            setUser(null);
+            localStorage.removeItem("user_token");
+            alert("Sua conta foi excluída com sucesso!");
+            }
+            return;
+        } else {
+            return "Não foi possível excluir a conta";
+        }
+    };
+
 
     return (
     <AuthContext.Provider
-        value = { { user, signed: !!user, signIn, signUp, signOut } }
+        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount } }
     >
         {children}
     </AuthContext.Provider>
