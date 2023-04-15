@@ -4,8 +4,6 @@ import Login from '../../src/components/Pages/Login/index.js';
 import Home from '../../src/components/Pages/Home/index.js'
 import Carrinho from '../../src/components/Pages/Carrinho/index.js'
 import UserRegistration from '../../src/components/Pages/UserRegistration/UserRegistration.js'
-import PetRegistration from '../../src/components/Pages/PetRegistration/index.js'
-import PetSelection from '../../src/components/Pages/PetSelection/index.js'
 import Menu from '../../src/components/Pages/menu/index.js'
 import OptionRegistration from '../../src/components/Pages/OptionRegistration/index.js';
 import Lojas from '../../src/components/Pages/Lojas';
@@ -27,6 +25,7 @@ const Private = ({ Item }) => {
 
 const RoutesApp = () => {
     return (
+        
         <BrowserRouter>
             <Fragment>
                 <Routes>
@@ -35,12 +34,10 @@ const RoutesApp = () => {
                     <Route path="/home" element={<Private Item={Home}/>}/>
                     <Route path="/carrinho" element={<Private Item = {Carrinho}/>}/>
                     <Route path="/registrar/usuario" element={<UserRegistration/>}/>
-                    <Route path="/registrar/pet" element={<PetRegistration/>}/>
-                    <Route path="/selecionar/pet" element={<Private Item = {PetSelection}/>}/>
                     <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
                     <Route path="/menu" element={<Private Item = {Menu}/>}/>
                     <Route path="/home/lojas" element={<Private Item = {Lojas}/>}/>
-                    <Route path="/home/lojas/Servicos" element={<Private Item = {Servicos}/>}/>
+                    <Route path="/home/lojas/servicos/:lojaId" element={<Private Item = {Servicos}/>}/>
                     <Route path="/perfil" element={<Private Item = {ConsumerProfile}/>}/>
                     <Route path="/registrarEstabelecimento" element={<Private Item = {ShopRegistration}/>}/>
                     <Route path="/passaros" element={<Private Item = {Birds}/>}/>
@@ -48,10 +45,10 @@ const RoutesApp = () => {
                     <Route path="/cachorros" element={<Private Item = {Dogs}/>}/>
                     <Route path="/hamsters" element={<Private Item = {Hamsters}/>}/>
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
-                </Routes>
-            </Fragment>
+                </Routes>  
+            </Fragment>        
         </BrowserRouter>
-        
+    
     );
 };
 

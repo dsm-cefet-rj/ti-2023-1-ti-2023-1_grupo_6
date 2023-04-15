@@ -78,11 +78,13 @@ const ConsumerProfile = () => {
                             
                         />
                     </label>
-
-                    <button type="submit" className="save-button">Salvar</button>
-
                 </form>
-                
+            </div>
+
+            <div className = "box-buttons">
+                <button type="submit" className="profile-button">Salvar</button>
+                <button className="profile-button">Sair</button>
+                <button className="profile-button">Deletar conta</button>                    
             </div>
             
         </div>
