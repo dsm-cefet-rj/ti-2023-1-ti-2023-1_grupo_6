@@ -4,6 +4,7 @@ html .App-login   {
   justify-content: center;
   margin: 0px;
   height: 100vh;
+  width: 100%;
 }
 
 h1 {
@@ -68,21 +69,8 @@ input {
   padding-inline: 20px;
 }
 
-
 input:focus {
   outline: 0;
-}
-
-.save {
-  display: flex;
-  justify-content: left;
-  margin-left: 21%;
-}
-
-.save label {
-  position: relative;
-  bottom:2px;
-  left: 4px;
 }
 
 .enviar-login {
@@ -91,10 +79,10 @@ input:focus {
   top: 45px;
 }
 
-
 input[type='submit'] {
   color: #ffff;
   font-size: 18px;
+  font-family: 'Baloo 2';
   margin: 25px;
   border: 0;
   height: 40px;
@@ -126,7 +114,7 @@ input[type='checkbox']:checked::after {
   background-color: #fe972f;
 }
 
-.help {
+.options {
   position: relative;
   top: 15px;
   cursor: pointer;
@@ -135,4 +123,13 @@ input[type='checkbox']:checked::after {
 .login .clicks {
   position: relative;
   top: 30px;
+}
+
+.error-message-signin {
+  color: black;
+  font-size: 14px;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  margin-left: 100px;
 }

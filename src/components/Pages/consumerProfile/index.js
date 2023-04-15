@@ -1,13 +1,15 @@
 import './style.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import noAvatar from '../../../assets/noAvatar.svg'
 import Header from '../Header/index.js';
+import { AuthContext } from '../../../contexts/auth';
 
 const ConsumerProfile = () => {
+    const { user, signUp } = useContext(AuthContext);
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const [image, setImage] = useState(null);
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState(user?.username || ''); // inicializa o estado do nome de usuário com o valor armazenado no contexto de autenticação, se existir
 
     const handleImageChange = (event) => {
         const selectedImage = event.target.files[0];
@@ -24,6 +26,7 @@ const ConsumerProfile = () => {
     }
     const handleUsernameSubmit = (event) => {
         event.preventDefault();
+        signUp(user.email, user.password, username); // atualiza o nome de usuário no contexto de autenticação
         // enviar nome de usuário para o servidor
     }
 
@@ -64,7 +67,7 @@ const ConsumerProfile = () => {
                     className= "input-pic"
                     />
 
-                    <text className='user-text'>username:</text>
+                    <text className='user-text'>nome: {user.username}</text>
                     <label htmlFor="username">
                         <input
                             type="text"

@@ -25,7 +25,17 @@ html {
     color: black;
 }
 
-#hehe {
+.error-message-signup {
+    color: rgb(255, 0, 0);
+    font-size: 15px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#input-info {
     margin-left: 8px;
     display: flex;
     margin-bottom: 5px;
@@ -58,7 +68,7 @@ html {
     background-color: #B6E0EC;
 }
 
-#heh {
+#infos {
     text-align: left;
     width: 360px;
     padding-bottom: 10px;
@@ -78,7 +88,7 @@ html {
     font-size: 18px;
     cursor: pointer;
     padding-inline: 40px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #Voltar {
