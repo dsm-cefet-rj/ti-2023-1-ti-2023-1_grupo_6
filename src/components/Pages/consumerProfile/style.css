@@ -45,15 +45,25 @@
     color: #000000;
 }
 
-.save-button {
+.box-buttons {
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+
+}
+
+.profile-button {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 10px 60px;
     border-radius: 15px;
     background-color: #FDA94A;
     color: #000000;
-    font-weight: bold;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 400px;
+    font-family: 'Baloo 2';
+}
+
+.profile-button:hover {
+    background-color: #fe972f
 }
