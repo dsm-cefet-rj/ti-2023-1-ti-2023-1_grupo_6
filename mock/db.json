@@ -1,0 +1,220 @@
+{
+  "store": [
+    {
+      "id": 1,
+      "store1": [
+        {
+          "animals": [
+            "Gato",
+            "Cachorro",
+            "Coelho",
+            "Hamster"
+          ],
+          "tel": "(21) 9 999-9999",
+          "address": " Avenida Gato Fofo, 164",
+          "name": "Gato pra Cachorro Pet Shop",
+          "stock": [
+            {
+              "id": 1,
+              "class": "Limpeza",
+              "name": "Shampoo para cachorro",
+              "value": 35.99,
+              "id_store": 1
+            },
+            {
+              "id": 2,
+              "class": "Diversao",
+              "name": "Brinquedo para gato",
+              "value": 17.59,
+              "id_store": 1
+            },
+            {
+              "id": 3,
+              "class": "Ração para cachorro",
+              "name": "Ração gourmet",
+              "value": 23.99,
+              "id_store": 1
+            },
+            {
+              "id": 4,
+              "class": "Atrativos",
+              "name": "Catnip",
+              "value": 10.99,
+              "id_store": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "store2": [
+        {
+          "name": "Cachorro Pet Shop",
+          "animals": [
+            "cachorro",
+            "hamster",
+            "coelho"
+          ],
+          "tel": "(21) 9 999-9999",
+          "address": "Rua Gatinho Fofinho, 277",
+          "stock": [
+            {
+              "id": 1,
+              "class": "Limpeza",
+              "name": "Shampoo para cachorro",
+              "value": 35.99,
+              "id_store": 2
+            },
+            {
+              "id": 2,
+              "class": "Diversao",
+              "name": "Brinquedo para gato",
+              "value": 17.59,
+              "id_store": 2
+            },
+            {
+              "id": 3,
+              "class": "Ração para cachorro",
+              "name": "Ração gourmet",
+              "value": 23.99,
+              "id_store": 2
+            },
+            {
+              "id": 4,
+              "class": "Atrativos",
+              "name": "Catnip",
+              "value": 10.99,
+              "id_store": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "store3": [
+        {
+          "animals": [
+            "Gato",
+            "Passaro",
+            "Hamster"
+          ],
+          "tel": "(21) 9 999-9999",
+          "address": "Rua Gabi , 1163",
+          "name": "Gato Pet Shop",
+          "stock": [
+            {
+              "id": 1,
+              "class": "Limpeza",
+              "name": "Shampoo para cachorro",
+              "value": 35.99,
+              "id_store": 3
+            },
+            {
+              "id": 2,
+              "class": "Diversao",
+              "name": "Brinquedo para gato",
+              "value": 17.59,
+              "id_store": 3
+            },
+            {
+              "id": 3,
+              "class": "Ração para cachorro",
+              "name": "Ração gourmet",
+              "value": 23.99,
+              "id_store": 3
+            },
+            {
+              "id": 4,
+              "class": "Atrativos",
+              "name": "Catnip",
+              "value": 10.99,
+              "id_store": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "store4": [
+        {
+          "animals": [
+            "Gato",
+            "Passaro",
+            "Hamster"
+          ],
+          "tel": "(21) 9 999-9999",
+          "address": "Rua Isa, 999",
+          "name": "Pássaro Pet Shop",
+          "stock": [
+            {
+              "id": 1,
+              "class": "Limpeza",
+              "name": "Shampoo para cachorro",
+              "value": 35.99,
+              "id_store": 4
+            },
+            {
+              "id": 2,
+              "class": "Diversao",
+              "name": "Brinquedo para gato",
+              "value": 17.59,
+              "id_store": 4
+            },
+            {
+              "id": 3,
+              "class": "Ração para cachorro",
+              "name": "Ração gourmet",
+              "value": 23.99,
+              "id_store": 4
+            },
+            {
+              "id": 4,
+              "class": "Atrativos",
+              "name": "Catnip",
+              "value": 10.99,
+              "id_store": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "consumerData": [
+    {
+      "id": 1,
+      "name": "Rafael",
+      "cpf": "11111111111",
+      "bornDate": "11/11/1999",
+      "email": "rafael@email.com",
+      "senha": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Gabi",
+      "cpf": "11111111111",
+      "bornDate": "11/11/1999",
+      "email": "gabi@email.com",
+      "senha": "123456"
+    },
+    {
+      "name": "Isa",
+      "cpf": "11111111111",
+      "bornDate": "11/11/1999",
+      "email": "isa@email.com",
+      "senha": "123456",
+      "id": 3
+    }
+  ],
+  "carrinho": [
+    {
+      "class": "Limpeza",
+      "name": "Shampoo para cachorro",
+      "value": 35.99,
+      "id_store": 2,
+      "id": 1
+    }
+  ]
+}

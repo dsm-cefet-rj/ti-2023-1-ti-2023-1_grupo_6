@@ -39,7 +39,7 @@ const Login = () => {
             <h2 className="name-login">login</h2>
             <div className="acess-inputs">
               <div className="acess">
-                <label htmlFor="name" className="userName">Usuário</label>
+                <label htmlFor="name" className="userName">Email</label>
                   <input
                     required
                     value = {email}
