@@ -5,10 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../Header/index.js';
 import Menu from "../menu/index.js"
 import React from 'react';
+import  { useContext } from 'react';
+import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 
 const Carrinho = () => {
     const navigate = useNavigate()
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+    const { carrinho } = useContext(CarrinhoContext);
+    const { adicionarProdutoCarrinho, removerProdutoCarrinho } = useContext(CarrinhoContext);
+
     React.useEffect(() => {
         const handleResize = () => {
         setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -22,6 +27,15 @@ const Carrinho = () => {
     }, 
     []);
 
+    const handleAdicionarProduto = (produto) => {
+        adicionarProdutoCarrinho(produto);
+    };
+
+    const handleRemoverProduto = (produtoId) => {
+        removerProdutoCarrinho(produtoId);
+    };
+
+
     return (
         <div className="carrinho-background">
             <div>
@@ -30,26 +44,33 @@ const Carrinho = () => {
 
             <div className='carrinho'>
                 <form className="form-carrinho">
-                    <div className='itens'> 
-                        <h2 className='textoCarrinho'>Seus itens</h2>
-                    </div>
-
-                    <div className='listaCarrinho'>
-                        <ul class="list-group list-group-flush">
-                        <li class="list-group-item">- Ração para gato <img src={del} alt="excluir" className="img-excluir"/> </li>
-                        <li class="list-group-item">- Osso para cachorro <img src={del} alt="excluir" className="img-excluir"/></li>
-                        <li class="list-group-item">- Petiscos <img src={del} alt="excluir" className="img-excluir"/></li>
-                        <li class="list-group-item">- Serviço banho e tosa cachorro <img src={del} alt="excluir" className="img-excluir"/></li>
-                        <li class="list-group-item">- Remédio coelho <img src={del} alt="excluir" className="img-excluir"/></li>
+                    <div className="produtos-carrinho">
+                        <h2>Carrinho de compras</h2>
+                        <ul className="ul-produtos">
+                        {carrinho.produtos.map((produto) => (
+                            <li key={produto.id}>
+                                <div className="produto-container">
+                                        <div className="produto-texto">
+                                            <p>{produto.nome}</p>
+                                            <p><span className='cifrao'>R$</span>{produto.valor}</p>
+                                        </div>
+                                        <div className="produto-botoes">
+                                            <input type="button" value="-" onClick={() => handleRemoverProduto(produto.id)} className="decrementar-item"/>
+                                            <img src={produto.img} alt="Imagem do produto" />
+                                            <input type="button" value="+" onClick={() => handleAdicionarProduto(produto)} className="incrementar-item"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
+                        {carrinho.quantidade > 1 ? <p className='total-itens'>Total ({carrinho.quantidade} itens): </p> :<p className='total-itens'>Total ({carrinho.quantidade} item): </p>}
                     </div>
-
-                    <div className='endereco'> 
+                    <div className='endereco etapa'> 
                         <h2 className='textoCarrinho'>Endereço</h2>
                         <input type="text" placeholder='Insira o seu endereço' className="input-address"/>
                     </div>
 
-                    <div className='pagamento'> 
+                    <div className='pagamento etapa'> 
                         <h2 className='textoCarrinho'>Forma de pagamento</h2>
                         <p className='exemplo'>O pagamento será feito na hora da entrega.</p>
                     </div>
@@ -58,7 +79,7 @@ const Carrinho = () => {
                             Cancelar
                         </button>
                         <button className='botaoConfirmar'>
-                            Confirmar
+                            Finalizar Compra
                         </button>
                     </div>
                 </form>

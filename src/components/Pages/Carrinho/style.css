@@ -1,20 +1,20 @@
-html .carrinho-background{
-    color: #ffffff;
+html .carrinho-background {
+    color: black;
     align-items: center;
     justify-content: center;
     margin: 0px;
     height: 100vh;
 }
 
-.carrinho-background{
-    font-weight:bold ;
+.carrinho-background {
+    font-weight: bold;
     text-align: center;
     justify-content: center;
     width: 100%;
-    overflow:auto;
+
 }
 
-.carrinho-background .background{
+.carrinho-background .background {
     position: relative;
     top: 20px;
     height: 500px;
@@ -22,10 +22,10 @@ html .carrinho-background{
     max-height: 90%;
 }
 
-.carrinho-background{
+.carrinho-background {
     max-height: 90%;
     height: 510px;
-    border-radius: 10px;
+    overflow: auto;
 }
 
 .textoCarrinho {
@@ -39,9 +39,17 @@ html .carrinho-background{
     margin-top: 24px;
 }
 
+.total-itens {
+    text-transform: uppercase;
+}
+
+.endereco .input-address {
+    padding-left: 10px;
+}
+
 .list-group-item {
     color: rgb(0, 0, 0);
-    display:flex;
+    display: flex;
     font-weight: bold;
     margin-right: 120px;
 }
@@ -72,7 +80,8 @@ html .carrinho-background{
 .botaoBox {
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 
 .botaoCancelar {
@@ -81,7 +90,8 @@ html .carrinho-background{
     border-radius: 5px;
     border: none;
     width: 136px;
-    height: 30px;
+    width: 236px;
+    height: 40px;
     font-size: 20px;
     margin-right: 100px;
     cursor: pointer;
@@ -93,20 +103,91 @@ html .carrinho-background{
     font-weight: bold;
     border-radius: 5px;
     border: none;
-    width: 136px;
-    height: 30px;
+    width: 336px;
+    height: 40px;
     font-size: 20px;
     cursor: pointer;
 }
 
-.input-address{
+.input-address {
     width: 350px;
     height: 40px;
     color: rgb(0, 0, 0);
 }
 
-.img-excluir{
+.img-excluir {
     width: 10px;
     height: 20px;
     margin-left: 5px;
+}
+
+.carrinho img {
+    width: 100%;
+}
+
+.produto-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.produto-container img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.produto-texto {
+    flex-grow: 1;
+}
+
+.ul-produtos li {
+    list-style: none;
+}
+
+.produto-botoes {
+    display: flex;
+    align-items: center;
+}
+
+.decrementar-item,
+.incrementar-item {
+    color: #ffff;
+    padding: 5px 10px;
+    border: none;
+    background-color: #c6c6c6;
+    border-radius: 90%;
+    height: 40px;
+    width: 42px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.decrementar-item:hover,
+.incrementar-item:hover {
+    background-color: #FF8802;
+}
+
+.etapa {
+    border-top: 1px solid #ccc;
+}
+
+.cifrao {
+    font-weight: normal;
+    position: relative;
+    top: -.5em;
+    font-size: 13px;
+}
+
+.loja .preco .preco-antigo {
+    font-weight: normal;
+    text-decoration: line-through;
+    font-size: 15px;
+    color: #686363
+}
+
+.pagamento {
+    margin-top: 40px;
+    margin-bottom: 0;
 }

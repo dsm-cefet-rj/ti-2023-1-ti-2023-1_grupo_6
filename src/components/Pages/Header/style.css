@@ -8,6 +8,7 @@
 }
 
 .icon-nav{
+    position: relative;
     margin-left: 5px;
     padding-bottom: 17px;
 }
@@ -60,9 +61,14 @@
     width: 25%;
 }
 
+.img-bag {
+    position: relative;
+    top: 2px;
+}
+
 .input-search-nav {
-        position: relative;
-        bottom: 5px;
+    position: relative;
+    bottom: 5px;
     width: 491px;
     padding-inline: 10px;
     height: 30px;
@@ -70,4 +76,17 @@
 
 .input-search-nav::placeholder {
     color: #048387;
+}
+
+.quant-itens-carrinho {
+    margin: 5px;
+    position: relative;
+    bottom:20px;
+    color: #048387;
+    background-color:#B6E0EC;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 80%;
+    float: right;
 }
