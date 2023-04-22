@@ -189,7 +189,7 @@
       "cpf": "11111111111",
       "bornDate": "11/11/1999",
       "email": "rafael@email.com",
-      "senha": "123456"
+      "password": "123456"
     },
     {
       "id": 2,
@@ -197,14 +197,14 @@
       "cpf": "11111111111",
       "bornDate": "11/11/1999",
       "email": "gabi@email.com",
-      "senha": "123456"
+      "password": "123456"
     },
     {
       "name": "Isa",
       "cpf": "11111111111",
       "bornDate": "11/11/1999",
       "email": "isa@email.com",
-      "senha": "123456",
+      "password": "123456",
       "id": 3
     }
   ],
