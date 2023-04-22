@@ -26,7 +26,7 @@ const UserRegistration = () => {
       return;
     }
 
-  const res = signUp(email, password);
+  const res = signUp(email, password,name,cpf,date);
 
     if(res) {
       setError(res);

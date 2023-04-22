@@ -46,26 +46,27 @@ export const AuthProvider = ({ children }) => {
         
     };
 
-    const signUp = (email, password) => {
-        const usersStorage = JSON.parse(localStorage.getItem("users_db"));
-
-        const hasUser = usersStorage?.filter((user) => user.email === email);
-
-        if(hasUser?.length){
-            return "Já existe uma conta cadastrada com esse e-mail";
-        }
-
-        let newUser;
-
-        if(usersStorage) {
-            newUser = [...usersStorage, { email, password }];
-        } else {
-            newUser = [{ email, password }];
-        }
-
-        localStorage.setItem("users_db", JSON.stringify(newUser));
-
-        return;
+    const signUp = (email, password, name, cpf,bornDate) => {
+        UserInformation.getAll().then((result)=>{
+            if(result instanceof ApiException){
+                alert(result.message);
+            }else{
+                const hasUser = result?.filter((user) => user.email === email);
+        
+                if(hasUser?.length){
+                    return "Já existe uma conta cadastrada com esse e-mail";
+                } else{
+                    let newUser= {
+                        name: name,
+                        cpf: cpf,
+                        bornDate: bornDate,
+                        email: email,
+                        password: password
+                    };
+                    UserInformation.create(newUser);
+                }
+            }
+        });
     }
 
     const signOut = () => {
