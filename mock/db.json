@@ -206,6 +206,14 @@
       "email": "isa@email.com",
       "password": "123456",
       "id": 3
+    },
+    {
+      "name": "Caique",
+      "cpf": "11111111111",
+      "bornDate": "1999-07-05",
+      "email": "caique@email.com",
+      "password": "123456",
+      "id": 4
     }
   ],
   "carrinho": [
