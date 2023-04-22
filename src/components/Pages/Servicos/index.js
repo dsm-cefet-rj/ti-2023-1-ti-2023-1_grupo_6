@@ -5,7 +5,7 @@ import Header from "../Header/index.js";
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { useContext } from 'react';
+    import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
 
@@ -35,7 +35,6 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
         };
         console.log('Produtos:', produtos);
 
-
         const handleAdicionarProduto = (produto) => {
             adicionarProdutoCarrinho(produto);
         };
@@ -53,11 +52,26 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                             <h1>{loja.nome}</h1>
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
+                            <section className="animais-compras-loja1">
+                                <h3>Saúde</h3>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Saúde', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
                             <section className="animais-promocoes-loja1">
+                                <h3>Promoções</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Promoções', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -74,10 +88,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-servicos-loja1">
+                                <h3>Diversão</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Diversão', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -89,10 +103,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     </ul>
                             </section>
                             <section className="animais-compras-loja1">
+                                <h3>Alimentação</h3>
                                 <ul className="ul-loja">
-                                    {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                    {getProdutosByCategoria('Alimentacao', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -104,10 +118,25 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-compras-loja1">
+                                <h3>Conforto</h3>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Conforto', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                            <section className="animais-compras-loja1">
+                                <h3>Atrativos</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -119,17 +148,31 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     </ul>
                             </section>
                         </div>
-                        
                     ) : loja.nome === 'Cachorro Pet Shop' ? (
                         <div>
                             <h1>{loja.nome}</h1>
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
+                            <section className="animais-compras-loja2">
+                                <h3>Saúde</h3>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Saúde', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
                             <section className="animais-promocoes-loja2">
+                                <h3>Promoções</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Promoções', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -146,10 +189,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-servicos-loja2">
+                                    <h3>Diversão</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Diversão', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -161,10 +204,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     </ul>
                             </section>
                             <section className="animais-compras-loja2">
+                                <h3>Alimentação</h3>
                                 <ul className="ul-loja">
-                                        {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                        {getProdutosByCategoria('Alimentacao', produtos).map((produto) => (
                                             <li key={produto.nome}>
-                                            <h3>{produto.categoria}</h3>
                                             <img src={produto.img} alt={produto.nome} />
                                                 <div className="paragrafo-vendas">
                                                     <p>{produto.nome}</p>
@@ -176,10 +219,25 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-compras-loja2">
+                                <h3>Conforto</h3>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Conforto', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                            <section className="animais-compras-loja2">
+                                <h3>Atrativos</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -196,11 +254,27 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                             <h1>{loja.nome}</h1>
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
+                            
+                            <section className="animais-compras-loja3">
+                                <h3>Saúde</h3>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Saúde', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
                             <section className="animais-promocoes-loja3">
+                                <h3>Promoções</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Promoções', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -217,10 +291,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-servicos-loja3">
+                                    <h3>Diversão</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Diversão', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -232,10 +306,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     </ul>
                             </section>
                             <section className="animais-compras-loja3">
+                                <h3>Alimentação</h3>
                                 <ul className="ul-loja">
-                                    {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                    {getProdutosByCategoria('Alimentacao', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -247,10 +321,25 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-compras-loja3">
+                            <section className="animais-compras-loja3">
+                                <h3>Conforto</h3>
                                 <ul className="ul-loja">
+                                    {getProdutosByCategoria('Conforto', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                                <ul className="ul-loja">
+                                    <h3>Atrativos</h3>
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -267,11 +356,27 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                             <h1>{loja.nome}</h1>
                             <p>{loja.animais_atendidos}, {loja.endereco}, {loja.contato}</p>
                             <p>{loja.avaliacao}</p>
+                            
+                            <section className="animais-compras-loja4">
+                                <h3>Saúde</h3>
+                                <ul className="ul-loja">
+                                    {getProdutosByCategoria('Saúde', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
                             <section className="animais-promocoes-loja4">
+                                <h3>Promoções</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Promoções', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -288,10 +393,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-servicos-loja4">
+                                    <h3>Diversão</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Diversão', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -303,10 +408,10 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     </ul>
                             </section>
                             <section className="animais-compras-loja4">
+                                <h3>Alimentação</h3>
                                 <ul className="ul-loja">
-                                    {getProdutosByCategoria('Rações para Cachorros', produtos).map((produto) => (
+                                    {getProdutosByCategoria('Alimentacao', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
@@ -318,10 +423,26 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section className="animais-compras-loja4">
+                            <section className="animais-compras-loja4">
+                                <h3>Conforto</h3>
                                 <ul className="ul-loja">
+                                    {getProdutosByCategoria('Conforto', produtos).map((produto) => (
+                                        <li key={produto.nome}>
+                                        <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                                <ul className="ul-loja">
+                                    <h3>Atrativos</h3>
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
-                                        <h3>{produto.categoria}</h3>
+
                                         <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>

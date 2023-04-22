@@ -31,6 +31,10 @@
 .ul-loja li {
     list-style: none;
     display: inline-table;
+    border-right: 1px solid #04ABAB;
+    border-left: 1px solid #04ABAB;
+    margin: 20px;
+    padding: 20px;
 }
 
 .ul-loja li img {
@@ -40,6 +44,10 @@
 .ul-loja .paragrafo-vendas {
     overflow: hidden;
 }
+
+.ul-loja img {
+}
+
 
 .cifrao {
     font-weight: normal;
@@ -60,9 +68,21 @@
     margin-bottom: 0;
 }
 
-
-
 .loja img {
     width: 150px;
     object-fit: contain;
+}
+
+.services-lojas .ul-loja {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap:5px;
+    border-radius: 10px;
+}
+
+.services-lojas .ul-loja li {
+    border-radius: 10px;
+    border: 1px solid #04ABAB;
+    padding: 20px;
 }

@@ -1,0 +1,92 @@
+html .produtos-categoria-dogs {
+    margin: 0;
+    color: black;
+    min-height: 100vh;
+}
+
+.produtos-categoria-dogs h1 {
+    color: black;
+}
+
+.ul-produtos-dogs {
+    margin: 0;
+    padding: 0;
+}
+
+.ul-produtos-dogs li {
+    border: 1px solid #c6c6c6;
+    border-right: 0;
+    list-style: none;
+    display: inline-table;
+}
+
+.ul-produtos-dogs li:last-child {
+    border: 1px solid #c6c6c6;
+}
+
+
+.ul-produtos-dogs li img {
+    float: right;
+    margin-inline: 50px;
+}
+
+.img-produtos-dogs img {
+    width: 150px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.paragrafo-vendas-dogs {
+    color: black;
+}
+
+.produtos-categoria-dogs .ul-produtos-dogs {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 3fr);
+    grid-gap: 25px;
+    border-radius: 10px;
+}
+
+.produtos-categoria-dogs .ul-produtos-dogs li {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #04ABAB;
+    padding: 20px;
+}
+
+.produtos-dogs {
+    padding-bottom: 10vh;
+    /* altura do menu */
+}
+
+@media only screen and (max-width: 480px) {
+    .produtos-categoria-dogs .ul-produtos-dogs {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        margin-left: 20px;
+    }
+
+    .produtos-categoria-dogs .ul-produtos-dogs li {
+        padding: 10px;
+    }
+
+    .produtos-dogs {
+        padding-bottom: 15vh;
+        /* altura do menu em telas menores */
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+    .produtos-categoria-dogs .ul-produtos-dogs {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        margin-left: 15px;
+    }
+
+    .produtos-categoria-dogs .ul-produtos-dogs li {
+        padding: 15px;
+    }
+}
