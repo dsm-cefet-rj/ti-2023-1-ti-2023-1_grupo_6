@@ -4,13 +4,19 @@ import Menu from "../menu/index.js"
 import Header from "../Header/index.js";
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
 
     function Servicos() {
         const location = useLocation();
         const { loja } = location.state || {};
         const produtos = useSelector((state) => state.produtos) ?? [];
-
         const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+        const navigate = useNavigate();
+        const [carrinho, setCarrinho] = useState([]);
+        const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
 
         React.useEffect(() => {
             const handleResize = () => {
@@ -29,6 +35,10 @@ import { useSelector } from 'react-redux';
         };
         console.log('Produtos:', produtos);
 
+
+        const handleAdicionarProduto = (produto) => {
+            adicionarProdutoCarrinho(produto);
+        };
 
         return (
             <div className='services-lojas'>
@@ -57,6 +67,7 @@ import { useSelector } from 'react-redux';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                             </div>
                                         </li>
                                     ))}
@@ -72,6 +83,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -86,6 +98,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                 </ul>
@@ -100,6 +113,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -125,6 +139,7 @@ import { useSelector } from 'react-redux';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                             </div>
                                         </li>
                                     ))}
@@ -140,6 +155,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -154,6 +170,7 @@ import { useSelector } from 'react-redux';
                                                     <p>{produto.nome}</p>
                                                     <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                                 </div>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                             </li>
                                         ))}
                                 </ul>
@@ -168,6 +185,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -192,6 +210,7 @@ import { useSelector } from 'react-redux';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                             </div>
                                         </li>
                                     ))}
@@ -207,6 +226,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -221,6 +241,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                 </ul>
@@ -235,6 +256,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -259,6 +281,7 @@ import { useSelector } from 'react-redux';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                             </div>
                                         </li>
                                     ))}
@@ -274,6 +297,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>
@@ -288,6 +312,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                 </ul>
@@ -302,6 +327,7 @@ import { useSelector } from 'react-redux';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
                                         </li>
                                     ))}
                                     </ul>

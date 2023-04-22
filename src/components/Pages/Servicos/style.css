@@ -23,6 +23,7 @@
 .loja section {
     border-top: 1px solid #04ABAB;
 }
+
 .loja section:last-child {
     height: 44vh;
 }
@@ -40,10 +41,6 @@
     overflow: hidden;
 }
 
-.preco {
-    font-weight: bold;
-}
-
 .cifrao {
     font-weight: normal;
     position: relative;
@@ -55,7 +52,14 @@
     font-weight: normal;
     text-decoration: line-through;
     font-size: 15px;
+    color: #686363
 }
+
+.pagamento {
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
 
 
 .loja img {

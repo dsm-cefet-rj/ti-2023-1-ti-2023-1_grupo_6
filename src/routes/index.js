@@ -16,6 +16,7 @@ import Hamsters from '../../src/components/Pages/Hamsters/index.js';
 import Dogs from '../../src/components/Pages/Dogs/index.js';
 import Rabbit from '../../src/components/Pages/Rabbit/index.js';
 import useAuth from '../hooks/useAuth.js';
+import CarrinhoContextProvider from '../components/Pages/CarrinhoContext.js';
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -27,6 +28,7 @@ const RoutesApp = () => {
     return (
         
         <BrowserRouter>
+            <CarrinhoContextProvider>
             <Fragment>
                 <Routes>
                     <Route path="/" element={<Login/>}/>
@@ -46,7 +48,8 @@ const RoutesApp = () => {
                     <Route path="/hamsters" element={<Private Item = {Hamsters}/>}/>
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
                 </Routes>  
-            </Fragment>        
+            </Fragment>     
+            </CarrinhoContextProvider>
         </BrowserRouter>
     
     );
