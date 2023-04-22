@@ -16,7 +16,7 @@ import Hamsters from '../../src/components/Pages/Hamsters/index.js';
 import Dogs from '../../src/components/Pages/Dogs/index.js';
 import Rabbit from '../../src/components/Pages/Rabbit/index.js';
 import useAuth from '../hooks/useAuth.js';
-import CarrinhoContextProvider from '../components/Pages/CarrinhoContext.js';
+import CarrinhoContextProvider from '../components/Pages/CarrinhoContext/CarrinhoContext.js';
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
