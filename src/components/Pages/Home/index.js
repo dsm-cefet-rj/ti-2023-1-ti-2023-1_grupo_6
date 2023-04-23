@@ -1,5 +1,6 @@
 import './../Home/index.css';
 import React from 'react';
+import { useState } from 'react';
 import blueIcon from '../../../assets/blueIcon.png';
 import rabbit from '../../../assets/rabbit.png';
 import dog from '../../../assets/dog.png';
@@ -50,9 +51,6 @@ return (
         </div>
         {isScreenWideEnough && <Navbar />}
         <div className="section">
-            <div className="search">
-                <input type="text" placeholder='Busque por item ou loja' className="input-search-home" maxlength="100"/>
-            </div>
             <div className="business">
                 <h4><em>Cupom de 20% OFF na compra de produtos acima de 100 reais 🐕</em></h4>
             </div>

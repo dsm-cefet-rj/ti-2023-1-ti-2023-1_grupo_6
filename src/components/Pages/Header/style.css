@@ -90,3 +90,27 @@
     border-radius: 80%;
     float: right;
 }
+
+.search-results {
+    position: absolute;
+    top: 40px; /* distância da parte superior da barra de busca */
+    background-color: #fff;
+    border: 1px solid #048387;
+    border-top: none;
+    overflow-y: auto; /* habilita rolagem */
+    height: 100px;
+    max-width: 30%;
+    width: 700px;
+    padding: 0px;
+}
+
+.search-results a {
+    text-decoration:none;
+    display: flex;
+    justify-content: center;
+    color:#048387;
+}
+
+.search-results img {
+    width: 20px;
+}
