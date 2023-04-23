@@ -9,7 +9,7 @@ import  { useContext } from 'react';
 import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 
 const Carrinho = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { carrinho } = useContext(CarrinhoContext);
     const { adicionarProdutoCarrinho, removerProdutoCarrinho } = useContext(CarrinhoContext);
@@ -78,7 +78,9 @@ const Carrinho = () => {
                         <button className='botaoCancelar' onClick={()=>{navigate("/home")}}>
                             Cancelar
                         </button>
-                        <button className='botaoConfirmar' onClick={()=>{navigate("/compraEfetuada")}}> 
+                            <button className='botaoConfirmar' onClick={() => {
+                                navigate(`/compraEfetuada`, { state: carrinho });
+                            }}> 
                             Finalizar Compra
                         </button>
                     </div>
