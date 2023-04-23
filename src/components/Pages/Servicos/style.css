@@ -38,16 +38,12 @@
 }
 
 .ul-loja li img {
-    float: right;
+    /* float: right; */
 }
 
 .ul-loja .paragrafo-vendas {
     overflow: hidden;
 }
-
-.ul-loja img {
-}
-
 
 .cifrao {
     font-weight: normal;
@@ -74,6 +70,8 @@
 }
 
 .services-lojas .ul-loja {
+    margin-left: 20px;
+    margin-right: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 1fr);
@@ -84,5 +82,43 @@
 .services-lojas .ul-loja li {
     border-radius: 10px;
     border: 1px solid #04ABAB;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #04ABAB;
     padding: 20px;
+}
+
+
+.services-lojas {
+    padding-bottom: 10vh;
+    /* altura do menu */
+}
+
+@media only screen and (max-width: 480px) {
+    .services-lojas .ul-loja {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        margin-left: 20px;
+    }
+
+    .services-lojas .ul-loja li {
+        padding: 10px;
+    }
+
+    .services-lojas {
+        padding-bottom: 15vh;
+        /* altura do menu em telas menores */
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+    .services-lojas .ul-loja {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        margin-left: 15px;
+    }
+
+    .services-lojas .ul-loja li {
+        padding: 15px;
+    }
 }

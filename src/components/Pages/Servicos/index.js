@@ -443,7 +443,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
 
-                                        <img src={produto.img} alt={produto.nome} />
+                                            <img src={produto.img} alt={produto.nome} />
                                             <div className="paragrafo-vendas">
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>

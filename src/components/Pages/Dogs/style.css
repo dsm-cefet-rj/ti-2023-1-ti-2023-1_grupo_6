@@ -31,8 +31,8 @@ html .produtos-categoria-dogs {
 }
 
 .img-produtos-dogs img {
+    padding: 10px;
     width: 150px;
-    object-fit: contain;
     margin-bottom: 20px;
 }
 
