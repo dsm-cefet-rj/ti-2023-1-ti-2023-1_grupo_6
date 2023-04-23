@@ -12,7 +12,7 @@ const CompraFinalizada = () => {
             </div>
             <img src={finalizado}></img>
             <h4 className="text-compra-finalizada">Compra efetuada.</h4>
-            <button className="button-compra-finalizada">Acompanhar pedidos</button>
+            <button className="button-compra-finalizada" onClick={()=>{navigate("/pedidos")}}>Acompanhar pedidos</button>
         </div>
     );
 };
