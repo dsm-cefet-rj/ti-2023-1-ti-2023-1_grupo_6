@@ -63,7 +63,7 @@ const Carrinho = () => {
                                 </li>
                             ))}
                         </ul>
-                        {carrinho.quantidade > 1 ? <p className='total-itens'>Total ({carrinho.quantidade} itens): </p> :<p className='total-itens'>Total ({carrinho.quantidade} item): </p>}
+                        {carrinho.quantidade > 1 ? <p className='total-itens'>Total ({carrinho.quantidade} itens): {carrinho.total}</p> :<p className='total-itens'>Total ({carrinho.quantidade} item): {carrinho.total}</p>}
                     </div>
                     <div className='endereco etapa'> 
                         <h2 className='textoCarrinho'>Endereço</h2>
@@ -84,6 +84,7 @@ const Carrinho = () => {
                     </div>
                 </form>
             </div>
+
         </div>  
         );
     }

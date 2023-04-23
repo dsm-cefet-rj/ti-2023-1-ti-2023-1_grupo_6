@@ -1,10 +1,10 @@
 import {
     createSlice
 } from '@reduxjs/toolkit';
-import catnip from "../../../src/assets/catnip-gatos.jpg";
-import brinquedo from "../../../src/assets/brinquedo-cat.jpg";
-import shampoo from "../../../src/assets/shampoo-cachorro.jpg";
-import racao from "../../../src/assets/racao-cachorro.jpg";
+import catnip from "../../../src/assets/catnip-gatos.png";
+import brinquedo from "../../../src/assets/brinquedo-cat.png";
+import shampoo from "../../../src/assets/shampoo-cachorro.png";
+import racao from "../../../src/assets/racao-cachorro.png";
 import suplemento from "../../../src/assets/suplemento-gato.png";
 import roupacirurgica from "../../../src/assets/roupacirurgica-gato.png";
 import arranhadorgato from "../../../src/assets/arranhador-gato.png";
@@ -19,7 +19,7 @@ import casagato from "../../../src/assets/casa-gato.png";
 import coleiracachorro from "../../../src/assets/coleira-cachorro.png";
 import gaiolacoelho from "../../../src/assets/gaiola-coelho.png";
 import gaiolapassaro from "../../../src/assets/gaiola-passaro.png";
-import prodcoelho from "../../../src/assets/prod-coelho.jpg";
+import prodcoelho from "../../../src/assets/prod-coelho.png";
 import roupapassaro from "../../../src/assets/roupa-passaro.png";
 
 

@@ -75,14 +75,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    grid-gap:5px;
+    grid-gap: 5px;
     border-radius: 10px;
 }
 
 .services-lojas .ul-loja li {
+    background-color: #B6E0EC;
     border-radius: 10px;
     border: 1px solid #04ABAB;
-    background-color: #fff;
     border-radius: 10px;
     border: 1px solid #04ABAB;
     padding: 20px;
@@ -122,3 +122,18 @@
         padding: 15px;
     }
 }
+
+
+.services-lojas .ul-loja li:hover {
+    transition: box-shadow 0.2s;
+    transform:scale(1.05);
+}
+
+.button-comprar-servicos {
+    background-color: #04ABAB !important;
+}
+
+.button-comprar-servicos:hover {
+    background-color: #FF8802 !important;
+}
+

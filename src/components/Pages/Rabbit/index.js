@@ -29,23 +29,23 @@ const Rabbit = () => {
     }, 
     []);
     return (
-        <div className='produtos-categoria-birds'>
+        <div className='produtos-categoria-rabbit'>
             <div>
             {isScreenWideEnough && <Header />}
             </div>
             <h1>Produtos para Coelho</h1>
-            <section className='produtos-birds'>
-                <ul className="ul-produtos-birds">
+            <section className='produtos-rabbit'>
+                <ul className="ul-produtos-rabbit">
                     {produtos.filter(p => p.animal === 'coelho').map(p => (
                         <li key={p.id}>
                             <div>
-                                <div className='img-produtos-birds'>
+                                <div className='img-produtos-rabbit'>
                                     <img src={p.img}></img>
                                 </div>
-                                <div className="paragrafo-vendas-birds">
+                                <div className="paragrafo-vendas-rabbit">
                                     <p>{p.nome}</p>
                                     <p className='preco'><span className='cifrao'>R$</span>{p.valor}</p>
-                                    <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(p)}/>
+                                    <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(p)} className='button-comprar-categoria-rabbit'/>
                                 </div>
                             </div>
                         </li>

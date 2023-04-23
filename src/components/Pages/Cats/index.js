@@ -45,7 +45,7 @@ const Cats = () => {
                                 <div className="paragrafo-vendas-cats">
                                     <p>{p.nome}</p>
                                     <p className='preco'><span className='cifrao'>R$</span>{p.valor}</p>
-                                    <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(p)}/>
+                                    <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(p)} className='button-comprar-categoria-cats'/>
                                 </div>
                             </div>
                         </li>

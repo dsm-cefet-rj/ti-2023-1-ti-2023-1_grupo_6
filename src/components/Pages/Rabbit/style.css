@@ -27,7 +27,7 @@ html .produtos-categoria-rabbit {
 
 .ul-produtos-rabbit li img {
     float: right;
-    margin-inline: 50px;
+    margin-inline: 20px;
 }
 
 .img-produtos-rabbit img {
@@ -45,7 +45,7 @@ html .produtos-categoria-rabbit {
     margin-left: 20px;
     margin-right: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 3fr);
     grid-gap: 25px;
     border-radius: 10px;
@@ -56,6 +56,7 @@ html .produtos-categoria-rabbit {
     border-radius: 10px;
     border: 1px solid #04ABAB;
     padding: 20px;
+    background-color: #B6E0EC;
 }
 
 .produtos-rabbit {
@@ -90,4 +91,18 @@ html .produtos-categoria-rabbit {
     .produtos-categoria-rabbit .ul-produtos-rabbit li {
         padding: 15px;
     }
+}
+
+.produtos-rabbit .ul-produtos-rabbit li:hover {
+    transition: box-shadow 0.2s;
+    transform: scale(1.05);
+}
+
+.button-comprar-categoria-rabbit {
+    background-color: #04ABAB !important;
+    width: 120px;
+}
+
+.button-comprar-categoria-rabbit:hover {
+    background-color: #FF8802 !important
 }

@@ -27,7 +27,7 @@ html .produtos-categoria-dogs {
 
 .ul-produtos-dogs li img {
     float: right;
-    margin-inline: 50px;
+    margin-inline: 20px;
 }
 
 .img-produtos-dogs img {
@@ -44,14 +44,14 @@ html .produtos-categoria-dogs {
     margin-left: 20px;
     margin-right: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 3fr);
     grid-gap: 25px;
     border-radius: 10px;
 }
 
 .produtos-categoria-dogs .ul-produtos-dogs li {
-    background-color: #fff;
+    background-color: #B6E0EC;
     border-radius: 10px;
     border: 1px solid #04ABAB;
     padding: 20px;
@@ -89,4 +89,22 @@ html .produtos-categoria-dogs {
     .produtos-categoria-dogs .ul-produtos-dogs li {
         padding: 15px;
     }
+}
+
+.produtos-dogs .ul-produtos-dogs li:hover {
+    transition: box-shadow 0.2s;
+    transform: scale(1.05);
+}
+
+.button-comprar-categoria-dogs {
+    background-color: #04ABAB !important;
+    width: 120px;
+}
+
+.button-comprar-categoria-dogs:hover {
+    background-color: #FF8802 !important;
+}
+
+.produtos-categoria-dogs .ul-produtos-dogs li:last-child {
+    margin-right: 0;
 }

@@ -62,7 +62,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -81,7 +81,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
-                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                             </div>
                                         </li>
                                     ))}
@@ -97,7 +97,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -112,7 +112,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -127,7 +127,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -142,7 +142,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -163,7 +163,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -182,7 +182,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
-                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                             </div>
                                         </li>
                                     ))}
@@ -198,7 +198,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -213,7 +213,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                     <p>{produto.nome}</p>
                                                     <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                                 </div>
-                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                             </li>
                                         ))}
                                 </ul>
@@ -228,7 +228,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -243,7 +243,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -265,7 +265,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -284,7 +284,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
-                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                             </div>
                                         </li>
                                     ))}
@@ -300,7 +300,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -315,7 +315,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -331,7 +331,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -345,7 +345,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -367,7 +367,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
@@ -386,7 +386,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                     <span className='preco-antigo'>R${produto.valor}</span>
                                                 }
                                                 </p>
-                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                             </div>
                                         </li>
                                     ))}
@@ -402,7 +402,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>
@@ -417,12 +417,11 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
                             </section>
-                            <section className="animais-compras-loja4">
                             <section className="animais-compras-loja4">
                                 <h3>Conforto</h3>
                                 <ul className="ul-loja">
@@ -433,13 +432,14 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                 </ul>
                             </section>
-                                <ul className="ul-loja">
+                            <section>
                                     <h3>Atrativos</h3>
+                                <ul className="ul-loja">
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
 
@@ -448,7 +448,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                                 <p>{produto.nome}</p>
                                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                                             </div>
-                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)}/>
+                                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                                         </li>
                                     ))}
                                     </ul>

@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import Login from '../../src/components/Pages/Login/index.js';
 import Home from '../../src/components/Pages/Home/index.js'
 import Carrinho from '../../src/components/Pages/Carrinho/index.js'
+import CompraFinalizada from '../../src/components/Pages/CompraFinalizada/index.js'
 import UserRegistration from '../../src/components/Pages/UserRegistration/UserRegistration.js'
 import Menu from '../../src/components/Pages/menu/index.js'
 import OptionRegistration from '../../src/components/Pages/OptionRegistration/index.js';
@@ -47,6 +48,7 @@ const RoutesApp = () => {
                     <Route path="/cachorros" element={<Private Item = {Dogs}/>}/>
                     <Route path="/hamsters" element={<Private Item = {Hamsters}/>}/>
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
+                    <Route path="/compraEfetuada" element={<Private Item = {CompraFinalizada}/>}/>
                 </Routes>  
             </Fragment>     
             </CarrinhoContextProvider>

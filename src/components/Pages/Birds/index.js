@@ -17,7 +17,7 @@ const Birds = () => {
     return (
         <div className='produtos-categoria-birds'>
             <Header />
-            <section className='produtos-cats'>
+            <section className='produtos-birds'>
                 <h1>Produtos para Pássaro</h1>
                 <ul className="ul-produtos-birds">
                     {produtos.filter(p => p.animal === 'passaro').map(p => (
@@ -29,7 +29,7 @@ const Birds = () => {
                                 <div className="paragrafo-vendas-birds">
                                     <p>{p.nome}</p>
                                     <p className='preco'><span className='cifrao'>R$</span>{p.valor}</p>
-                                    <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(p)}/>
+                                    <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(p)} className='button-comprar-categoria-birds'/>
                                 </div>
                             </div>
                         </li>
