@@ -1,3 +1,16 @@
-.lista-pedidos h2 {
-    color: black;
+.pedidos-usuario {
+    color: #048387; 
+}
+
+
+html .pedidos-usuario,
+body .pedidos-usuario {
+    margin: 0;
+    background-color: #B6E0EC !important;
+    padding: 0;
+    width: 100%;
+}
+
+.ul-pedidos li {
+    list-style: none;
 }
