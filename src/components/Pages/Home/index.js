@@ -55,10 +55,10 @@ return (
                 <h4><em>Cupom de 20% OFF na compra de produtos acima de 100 reais 🐕</em></h4>
             </div>
             <div className="categories">
-                <img src={rabbit} alt="coelho" className="img-rabbit"/>
-                <img src={dog} alt="dog" className="img-dog"/>
-                <img src={bird} alt="bird" className="img-bird"/>
-                <img src={cat} alt="cat" className="img-cat"/>
+                <img src={rabbit} alt="coelho" className="img-rabbit" onClick={() => {navigate("/coelho")}}/>
+                <img src={dog} alt="dog" className="img-dog" onClick={() => {navigate("/cachorros")}}/>
+                <img src={bird} alt="bird" className="img-bird"onClick={() => {navigate("/passaros")}}/>
+                <img src={cat} alt="cat" className="img-cat" onClick={() => {navigate("/gatos")}}/>
             </div>
             <Carousel showThumbs={false} itemsToShow={getItemsToShow()} paginationClassName="custom-carousel" className='carousel'> 
                 {lojas.map((loja) => (

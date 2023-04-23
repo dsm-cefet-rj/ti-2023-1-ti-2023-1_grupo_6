@@ -4,6 +4,13 @@ html .produtos-categoria-birds {
     min-height: 100vh;
 }
 
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .produtos-categoria-birds h1 {
     color: black;
 }

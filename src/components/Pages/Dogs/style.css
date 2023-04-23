@@ -4,6 +4,13 @@ html .produtos-categoria-dogs {
     min-height: 100vh;
 }
 
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .produtos-categoria-dogs h1 {
     color: black;
 }
@@ -77,11 +84,12 @@ html .produtos-categoria-dogs {
         padding-bottom: 15vh;
         /* altura do menu em telas menores */
     }
+
 }
 
 @media only screen and (min-width: 481px) and (max-width: 1024px) {
     .produtos-categoria-dogs .ul-produtos-dogs {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(1, 1fr);
         margin-left: 15px;
     }

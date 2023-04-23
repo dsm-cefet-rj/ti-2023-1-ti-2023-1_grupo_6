@@ -4,6 +4,14 @@ html .produtos-categoria-rabbit {
     min-height: 100vh;
 }
 
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
 .produtos-categoria-rabbit h1 {
     color: black;
 }

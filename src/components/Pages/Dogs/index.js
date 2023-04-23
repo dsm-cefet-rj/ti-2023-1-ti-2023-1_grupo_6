@@ -33,12 +33,12 @@ const Dogs = () => {
             <div>
             {isScreenWideEnough && <Header />}
             </div>
-            <h1>Produtos para Cachorro</h1>
             <section className="produtos-dogs">
+            <h1>Produtos para Cachorro</h1>
                 <ul className="ul-produtos-dogs">
                     {produtos.filter(p => p.animal === 'cachorro').map(p => (
                         <li key={p.id}>
-                            <div>
+                            <div class="produtoss">
                                 <div className='img-produtos-dogs'>
                                     <img src={p.img}></img>
                                 </div>

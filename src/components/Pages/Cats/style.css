@@ -5,6 +5,12 @@ html .produtos-categoria-cats {
     overflow: hidden;
 
 }
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 .produtos-categoria-cats h1 {
     color: black;
