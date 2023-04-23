@@ -184,14 +184,6 @@
   ],
   "consumerData": [
     {
-      "id": 1,
-      "name": "Rafael",
-      "cpf": "11111111111",
-      "bornDate": "11/11/1999",
-      "email": "rafael@email.com",
-      "password": "123456"
-    },
-    {
       "id": 2,
       "name": "Gabi",
       "cpf": "11111111111",
