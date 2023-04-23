@@ -53,6 +53,7 @@ const Carrinho = () => {
                                         <div className="produto-texto">
                                             <p>{produto.nome}</p>
                                             <p><span className='cifrao'>R$</span>{produto.valor}</p>
+                                            <p className='unidade-produto'>{produto.quantidade}</p>
                                         </div>
                                         <div className="produto-botoes">
                                             <input type="button" value="-" onClick={() => handleRemoverProduto(produto.id)} className="decrementar-item"/>
@@ -63,7 +64,7 @@ const Carrinho = () => {
                                 </li>
                             ))}
                         </ul>
-                        {carrinho.quantidade > 1 ? <p className='total-itens'>Total ({carrinho.quantidade} itens): {carrinho.total}</p> :<p className='total-itens'>Total ({carrinho.quantidade} item): {carrinho.total}</p>}
+                        {carrinho.quantidade > 1 ? <p className='total-itens'>Total ({carrinho.quantidade} itens): <span>{carrinho.total}</span></p> :<p className='total-itens'>Total ({carrinho.quantidade} item): <span className='cifrao-baixo'>R$</span>{carrinho.total}</p>}
                     </div>
                     <div className='endereco etapa'> 
                         <h2 className='textoCarrinho'>Endereço</h2>

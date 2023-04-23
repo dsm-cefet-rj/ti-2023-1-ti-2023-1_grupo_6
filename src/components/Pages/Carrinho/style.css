@@ -191,3 +191,13 @@ html .carrinho-background {
     margin-top: 40px;
     margin-bottom: 0;
 }
+
+.unidade-produto {
+    background-color: #FF8802;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: 534px;
+    border-radius: 70%;
+    color:#fff;
+}
