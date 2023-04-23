@@ -54,14 +54,31 @@ const MenuWeb = () => {
                 <ul className="search-results" style={{ listStyle: 'none' }}>
                     {lojasFiltradas.map((loja) => (
                     <li key={loja.id}>
-                        <a href={`/home/lojas/servicos${loja.url}`}>
-                            {loja.nome} {loja.img}
-                        </a>
+                            <h3 class="categorias-filtro" onClick={() => { if (loja) {
+                                navigate(`/home/lojas/servicos${loja.url}`, {
+                                state: {
+                                    loja: {
+                                        nome: loja.nome,
+                                        avaliacao: loja.avaliacao,
+                                        animais_atendidos: loja.animais_atendidos,
+                                        endereco: loja.endereco,
+                                        contato: loja.contato,
+                                        url: loja.url
+                                    },
+                                    lojaId: loja.url
+                                }
+
+                            });
+                            }}}>{loja.nome}</h3>
+                        {/* <a href={`/home/lojas/servicos${loja.url}`}>
+                        </a> */}
+                        
                     </li>
                     ))}
                 </ul>
                 )}
-
+{/* http://localhost:3000/home/lojas/servicos/loja-gato-pra-cachorro-pet-shop
+    http://localhost:3000/home/lojas/servicos/loja-gato-pra-cachorro-pet-shop */}
             </div>
 
             <nav className = "menu-nav nav-search-carrinho">

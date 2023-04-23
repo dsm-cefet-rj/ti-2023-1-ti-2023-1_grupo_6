@@ -1,4 +1,29 @@
 .compra-finalizada {
-    background-color: red;
+    background-color: #3CB043;;
     height: 100vh;
+}
+
+.compra-finalizada img {
+    width: 160px;
+    margin-top: 120px;
+}
+.voltar img {
+    margin: 0;
+    display:flex;
+    justify-content: right;
+    width: 50px;
+    cursor: pointer;
+}
+
+.text-compra-finalizada {
+    position: relative;
+    font-size: 30px;
+}
+
+.button-compra-finalizada {
+    position: relative;
+    font-size: 17px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'baloo 2';
 }

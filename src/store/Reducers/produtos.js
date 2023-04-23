@@ -7,7 +7,6 @@ import shampoo from "../../../src/assets/shampoo-cachorro.png";
 import racao from "../../../src/assets/racao-cachorro.png";
 import suplemento from "../../../src/assets/suplemento-gato.png";
 import roupacirurgica from "../../../src/assets/roupacirurgica-gato.png";
-import arranhadorgato from "../../../src/assets/arranhador-gato.png";
 import antiparasitario from "../../../src/assets/antiparasitario-gato.png";
 import comidacoelho1 from "../../../src/assets/comida-coelho.png";
 import comidacoelho2 from "../../../src/assets/comida2-coelho.png";
@@ -21,10 +20,6 @@ import gaiolacoelho from "../../../src/assets/gaiola-coelho.png";
 import gaiolapassaro from "../../../src/assets/gaiola-passaro.png";
 import prodcoelho from "../../../src/assets/prod-coelho.png";
 import roupapassaro from "../../../src/assets/roupa-passaro.png";
-
-
-
-
 
 const initialState = [{
     nome: 'Shampoo para cachorro',
@@ -133,7 +128,7 @@ const initialState = [{
 }, {
     nome: 'Cama para Cachorro',
     id: 14,
-    animal: 'passaro',
+    animal: 'cachorro',
     valor: '87,00',
     promocao: 'Não há promoção disponível para este produto.',
     categoria: 'Conforto',
@@ -146,6 +141,46 @@ const initialState = [{
     promocao: 'Não há promoção disponível para este produto.',
     categoria: 'Conforto',
     img: casagato
+}, {
+    nome: 'Coleira cachorro - Tamanho M',
+    id: 16,
+    animal: 'cachorro',
+    valor: '42,00',
+    promocao: 'Não há promoção disponível para este produto.',
+    categoria: 'Atrativos',
+    img: coleiracachorro
+}, {
+    nome: 'Gaiola para Coelho',
+    id: 17,
+    animal: 'coelho',
+    valor: '120,00',
+    promocao: 'Não há promoção disponível para este produto.',
+    categoria: 'Conforto',
+    img: gaiolacoelho
+}, {
+    nome: 'Gaiola para Passaro',
+    id: 18,
+    animal: 'passaro',
+    valor: '100,00',
+    promocao: 'Não há promoção disponível para este produto.',
+    categoria: 'Conforto',
+    img: gaiolapassaro
+}, {
+    nome: 'Produto para coelho',
+    id: 19,
+    animal: 'coelho',
+    valor: '60,00',
+    promocao: 'Não há promoção disponível para este produto.',
+    categoria: 'Saúde',
+    img: prodcoelho
+}, {
+    nome: 'Roupa para Passaro - Tamanho PP',
+    id: 20,
+    animal: 'passaro',
+    valor: '100,00',
+    promocao: 'Não há promoção disponível para este produto.',
+    categoria: 'Atrativos',
+    img: roupapassaro
 }, ];
 
 const produtossSlice = createSlice({
