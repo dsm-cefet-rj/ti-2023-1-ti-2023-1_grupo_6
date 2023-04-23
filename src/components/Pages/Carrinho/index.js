@@ -78,7 +78,7 @@ const Carrinho = () => {
                         <button className='botaoCancelar' onClick={()=>{navigate("/home")}}>
                             Cancelar
                         </button>
-                        <button className='botaoConfirmar'>
+                        <button className='botaoConfirmar' onClick={()=>{navigate("/compraEfetuada")}}> 
                             Finalizar Compra
                         </button>
                     </div>

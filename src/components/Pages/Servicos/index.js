@@ -336,8 +336,9 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                     ))}
                                 </ul>
                             </section>
+                            <section>
+                                <h3>Atrativos</h3>
                                 <ul className="ul-loja">
-                                    <h3>Atrativos</h3>
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
                                         <img src={produto.img} alt={produto.nome} />
@@ -349,6 +350,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                         </li>
                                     ))}
                                     </ul>
+                            </section>
                             </section>
                         </div>
                     ) : (
@@ -438,7 +440,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
                                 </ul>
                             </section>
                             <section>
-                                    <h3>Atrativos</h3>
+                                <h3>Atrativos</h3>
                                 <ul className="ul-loja">
                                     {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
                                         <li key={produto.nome}>
