@@ -75,23 +75,23 @@ export const AuthProvider = ({ children }) => {
     }
 
     const deleteAccount = (email) => {
-        let usersStorage = JSON.parse(localStorage.getItem("users_db"));
-    
-        const filteredUsers = usersStorage?.filter((user) => user.email !== email);
-    
-        if (filteredUsers) {
-            localStorage.setItem("users_db", JSON.stringify(filteredUsers));
-    
-          // Logout user if the deleted account was the current user
-            if (user?.email === email) {
-            setUser(null);
-            localStorage.removeItem("user_token");
-            alert("Sua conta foi excluída com sucesso!");
+        UserInformation.getAll().then((result)=>{
+            if(result instanceof ApiException){
+                alert(result.message);
+            }else{
+                const hasUser = result?.filter((user) => user.email === email);
+
+                if(hasUser.length === 0){
+                    return "a conta não foi encontrada";
+                } else{
+                    try{
+                        UserInformation.deleteById(hasUser[0].id);
+                    }catch(err){
+                        return "não foi possivel excluir a conta!";
+                    }
+                }
             }
-            return;
-        } else {
-            return "Não foi possível excluir a conta";
-        }
+        });
     };
 
 
