@@ -19,6 +19,7 @@ import Rabbit from '../components/Pages/Rabbit/index.js';
 import useAuth from '../hooks/useAuth.js';
 import CarrinhoContextProvider from '../components/Pages/CarrinhoContext/CarrinhoContext.js';
 import Pedidos from '../components/Pages/pedidos/index.js';
+import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -51,6 +52,7 @@ const RoutesApp = () => {
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
                     <Route path="/compraEfetuada" element={<Private Item = {CompraFinalizada}/>}/>
                     <Route path="/pedidos" element={<Private Item = {Pedidos}/>}/>
+                    <Route path="/pedidos-em-andamento" element={<Private Item = {PedidosAndamento}/>}/>
                 </Routes>  
             </Fragment>     
             </CarrinhoContextProvider>

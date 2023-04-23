@@ -1,17 +1,16 @@
 import React from "react";
 import './style.css';
 import Header from '../Header/index.js';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
-import { useNavigate } from 'react-router-dom';
 
 
-const Pedidos = () => {
-    const navigate = useNavigate();
+const PedidosAndamento = () => {
     const location = useLocation();
     const { state: carrinhoState } = location;
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -32,21 +31,15 @@ const Pedidos = () => {
             </div>
             <h2>Seus pedidos:</h2>
             <ul class="ul-pedidos">
-            {carrinhoState.produtos.map((produto) => (
-                <li key={produto.id}>
-                <h3>{produto.nome} - R$ {produto.valor} </h3>
-                <img src={produto.img}></img>
-                <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento")}}>
-                Visualizar pedido
-                </button>
-                </li>
-            ))}
-        
+                {carrinhoState.produtos.map((produto) => (
+                    <li key={produto.id}>
+                    <h3>{produto.nome} - R$ {produto.valor} </h3>
+                    </li>
+                ))}
             </ul>
 
-            <p>Total: R$ {carrinhoState.total}</p>
         </div>
     );
 };
 
-export default Pedidos;
+export default PedidosAndamento;
