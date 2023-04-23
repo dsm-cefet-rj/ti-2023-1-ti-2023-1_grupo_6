@@ -31,10 +31,14 @@
 .ul-loja li {
     list-style: none;
     display: inline-table;
+    border-right: 1px solid #04ABAB;
+    border-left: 1px solid #04ABAB;
+    margin: 20px;
+    padding: 20px;
 }
 
 .ul-loja li img {
-    float: right;
+    /* float: right; */
 }
 
 .ul-loja .paragrafo-vendas {
@@ -60,9 +64,76 @@
     margin-bottom: 0;
 }
 
-
-
 .loja img {
     width: 150px;
     object-fit: contain;
 }
+
+.services-lojas .ul-loja {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 5px;
+    border-radius: 10px;
+}
+
+.services-lojas .ul-loja li {
+    background-color: #B6E0EC;
+    border-radius: 10px;
+    border: 1px solid #04ABAB;
+    border-radius: 10px;
+    border: 1px solid #04ABAB;
+    padding: 20px;
+}
+
+
+.services-lojas {
+    padding-bottom: 10vh;
+    /* altura do menu */
+}
+
+@media only screen and (max-width: 480px) {
+    .services-lojas .ul-loja {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        margin-left: 20px;
+    }
+
+    .services-lojas .ul-loja li {
+        padding: 10px;
+    }
+
+    .services-lojas {
+        padding-bottom: 15vh;
+        /* altura do menu em telas menores */
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+    .services-lojas .ul-loja {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        margin-left: 15px;
+    }
+
+    .services-lojas .ul-loja li {
+        padding: 15px;
+    }
+}
+
+
+.services-lojas .ul-loja li:hover {
+    transition: box-shadow 0.2s;
+    transform:scale(1.05);
+}
+
+.button-comprar-servicos {
+    background-color: #04ABAB !important;
+}
+
+.button-comprar-servicos:hover {
+    background-color: #FF8802 !important;
+}
+

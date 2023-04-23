@@ -1,4 +1,4 @@
-.menu {
+/* .menu {
     position: fixed;
     z-index: 1000;
     overflow: hidden;
@@ -8,12 +8,29 @@
     bottom: 0%;
     border-top: 2px solid #B6E0EC;
     background-color: white;
+} */
+
+.menu {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    position: fixed;
+    left: 0%;
+    top: 95%;
+    width: 5em;
+    margin-top: -2.5em;
+    border-top: 2px solid #B6E0EC;
+    padding-inline: 170px;
+    background-color: #ffff;
 }
 
 .buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 13px;
+}
+
+.text {
+    color: #048387;
+    font-weight: bold;
 }
 
 .buttons-menu-home {
@@ -32,23 +49,22 @@
 button {
     background: none;
     border: 0;
+    position: relative;
+    bottom: 20px;
 }
 
-.text {
-    color: #048387;
-    font-weight: bold;
-    position: relative;
-    top: 22px;
-    right: 30px;
+
+.menu img {
+    background-color: white;
+    margin-inline: 45px;
+    background-clip: padding-box;
+    margin-bottom: 4px;
 }
 
-.img-bag {
-    position: relative;
-    left: 10px;
-}
 
 @media only screen and (min-width: 768px) {
     .menu {
-        display: none; /* oculta o menu em telas maiores */
+        display: none;
+        /* oculta o menu em telas maiores */
     }
 }
