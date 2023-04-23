@@ -18,10 +18,12 @@ const CarrinhoContextProvider = ({ children }) => {
       } else {
         novoCarrinho.produtos.push({...produto, quantidade: 1});
       }
+
       for (var i = 0; i < valorCompra.length; i++) {
         const valorProduto = parseFloat(valorCompra[i].valor.replace(",", "."));
         totalCompra += valorProduto;
-      }
+      } 
+      
       
       novoCarrinho.total = totalCompra.toFixed(2).replace('.',',');
       novoCarrinho.quantidade = totalProdutos + 1;
