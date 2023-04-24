@@ -37,6 +37,11 @@ const MenuWeb = () => {
                         Perfil
                         </a>
                     </li>
+                    <li>
+                        <a href="#" onClick={() => navigate('/pedidos')}>
+                        Pedidos
+                        </a>
+                    </li>
                 </ul>
             </nav>
 

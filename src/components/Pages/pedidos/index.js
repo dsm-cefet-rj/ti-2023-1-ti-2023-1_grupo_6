@@ -31,18 +31,22 @@ const Pedidos = () => {
             {isScreenWideEnough && <Header />}
             </div>
             <h2>Seus pedidos:</h2>
-            <ul class="ul-pedidos">
-            {carrinhoState.produtos.map((produto) => (
-                <li key={produto.id}>
-                <h3>{produto.nome} - R$ {produto.valor} </h3>
-                <img src={produto.img}></img>
-                <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento")}}>
-                Visualizar pedido
-                </button>
-                </li>
-            ))}
-        
-            </ul>
+            
+            {carrinhoState.produtos.length > 0 ? (
+                <ul class="ul-pedidos">
+                {carrinhoState.produtos.map((produto) => (
+                    <li key={produto.id}>
+                    <h3>{produto.nome} - R$ {produto.valor} </h3>
+                    <img src={produto.img}></img>
+                    <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento")}}>
+                    Visualizar pedido
+                    </button>
+                    </li>
+                ))}
+                </ul>
+            ) : (
+                <p> Você ainda não fez nenhum pedido </p>
+            ) }
 
             <p>Total: R$ {carrinhoState.total}</p>
         </div>
