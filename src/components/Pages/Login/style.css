@@ -116,7 +116,7 @@ input[type='checkbox']:checked::after {
 
 .options {
   position: relative;
-  top: 15px;
+  top: 50px;
   cursor: pointer;
 }
 

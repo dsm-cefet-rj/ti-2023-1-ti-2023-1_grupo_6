@@ -75,7 +75,6 @@ const Login = () => {
             />
 
             <div className="options">
-                <p onClick={() => {navigate("/")}}>Esqueceu a senha?</p>
                 <p onClick={() => {navigate("/opcao/registrar")}}>Cadastre-se</p>
             </div>
 
