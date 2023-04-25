@@ -86,8 +86,7 @@ const Lojas = ({
                                 <p className='preco'>
                                 <span className='cifrao'>R$</span>{produto.promocao}
                                 {produto.valor !== produto.promocao &&
-                                    <span className='preco-antigo'>R${produto.valor}</span>
-                                }
+                                    <span className='preco-antigo'>R${produto.valor}</span>}
                                 </p>
                                 <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
                             </div>

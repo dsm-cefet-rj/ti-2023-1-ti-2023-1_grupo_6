@@ -37,7 +37,6 @@ function AdicionarLoja() {
         url,
         }));
 
-        // Limpa os campos após adicionar a loja
         setNome('');
         setAnimaisAtendidos('');
         setContato('');
