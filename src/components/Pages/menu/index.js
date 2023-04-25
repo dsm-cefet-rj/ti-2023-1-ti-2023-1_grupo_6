@@ -11,11 +11,11 @@ const Menu = () => {
             <div className="buttons">
                 <button className='profileButton'>
                     <img src={profile} alt="perfil" className="img-perfil"/>
-                    <label className='text perfiltext'>Perfil</label>
+                    <label className='text perfiltext' onClick={()=>{navigate("/perfil")}}>Perfil</label>
                 </button>
                 <button className='homeButton'>
                     <img src={home} alt="inicio" className="img-home"/>
-                    <label className='text inicio'>Início</label>
+                    <label className='text inicio' onClick={()=>{navigate("/Home")}}>Início</label>
                 </button>
 
                 <button className='bagButton' onClick={()=>{navigate("/carrinho")}}>

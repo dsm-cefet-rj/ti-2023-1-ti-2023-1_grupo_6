@@ -43,11 +43,6 @@ const MenuWeb = () => {
                         Pedidos
                         </a>
                     </li>
-                    <li>
-                        <a href="#" onClick={() => navigate('/adicionarProduto')}>
-                        Adicionar Produtos
-                        </a>
-                    </li>
                 </ul>
             </nav>
 

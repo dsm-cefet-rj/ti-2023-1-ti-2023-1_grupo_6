@@ -1,4 +1,4 @@
-html .App-login   {
+html .App-login {
   color: #ffff;
   align-items: center;
   justify-content: center;
@@ -12,12 +12,12 @@ h1 {
 }
 
 .App-login {
-  font-weight:bold ;
+  font-weight: bold;
   text-align: center;
   justify-content: center;
   background-color: #04ABAB;
   width: 100%;
-  overflow:auto;
+  overflow: auto;
 }
 
 .App-login .login {
@@ -28,7 +28,7 @@ h1 {
   max-height: 90%;
 }
 
-.form-login  {
+.form-login {
   max-height: 90%;
   height: 510px;
   border-radius: 10px;
@@ -95,11 +95,11 @@ input[type='submit']:hover {
   background-color: #fe972f;
 }
 
-input[type='checkbox'] + label::before {
+input[type='checkbox']+label::before {
   content: '';
   position: absolute;
   left: 10px;
-  bottom: 10px;  
+  bottom: 10px;
   height: 20px;
   transform: rotate(45deg);
   background-color: red;
@@ -126,10 +126,18 @@ input[type='checkbox']:checked::after {
 }
 
 .error-message-signin {
+  text-transform: uppercase;
   color: black;
   font-size: 14px;
   position: fixed;
   display: flex;
   width: 100%;
-  margin-left: 100px;
+  margin-left: 107px;
+}
+
+@media only screen and (max-width: 600px) {
+  .error-message-signin {
+    margin-left: 60px;
+    text-align: center;
+  }
 }

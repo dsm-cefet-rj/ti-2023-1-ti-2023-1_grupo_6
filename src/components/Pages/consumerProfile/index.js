@@ -5,6 +5,7 @@ import noAvatar from '../../../assets/noAvatar.svg'
 import Header from '../Header/index.js';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import Menu from "../menu/index.js";
 
 const ConsumerProfile = () => {
     const { user } = useAuth();
@@ -79,7 +80,7 @@ const ConsumerProfile = () => {
                 onClick={() => [deleteAccount(user.email), navigate("/")]}
                 >Deletar conta</button>                    
             </div>
-            
+            <Menu />
         </div>
     );
 }
