@@ -60,8 +60,8 @@ const RoutesApp = () => {
                     <Route path="/hamsters" element={<Private Item = {Hamsters}/>}/>
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
                     <Route path="/compraEfetuada" element={<Private Item = {CompraFinalizada}/>}/>
-                    <Route path="/pedidos-em-andamento" element={<PedidosAndamento/>}/>
-                    <Route path="/pedidos" element={<Pedidos/>}/>
+                    <Route path="/pedidos-em-andamento" element={<Private Item = {PedidosAndamento}/>}/>
+                    <Route path="/pedidos" element={<Private Item = {Pedidos}/>}/>
                     <Route path="/adicionar/secao" element={<AddSection/>}/>
                     <Route path="/adicionar/produto" element={<AddProducts/>}/>
                     {initialState.map((loja) => (

@@ -23,6 +23,7 @@ const Pedidos = () => {
         "totalValue" : 35.99,
         "products": [
             {
+            "id": 1,
             "class": "Limpeza",
             "name": "Shampoo para cachorro",
             "value": 35.99,

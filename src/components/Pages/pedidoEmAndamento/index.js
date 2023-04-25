@@ -33,6 +33,8 @@ const PedidosAndamento = (props) => {
                 {produtos.map((produto) => (
                     <li key={produto.id}>
                     <h2>{produto.name}</h2>
+                    <h3>R$ {produto.value}</h3>
+                    <p>Quantidade: {produto.amount}</p>
                     </li>
                 ))}
             </ul>
