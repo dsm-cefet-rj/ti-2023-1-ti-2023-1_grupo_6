@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './style.css';
-import blueIcon from '../../../assets/blueIcon.png';
+import './style2.css';
+import whiteIcon from '../../../assets/whiteIcon.png';
 import useAuth from '../../../hooks/useAuth';
 
 const UserRegistration = () => {
@@ -27,114 +28,62 @@ const UserRegistration = () => {
     }
 
   const res = signUp(email, password,name,cpf,date);
-
     if(res) {
       setError(res);
       return;
     }
-
     alert("Usuário cadastrado com sucesso!");
     navigate("/");
   };
 
   return (
+    <div className="app-user-registration">
     <div className="user-registration">
-      <div id='Logo'>
-        <img src={blueIcon} alt="logo"/>
-      </div>
-
-      <div className='Registration'>
-
-        <div className="camp">
-          <h2 className='Title'>Cadastro de usuário</h2>
-
-          <div id='infos'>
-            <label id='input-description'>Nome completo: </label>
-            <input 
-            id='input-info' 
-            type="text" 
-            placeholder="Digite o Nome Completo"
-            value={name}
-            onChange={(e) => [setName(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description' >CPF: </label>
-            <input 
-            id='cpf' 
-            type="cpf" 
-            placeholder="Digite o CPF"
-            value={cpf}
-            onChange={(e) => [setCpf(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description'>Data de nascimento: </label>
-            <input 
-            id='birthday' 
-            type="date" 
-            placeholder="Data de nascimento"
-            value={date}
-            onChange={(e) => [setDate(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description'>Email: </label>
-            <input 
-            id='input-info' 
-            type="email" 
-            placeholder="Digite o email"
-            value={email}
-            onChange={(e) => [setEmail(e.target.value), setError("")]}
-            />
-          </div>
-          
-          <div id='infos'>
-            <label id='input-description'>Senha: </label>
-            <input 
-            id='input-info' 
-            type="password" 
-            placeholder="Digite a Senha"
-            value={password}
-            onChange={(e) => [setPassword(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description'>Confirme sua senha: </label>
-            <input 
-            id='input-info' 
-            type="password" 
-            placeholder="Digite a Senha"
-            value={passwordConf}
-            onChange={(e) => [setPasswordConf(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description'>Foto: </label>
-            <input 
-            id='input-info' 
-            type="file"
-            value={image}
-            onChange={(e) => [setImage(e.target.value), setError("")]}
-            />
-          </div>
-
-          {error && <labelErro className='error-message-signup'>{error}</labelErro>}
-
-          <div id='Buttons'>
-            <button id='Voltar' onClick={()=>{navigate("/opcao/registrar")}}>Voltar</button>
-            <button id='Confirmar' type="submit" onClick={handleSignUp}>Confirmar</button>
-          </div>
-
+      <img src={whiteIcon}/>
+            <form className="form-user-registration">
+                <h2 className="name-user-registration">Cadastro de Consumidor</h2>
+                <div className="access-inputs">
+                    <div className="access">
+                        <label htmlFor="name" className="name-label">
+                            Nome:
+                        </label>
+                        <input type="text" value={name} placeholder="Digite o nome completo" onChange={(e) => [setName(e.target.value), setError("")]} />
+                    </div>
+                    <div className="access">
+                        <label htmlFor="email" className="email-label">
+                            E-mail:
+                        </label>
+                        <input type="email" placeholder="Digite o Email" value={email} onChange={(e) => [setEmail(e.target.value), setError("")]} />
+                    </div>
+                    <div className="access">
+                        <label htmlFor="animais-atendidos" className="animais-atendidos-label">
+                            Data de Nascimento:
+                        </label>
+                        <input type="date" value={date} onChange={(e) => [setDate(e.target.value), setError("")]} />
+                    </div>
+                    <div className="access acess-shop">
+                        <label htmlFor="cnpj" className="cnpj-label">
+                            CPF:
+                        </label>
+                        <input type="cpf" placeholder="Digite o CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+                    </div>
+                    <div className="access acess-shop">
+                        <label htmlFor="url" className="url-label">
+                            Senha:
+                        </label>
+                    <input type="password"  placeholder="Digite a senha" value={password} onChange={(e) => [setPassword(e.target.value),  setError("")]} />
+                    </div>
+                    <div className="access acess-shop">
+                        <label htmlFor="endereco" className="endereco-label">
+                            Confirme a senha:
+                        </label>
+                        <input type="password"  placeholder="Confirma sua senha" value={passwordConf} onChange={(e) => [setPasswordConf(e.target.value),  setError("")]} />
+                    </div>
+                    {error && <labelErro className='error-message-signup'>{error}</labelErro>}
+                </div>
+            </form>
         </div>
-
-      </div>
-
+        <button className="botao-estabelecimento-adicionar btn-user-registration" type="submit" onClick={handleSignUp}>Adicionar</button>
     </div>  
   );
 }
