@@ -10,3 +10,16 @@ Aplicação de compra e venda voltada para petshops, em que estabelecimentos con
 
 ## Para rodar o projeto basta executar os comandos abaixo no terminal:
 
+Instalações: 
+
+``` npm install ```
+
+``` npm react-elastic-carousel --force ```
+
+``` npm install styled-components ```
+
+Para iniciar o projeto:
+
+``` npm run server ```
+
+``` npm start ```
