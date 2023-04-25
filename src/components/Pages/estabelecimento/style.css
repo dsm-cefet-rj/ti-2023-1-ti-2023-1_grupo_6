@@ -5,6 +5,14 @@ html .app-shop-registration {
     margin: 0px;
     height: 100vh;
 }
+html, body {
+    background-color: red !important;
+
+}
+
+.gabi {
+    background-color: blue;
+}
 
 h1 {
     font-size: 60px;
@@ -158,6 +166,7 @@ input[type='checkbox']:checked::after {
     color: #ffff;
     width: 200px;
     height: 40px;
+    cursor: pointer;
     border-radius: 10px;
     margin: 0;
     font-family: 'baloo 2';
