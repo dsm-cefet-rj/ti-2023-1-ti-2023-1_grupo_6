@@ -65,9 +65,9 @@ const Pedidos = () => {
                 <ul class="ul-pedidos">
                 {pedidosProduto.map((pedido) => (
                     <li key={pedido.id}>
-                    <h2>Numero do pedido: {pedido.id}</h2>
+                    <h2>Número do pedido: {pedido.id}</h2>
                     <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
-                    <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento")}}>
+                    <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento", {state: pedidosProduto.products})}}>
                     Visualizar pedido
                     </button>
                     </li>

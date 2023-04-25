@@ -1,4 +1,4 @@
-/* import React from "react";
+import React from "react";
 import './style.css';
 import Header from '../Header/index.js';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -24,22 +24,38 @@ const PedidosAndamento = () => {
         };
     }, []);
 
+    const pedidosProduto = [{
+        "id": 1,
+        "idUser": 1,
+        "idStore": 1,
+        "nameStore": "Pássaro Pet Shop",
+        "totalValue" : 35.99,
+        "products": [
+            {
+            "class": "Limpeza",
+            "name": "Shampoo para cachorro",
+            "value": 35.99,
+            "amount": 1
+            }
+        ]
+    }]
+
     return (
         <div class="pedidos-usuario">
             <div>
             {isScreenWideEnough && <Header />}
             </div>
-            <h2>Seus pedidos:</h2>
+            <h2>Detalhes do pedido:</h2>
             <ul class="ul-pedidos">
-                {carrinhoState.produtos.map((produto) => (
-                    <li key={produto.id}>
-                    <h3>{produto.nome} - R$ {produto.valor} </h3>
+                {pedidosProduto.map((pedido) => (
+                    <li key={pedido.id}>
+                    <h2>pedido.</h2>
+                    <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
                     </li>
                 ))}
-            </ul>
-
+                </ul>
         </div>
     );
 };
 
-export default PedidosAndamento; */
+export default PedidosAndamento;

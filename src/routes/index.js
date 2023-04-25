@@ -19,10 +19,10 @@ import Rabbit from '../components/Pages/Rabbit/index.js';
 import useAuth from '../hooks/useAuth.js';
 import CarrinhoContextProvider from '../components/Pages/CarrinhoContext/CarrinhoContext.js';
 import Pedidos from '../components/Pages/pedidos/index.js';
-//import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
 import AddSection from '../components/Pages/AddSection/index.js'
 import AddProducts from '../components/Pages/AddProducts/index.js'
 import LoginEstabelecimento from '../components/Pages/LoginEstabelecimento/index.js';
+import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -55,7 +55,8 @@ const RoutesApp = () => {
                     <Route path="/hamsters" element={<Private Item = {Hamsters}/>}/>
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
                     <Route path="/compraEfetuada" element={<Private Item = {CompraFinalizada}/>}/>
-                    <Route exact path="/pedidos" element={<Private Item = {Pedidos}/>}/>
+                    <Route path="/pedidos-em-andamento" element={<PedidosAndamento/>}/>
+                    <Route path="/pedidos" element={<Pedidos/>}/>
                     <Route path="/adicionar/secao" element={<AddSection/>}/>
                     <Route path="/adicionar/produto" element={<AddProducts/>}/>
                 </Routes>  

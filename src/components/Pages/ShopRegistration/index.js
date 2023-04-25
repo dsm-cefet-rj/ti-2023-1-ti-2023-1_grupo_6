@@ -1,131 +1,72 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import './style.css';
-import blueIcon from '../../../assets/blueIcon.png';
-import useAuth from '../../../hooks/useAuth';
+import whiteIcon from '../../../assets/whiteIcon.png';
+import './../ShopRegistration/style.css';
 
 const ShopRegistration = () => {
-  const { signUp } = useAuth();
   const navigate = useNavigate();
 
-  const [nameShop, setName] = useState("");
-  const [cnpj, setCpf] = useState("");
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConf, setPasswordConf] = useState("");
-  const [image, setImage] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSignUp = () => {
-    if(!nameShop || !cnpj || !email || !password || !passwordConf ){
-      setError("Preencha todos os campos");
-      return;
-    } else if(password !== passwordConf) {
-      setError("As senhas não são iguais");
-      return;
-    }
-
-  const res = signUp(email, password,nameShop,cnpj);
-
-    if(res) {
-      setError(res);
-      return;
-    }
-
-    alert("Usuário cadastrado com sucesso!");
-    navigate("/");
-  };
-
   return (
-    <div className="shop-registration">
-      <div id='Logo'>
-        <img src={blueIcon} alt="logo"/>
+    <div className="app-shop-registration">
+      <img src={whiteIcon} alt="logo"/>
+      <div className="shop-registration">
+        <form className="form-shop-registration">
+          <h2 className="name-shop-registration">Cadastro de Estabelecimento</h2>
+          <div className="access-inputs">
+            <div className="access">
+              <label htmlFor="name" className="name-label">Nome</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                placeholder='Nome'
+              />
+            </div>
+            <div className="access">
+              <label htmlFor="cnpj" className="cnpj-label">CNPJ</label>
+              <input
+                id="cnpj"
+                type="text"
+                name="cnpj"
+                placeholder="CNPJ"
+              />
+            </div>
+            <div className="access">
+              <label htmlFor="email" className="email-label">E-mail</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+            </div>
+            <div className="access">
+              <label htmlFor="cep" className="cep-label">CEP</label>
+              <input
+                id="cep"
+                type="text"
+                name="cep"
+                placeholder="CEP"
+              />
+            </div>
+            <div className="access">
+              <label htmlFor="endereco" className="endereco-label">Endereço</label>
+              <input
+                id="endereco"
+                type="text"
+                name="endereco"
+                placeholder="Endereço"
+              />
+            </div>
+          </div>
+          <div className="clicks">
+            <input className="enviar" type="submit" value="Voltar" onClick={()=>{navigate("/opcao/registrar")}}/>
+            <input className="enviar confirmar" type="submit" value="Confirmar" onClick={()=>{navigate('/adicionarLoja')}}/>
+            <div className="help-registration">
+              <p onClick={() => {navigate("/")}}>Já tem uma conta?</p>
+            </div>
+          </div>
+        </form>
       </div>
-
-      <div className='Registration'>
-
-        <div className="camp">
-          <h2 className='Title'>Cadastro de estabelecimento</h2>
-
-          <div id='infos'>
-            <label id='input-description'>Nome a razão social: </label>
-            <input 
-            id='input-info' 
-            type="text" 
-            placeholder="Digite o nome da loja"
-            value={nameShop}
-            onChange={(e) => [setName(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description' >CNPJ: </label>
-            <input 
-            id='cpf' 
-            type="cpf" 
-            placeholder="Digite o CNPJ"
-            value={cnpj}
-            onChange={(e) => [setCpf(e.target.value), setError("")]}
-            />
-          </div>
-
-        
-
-          <div id='infos'>
-            <label id='input-description'>Email: </label>
-            <input 
-            id='input-info' 
-            type="email" 
-            placeholder="Digite o email"
-            value={email}
-            onChange={(e) => [setEmail(e.target.value), setError("")]}
-            />
-          </div>
-          
-          <div id='infos'>
-            <label id='input-description'>Senha: </label>
-            <input 
-            id='input-info' 
-            type="password" 
-            placeholder="Digite a Senha"
-            value={password}
-            onChange={(e) => [setPassword(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description'>Confirme sua senha: </label>
-            <input 
-            id='input-info' 
-            type="password" 
-            placeholder="Digite a Senha"
-            value={passwordConf}
-            onChange={(e) => [setPasswordConf(e.target.value), setError("")]}
-            />
-          </div>
-
-          <div id='infos'>
-            <label id='input-description'>Foto: </label>
-            <input 
-            id='input-info' 
-            type="file"
-            value={image}
-            onChange={(e) => [setImage(e.target.value), setError("")]}
-            />
-          </div>
-
-          {error && <labelErro className='error-message-signup'>{error}</labelErro>}
-
-          <div id='Buttons'>
-            <button id='Voltar' onClick={()=>{navigate("/opcao/registrar")}}>Voltar</button>
-            <button id='Confirmar' type="submit" onClick={handleSignUp}>Confirmar</button>
-          </div>
-
-        </div>
-
-      </div>
-
     </div>  
   );
 }
