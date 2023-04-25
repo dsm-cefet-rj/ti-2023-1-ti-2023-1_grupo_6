@@ -8,7 +8,7 @@ Aplicação de compra e venda voltada para petshops, em que estabelecimentos con
 - Rafael Chagas
 - Caíque Morelli
 
-## Para rodar o projeto basta executar os comandos abaixo no terminal:
+## Para rodar o projeto basta executar os comandos abaixo no terminal
 
 Instalações: 
 
