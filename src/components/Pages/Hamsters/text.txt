@@ -1,0 +1,12 @@
+  <Carousel itemsToShow={getItemsToShow()} pagination={false}>
+                        {lojas.map(loja => (
+                            <div key={loja.id} onClick={() => handleShopClick(loja.url)}>
+                                <h1>{loja.img}</h1>
+                                <h3>{loja.nome}</h3>
+                            </div>
+                        ))}
+                    </Carousel>
+
+ const handleShopClick = (url) => {
+        navigate(`/lojas${url}`);
+    };

@@ -1,6 +1,8 @@
 .App-home {
     height: 100vh;
 }
+html, body {
+}
 
 .search {
     display: none;
@@ -28,9 +30,15 @@
     height: 200px;
 }
 
-.img-commercial {
-    max-width: 85%;
-    width: 85%;
+.commercial {
+    background-color: #B6E0EC;
+    height: 80px;
+    height: 80px;
+}
+
+.img-commercial-animals {
+    max-width: 95%;
+    width: 60%;
     height: 100px;
 }
 
@@ -101,7 +109,7 @@ input.input-search-home {
 
     .img-commercial-animals {
         margin-top: 30px;
-        height: 300px;
+        height: 260px;
         width: 78.5%;
         border-radius: 10px;
     }
@@ -143,4 +151,11 @@ input.input-search-home {
 .cvyJEp {
     background-color: #048387 !important;
     color: #fff !important;
+}
+
+.nome-loja {  
+    position: relative;
+    bottom: 60px;
+    margin: 0;
+    color: #048387;
 }

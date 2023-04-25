@@ -17,6 +17,7 @@ const Login = () => {
       setError("Preencha todos os campos");
       return;
     }
+    
   const res = signIn(email, password);
 
     if(res) {

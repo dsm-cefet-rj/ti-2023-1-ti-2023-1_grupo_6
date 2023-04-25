@@ -10,11 +10,6 @@ h1 {
     font-size: 60px;
 }
 
-.app-shop-registration h2 {
-    margin-bottom: 0;
-
-}
-
 .app-shop-registration {
     font-weight: bold;
     text-align: center;
@@ -27,13 +22,15 @@ h1 {
 .app-shop-registration .shop-registration {
     position: relative;
     top: 20px;
-    height: 500px;
+    height: 700px;
     max-width: 85%;
     max-height: 90%;
     margin: 0 auto;
 }
 
 .form-shop-registration {
+    height: 495px;
+    max-height: 100%;
     border-radius: 10px;
     background-color: #048387;
 }
@@ -49,22 +46,23 @@ h1 {
 }
 
 .access-inputs {
-    position: relative;
-    top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .access {
-    flex-basis: calc(48% - 0px) !important;
+    flex-basis: calc(28% - 5px);
 }
 
+.access-shop-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-.access label {
-    font-size: 1rem;
-    position: absolute;
-    margin-top: 20px;
+.access-shop {
+    flex-basis: calc(30% - 0px) !important;
 }
 
 input {
@@ -76,12 +74,6 @@ input {
     background-color: #B6E0EC;
 }
 
-.access input {
-    margin-top: 50px;
-    width: 50.5%;
-    height: 35px;
-    padding-inline: 20px;
-}
 
 input:focus {
     outline: 0;
@@ -158,6 +150,55 @@ input[type='checkbox']:checked::after {
     margin: 0px;
 }
 
-button .btn-user-registration {
-    background-color: red !important;
+.botao-estabelecimento-adicionar {
+    position: relative;
+    bottom: 20px;
+    background-color: #FF8802;
+    color: #ffff;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 0;
+    font-family: 'baloo 2';
+    font-size: 16px;
+}
+
+
+@media only screen and (max-width: 480px) {
+    .form-shop-registration {
+        height: 800px;
+        max-height: 100%;
+        border-radius: 10px;
+    }
+
+    .access-shop-inputs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .access-shop {
+        flex-basis: calc(54% - 20px) !important;
+    }
+
+    .botao-estabelecimento-adicionar {
+        position: relative;
+        top: 40px;
+        background-color: #FF8802;
+        color: #ffff;
+        width: 200px;
+        height: 40px;
+        border-radius: 10px;
+        margin: 0;
+        font-family: 'baloo 2';
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 540px) and (max-width: 1024px) {
+    .form-shop-registration {
+        height: 800px;
+        max-height: 100%;
+        border-radius: 10px;
+    }
 }

@@ -43,6 +43,11 @@ const Home = () => {
     }, 
     []);
 
+    
+ const handleShopClick = (url) => {
+    navigate(`/lojas${url}`);
+};
+
 return (
     <div className="App-home">
         <img src={blueIcon} alt="logo" className="img-blueIcon logo-home"/>
@@ -60,25 +65,16 @@ return (
                 <img src={bird} alt="bird" className="img-bird"onClick={() => {navigate("/passaros")}}/>
                 <img src={cat} alt="cat" className="img-cat" onClick={() => {navigate("/gatos")}}/>
             </div>
-            <Carousel showThumbs={false} itemsToShow={getItemsToShow()} paginationClassName="custom-carousel" className='carousel'> 
-                {lojas.map((loja) => (
-                    <div key={loja.id}>
-                            <h1 onClick={() => {
-                            navigate(`/home/lojas/servicos${loja.url}`,{ state: {
-                                loja: {
-                                    nome: loja.nome,
-                                    avaliacao: loja.avaliacao,
-                                    animais_atendidos: loja.animais_atendidos,
-                                    endereco: loja.endereco,
-                                    contato: loja.contato,
-                                },
-                            }}
-                            )}}>{loja.img}</h1>
-                    </div>
-                    ))}
-                    </Carousel >
+            <Carousel itemsToShow={getItemsToShow()} pagination={false}paginationClassName="custom-carousel" className='carousel' >
+                        {lojas.map(loja => (
+                            <div key={loja.id} onClick={() => handleShopClick(loja.url)}>
+                                <h1>{loja.img}</h1>
+                                <p class="nome-loja">{loja.nome}</p>
+                            </div>
+                        ))}
+            </Carousel>
             <div className="commercial">
-                    <img src={commercial} alt="animals" className="img-commercial-animals"/>
+                <img src={commercial} alt="animals" className="img-commercial-animals"/>
             </div>
         <Menu />
         </div>  

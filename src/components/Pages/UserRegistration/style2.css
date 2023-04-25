@@ -1,4 +1,4 @@
-html .app-shop-registration {
+html .app-user-registration {
     color: #ffff;
     align-items: center;
     justify-content: center;
@@ -10,12 +10,12 @@ h1 {
     font-size: 60px;
 }
 
-.app-shop-registration h2 {
+.app-user-registration h2 {
     margin-bottom: 0;
 
 }
 
-.app-shop-registration {
+.app-user-registration {
     font-weight: bold;
     text-align: center;
     justify-content: center;
@@ -24,7 +24,7 @@ h1 {
     overflow: auto;
 }
 
-.app-shop-registration .shop-registration {
+.app-user-registration .user-registration {
     position: relative;
     top: 20px;
     height: 500px;
@@ -33,16 +33,18 @@ h1 {
     margin: 0 auto;
 }
 
-.form-shop-registration {
+.form-user-registration {
+    height: 500px;
+    max-height:100% ;
     border-radius: 10px;
     background-color: #048387;
 }
 
-.shop-registration {
+.user-registration {
     margin: 0px;
 }
 
-.name-shop-registration {
+.name-user-registration {
     position: relative;
     top: 30px;
     text-transform: uppercase;
@@ -60,6 +62,9 @@ h1 {
     flex-basis: calc(48% - 0px) !important;
 }
 
+.access-shop {
+    flex-basis: calc(48% - 0px) !important;
+}
 
 .access label {
     font-size: 1rem;
@@ -145,7 +150,7 @@ input[type='checkbox']:checked::after {
     cursor: pointer;
 }
 
-.shop-registration .clicks {
+.user-registration .clicks {
     position: relative;
     top: 30px;
 }
@@ -158,6 +163,7 @@ input[type='checkbox']:checked::after {
     margin: 0px;
 }
 
-button .btn-user-registration {
-    background-color: red !important;
+.btn-user-registration {
+    position: relative;
+    top: 50px !important;
 }

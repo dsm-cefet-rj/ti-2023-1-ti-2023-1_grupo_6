@@ -37,6 +37,11 @@ const MenuWeb = () => {
                         Perfil
                         </a>
                     </li>
+                    <li>
+                        <a href="#" onClick={() => navigate('/adicionarLoja')}>
+                        Adicionar Loja
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
@@ -55,7 +60,7 @@ const MenuWeb = () => {
                     {lojasFiltradas.map((loja) => (
                     <li key={loja.id}>
                             <h3 class="categorias-filtro" onClick={() => { if (loja) {
-                                navigate(`/home/lojas/servicos${loja.url}`, {
+                                navigate(`/home/lojas//servicos${loja.url}`, {
                                 state: {
                                     loja: {
                                         nome: loja.nome,

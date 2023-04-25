@@ -206,14 +206,6 @@
       "email": "caique@email.com",
       "password": "123456",
       "id": 4
-    },
-    {
-      "name": "Gabriela Gabi",
-      "cpf": "179.484.687-57",
-      "bornDate": "0003-01-07",
-      "email": "gabis@email.com",
-      "password": "123456",
-      "id": 5
     }
   ],
   "carrinho": [

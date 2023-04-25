@@ -60,7 +60,7 @@ const ShopRegistration = () => {
           </div>
           <div className="clicks">
             <input className="enviar" type="submit" value="Voltar" onClick={()=>{navigate("/opcao/registrar")}}/>
-            <input className="enviar confirmar" type="submit" value="Confirmar" onClick={()=>{navigate("/home")}}/>
+            <input className="enviar confirmar" type="submit" value="Confirmar" onClick={()=>{navigate('/adicionarLoja')}}/>
             <div className="help-registration">
               <p onClick={() => {navigate("/")}}>Já tem uma conta?</p>
             </div>
