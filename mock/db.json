@@ -224,5 +224,21 @@
       "id_store": 2,
       "id": 1
     }
+  ],
+  "order": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idStore": 1,
+      "nameStore": "Pássaro Pet Shop",
+      "products": [
+          {
+            "class": "Limpeza",
+            "name": "Shampoo para cachorro",
+            "value": 35.99,
+            "amount": 1
+          }
+      ]
+    }
   ]
 }
