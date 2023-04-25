@@ -20,6 +20,8 @@ import useAuth from '../hooks/useAuth.js';
 import CarrinhoContextProvider from '../components/Pages/CarrinhoContext/CarrinhoContext.js';
 import Pedidos from '../components/Pages/pedidos/index.js';
 import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
+import AddSection from '../components/Pages/AddSection/index.js'
+import AddProducts from '../components/Pages/AddProducts/index.js'
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -44,7 +46,7 @@ const RoutesApp = () => {
                     <Route path="/home/lojas" element={<Private Item = {Lojas}/>}/>
                     <Route path="/home/lojas/servicos/:lojaId" element={<Private Item = {Servicos}/>}/>
                     <Route path="/perfil" element={<Private Item = {ConsumerProfile}/>}/>
-                    <Route path="/registrarEstabelecimento" element={<Private Item = {ShopRegistration}/>}/>
+                    <Route path="/registrar/estabelecimento" element={<ShopRegistration/>}/>
                     <Route path="/passaros" element={<Private Item = {Birds}/>}/>
                     <Route path="/gatos" element={<Private Item = {Cats}/>}/>
                     <Route path="/cachorros" element={<Private Item = {Dogs}/>}/>
@@ -53,6 +55,8 @@ const RoutesApp = () => {
                     <Route path="/compraEfetuada" element={<Private Item = {CompraFinalizada}/>}/>
                     <Route path="/pedidos" element={<Private Item = {Pedidos}/>}/>
                     <Route path="/pedidos-em-andamento" element={<Private Item = {PedidosAndamento}/>}/>
+                    <Route path="/adicionar/secao" element={<AddSection/>}/>
+                    <Route path="/adicionar/produto" element={<AddProducts/>}/>
                 </Routes>  
             </Fragment>     
             </CarrinhoContextProvider>
