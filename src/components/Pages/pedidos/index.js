@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Pedidos = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const { state: carrinhoState } = location;
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
 
     const pedidosProduto = [{
@@ -18,6 +16,22 @@ const Pedidos = () => {
         "idUser": 1,
         "idStore": 1,
         "nameStore": "Pássaro Pet Shop",
+        "totalValue" : 35.99,
+        "products": [
+            {
+            "class": "Limpeza",
+            "name": "Shampoo para cachorro",
+            "value": 35.99,
+            "amount": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "idUser": 1,
+        "idStore": 1,
+        "nameStore": "Pássaro Pet Shop",
+        "totalValue" : 35.99,
         "products": [
             {
             "class": "Limpeza",
@@ -47,17 +61,12 @@ const Pedidos = () => {
             </div>
             <h2>Seus pedidos:</h2>
             
-            {carrinhoState.produtos.length > 0 ? (
+            {pedidosProduto.length > 0 ? (
                 <ul class="ul-pedidos">
                 {pedidosProduto.map((pedido) => (
-                    {pedido.products.map((produto) => (
-                        <div>
-                            
-                        </div>
-                    ))}
                     <li key={pedido.id}>
-                    <h3>{pedido.nome} - R$ {pedido.valor} </h3>
-                    <img src={pedido.img}></img>
+                    <h2>Numero do pedido: {pedido.id}</h2>
+                    <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
                     <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento")}}>
                     Visualizar pedido
                     </button>
@@ -67,8 +76,6 @@ const Pedidos = () => {
             ) : (
                 <p> Você ainda não fez nenhum pedido </p>
             ) }
-
-            <p>Total: R$ {carrinhoState.total}</p>
         </div>
     );
 };
