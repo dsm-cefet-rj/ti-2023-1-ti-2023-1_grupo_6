@@ -1,9 +1,9 @@
 import { Api } from "../ApiCondig";
 import { ApiException } from "../ApiException";
 
-const getOrder = async (orderId) => {
+const getOrder = async () => {
     try{
-        const { data } = await Api().get(`/order/${orderId}`);
+        const { data } = await Api().get(`/order`);
         return data;
     } catch(err){
         return new ApiException(err || 'erro ao consultar consumidores');
