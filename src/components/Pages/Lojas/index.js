@@ -20,7 +20,7 @@ const Lojas = () => {
                             <h3 className="text-lojas text-loja-individual">{loja.avaliacao}</h3>
                             <h3 className="text-lojas text-loja-individual">{loja.estrelas}</h3>
                             <h3 class="ver-mais" onClick={() => { if (loja) {
-                            navigate(`/home/lojas/servicos${loja.url}`, {
+                            navigate(`/loja${loja.url}`, {
                                 state: {
                                     loja: {
                                         nome: loja.nome,
@@ -28,7 +28,8 @@ const Lojas = () => {
                                         animais_atendidos: loja.animais_atendidos,
                                         endereco: loja.endereco,
                                         contato: loja.contato,
-                                        url: loja.url
+                                        url: loja.url,
+                                        produtos: loja.produtos
                                     },
                                     lojaId: loja.url
                                 }

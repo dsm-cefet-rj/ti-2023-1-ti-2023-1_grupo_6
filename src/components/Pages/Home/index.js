@@ -64,7 +64,7 @@ return (
                 {lojas.map((loja) => (
                     <div key={loja.id}>
                             <h1 onClick={() => {
-                            navigate(`/home/lojas/servicos${loja.url}`,{ state: {
+                            navigate(`/loja${loja.url}`,{ state: {
                                 loja: {
                                     nome: loja.nome,
                                     avaliacao: loja.avaliacao,

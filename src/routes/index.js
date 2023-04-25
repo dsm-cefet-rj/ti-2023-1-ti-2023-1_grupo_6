@@ -9,7 +9,7 @@ import Menu from '../components/Pages/menu/index.js'
 import OptionRegistration from '../components/Pages/OptionRegistration/index.js';
 import Lojas from '../components/Pages/Lojas';
 import ConsumerProfile from '../components/Pages/consumerProfile/index.js';
-import ShopRegistration from '../components/Pages/ShopRegistration/index.js';
+import ShopRegistration from '../components/Pages/estabelecimento/adicionarEstabelecimento.js';
 import Birds from '../components/Pages/Birds/index.js';
 import Cats from '../components/Pages/Cats/index.js';
 import Hamsters from '../components/Pages/Hamsters/index.js';
@@ -50,8 +50,7 @@ const RoutesApp = () => {
                     <Route path="/registrar/usuario" element={<UserRegistration/>}/>
                     <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
                     <Route path="/menu" element={<Private Item = {Menu}/>}/>
-                    <Route path="/home/lojas" element={<Private Item = {Lojas}/>}/>
-                    <Route path="/" element={<LojaDetalhes />} />
+                    <Route path="/lojas" element={<Private Item = {Lojas}/>}/>
                     <Route path="/perfil" element={<Private Item = {ConsumerProfile}/>}/>
                     <Route path="/registrar/estabelecimento" element={<ShopRegistration/>}/>
                     <Route path="/passaros" element={<Private Item = {Birds}/>}/>
@@ -65,28 +64,28 @@ const RoutesApp = () => {
                     <Route path="/adicionar/secao" element={<AddSection/>}/>
                     <Route path="/adicionar/produto" element={<AddProducts/>}/>
                     {initialState.map((loja) => (
-                    <Route
-                    key={loja.id}
-                    path={`/lojas${loja.url}`}
-                    element={<LojaDetalhes
-                        nome={loja.nome}
-                        animais_atendidos={loja.animais_atendidos}
-                        contato={loja.contato}
-                        avaliacao={loja.avaliacao}
-                        endereco={loja.endereco}
-                        img={loja.img}
-                        image={loja.image}
-                        descricao={loja.descricao}
-                    />}
-                    />
-                ))}
+                        <Route
+                        key={loja.id}
+                        path={`/loja${loja.url}`}
+                        element={<LojaDetalhes
+                            nome={loja.nome}
+                            animais_atendidos={loja.animais_atendidos}
+                            contato={loja.contato}
+                            avaliacao={loja.avaliacao}
+                            endereco={loja.endereco}
+                            img={loja.img}
+                            image={loja.image}
+                            descricao={loja.descricao}
+                        />}
+                        />
+                    ))}
                     <Route path="/adicionarLoja" element={AdicionarLoja}/>
                     <Route path="/perfil" element={<Private Item = {ConsumerProfile}/>}/>
                     <Route path="/" element={<LojaDetalhes />} />
-                {initialState.map((loja) => (
-                    <Route
-                    key={loja.id}
-                    path={`/lojas${loja.url}`}
+                    {initialState.map((loja) => (
+                        <Route
+                        key={loja.id}
+                    path={`/loja${loja.url}`}
                     element={<LojaDetalhes
                         nome={loja.nome}
                         animais_atendidos={loja.animais_atendidos}
@@ -98,7 +97,9 @@ const RoutesApp = () => {
                         descricao={loja.descricao}
                     />}
                     />
+                    
                 ))}
+                    <Route path="/adicionarLoja" element={AdicionarLoja}/>
                 </Routes>  
             </Fragment>     
             </CarrinhoContextProvider>

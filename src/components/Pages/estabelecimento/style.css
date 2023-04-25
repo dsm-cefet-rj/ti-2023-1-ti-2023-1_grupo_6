@@ -5,14 +5,6 @@ html .app-shop-registration {
     margin: 0px;
     height: 100vh;
 }
-html, body {
-    background-color: red !important;
-
-}
-
-.gabi {
-    background-color: blue;
-}
 
 h1 {
     font-size: 60px;
