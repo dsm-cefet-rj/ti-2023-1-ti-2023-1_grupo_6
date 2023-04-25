@@ -12,7 +12,7 @@ return (
             <h2 className="text-registration">Você está se cadastrando como:</h2>
         <div className="clicks">
         <input className="text-input" type="submit" value="Consumidor" onClick={()=>{navigate("/registrar/usuario")}} />
-        <input className="text-input" type="submit" value="Estabelecimento" onClick={()=>{navigate("/registrarEstabelecimento")}} />
+        <input className="text-input" type="submit" value="Estabelecimento" onClick={()=>{navigate("/registrar/estabelecimento")}} />
             </div>
             <div className="back">
             <p id="back" onClick={() => {navigate("/")}}>Voltar</p>
