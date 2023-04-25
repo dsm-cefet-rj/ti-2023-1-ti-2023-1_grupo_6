@@ -1,0 +1,170 @@
+html .app-user-registration {
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+.app-user-registration h2 {
+    margin-bottom: 0;
+
+}
+
+.app-user-registration {
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    background-color: #04ABAB;
+    width: 100%;
+    overflow: auto;
+}
+
+.app-user-registration .user-registration {
+    position: relative;
+    top: 20px;
+    height: 500px;
+    max-width: 85%;
+    max-height: 90%;
+    margin: 0 auto;
+}
+
+.form-user-registration {
+    height: 500px;
+    max-height:100% ;
+    border-radius: 10px;
+    background-color: #048387;
+}
+
+.user-registration {
+    margin: 0px;
+}
+
+.name-user-registration {
+    position: relative;
+    top: 30px;
+    text-transform: uppercase;
+}
+
+.access-inputs {
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.access {
+    flex-basis: calc(48% - 0px) !important;
+}
+
+.access-shop {
+    flex-basis: calc(48% - 0px) !important;
+}
+
+.access label {
+    font-size: 1rem;
+    position: absolute;
+    margin-top: 20px;
+}
+
+input {
+    font-weight: bold;
+    margin-bottom: 5px;
+    max-width: 100%;
+    border-radius: 7px;
+    border: 0;
+    background-color: #B6E0EC;
+}
+
+.access input {
+    margin-top: 50px;
+    width: 50.5%;
+    height: 35px;
+    padding-inline: 20px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+.save {
+    display: flex;
+    justify-content: left;
+    margin-left: 21%;
+}
+
+.save label {
+    position: relative;
+    bottom: 2px;
+    left: 4px;
+}
+
+input.enviar.confirmar {
+    width: 30.5%;
+    position: relative;
+    top: 45px;
+}
+
+input[type='submit'] {
+    color: #ffff;
+    font-size: 18px;
+    margin: 25px;
+    border: 0;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #FF8802;
+    cursor: pointer;
+}
+
+input[type='submit']:hover {
+    background-color: #fe972f;
+}
+
+input[type='checkbox']+label::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    height: 20px;
+    transform: rotate(45deg);
+    background-color: red;
+}
+
+input[type='checkbox']:checked::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    border-radius: 3px;
+    height: 13px;
+    background-color: #fe972f;
+}
+
+.help-registration {
+    position: relative;
+    top: 15px;
+    cursor: pointer;
+}
+
+.user-registration .clicks {
+    position: relative;
+    top: 30px;
+}
+
+.clicks .enviar:first-of-type {
+    position: relative;
+    margin-right: 20px;
+    width: 100px;
+    top: 45px;
+    margin: 0px;
+}
+
+.btn-user-registration {
+    position: relative;
+    top: 50px !important;
+    cursor:pointer;
+}
