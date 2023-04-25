@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import './style.css';
 import Header from '../Header/index.js';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -42,4 +42,4 @@ const PedidosAndamento = () => {
     );
 };
 
-export default PedidosAndamento;
+export default PedidosAndamento; */

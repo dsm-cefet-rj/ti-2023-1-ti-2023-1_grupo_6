@@ -13,6 +13,7 @@ const MenuWeb = () => {
     const lojas = useSelector((state) => state.lojas);
     const [searchTerm, setSearchTerm] = useState('');
     const lojasFiltradas = lojas.filter( (loja) => loja.nome.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 );
+    
 
     const handleSearch = (event) => {
         const value = event.target.value;
@@ -38,7 +39,7 @@ const MenuWeb = () => {
                         </a>
                     </li>
                     <li>
-                        <a href="#" onClick={() => navigate('/pedidos')}>
+                        <a href="#" onClick={() => navigate('/pedidos', {state: carrinho}) }>
                         Pedidos
                         </a>
                     </li>
