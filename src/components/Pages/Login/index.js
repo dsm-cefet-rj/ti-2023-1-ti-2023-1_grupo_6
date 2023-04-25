@@ -36,7 +36,7 @@ const Login = () => {
       <div className="login">
 
         <form className="form-login">
-            <h2 className="name-login">login</h2>
+            <h2 className="name-login">login Cliente</h2>
             <div className="acess-inputs">
               <div className="acess">
                 <label htmlFor="name" className="userName">Email</label>
@@ -75,6 +75,7 @@ const Login = () => {
             />
 
             <div className="options">
+                <p onClick={() => {navigate("/LoginEstabelecimento")}}>Entrar como Loja</p>
                 <p onClick={() => {navigate("/opcao/registrar")}}>Cadastre-se</p>
             </div>
 

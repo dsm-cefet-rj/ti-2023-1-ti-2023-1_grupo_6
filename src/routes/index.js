@@ -22,6 +22,7 @@ import Pedidos from '../components/Pages/pedidos/index.js';
 import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
 import AddSection from '../components/Pages/AddSection/index.js'
 import AddProducts from '../components/Pages/AddProducts/index.js'
+import LoginEstabelecimento from '../components/Pages/LoginEstabelecimento/index.js';
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -37,6 +38,7 @@ const RoutesApp = () => {
             <Fragment>
                 <Routes>
                     <Route path="/" element={<Login/>}/>
+                    <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento/>}/>
                     <Route path="*" element={<Login/>}/>
                     <Route path="/home" element={<Private Item={Home}/>}/>
                     <Route path="/carrinho" element={<Private Item = {Carrinho}/>}/>
