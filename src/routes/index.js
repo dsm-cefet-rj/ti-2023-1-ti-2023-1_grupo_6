@@ -19,8 +19,8 @@ import useAuth from '../hooks/useAuth.js';
 import CarrinhoContextProvider from '../components/Pages/CarrinhoContext/CarrinhoContext.js';
 import Pedidos from '../components/Pages/pedidos/index.js';
 import loja from '../store/Reducers/lojas.js';
-import AdicionarLoja from '../components/Pages/Estabelecimento/AdicionarEstabelecimento.js';
-import LojaDetalhes from '../components/Pages/Estabelecimento/Lojas.js';
+import AdicionarLoja from '../components/Pages/estabelecimento/adicionarEstabelecimento.js';
+import LojaDetalhes from '../components/Pages/estabelecimento/lojas.js';
 import { useSelector } from 'react-redux';
 import AddSection from '../components/Pages/AddSection/index.js'
 import AddProducts from '../components/Pages/AddProducts/index.js'

@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 import { useNavigate } from 'react-router-dom';
+import PedidosAndamento from "../pedidoEmAndamento";
 
 
 const Pedidos = () => {
@@ -70,7 +71,7 @@ const Pedidos = () => {
                     <li key={pedido.id}>
                     <h2>Número do pedido: {pedido.id}</h2>
                     <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
-                    <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento", {state: pedidosProduto})}}>
+                    <button className="botao-pedido" onClick={(produtos)=>{navigate(<PedidosAndamento produto = {produtos}/>)}}>
                     Visualizar pedido
                     </button>
                     </li>

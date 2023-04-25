@@ -50,7 +50,18 @@ const initialState = [{
 const lojasSlice = createSlice({
     name: 'lojas',
     initialState,
+    reducers: {
+        addLoja: (state, action) => {
+            state.push(action.payload);
+        },
+        setLojas: (state, action) => {
+            state = action.payload;
+        },
+    },
 });
-
+export const {
+    addLoja,
+    setLojas
+} = lojasSlice.actions;
 
 export default lojasSlice.reducer;

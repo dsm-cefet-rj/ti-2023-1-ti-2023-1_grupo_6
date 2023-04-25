@@ -6,9 +6,8 @@ import  { useContext } from 'react';
 import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 
 
-const PedidosAndamento = () => {
+const PedidosAndamento = (props) => {
     const location = useLocation();
-    const { state: pedidosProduto } = location;
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const navigate = useNavigate();
 
@@ -32,12 +31,9 @@ const PedidosAndamento = () => {
             <h2>Detalhes do pedido:</h2>
             
             <ul class="ul-pedidos">
-                {pedidosProduto.map((pedido) => (
-                    <li key={pedido.id}>
-                    <h2>{pedido.nameStore}</h2>
-                    {pedido.products.map((produto) => (
-                        <p key={produto.id}>{produto.name}</p>
-                    ))}
+                {props.produtos.map((produto) => (
+                    <li key={produto.id}>
+                    <h2>{produto.name}</h2>
                     </li>
                 ))}
             </ul>
