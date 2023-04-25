@@ -8,7 +8,7 @@ const Menu = () => {
     const navigate = useNavigate()
     return (
         <div className="menu">
-            <div className="buttons">
+            <div className="buttons-menu">
                 <button className='profileButton'>
                     <img src={profile} alt="perfil" className="img-perfil"/>
                     <label className='text perfiltext' onClick={()=>{navigate("/perfil")}}>Perfil</label>
@@ -22,7 +22,7 @@ const Menu = () => {
                     <img src={bag} alt="carrinho" className="img-bag"/>
                     <label className='text carrinho'>Carrinho</label>
                 </button>
-                </div>
+            </div>
         </div>  
         );
     }
