@@ -1,16 +1,14 @@
 import React from "react";
 import './style.css';
 import Header from '../Header/index.js';
-import { useLocation, useNavigate } from 'react-router-dom';
-import  { useContext } from 'react';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
+import { useLocation } from "react-router-dom";
 
 
 const PedidosAndamento = (props) => {
-    const location = useLocation();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
-    const navigate = useNavigate();
-
+    const location = useLocation();
+    const { state: {produtos} } = location;
+    console.log(produtos);
     React.useEffect(() => {
         const handleResize = () => {
         setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -24,6 +22,7 @@ const PedidosAndamento = (props) => {
     }, []);
 
     return (
+        (console.log(props)),
         <div class="pedidos-usuario">
             <div>
             {isScreenWideEnough && <Header />}
@@ -31,7 +30,7 @@ const PedidosAndamento = (props) => {
             <h2>Detalhes do pedido:</h2>
             
             <ul class="ul-pedidos">
-                {props.produtos.map((produto) => (
+                {produtos.map((produto) => (
                     <li key={produto.id}>
                     <h2>{produto.name}</h2>
                     </li>
