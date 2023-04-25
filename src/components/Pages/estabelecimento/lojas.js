@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 import './style.css'
 import Header from "../Header/index.js";
+import Menu from "../menu/index.js";
+
 const Lojas = ({
     nome,
     animais_atendidos,
@@ -157,6 +159,7 @@ const Lojas = ({
             </section>
             </div>
             </div>
+            <Menu />
             </div>
       
     );

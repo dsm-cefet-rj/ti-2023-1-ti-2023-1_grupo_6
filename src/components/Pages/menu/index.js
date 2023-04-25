@@ -8,21 +8,21 @@ const Menu = () => {
     const navigate = useNavigate()
     return (
         <div className="menu">
-            <div className="buttons">
+            <div className="buttons-menu">
                 <button className='profileButton'>
                     <img src={profile} alt="perfil" className="img-perfil"/>
-                    <label className='text perfiltext'>Perfil</label>
+                    <label className='text perfiltext' onClick={()=>{navigate("/perfil")}}>Perfil</label>
                 </button>
                 <button className='homeButton'>
                     <img src={home} alt="inicio" className="img-home"/>
-                    <label className='text inicio'>Início</label>
+                    <label className='text inicio' onClick={()=>{navigate("/Home")}}>Início</label>
                 </button>
 
                 <button className='bagButton' onClick={()=>{navigate("/carrinho")}}>
                     <img src={bag} alt="carrinho" className="img-bag"/>
                     <label className='text carrinho'>Carrinho</label>
                 </button>
-                </div>
+            </div>
         </div>  
         );
     }
