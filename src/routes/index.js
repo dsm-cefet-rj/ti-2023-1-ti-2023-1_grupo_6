@@ -8,7 +8,6 @@ import UserRegistration from '../components/Pages/UserRegistration/UserRegistrat
 import Menu from '../components/Pages/menu/index.js'
 import OptionRegistration from '../components/Pages/OptionRegistration/index.js';
 import Lojas from '../components/Pages/Lojas';
-import Servicos from '../components/Pages/Servicos';
 import ConsumerProfile from '../components/Pages/consumerProfile/index.js';
 import ShopRegistration from '../components/Pages/ShopRegistration/index.js';
 import Birds from '../components/Pages/Birds/index.js';
@@ -19,6 +18,10 @@ import Rabbit from '../components/Pages/Rabbit/index.js';
 import useAuth from '../hooks/useAuth.js';
 import CarrinhoContextProvider from '../components/Pages/CarrinhoContext/CarrinhoContext.js';
 import Pedidos from '../components/Pages/pedidos/index.js';
+import loja from '../store/Reducers/lojas.js';
+import AdicionarLoja from '../components/Pages/Estabelecimento/AdicionarEstabelecimento.js';
+import LojaDetalhes from '../components/Pages/Estabelecimento/Lojas.js';
+import { useSelector } from 'react-redux';
 import AddSection from '../components/Pages/AddSection/index.js'
 import AddProducts from '../components/Pages/AddProducts/index.js'
 import LoginEstabelecimento from '../components/Pages/LoginEstabelecimento/index.js';
@@ -31,7 +34,9 @@ const Private = ({ Item }) => {
 };
 
 const RoutesApp = () => {
+    const initialState = useSelector((state) => state.lojas);
     return (
+
         
         <BrowserRouter>
             <CarrinhoContextProvider>
@@ -46,7 +51,7 @@ const RoutesApp = () => {
                     <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
                     <Route path="/menu" element={<Private Item = {Menu}/>}/>
                     <Route path="/home/lojas" element={<Private Item = {Lojas}/>}/>
-                    <Route path="/home/lojas/servicos/:lojaId" element={<Private Item = {Servicos}/>}/>
+                    <Route path="/" element={<LojaDetalhes />} />
                     <Route path="/perfil" element={<Private Item = {ConsumerProfile}/>}/>
                     <Route path="/registrar/estabelecimento" element={<ShopRegistration/>}/>
                     <Route path="/passaros" element={<Private Item = {Birds}/>}/>
@@ -59,6 +64,41 @@ const RoutesApp = () => {
                     <Route path="/pedidos" element={<Pedidos/>}/>
                     <Route path="/adicionar/secao" element={<AddSection/>}/>
                     <Route path="/adicionar/produto" element={<AddProducts/>}/>
+                    {initialState.map((loja) => (
+                    <Route
+                    key={loja.id}
+                    path={`/lojas${loja.url}`}
+                    element={<LojaDetalhes
+                        nome={loja.nome}
+                        animais_atendidos={loja.animais_atendidos}
+                        contato={loja.contato}
+                        avaliacao={loja.avaliacao}
+                        endereco={loja.endereco}
+                        img={loja.img}
+                        image={loja.image}
+                        descricao={loja.descricao}
+                    />}
+                    />
+                ))}
+                    <Route path="/adicionarLoja" element={AdicionarLoja}/>
+                    <Route path="/perfil" element={<Private Item = {ConsumerProfile}/>}/>
+                    <Route path="/" element={<LojaDetalhes />} />
+                {initialState.map((loja) => (
+                    <Route
+                    key={loja.id}
+                    path={`/lojas${loja.url}`}
+                    element={<LojaDetalhes
+                        nome={loja.nome}
+                        animais_atendidos={loja.animais_atendidos}
+                        contato={loja.contato}
+                        avaliacao={loja.avaliacao}
+                        endereco={loja.endereco}
+                        img={loja.img}
+                        image={loja.image}
+                        descricao={loja.descricao}
+                    />}
+                    />
+                ))}
                 </Routes>  
             </Fragment>     
             </CarrinhoContextProvider>
@@ -68,4 +108,3 @@ const RoutesApp = () => {
 };
 
 export default RoutesApp;
-

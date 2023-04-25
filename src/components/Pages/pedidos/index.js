@@ -34,6 +34,7 @@ const Pedidos = () => {
         "totalValue" : 35.99,
         "products": [
             {
+            "id": 1,
             "class": "Limpeza",
             "name": "Shampoo para cachorro",
             "value": 35.99,
@@ -41,6 +42,8 @@ const Pedidos = () => {
             }
         ]
     }]
+
+    const produtos = pedidosProduto.products
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -67,7 +70,7 @@ const Pedidos = () => {
                     <li key={pedido.id}>
                     <h2>Número do pedido: {pedido.id}</h2>
                     <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
-                    <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento", {state: pedidosProduto.products})}}>
+                    <button className="botao-pedido" onClick={()=>{navigate("/pedidos-em-andamento", {state: pedidosProduto})}}>
                     Visualizar pedido
                     </button>
                     </li>

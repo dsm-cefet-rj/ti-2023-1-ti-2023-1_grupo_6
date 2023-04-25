@@ -8,7 +8,7 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 
 const PedidosAndamento = () => {
     const location = useLocation();
-    const { state: carrinhoState } = location;
+    const { state: pedidosProduto } = location;
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const navigate = useNavigate();
 
@@ -24,36 +24,24 @@ const PedidosAndamento = () => {
         };
     }, []);
 
-    const pedidosProduto = [{
-        "id": 1,
-        "idUser": 1,
-        "idStore": 1,
-        "nameStore": "Pássaro Pet Shop",
-        "totalValue" : 35.99,
-        "products": [
-            {
-            "class": "Limpeza",
-            "name": "Shampoo para cachorro",
-            "value": 35.99,
-            "amount": 1
-            }
-        ]
-    }]
-
     return (
         <div class="pedidos-usuario">
             <div>
             {isScreenWideEnough && <Header />}
             </div>
             <h2>Detalhes do pedido:</h2>
+            
             <ul class="ul-pedidos">
                 {pedidosProduto.map((pedido) => (
                     <li key={pedido.id}>
-                    <h2>pedido.</h2>
-                    <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
+                    <h2>{pedido.nameStore}</h2>
+                    {pedido.products.map((produto) => (
+                        <p key={produto.id}>{produto.name}</p>
+                    ))}
                     </li>
                 ))}
-                </ul>
+            </ul>
+
         </div>
     );
 };
