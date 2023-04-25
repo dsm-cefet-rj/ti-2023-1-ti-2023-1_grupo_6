@@ -167,5 +167,4 @@ input[type='checkbox']:checked::after {
     position: relative;
     top: 50px !important;
     cursor:pointer !important;
-    
 }

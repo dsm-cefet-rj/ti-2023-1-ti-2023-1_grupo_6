@@ -59,6 +59,7 @@ const Lojas = ({
             <div className='loja'>
             <h1>{nome}</h1>
             <p>{animais_atendidos}, {endereco}, {contato}</p>
+            <p>{descricao}</p>
             <p>{avaliacao}</p>
             <section className="animais-compras-loja1">
                 <h3>Saúde</h3>

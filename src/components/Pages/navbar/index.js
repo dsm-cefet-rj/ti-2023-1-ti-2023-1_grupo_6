@@ -11,7 +11,7 @@ const Navbar = () => {
                 <li><a href="#" onClick={() => {navigate("/gatos")}}>Gato</a></li>
                 <li><a href="#" onClick={() => {navigate("/cachorros")}}>Cachorro</a></li>
                 <li><a href="#" onClick={() => {navigate("/passaros")}}>Pássaros</a></li>
-                <li><a href="#" onClick={() => {navigate("/home/lojas")}}>Lojas</a></li>
+                <li><a href="#" onClick={() => {navigate("/lojas")}}>Lojas</a></li>
             </ul>
         </div>
     );
