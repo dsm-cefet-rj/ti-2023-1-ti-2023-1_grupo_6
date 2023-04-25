@@ -22,6 +22,10 @@ import loja from '../store/Reducers/lojas.js';
 import AdicionarLoja from '../components/Pages/Estabelecimento/AdicionarEstabelecimento.js';
 import LojaDetalhes from '../components/Pages/Estabelecimento/Lojas.js';
 import { useSelector } from 'react-redux';
+import AddSection from '../components/Pages/AddSection/index.js'
+import AddProducts from '../components/Pages/AddProducts/index.js'
+import LoginEstabelecimento from '../components/Pages/LoginEstabelecimento/index.js';
+import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -38,7 +42,6 @@ const RoutesApp = () => {
             <CarrinhoContextProvider>
             <Fragment>
                 <Routes>
-                    <Route path="/registrarEstabelecimento" element={<ShopRegistration/>}/>
                     <Route path="/" element={<Login/>}/>
                     <Route path="*" element={<Login/>}/>
                     <Route path="/home" element={<Private Item={Home}/>}/>
@@ -48,6 +51,7 @@ const RoutesApp = () => {
                     <Route path="/menu" element={<Private Item = {Menu}/>}/>
                     <Route path="/home/lojas" element={<Private Item = {Lojas}/>}/>
                     <Route path="/" element={<LojaDetalhes />} />
+                    <Route path="/registrar/estabelecimento" element={<ShopRegistration/>}/>
                 {initialState.map((loja) => (
                     <Route
                     key={loja.id}
@@ -89,7 +93,11 @@ const RoutesApp = () => {
                     />}
                     />
                 ))}
-                </Routes>  
+                <Route path="/pedidos-em-andamento" element={<PedidosAndamento/>}/>
+                <Route path="/pedidos" element={<Pedidos/>}/>
+                <Route path="/adicionar/secao" element={<AddSection/>}/>
+                <Route path="/adicionar/produto" element={<AddProducts/>}/>
+            </Routes>  
             </Fragment>     
             </CarrinhoContextProvider>
         </BrowserRouter>
