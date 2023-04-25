@@ -166,5 +166,6 @@ input[type='checkbox']:checked::after {
 .btn-user-registration {
     position: relative;
     top: 50px !important;
-    cursor:pointer;
+    cursor:pointer !important;
+    
 }
