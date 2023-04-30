@@ -9,8 +9,9 @@ import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
 import './style.css'
 import Header from "../Header/index.js";
 import Menu from "../menu/index.js";
-
+import mostrarConfirmacao from '../../../utils/confirmacao-compra';
 const Lojas = ({
+
     nome,
     animais_atendidos,
     contato,
@@ -31,6 +32,7 @@ const Lojas = ({
     const {
         adicionarProdutoCarrinho
     } = useContext(CarrinhoContext);
+    const [exibirIframe, setExibirIframe] = useState(false);
 
     React.useEffect(() => {
             const handleResize = () => {
@@ -51,6 +53,7 @@ const Lojas = ({
 
     const handleAdicionarProduto = (produto) => {
         adicionarProdutoCarrinho(produto);
+        setExibirIframe(true);
     };
 
     return (
@@ -73,7 +76,8 @@ const Lojas = ({
                                 <p>{produto.nome}</p>
                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                             </div>
-                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
+                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
                         </li>
                     ))}
                 </ul>
@@ -91,7 +95,8 @@ const Lojas = ({
                                 {produto.valor !== produto.promocao &&
                                     <span className='preco-antigo'>R${produto.valor}</span>}
                                 </p>
-                                <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
+                                <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
                             </div>
                         </li>
                     ))}
@@ -107,7 +112,8 @@ const Lojas = ({
                                 <p>{produto.nome}</p>
                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                             </div>
-                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
+                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
                         </li>
                     ))}
                     </ul>
@@ -122,7 +128,8 @@ const Lojas = ({
                                 <p>{produto.nome}</p>
                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                             </div>
-                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
+                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
                         </li>
                     ))}
                 </ul>
@@ -137,7 +144,8 @@ const Lojas = ({
                                 <p>{produto.nome}</p>
                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                             </div>
-                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
+                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
                         </li>
                     ))}
                 </ul>
@@ -152,7 +160,8 @@ const Lojas = ({
                                 <p>{produto.nome}</p>
                                 <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                             </div>
-                            <input type="submit" value="Comprar" onClick={() => handleAdicionarProduto(produto)} className='button-comprar-servicos'/>
+                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
                         </li>
                     ))}
                     </ul>
@@ -161,8 +170,6 @@ const Lojas = ({
             </div>
             <Menu />
             </div>
-      
     );
-};
-
+}
 export default Lojas;

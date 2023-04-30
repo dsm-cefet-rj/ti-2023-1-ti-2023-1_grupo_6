@@ -192,28 +192,20 @@
       "password": "123456"
     },
     {
-      "id": 2,
-      "name": "Gabi",
-      "cpf": "11111111111",
-      "bornDate": "11/11/1999",
-      "email": "gabi@email.com",
-      "password": "123456"
-    },
-    {
-      "name": "Isa",
-      "cpf": "11111111111",
-      "bornDate": "11/11/1999",
-      "email": "isa@email.com",
-      "password": "123456",
-      "id": 3
-    },
-    {
       "name": "Caique",
       "cpf": "11111111111",
       "bornDate": "1999-07-05",
       "email": "caique@email.com",
       "password": "123456",
       "id": 4
+    },
+    {
+      "name": "fdfda",
+      "cpf": "23131231",
+      "bornDate": "131231-12-13",
+      "email": "ge@email.com",
+      "password": "12",
+      "id": 5
     }
   ],
   "carrinho": [
@@ -232,12 +224,12 @@
       "idStore": 1,
       "nameStore": "Pássaro Pet Shop",
       "products": [
-          {
-            "class": "Limpeza",
-            "name": "Shampoo para cachorro",
-            "value": 35.99,
-            "amount": 1
-          }
+        {
+          "class": "Limpeza",
+          "name": "Shampoo para cachorro",
+          "value": 35.99,
+          "amount": 1
+        }
       ]
     }
   ]
