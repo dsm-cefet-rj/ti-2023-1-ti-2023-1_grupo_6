@@ -61,7 +61,7 @@ const MenuWeb = () => {
                     {lojasFiltradas.map((loja) => (
                     <li key={loja.id}>
                             <h3 class="categorias-filtro" onClick={() => { if (loja) {
-                                navigate(`/home/lojas/servicos${loja.url}`, {
+                                navigate(`/loja${loja.url}`, {
                                 state: {
                                     loja: {
                                         nome: loja.nome,

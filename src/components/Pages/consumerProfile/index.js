@@ -6,6 +6,9 @@ import Header from '../Header/index.js';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import Menu from "../menu/index.js";
+import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
+import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
+import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
 
 const ConsumerProfile = () => {
     const { user } = useAuth();
@@ -25,6 +28,25 @@ const ConsumerProfile = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         //enviar imagem para o servidor
+    }
+
+    async function handleDelete(emailUser) {
+        const result = await confirmDelete();
+        console.log(result);
+        if(result === true) {
+            deleteAccount(emailUser);
+            infoDelete();
+            navigate("/")
+        } 
+    }
+
+    async function handleExit() {
+        const result = await confirmExit();
+        console.log(result);
+        if(result === true) {
+            signOut();
+            navigate("/")
+        } 
     }
 
     React.useEffect(() => {
@@ -73,11 +95,11 @@ const ConsumerProfile = () => {
                 <button type="submit" className="profile-button">Salvar</button>
                 <button 
                 className="profile-button"
-                onClick={() => [signOut(), navigate("/")]}
+                onClick={() => handleExit()}
                 >Sair</button>
                 <button
                 className="profile-button"
-                onClick={() => [deleteAccount(user.email), navigate("/")]}
+                onClick={() => handleDelete(user.email)}
                 >Deletar conta</button>                    
             </div>
             <Menu />
