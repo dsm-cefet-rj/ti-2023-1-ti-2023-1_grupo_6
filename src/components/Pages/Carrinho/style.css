@@ -82,6 +82,8 @@ html .carrinho-background {
     justify-content: center;
     margin-top: 100px;
     margin-bottom: 50px;
+    position: relative;
+    bottom: 40px;
 }
 
 .botaoCancelar {
@@ -90,10 +92,9 @@ html .carrinho-background {
     border-radius: 5px;
     border: none;
     width: 136px;
-    width: 236px;
     height: 40px;
     font-size: 20px;
-    margin-right: 100px;
+    margin-right: 10px;
     cursor: pointer;
 }
 
@@ -103,7 +104,7 @@ html .carrinho-background {
     font-weight: bold;
     border-radius: 5px;
     border: none;
-    width: 336px;
+    width: 200px;
     height: 40px;
     font-size: 20px;
     cursor: pointer;
@@ -140,14 +141,28 @@ html .carrinho-background {
 
 .produto-texto {
     flex-grow: 1;
+
+}
+
+
+
+.uni-prod {
+    margin-left: 0;
+    margin-right: 200px;
+}
+
+.unidade-produto {
+    margin-top: 10px;
+    margin-left: 40px;
 }
 
 .ul-produtos li {
     list-style: none;
 }
 
-.produto-botoes {
+.imagem-e-unidade {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -197,7 +212,6 @@ html .carrinho-background {
     width: 25px;
     height: 25px;
     position: relative;
-    left: 534px;
     border-radius: 70%;
-    color:#fff;
+    color: #fff;
 }

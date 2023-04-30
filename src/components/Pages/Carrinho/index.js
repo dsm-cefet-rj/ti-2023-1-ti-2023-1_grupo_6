@@ -53,13 +53,13 @@ const Carrinho = () => {
                                         <div className="produto-texto">
                                             <p>{produto.nome}</p>
                                             <p><span className='cifrao'>R$</span>{produto.valor}</p>
-                                            <p className='unidade-produto'>{produto.quantidade}</p>
                                         </div>
+                                        <input type="button" value="-" onClick={() => handleRemoverProduto(produto.id)} className="decrementar-item"/>
                                         <div className="produto-botoes">
-                                            <input type="button" value="-" onClick={() => handleRemoverProduto(produto.id)} className="decrementar-item"/>
                                             <img src={produto.img} alt="Imagem do produto" />
-                                            <input type="button" value="+" onClick={() => handleAdicionarProduto(produto)} className="incrementar-item"/>
+                                        <p className='unidade-produto'>{produto.quantidade}</p>
                                         </div>
+                                        <input type="button" value="+" onClick={() => handleAdicionarProduto(produto)} className="incrementar-item"/>
                                     </div>
                                 </li>
                             ))}
@@ -89,7 +89,7 @@ const Carrinho = () => {
                 </form>
 
             </div>
-
+            <Menu/>
         </div>  
         );
     }
