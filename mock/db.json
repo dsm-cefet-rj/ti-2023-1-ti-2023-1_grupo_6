@@ -248,6 +248,17 @@
       "nameProduct": "fsfsfs",
       "price": "123456",
       "section": "fsfs"
+    },
+    {
+      "cnpj": "123546789",
+      "nome": "123456",
+      "id": 9
+    },
+    {
+      "id": "sasas",
+      "nameProduct": "asassa",
+      "price": "26326",
+      "section": "dssdasa"
     }
   ],
   "carrinho": [

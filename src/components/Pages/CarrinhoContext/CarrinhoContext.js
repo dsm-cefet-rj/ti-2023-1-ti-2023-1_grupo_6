@@ -76,9 +76,13 @@ const CarrinhoContextProvider = ({ children }) => {
     setCarrinho(novoCarrinho);
   }
 
+  const limparCarrinho = () => {
+    setCarrinho({ produtos: [], quantidade: 0, total: 0.0 });
+  };
+
   return (
     <CarrinhoContext.Provider
-      value={{ carrinho, adicionarProdutoCarrinho, removerProdutoCarrinho, totalAPagar, quantProdutos }}
+      value={{ carrinho, adicionarProdutoCarrinho, removerProdutoCarrinho, totalAPagar, quantProdutos, limparCarrinho }}
     >
       {children}
     </CarrinhoContext.Provider>
