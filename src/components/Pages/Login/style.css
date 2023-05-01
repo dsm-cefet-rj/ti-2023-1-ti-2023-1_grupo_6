@@ -105,15 +105,6 @@ input[type='checkbox']+label::before {
   background-color: red;
 }
 
-input[type='checkbox']:checked::after {
-  content: '';
-  position: absolute;
-  width: 12px;
-  border-radius: 3px;
-  height: 13px;
-  background-color: #fe972f;
-}
-
 .options {
   position: relative;
   top: 50px;
@@ -121,18 +112,23 @@ input[type='checkbox']:checked::after {
 }
 
 .login .clicks {
-  position: relative;
+  position:relative ;
   top: 30px;
 }
 
 .error-message-signin {
-  text-transform: uppercase;
   color: black;
   font-size: 14px;
   position: fixed;
   display: flex;
   width: 100%;
-  margin-left: 107px;
+  margin-left: 100px;
+}
+
+.message {
+  color: black;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {

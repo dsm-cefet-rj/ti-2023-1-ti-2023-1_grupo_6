@@ -105,14 +105,6 @@ input[type='checkbox'] + label::before {
   background-color: red;
 }
 
-input[type='checkbox']:checked::after {
-  content: '';
-  position: absolute;
-  width: 12px;
-  border-radius: 3px;
-  height: 13px;
-  background-color: #fe972f;
-}
 
 .options {
   position: relative;

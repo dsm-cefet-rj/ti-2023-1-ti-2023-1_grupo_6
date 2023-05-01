@@ -1,7 +1,5 @@
 import './style.css';
 import React, { useState, useEffect, useContext } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import noAvatar from '../../../assets/noAvatar.svg'
 import Header from '../Header/index.js';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
@@ -13,17 +11,10 @@ import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
 const ConsumerProfile = () => {
     const { user } = useAuth();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
-    const [image, setImage] = useState(null);
     const { signOut } = useAuth();
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
     
-
-    const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
-        setImage(selectedImage);
-        //função para lidar com a seleção de imagem
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -69,38 +60,20 @@ const ConsumerProfile = () => {
             </div>
 
             <h1 className="profile-title">Meu Perfil {user.name}</h1>
-            <div className='pic-user'>
-                <form onSubmit={handleSubmit} className='form-pic-username'>
-                    <label htmlFor="profile-pic">
-                        <Avatar
-                        alt="foto de perfil"
-                        src={image ? URL.createObjectURL(image) : noAvatar}
-                        className="profile-pic"
-                        />
-                    </label>
-                    <input
-                    type="file"
-                    id="profile-pic"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className= "input-pic"
-                    />
 
-                    <text className='user-text'>nome: {user.name}</text>
+            <form onSubmit={handleSubmit} className='form-pic-username'>
+                <text className='user-text'>conta: {user.email}</text>
+            </form>
 
-                </form>
-            </div>
 
             <div className = "box-buttons">
-                <button type="submit" className="profile-button">Salvar</button>
                 <button 
                 className="profile-button"
                 onClick={() => handleExit()}
                 >Sair</button>
                 <button
                 className="profile-button"
-                onClick={() => handleDelete(user.email)}
-                >Deletar conta</button>                    
+                onClick={() => handleDelete(user.email)}>Deletar conta</button>                    
             </div>
             <Menu />
         </div>
