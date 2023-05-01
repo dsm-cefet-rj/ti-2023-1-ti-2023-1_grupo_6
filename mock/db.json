@@ -236,6 +236,18 @@
       "contato": "9999999999",
       "password": "123456",
       "id": 8
+    },
+    {
+      "id": "fsefs",
+      "nameProduct": "fsefs",
+      "price": "3543453",
+      "section": "jfgjfjgf"
+    },
+    {
+      "id": "fsf",
+      "nameProduct": "fsfsfs",
+      "price": "123456",
+      "section": "fsfs"
     }
   ],
   "carrinho": [

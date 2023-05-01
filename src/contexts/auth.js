@@ -168,6 +168,29 @@ export const AuthProvider = ({ children }) => {
         });
     }
 
+    const signUpProduct = (id, nameProduct, price, section) => {
+        UserInformation.getAll().then((result)=>{
+            if(result instanceof ApiException){
+                setMessage(result.message);
+            }else{
+                const hasUser = result?.filter((user) => user.id === id);
+        
+                if(hasUser?.length){
+                    setMessage("Esse produto já foi cadastrado");
+                } else{
+                    let newUser= {
+                        id: id,
+                        nameProduct: nameProduct,
+                        price: price,
+                        section: section,
+                    };
+                    UserInformation.create(newUser);
+                    setMessage("Produto criado com sucesso");
+                }
+            }
+        });
+    }
+
     const signOut = () => {
         setUser(null);
         localStorage.removeItem("user_token");
@@ -217,7 +240,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
     <AuthContext.Provider
-        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore } }
+        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore, signUpProduct } }
     >
         {children}
     </AuthContext.Provider>
