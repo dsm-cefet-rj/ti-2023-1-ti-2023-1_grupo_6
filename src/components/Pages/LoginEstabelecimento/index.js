@@ -5,7 +5,7 @@ import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const LoginEstabelecimento = () => {
-  const { signIn } = useAuth();
+  const { signInStore } = useAuth();
   const navigate = useNavigate();
 
   const [cnpj, setCnpj] = useState("");
@@ -17,7 +17,7 @@ const LoginEstabelecimento = () => {
       setError("Preencha todos os campos");
       return;
     }
-  const res = signIn(cnpj, password);
+  const res = signInStore(cnpj, password);
 
     if(res) {
       setError(res);
@@ -26,8 +26,6 @@ const LoginEstabelecimento = () => {
     
     navigate("/home");
   };
-
-  //oi oi oi 
 
   return (
     <div className="App-login">
