@@ -206,6 +206,48 @@
       "email": "ge@email.com",
       "password": "12",
       "id": 5
+    },
+    {
+      "name": "Isa",
+      "cpf": "123456789",
+      "bornDate": "2003-03-06",
+      "email": "isa@gmail.com",
+      "password": "123456",
+      "id": 6
+    },
+    {
+      "cnpj": "fsdfs",
+      "nome": "sfsdfsf",
+      "animaisAtendidos": "fsdf",
+      "cep": "ssdfs",
+      "endereco": "sdfsdf",
+      "url": "sfsd",
+      "contato": "fsdf",
+      "password": "sdfsf",
+      "id": 7
+    },
+    {
+      "cnpj": "123456789",
+      "nome": "Cachorro",
+      "animaisAtendidos": "Cachorro",
+      "cep": "123456",
+      "endereco": "rua dog",
+      "url": "cachorro",
+      "contato": "9999999999",
+      "password": "123456",
+      "id": 8
+    },
+    {
+      "id": "fsefs",
+      "nameProduct": "fsefs",
+      "price": "3543453",
+      "section": "jfgjfjgf"
+    },
+    {
+      "id": "fsf",
+      "nameProduct": "fsfsfs",
+      "price": "123456",
+      "section": "fsfs"
     }
   ],
   "carrinho": [

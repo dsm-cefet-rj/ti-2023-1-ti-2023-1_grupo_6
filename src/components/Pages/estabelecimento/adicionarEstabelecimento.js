@@ -4,6 +4,8 @@ import { addLoja }  from '../../../store/Reducers/lojas.js';
 import defaultImg from '../../../assets/petshop2.png';
 import './style.css';
 import whiteIcon from '../../../assets/whiteIcon.png';
+import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 function AdicionarLoja() {
     const [nome, setNome] = useState('');
@@ -18,6 +20,12 @@ function AdicionarLoja() {
     const [email, setEmail] = useState('');
     const [cep, setCep] = useState('');
     const [url, setUrl] = useState('');
+    const [password, setPassword] = useState('');
+
+    const { signUpStore } = useAuth();
+    const navigate = useNavigate();
+
+    const [error, setError] = useState("");
 
     const dispatch = useDispatch();
 
@@ -26,7 +34,6 @@ function AdicionarLoja() {
         nome,
         animais_atendidos: animaisAtendidos,
         contato,
-        avaliacao,
         email,
         cnpj,
         endereco,
@@ -35,13 +42,13 @@ function AdicionarLoja() {
         image: <img src={defaultImg} alt="pet1" width="350" height="300px"/>,
         descricao,
         url,
+        password,
         }));
 
         setNome('');
         setAnimaisAtendidos('');
         setContato('');
         setEmail('');
-        setAvaliacao('');
         setEndereco('');
         setCep('');
         setImg('');
@@ -49,7 +56,23 @@ function AdicionarLoja() {
         setDescricao('');
         setCnpj('');
         setUrl('');
+        setPassword('');
     }
+
+    const handleSignUp = () => {
+        if(!nome || !cnpj || !animaisAtendidos || !email || !password || !contato || !endereco || !cep || !url ){
+          setError("Preencha todos os campos");
+          return;
+        } 
+    
+      const res = signUpStore(cnpj, nome, email, animaisAtendidos, cep, endereco, url, contato, password);
+        if(res) {
+          setError(res);
+          return;
+        }
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/");
+      };
 
     return (
         <div className="app-shop-registration">
@@ -78,7 +101,7 @@ function AdicionarLoja() {
                     </div>
                     <div className="access access-shop">
                         <label htmlFor="animais-atendidos" className="animais-atendidos-label">
-                            Anmais atendidos:
+                            Animais atendidos:
                         </label>
                         <input type="text"  placeholder="Animais que serão atendidos" value={animaisAtendidos} onChange={(e) => setAnimaisAtendidos(e.target.value)} />
                     </div>
@@ -106,10 +129,18 @@ function AdicionarLoja() {
                         </label>
                     <input type="text" placeholder="Digite o contato da loja" value={contato} onChange={(e) => setContato(e.target.value)} />
                     </div>
+                    <div className="access access-shop">
+                        <label htmlFor="url" className="url-label">
+                            Senha:
+                        </label>
+                    <input type="password" placeholder="Digite a senha loja" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    
                 </div>
             </form>
             </div>
             <button onClick={handleAdicionarLoja} className="botao-estabelecimento-adicionar btn-shop">Adicionar</button>
+            <button type= "submit" onClick={handleSignUp} className="botao-estabelecimento-adicionar btn-shop">Criar conta</button>
         </div>
     );
 }

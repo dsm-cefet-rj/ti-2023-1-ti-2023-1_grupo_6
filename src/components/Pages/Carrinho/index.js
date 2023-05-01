@@ -70,9 +70,10 @@ const Carrinho = () => {
                         </ul>
                         {carrinho.quantidade > 1 ? <p className='total-itens'>Total ({carrinho.quantidade} itens): <span>{carrinho.total}</span></p> :<p className='total-itens'>Total ({carrinho.quantidade} item): <span className='cifrao-baixo'>R$</span>{carrinho.total}</p>}
                     </div>
+
                     <div className='endereco etapa'> 
                         <h2 className='textoCarrinho'>Endereço</h2>
-                        <input type="text" placeholder='Insira o seu endereço' className="input-address"/>
+                        <input type="text" placeholder='Insira o seu endereço' className="input-address" required/>
                     </div>
 
                     <div className='pagamento etapa'> 
@@ -83,7 +84,7 @@ const Carrinho = () => {
                         <button className='botaoCancelar' onClick={()=>{navigate("/home")}}>
                             Cancelar
                         </button>
-                            <button className='botaoConfirmar' onClick={() => {
+                            <button type="submit" className='botaoConfirmar' onClick={() => {
                                 navigate(`/compraEfetuada`, { state: carrinho });
                                 handleCompraFinalizada();
                             }}> 
@@ -91,6 +92,7 @@ const Carrinho = () => {
                         </button>
                     </div>
                 </form>
+
             </div>
             <Menu/>
         </div>  

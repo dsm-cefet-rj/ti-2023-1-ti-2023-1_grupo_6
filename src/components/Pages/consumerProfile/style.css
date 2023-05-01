@@ -4,13 +4,6 @@
     font-weight: bold;
 }
 
-.pic-user {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
-
 .form-pic-username {
     display: flex;
     flex-direction: column;
@@ -18,15 +11,6 @@
     margin-top: 50px;
 }
 
-.input-pic {
-    display: none;
-    margin-top: 20px;
-}
-
-.profile-pic {
-    width: 90px !important;
-    height: 90px !important;
-}
 
 .user-text {
     color: #000000;

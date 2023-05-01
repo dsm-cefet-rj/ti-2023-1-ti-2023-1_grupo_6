@@ -11,6 +11,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
 
   const handleLogin = () => {
     if(!email || !password ){
@@ -27,7 +29,6 @@ const Login = () => {
     navigate("/home");
   };
 
-  //oi oi oi 
 
   return (
     <div className="App-login">
@@ -73,6 +74,7 @@ const Login = () => {
               value="Acessar" 
               onClick={handleLogin}
             />
+             {message && <div className="message">{message}</div>} 
 
             <div className="options">
                 <p onClick={() => {navigate("/LoginEstabelecimento")}}>Entrar como Loja</p>

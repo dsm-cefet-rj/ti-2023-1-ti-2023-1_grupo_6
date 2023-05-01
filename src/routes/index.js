@@ -26,6 +26,7 @@ import AddSection from '../components/Pages/AddSection/index.js'
 import AddProducts from '../components/Pages/AddProducts/index.js'
 import LoginEstabelecimento from '../components/Pages/LoginEstabelecimento/index.js';
 import PedidosAndamento from '../components/Pages/pedidoEmAndamento/index.js';
+import HomeLoja from '../components/Pages/homeLoja/index.js'
 
 const Private = ({ Item }) => {
     const { signed } = useAuth();
@@ -46,6 +47,7 @@ const RoutesApp = () => {
                     <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento/>}/>
                     <Route path="*" element={<Login/>}/>
                     <Route path="/home" element={<Private Item={Home}/>}/>
+                    <Route path="/homeLoja" element={<HomeLoja/>}/>
                     <Route path="/carrinho" element={<Private Item = {Carrinho}/>}/>
                     <Route path="/registrar/usuario" element={<UserRegistration/>}/>
                     <Route path="/opcao/registrar" element={<OptionRegistration/>}/>
@@ -59,8 +61,8 @@ const RoutesApp = () => {
                     <Route path="/hamsters" element={<Private Item = {Hamsters}/>}/>
                     <Route path="/coelho" element={<Private Item = {Rabbit}/>}/>
                     <Route path="/compraEfetuada" element={<Private Item = {CompraFinalizada}/>}/>
-                    <Route path="/pedidos-em-andamento" element={<PedidosAndamento/>}/>
-                    <Route path="/pedidos" element={<Pedidos/>}/>
+                    <Route path="/pedidos-em-andamento" element={<Private Item = {PedidosAndamento}/>}/>
+                    <Route path="/pedidos" element={<Private Item = {Pedidos}/>}/>
                     <Route path="/adicionar/secao" element={<AddSection/>}/>
                     <Route path="/adicionar/produto" element={<AddProducts/>}/>
                     {initialState.map((loja) => (
