@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './style.css';
-import blueIcon from '../../../assets/blueIcon.png';
+import HeaderLoja from '../HeaderLoja';
+import useAuth from '../../../hooks/useAuth';
 
 
 const AddProducts = () => {
@@ -9,20 +10,47 @@ const AddProducts = () => {
   const [nameProduct, setProduct] = useState("");
   const [price, setPrice] = useState("");
   const [section, setSection] = useState("");
+  const [id, setId] = useState("");
+  const { signUpProduct } = useAuth();
+  const [error, setError] = useState("");
 
+  const handleSignUp = () => {
+    if(!nameProduct || !price || !id || !section ){
+      setError("Preencha todos os campos");
+      return;
+    } 
+
+  const res = signUpProduct(id, nameProduct, price, section);
+    if(res) {
+      setError(res);
+      return;
+    }
+    alert("Produto criado com sucesso!");
+    navigate("/homeLoja");
+  };
 
   return (
     <div className="product-registration">
-      <div id='Logo'>
-        <img src={blueIcon} alt="logo"/>
-      </div>
+      <HeaderLoja/>
 
       <div className='Registration'>
 
-        <div className="camp">
-          <h2 className='Title'>Cadastro de produto</h2>
+<form>
+        <div className="product-box">
+          <h2>Cadastro de produto</h2>
 
-          <div id='infos'>
+          <div id='infos-product'>
+            <label id='input-description'>Id do produto: </label>
+            <input 
+            id='input-info' 
+            type="text" 
+            placeholder="Digite o id do produto"
+            value={id}
+            onChange={(e) => [setId(e.target.value)]}
+            />
+          </div>
+
+          <div id='infos-product'>
             <label id='input-description'>Nome do produto: </label>
             <input 
             id='input-info' 
@@ -33,11 +61,11 @@ const AddProducts = () => {
             />
           </div>
 
-          <div id='infos'>
+          <div id='infos-product'>
             <label id='input-description' >Valor: </label>
             <input 
-            id='cpf' 
-            type="cpf" 
+            id='input-info' 
+            type="number" 
             placeholder="Digite o preço do produto"
             value={price}
             onChange={(e) => [setPrice(e.target.value)]}
@@ -46,24 +74,24 @@ const AddProducts = () => {
 
         
 
-          <div id='infos'>
+          <div id='infos-product'>
             <label id='input-description'>Seção do produto: </label>
             <input 
             id='input-info' 
-            type="email" 
+            type="text" 
             placeholder="Digite a secao"
             value={section}
             onChange={(e) => [setSection(e.target.value)]}
             />
           </div>
           
-          
-          <div id='Buttons'>
-            <button id='Voltar' onClick={()=>{navigate("/Home")}}>Voltar</button>
-            <button id='Confirmar' type="submit">Confirmar</button>
+
+          <div className='button-product'>
+            <button className='confirmar' type="submit" onClick = {handleSignUp}>Confirmar</button>
           </div>
 
         </div>
+</form>
 
       </div>
 

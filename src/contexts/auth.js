@@ -93,6 +93,29 @@ export const AuthProvider = ({ children }) => {
             }
         });
     };
+
+    const signInStore = (cnpj, password) => {
+        UserInformation.getAll().then((result)=>{
+            if(result instanceof ApiException){
+                setMessage(result.message);
+            }else{
+                const hasUser = result?.filter((user) => user.cnpj === cnpj);
+        
+                if(hasUser?.length){
+                    if(hasUser[0].cnpj === cnpj && hasUser[0].password === password) {
+                        const token = Math.random().toString(36).substring(2);
+                        localStorage.setItem("user_token", JSON.stringify({ cnpj, token }));
+                        setUser({ cnpj, password });
+                        return;
+                    } else {
+                        setMessage("cnpj ou senha incorretos");
+                    }
+                } else {
+                    setMessage("Usuário não cadastrado");
+                }
+            }
+        });
+    };
     
     const signUp = (email, password, name, cpf,bornDate) => {
         UserInformation.getAll().then((result)=>{
@@ -113,6 +136,56 @@ export const AuthProvider = ({ children }) => {
                     };
                     UserInformation.create(newUser);
                     setMessage("Usuário criado com sucesso");
+                }
+            }
+        });
+    }
+
+    const signUpStore = (cnpj, nome, email, animaisAtendidos, cep, endereco, url, contato, password) => {
+        UserInformation.getAll().then((result)=>{
+            if(result instanceof ApiException){
+                setMessage(result.message);
+            }else{
+                const hasUser = result?.filter((user) => user.cnpj === cnpj);
+        
+                if(hasUser?.length){
+                    setMessage("Já existe uma conta cadastrada com esse e-mail");
+                } else{
+                    let newUser= {
+                        cnpj: cnpj,
+                        nome: nome,
+                        animaisAtendidos: animaisAtendidos,
+                        cep: cep,
+                        endereco: endereco,
+                        url: url,
+                        contato: contato,
+                        password: password,
+                    };
+                    UserInformation.create(newUser);
+                    setMessage("Usuário criado com sucesso");
+                }
+            }
+        });
+    }
+
+    const signUpProduct = (id, nameProduct, price, section) => {
+        UserInformation.getAll().then((result)=>{
+            if(result instanceof ApiException){
+                setMessage(result.message);
+            }else{
+                const hasUser = result?.filter((user) => user.id === id);
+        
+                if(hasUser?.length){
+                    setMessage("Esse produto já foi cadastrado");
+                } else{
+                    let newUser= {
+                        id: id,
+                        nameProduct: nameProduct,
+                        price: price,
+                        section: section,
+                    };
+                    UserInformation.create(newUser);
+                    setMessage("Produto criado com sucesso");
                 }
             }
         });
@@ -167,7 +240,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
     <AuthContext.Provider
-        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount } }
+        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore, signUpProduct } }
     >
         {children}
     </AuthContext.Provider>
