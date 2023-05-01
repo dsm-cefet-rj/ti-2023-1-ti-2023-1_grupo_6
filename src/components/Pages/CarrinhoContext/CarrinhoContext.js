@@ -5,6 +5,7 @@ export const CarrinhoContext = createContext();
 let quantProdutos = 0;
 const CarrinhoContextProvider = ({ children }) => {
     const [carrinho, setCarrinho] = useState({produtos: [], quantidade: 0, total: 0.0});
+    
     const adicionarProdutoCarrinho = (produto) => {
       const novoCarrinho = {...carrinho, produtos: [...carrinho.produtos]};
       const totalProdutos = novoCarrinho.produtos.reduce((total, p) => total + p.quantidade, 0);
@@ -76,9 +77,13 @@ const CarrinhoContextProvider = ({ children }) => {
     setCarrinho(novoCarrinho);
   }
 
+  const compraFinalizada = () => {
+    setCarrinho({produtos: [], quantidade: 0, total: 0.0}); // limpa o carrinho
+  }
+
   return (
     <CarrinhoContext.Provider
-      value={{ carrinho, adicionarProdutoCarrinho, removerProdutoCarrinho, totalAPagar, quantProdutos }}
+      value={{ carrinho, adicionarProdutoCarrinho, removerProdutoCarrinho, totalAPagar, quantProdutos, compraFinalizada  }}
     >
       {children}
     </CarrinhoContext.Provider>

@@ -12,7 +12,7 @@ const Carrinho = () => {
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { carrinho } = useContext(CarrinhoContext);
-    const { adicionarProdutoCarrinho, removerProdutoCarrinho } = useContext(CarrinhoContext);
+    const { adicionarProdutoCarrinho, removerProdutoCarrinho, compraFinalizada } = useContext(CarrinhoContext);
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -33,6 +33,10 @@ const Carrinho = () => {
 
     const handleRemoverProduto = (produtoId) => {
         removerProdutoCarrinho(produtoId);
+    };
+
+    const handleCompraFinalizada = () => {
+        compraFinalizada();
     };
 
 
@@ -81,6 +85,7 @@ const Carrinho = () => {
                         </button>
                             <button className='botaoConfirmar' onClick={() => {
                                 navigate(`/compraEfetuada`, { state: carrinho });
+                                handleCompraFinalizada();
                             }}> 
                             Finalizar Compra
                         </button>
