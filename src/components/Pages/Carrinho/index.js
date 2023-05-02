@@ -73,7 +73,7 @@ const Carrinho = () => {
 
                     <div className='endereco etapa'> 
                         <h2 className='textoCarrinho'>Endereço</h2>
-                        <input type="text" placeholder='Insira o seu endereço' className="input-address" required/>
+                        <input type="text" placeholder='Insira o seu endereço' className="input-address" required title="Por favor, preencha o endereço"/>
                     </div>
 
                     <div className='pagamento etapa'> 
