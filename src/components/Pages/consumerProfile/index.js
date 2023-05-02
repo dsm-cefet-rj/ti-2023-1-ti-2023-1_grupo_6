@@ -17,12 +17,6 @@ const ConsumerProfile = () => {
     const navigate = useNavigate();
     const { limparCarrinho } = useContext(CarrinhoContext);
 
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        //enviar imagem para o servidor
-    }
-
     const handleLimparCarrinho = () => {
         limparCarrinho();
     };
@@ -69,9 +63,9 @@ const ConsumerProfile = () => {
             {isScreenWideEnough && <Header />}
             </div>
 
-            <h1 className="profile-title">Meu Perfil {user.name}</h1>
+            <h1 className="profile-title">Meu Perfil</h1>
 
-            <form onSubmit={handleSubmit} className='form-pic-username'>
+            <form className='form-pic-username'>
                 <text className='user-text'>conta: {user.email}</text>
             </form>
 
