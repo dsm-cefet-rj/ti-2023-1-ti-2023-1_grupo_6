@@ -102,7 +102,7 @@ const Home = () => {
             <Link to={`/loja/${loja.id}`}>
               <div className="lojsa">
                   <p>{loja.img}</p>
-                  <h2>{loja.nome}</h2>
+                  <h4>{loja.nome}</h4>
               </div>
             </Link>
           </div>

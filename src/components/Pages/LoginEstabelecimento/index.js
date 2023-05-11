@@ -3,13 +3,18 @@ import whiteIcon from "../../../assets/whiteIcon.png";
 import "./../Login/style.css";
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
+import { LojaContext } from "../../../contexts/LojasContext.jsx"
+import { useContext } from "react";
+
 let urlLoja;
 const LoginEstabelecimento = () => {
   const { signUpStore } = useAuth();
   const navigate = useNavigate();
-  const [lojx, setLojx] = useState(
-    JSON.parse(localStorage.getItem("lojx")) || []
-  ); // recupera o lojx do Local Storage
+  const { allLojas } = useContext(LojaContext);
+  // const [lojx, setLojx] = useState(
+  //   JSON.parse(localStorage.getItem("lojx")) || []
+  // ); // recupera o lojx do Local Storage
+  const lojx = allLojas().filter((loja) => loja.cnpj === cnpj);
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -34,7 +39,6 @@ const LoginEstabelecimento = () => {
     urlLoja = lojxEncontrada.url;
     localStorage.setItem("urlLoja", urlLoja); // define a urlLoja no Local Storage
     navigate(`/loja/estabelecimento${lojxEncontrada.url}`);
-    console.log("to aquiii");
   };
 
   return (

@@ -5,13 +5,16 @@ import { useContext } from "react";
 import bag from "../../../assets/bag.svg";
 import blueIcon from "../../../assets/blueIcon.png";
 import "./style.css";
-
+import { Link} from "react-router-dom";
+import { LojaContext } from '../../../contexts/LojasContext';
 const MenuWeb = () => {
   const navigate = useNavigate();
   const { carrinho } = useContext(CarrinhoContext);
+  const [lojaAtual, setLojaAtual] = useState(null);
   const [lojas, setLojas] = useState([]);
+  const { allLojas } = useContext(LojaContext);
   const [searchTerm, setSearchTerm] = useState("");
-  const lojasFiltradas = lojas.filter(
+  const lojasFiltradas = allLojas().filter(
     (loja) => loja.nome.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
   );
 
@@ -29,22 +32,19 @@ const MenuWeb = () => {
       <nav className="menu-nav menu-home-profile">
         <ul className="nav-ul">
           <li>
-            <a href="#" onClick={() => navigate("/home")}>
-              Início
-            </a>
+            <Link to="/home">
+                Início
+            </Link>
           </li>
           <li>
-            <a href="#" onClick={() => navigate("/perfil")}>
+            <Link to="/perfil">
               Perfil
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
-              onClick={() => navigate("/pedidos", { state: carrinho })}
-            >
+            <Link to="/pedidos">
               Pedidos
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -59,38 +59,20 @@ const MenuWeb = () => {
           onChange={handleSearch}
         />
 
-        {searchTerm && lojasFiltradas.length > 0 && (
-          <ul className="search-results" style={{ listStyle: "none" }}>
-            {lojasFiltradas.map((loja) => (
-              <li key={loja.id}>
-                <h3
-                  class="categorias-filtro"
-                  onClick={() => {
-                    if (loja) {
-                      navigate(`/loja${loja.url}`, {
-                        state: {
-                          loja: {
-                            nome: loja.nome,
-                            avaliacao: loja.avaliacao,
-                            animais_atendidos: loja.animais_atendidos,
-                            endereco: loja.endereco,
-                            contato: loja.contato,
-                            url: loja.url,
-                          },
-                          lojaId: loja.url,
-                        },
-                      });
-                    }
-                  }}
-                >
-                  {loja.nome}
-                </h3>
-                {/* <a href={`/home/lojas/servicos${loja.url}`}>
-                        </a> */}
-              </li>
-            ))}
-          </ul>
-        )}
+      {searchTerm && lojasFiltradas.length > 0 && lojaAtual !== lojasFiltradas[0].id && (
+        <ul className="search-results" style={{ listStyle: "none" }}>
+          {lojasFiltradas.map((loja) => (
+            <li key={loja.id}>
+              {loja && (
+                <Link to={`/loja/${loja.id}`}>
+                  <h3 className="categorias-filtro">{loja.nome}</h3>
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
         {/* http://localhost:3000/home/lojas/servicos/loja-gato-pra-cachorro-pet-shop
     http://localhost:3000/home/lojas/servicos/loja-gato-pra-cachorro-pet-shop */}
       </div>
