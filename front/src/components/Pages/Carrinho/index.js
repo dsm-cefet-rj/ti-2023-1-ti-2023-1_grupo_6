@@ -6,13 +6,13 @@ import Header from '../Header/index.js';
 import Menu from "../menu/index.js"
 import React from 'react';
 import  { useContext } from 'react';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 
 const Carrinho = () => {
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { carrinho } = useContext(CarrinhoContext);
-    const { adicionarProdutoCarrinho, removerProdutoCarrinho, limparCarrinho } = useContext(CarrinhoContext);
+    const { adicionarProdutoCarrinho, removerProdutoCarrinho, compraFinalizada } = useContext(CarrinhoContext);
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -35,8 +35,8 @@ const Carrinho = () => {
         removerProdutoCarrinho(produtoId);
     };
 
-    const handleLimparCarrinho = () => {
-        limparCarrinho();
+    const handleCompraFinalizada = () => {
+        compraFinalizada();
     };
 
 
@@ -73,7 +73,7 @@ const Carrinho = () => {
 
                     <div className='endereco etapa'> 
                         <h2 className='textoCarrinho'>Endereço</h2>
-                        <input type="text" placeholder='Insira o seu endereço' className="input-address" required title="Por favor, preencha o endereço"/>
+                        <input type="text" placeholder='Insira o seu endereço' className="input-address" required/>
                     </div>
 
                     <div className='pagamento etapa'> 
@@ -86,7 +86,7 @@ const Carrinho = () => {
                         </button>
                             <button type="submit" className='botaoConfirmar' onClick={() => {
                                 navigate(`/compraEfetuada`, { state: carrinho });
-                                handleLimparCarrinho();
+                                handleCompraFinalizada();
                             }}> 
                             Finalizar Compra
                         </button>

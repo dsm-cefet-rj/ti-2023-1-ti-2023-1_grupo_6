@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import whiteIcon from '../../../assets/whiteIcon.png';
-import './../Login/style.css';
-import { useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from "react-router-dom";
+import whiteIcon from "../../../assets/whiteIcon.png";
+import "./../Login/style.css";
+import { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -13,82 +13,96 @@ const Login = () => {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
-
-  const handleLogin = () => {
-    if(!email || !password ){
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
       setError("Preencha todos os campos");
       return;
     }
-  const res = signIn(email, password);
+    const res = signIn(email, password);
 
-    if(res) {
+    if (res) {
       setError(res);
       return;
     }
-    
+
     navigate("/home");
   };
 
-
   return (
     <div className="App-login">
-      <img src={whiteIcon} alt="logo"/>
+      <img src={whiteIcon} alt="logo" />
 
       <div className="login">
-
         <form className="form-login">
-            <h2 className="name-login">login Cliente</h2>
-            <div className="acess-inputs">
-              <div className="acess">
-                <label htmlFor="name" className="userName">Email</label>
-                  <input
-                    required
-                    value = {email}
-                    id="name"
-                    type="email"
-                    name="user"
-                    placeholder="Usuário"
-                    onChange={(e) => [setEmail(e.target.value), setError("")]}
-                  />
-              </div>
-
-              <div className="acess">
-                <label htmlFor="password" className="password">Senha</label>
-                  <input
-                    required
-                    value = {password}
-                    id="password"
-                    type="password"
-                    name="password"
-                    placeholder="Senha"
-                    onChange={(e) => [setPassword(e.target.value), setError("")]}
-                  />
-              </div>
-
-              {error && <labelErro className='error-message-signin'>{error}</labelErro>}
-            </div>
-          
-          <div className="clicks">
-            <input className="enviar-login" 
-              type="submit" 
-              value="Acessar" 
-              onClick={handleLogin}
-            />
-             {message && <div className="message">{message}</div>} 
-
-            <div className="options">
-                <p onClick={() => {navigate("/LoginEstabelecimento")}}>Entrar como Loja</p>
-                <p onClick={() => {navigate("/opcao/registrar")}}>Cadastre-se</p>
+          <h2 className="name-login">login Cliente</h2>
+          <div className="acess-inputs">
+            <div className="acess">
+              <label htmlFor="name" className="userName">
+                Email
+              </label>
+              <input
+                required
+                value={email}
+                id="name"
+                type="email"
+                name="user"
+                placeholder="Usuário"
+                onChange={(e) => [setEmail(e.target.value), setError("")]}
+              />
             </div>
 
+            <div className="acess">
+              <label htmlFor="password" className="password">
+                Senha
+              </label>
+              <input
+                required
+                value={password}
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Senha"
+                onChange={(e) => [setPassword(e.target.value), setError("")]}
+              />
+            </div>
+
+            {error && (
+              <labelErro className="error-message-signin">{error}</labelErro>
+            )}
           </div>
 
+          <div className="clicks">
+            <button
+              className="enviar-login"
+              type="submit"
+              onClick={handleLogin}
+            >
+              Acessar
+            </button>
+            {message && <div className="message">{message}</div>}
+
+            <div className="options">
+              <p
+                onClick={() => {
+                  navigate("/LoginEstabelecimento");
+                }}
+              >
+                Entrar como Loja
+              </p>
+              <p
+                onClick={() => {
+                  navigate("/opcao/registrar");
+                }}
+              >
+                Cadastre-se
+              </p>
+            </div>
+          </div>
         </form>
-
       </div>
-
-    </div>  
+    </div>
   );
-}
+};
 
 export default Login;

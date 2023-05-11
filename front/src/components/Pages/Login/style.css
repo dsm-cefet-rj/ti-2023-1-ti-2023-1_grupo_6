@@ -15,7 +15,7 @@ h1 {
   font-weight: bold;
   text-align: center;
   justify-content: center;
-  background-color: #04ABAB;
+  background-color: #04abab;
   width: 100%;
   overflow: auto;
 }
@@ -41,7 +41,6 @@ h1 {
   text-transform: uppercase;
 }
 
-
 .acess-inputs {
   position: relative;
   top: 30px;
@@ -59,7 +58,7 @@ input {
   max-width: 100%;
   border-radius: 7px;
   border: 0;
-  background-color: #B6E0EC;
+  background-color: #b6e0ec;
 }
 
 .acess input {
@@ -77,26 +76,34 @@ input:focus {
   width: 54.5%;
   position: relative;
   top: 45px;
-}
-
-input[type='submit'] {
+  background-color: #ff8802;
+  border-radius: 7px;
+  height: 35px;
+  border: 0;
+  cursor: pointer;
   color: #ffff;
   font-size: 18px;
-  font-family: 'Baloo 2';
+  font-weight: bold;
+}
+
+input[type="submit"] {
+  color: #ffff;
+  font-size: 18px;
+  font-family: "Baloo 2";
   margin: 25px;
   border: 0;
   height: 40px;
   border-radius: 7px;
-  background-color: #FF8802;
+  background-color: #ff8802;
   cursor: pointer;
 }
 
-input[type='submit']:hover {
+input[type="submit"]:hover {
   background-color: #fe972f;
 }
 
-input[type='checkbox']+label::before {
-  content: '';
+input[type="checkbox"] + label::before {
+  content: "";
   position: absolute;
   left: 10px;
   bottom: 10px;
@@ -112,7 +119,7 @@ input[type='checkbox']+label::before {
 }
 
 .login .clicks {
-  position:relative ;
+  position: relative;
   top: 30px;
 }
 

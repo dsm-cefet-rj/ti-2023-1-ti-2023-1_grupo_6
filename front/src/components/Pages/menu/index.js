@@ -3,6 +3,7 @@ import './style.css';
 import profile from '../../../assets/profile.svg';
 import home from '../../../assets/home.svg';
 import bag from '../../../assets/bag.svg';
+import { Link} from "react-router-dom";
 
 const Menu = () => {
     const navigate = useNavigate()
@@ -11,16 +12,28 @@ const Menu = () => {
             <div className="buttons-menu">
                 <button className='profileButton'>
                     <img src={profile} alt="perfil" className="img-perfil"/>
-                    <label className='text perfiltext' onClick={()=>{navigate("/perfil")}}>Perfil</label>
+                    <Link to="/perfil">
+                        <label className='text perfiltext'>
+                            Perfil
+                        </label>
+                    </Link>
                 </button>
                 <button className='homeButton'>
                     <img src={home} alt="inicio" className="img-home"/>
-                    <label className='text inicio' onClick={()=>{navigate("/Home")}}>Início</label>
+                    <Link to="/home">
+                        <label className='text inicio' >
+                        Início
+                        </label>
+                    </Link>
                 </button>
 
-                <button className='bagButton' onClick={()=>{navigate("/carrinho")}}>
+                <button className='bagButton'>
                     <img src={bag} alt="carrinho" className="img-bag"/>
-                    <label className='text carrinho'>Carrinho</label>
+                    <Link to="/carrinho">
+                        <label className='text carrinho'>
+                            Carrinho
+                        </label>
+                    </Link>
                 </button>
             </div>
         </div>  
