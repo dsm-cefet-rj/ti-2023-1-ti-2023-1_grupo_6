@@ -4,7 +4,7 @@ import './style.css';
 import Header from '../Header/index.js';
 import { useLocation } from 'react-router-dom';
 import  { useContext } from 'react';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import { useNavigate } from 'react-router-dom';
 import PedidosAndamento from "../pedidoEmAndamento";
 const renderProdutos = (props) =>{

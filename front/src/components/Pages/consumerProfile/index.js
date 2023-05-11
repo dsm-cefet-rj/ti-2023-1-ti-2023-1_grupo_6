@@ -7,7 +7,6 @@ import Menu from "../menu/index.js";
 import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
 import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
 import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
 
 const ConsumerProfile = () => {
     const { user } = useAuth();
@@ -15,11 +14,12 @@ const ConsumerProfile = () => {
     const { signOut } = useAuth();
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
-    const { limparCarrinho } = useContext(CarrinhoContext);
+    
 
-    const handleLimparCarrinho = () => {
-        limparCarrinho();
-    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        //enviar imagem para o servidor
+    }
 
     async function handleDelete(emailUser) {
         const result = await confirmDelete();
@@ -36,13 +36,9 @@ const ConsumerProfile = () => {
         console.log(result);
         if(result === true) {
             signOut();
-            handleLimparCarrinho();
             navigate("/")
         } 
     }
-
-
-
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -63,9 +59,9 @@ const ConsumerProfile = () => {
             {isScreenWideEnough && <Header />}
             </div>
 
-            <h1 className="profile-title">Meu Perfil</h1>
+            <h1 className="profile-title">Meu Perfil {user.name}</h1>
 
-            <form className='form-pic-username'>
+            <form onSubmit={handleSubmit} className='form-pic-username'>
                 <text className='user-text'>conta: {user.email}</text>
             </form>
 

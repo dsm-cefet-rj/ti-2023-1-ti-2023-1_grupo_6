@@ -1,14 +1,13 @@
-import { useSelector } from 'react-redux';
 import './style.css';
 import React from 'react';
 import Header from '../Header/index.js';
 import Navbar from '../navbar/index.js';
 import Menu from "../menu/index.js";
 import { useContext } from 'react';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext';
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext';
 
 const Rabbit = () => {
-    const produtos = useSelector((state) => state.produtos) ?? [];
+    const [produtos, setProdutos] = useContext([]); // [produtos, setProdutos
     const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
 

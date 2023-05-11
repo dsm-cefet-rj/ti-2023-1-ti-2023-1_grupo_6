@@ -3,7 +3,7 @@ import finalizado from '../../../assets/finalizado.png';
 import sinalmenor from '../../../assets/sinal-menor.png';
 import { useNavigate } from 'react-router-dom';
 import  { useContext } from 'react';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 
 const CompraFinalizada = () => {
     const { carrinho } = useContext(CarrinhoContext);
