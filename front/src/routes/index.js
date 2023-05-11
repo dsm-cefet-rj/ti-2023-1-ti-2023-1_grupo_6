@@ -46,6 +46,7 @@ const RoutesApp = () => {
                 <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento />} />
                 <Route path="*" element={<Login />} />
                 <Route path="/home" element={<Private Item={Home} />} />
+                <Route path="/homeLoja" element={<Private Item={HomeLoja} />} />
                 <Route path="/carrinho" element={<Private Item={Carrinho} />} />
                 <Route path="/registrar/usuario" element={<UserRegistration />} />
                 <Route path="/opcao/registrar" element={<OptionRegistration />} />
