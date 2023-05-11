@@ -11,77 +11,78 @@ import Header from "../Header/index.js";
 import Menu from "../menu/index.js";
 import mostrarConfirmacao from "../../../utils/confirmacao-compra";
 import { LojaContext } from "../../../contexts/LojasContext";
+
 const Lojas = () => {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
-  const { buscasLoja } = useContext(LojaContext);
-  const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
-  const [carrinho, setCarrinho] = useState([]);
-  const [exibirIframe, setExibirIframe] = useState(false);
-  const [nome, setNome] = useState("");
-  const [animais_atendidos, setAnimais_atendidos] = useState("");
-  const [contato, setContato] = useState("");
-  const [avaliacao, setAvaliacao] = useState("");
-  const [endereco, setEndereco] = useState("");
-  const [img, setImg] = useState(null);
-  const [image, setImage] = useState(null);
-  const [descricao, setDescricao] = useState("");
-  const [produtosArray, setProdutosArray] = useState([]);
-  const produtos = useSelector((state) => state.produtos) ?? [];
-  React.useEffect(() => {
-    // const handleResize = () => {
-    //   setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
-    // };
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
+    const { buscasLoja } = useContext(LojaContext);
+    const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+    const [carrinho, setCarrinho] = useState([]);
+    const [exibirIframe, setExibirIframe] = useState(false);
+    const [nome, setNome] = useState("");
+    const [animais_atendidos, setAnimais_atendidos] = useState("");
+    const [contato, setContato] = useState("");
+    const [avaliacao, setAvaliacao] = useState("");
+    const [endereco, setEndereco] = useState("");
+    const [img, setImg] = useState(null);
+    const [image, setImage] = useState(null);
+    const [descricao, setDescricao] = useState("");
+    const [produtosArray, setProdutosArray] = useState([]);
+    const produtos = useSelector((state) => state.produtos) ?? [];
+    React.useEffect(() => {
+        // const handleResize = () => {
+        //   setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
+        // };
 
-    const {
-      nome,
-      animais_atendidos,
-      contato,
-      avaliacao,
-      endereco,
-      img,
-      image,
-      descricao,
-      produtosArray,
-    } = buscasLoja(id);
+        const {
+        nome,
+        animais_atendidos,
+        contato,
+        avaliacao,
+        endereco,
+        img,
+        image,
+        descricao,
+        produtosArray,
+        } = buscasLoja(id);
 
-    setNome(nome);
-    setAnimais_atendidos(animais_atendidos);
-    setContato(contato);
-    setAvaliacao(avaliacao);
-    setEndereco(endereco);
-    setImg(img);
-    setImage(image);
-    setDescricao(descricao);
-    setProdutosArray(produtos);
+        setNome(nome);
+        setAnimais_atendidos(animais_atendidos);
+        setContato(contato);
+        setAvaliacao(avaliacao);
+        setEndereco(endereco);
+        setImg(img);
+        setImage(image);
+        setDescricao(descricao);
+        setProdutosArray(produtos);
 
-  }, []);
+    }, []);
 
-  
-  React.useEffect(() => {
-    const handleResize = () => {
-        setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
+    
+    React.useEffect(() => {
+        const handleResize = () => {
+            setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
+        };
+
+        handleResize(); // define a largura da tela na montagem inicial do componente
+        window.addEventListener('resize', handleResize); // adiciona um listener para o evento de redimensionamento da tela
+        return () => {
+            window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
+        };
+        },
+    []);
+
+    const getProdutosByCategoria = (categoria, produtos) => {
+        return produtos.filter((produto) => produto.categoria === categoria);
     };
 
-    handleResize(); // define a largura da tela na montagem inicial do componente
-    window.addEventListener('resize', handleResize); // adiciona um listener para o evento de redimensionamento da tela
-      return () => {
-        window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
-      };
-    },
-  []);
+    const handleAdicionarProduto = (produto) => {
+        adicionarProdutoCarrinho(produto);
+        setExibirIframe(true);
+    };
 
-  const getProdutosByCategoria = (categoria, produtos) => {
-    return produtos.filter((produto) => produto.categoria === categoria);
-  };
-
-  const handleAdicionarProduto = (produto) => {
-    adicionarProdutoCarrinho(produto);
-    setExibirIframe(true);
-  };
-
-  return (
+    return (
     <div>
             <div className='services-lojas'>
             {isScreenWideEnough && <Header />}

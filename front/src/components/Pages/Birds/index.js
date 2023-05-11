@@ -1,4 +1,5 @@
 import "./style.css";
+import React from "react";
 import Header from "../Header/index.js";
 import Nav from "../navbar/index.js";
 import { useContext } from "react";
@@ -6,7 +7,7 @@ import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import Menu from "../menu/index.js";
 
 const Birds = () => {
-  const [produtos, setProdutos] = useContext(CarrinhoContext); // [produtos, setProdutos
+  const [produtos, setProdutos] = React.useState([]); // [produtos, setProdutos
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
 
   const handleAdicionarProduto = (produto) => {

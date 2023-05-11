@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext';
 
 const Rabbit = () => {
-    const [produtos, setProdutos] = useContext([]); // [produtos, setProdutos
+    const [produtos, setProdutos] = React.useState([]);// [produtos, setProdutos
     const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
 

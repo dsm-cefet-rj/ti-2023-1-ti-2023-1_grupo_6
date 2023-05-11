@@ -30,49 +30,49 @@ import  store  from "../store";
 import { Provider } from 'react-redux';
 
 const Private = ({ Item }) => {
-    const { signed } = useAuth();
+  const { signed } = useAuth();
 
-    return signed > 0 ? <Item/> : <Login/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
+  return signed > 0 ? <Item/> : <Login/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
 };
 
 
 const RoutesApp = () => {
-    return (
-        <HashRouter>  
-        <Provider store={store}>
-            <LojaProvider>
-            <CarrinhoContextProvider>
-                <Fragment>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento />} />
-                    <Route path="*" element={<Login />} />
-                    <Route path="/home" element={<Private Item={Home} />} />
-                    <Route path="/carrinho" element={<Private Item={Carrinho} />} />
-                    <Route path="/registrar/usuario" element={<UserRegistration />} />
-                    <Route path="/opcao/registrar" element={<OptionRegistration />} />
-                    <Route path="/menu" element={<Private Item={Menu} />} />
-                    <Route path="/lojas" element={<Private Item={Lojas} />} />
-                    <Route path="/perfil" element={<Private Item={ConsumerProfile} />}/>
-                    <Route path="/registrar/estabelecimento" element={<ShopRegistration />}/>
-                    <Route path="/passaros" element={<Private Item={Birds} />} />
-                    <Route path="/gatos" element={<Private Item={Cats} />} />
-                    <Route path="/cachorros" element={<Private Item={Dogs} />} />
-                    <Route path="/hamsters" element={<Private Item={Hamsters} />} />
-                    <Route path="/coelho" element={<Private Item={Rabbit} />} />
-                    <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />}/>
-                    <Route path="/pedidos" element={<Private Item={Pedidos} />} />
-                    <Route path="/adicionar/secao" element={<AddSection />} />
-                    <Route path="/adicionar/produto" element={<AddProducts />} />
-                    <Route path="/loja/:id" element={<LojaDetalhes />} />
-                    <Route path="/adicionarLoja" element={AdicionarLoja} />
-                </Routes>
-                </Fragment>
-            </CarrinhoContextProvider>
-            </LojaProvider>
-        </Provider>
-        </HashRouter>
-    );
+  return (
+    <HashRouter>  
+      <Provider store={store}>
+        <LojaProvider>
+          <CarrinhoContextProvider>
+            <Fragment>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento />} />
+                <Route path="*" element={<Login />} />
+                <Route path="/home" element={<Private Item={Home} />} />
+                <Route path="/carrinho" element={<Private Item={Carrinho} />} />
+                <Route path="/registrar/usuario" element={<UserRegistration />} />
+                <Route path="/opcao/registrar" element={<OptionRegistration />} />
+                <Route path="/menu" element={<Private Item={Menu} />} />
+                <Route path="/lojas" element={<Private Item={Lojas} />} />
+                <Route path="/perfil" element={<Private Item={ConsumerProfile} />}/>
+                <Route path="/registrar/estabelecimento" element={<ShopRegistration />}/>
+                <Route path="/passaros" element={<Private Item={Birds} />} />
+                <Route path="/gatos" element={<Private Item={Cats} />} />
+                <Route path="/cachorros" element={<Private Item={Dogs} />} />
+                <Route path="/hamsters" element={<Private Item={Hamsters} />} />
+                <Route path="/coelho" element={<Private Item={Rabbit} />} />
+                <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />}/>
+                <Route path="/pedidos" element={<Private Item={Pedidos} />} />
+                <Route path="/adicionar/secao" element={<AddSection />} />
+                <Route path="/adicionar/produto" element={<AddProducts />} />
+                <Route path="/loja/:id" element={<LojaDetalhes />} />
+                <Route path="/adicionarLoja" element={AdicionarLoja} />
+              </Routes>
+            </Fragment>
+          </CarrinhoContextProvider>
+        </LojaProvider>
+      </Provider>
+    </HashRouter>
+  );
 };
 
 export default RoutesApp;
