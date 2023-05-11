@@ -5,10 +5,11 @@ import Navbar from "../navbar/index.js";
 import Menu from "../menu/index.js";
 import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
-
+import { PContext } from "../../../contexts/p";
 const Cats = () => {
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+  const { allProdutos } = useContext(PContext)
   const [produtos, setProdutos] = React.useState([]);
 
   const handleAdicionarProduto = (produto) => {
@@ -32,7 +33,7 @@ const Cats = () => {
       <h1>Produtos para Gato</h1>
       <section className="produtos-cats">
         <ul className="ul-produtos-cats">
-          {produtos
+          {allProdutos()
             .filter((p) => p.animal === "gato")
             .map((p) => (
               <li key={p.id}>

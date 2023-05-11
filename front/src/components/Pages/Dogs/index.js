@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import React from "react";
 import Menu from "../menu/index.js";
+import { PContext } from "../../../contexts/p";
 
 const Dogs = () => {
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
@@ -13,6 +14,8 @@ const Dogs = () => {
   const handleAdicionarProduto = (produto) => {
     adicionarProdutoCarrinho(produto);
   };
+  const { allProdutos } = useContext(PContext)
+
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -32,7 +35,7 @@ const Dogs = () => {
       <section className="produtos-dogs">
         <h1>Produtos para Cachorro</h1>
         <ul className="ul-produtos-dogs">
-          {produtos
+          {allProdutos()
             .filter((p) => p.animal === "cachorro")
             .map((p) => (
               <li key={p.id}>
