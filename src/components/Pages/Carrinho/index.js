@@ -6,7 +6,7 @@ import Header from '../Header/index.js';
 import Menu from "../menu/index.js"
 import React from 'react';
 import  { useContext } from 'react';
-import { CarrinhoContext } from '../CarrinhoContext/CarrinhoContext.js';
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 
 const Carrinho = () => {
     const navigate = useNavigate();

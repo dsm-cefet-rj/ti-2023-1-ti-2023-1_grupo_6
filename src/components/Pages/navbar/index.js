@@ -1,20 +1,30 @@
-import './style.css'
-import { useNavigate } from 'react-router-dom';
+import "./style.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    return (
-        <div className="navbar">
-            <ul className = "ul-navbar">
-                <li><a href="#" onClick={() => {navigate("/coelho")}}>Coelho</a></li>
-                <li><a href="#" onClick={() => {navigate("/gatos")}}>Gato</a></li>
-                <li><a href="#" onClick={() => {navigate("/cachorros")}}>Cachorro</a></li>
-                <li><a href="#" onClick={() => {navigate("/passaros")}}>Pássaros</a></li>
-                <li><a href="#" onClick={() => {navigate("/lojas")}}>Lojas</a></li>
-            </ul>
-        </div>
-    );
+  return (
+    <div className="navbar">
+      <ul className="ul-navbar">
+        <li>
+          <Link to="/coelho">Coelho</Link>
+        </li>
+        <li>
+          <Link to="/gatos">Gato</Link>
+        </li>
+        <li>
+          <Link to="/cachorros">Cachorro</Link>
+        </li>
+        <li>
+          <Link to="/passaros">Pássaros</Link>
+        </li>
+        <li>
+          <Link to="/lojas">Lojas</Link>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 export default Navbar;

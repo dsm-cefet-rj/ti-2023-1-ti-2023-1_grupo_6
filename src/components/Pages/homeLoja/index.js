@@ -1,18 +1,21 @@
-import React from 'react'
-import './style.css';
-import HeaderLoja from '../HeaderLoja'
-import useAuth from '../../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import "./style.css";
+import HeaderLoja from "../HeaderLoja";
+import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
-export default function HomeLoja() {
-    const { user } = useAuth();
-    const navigate = useNavigate();
-
-    return (
-    
-        <div className='homeLoja'>
-        <HeaderLoja/>
-        <h2 className='teste'>dsads</h2>
-        </div>
-    )
+export default function HomeLoja({ nome, produtos }) {
+  const { user } = useAuth();
+  const [lojx, setLojx] = React.useState([]);
+  const navigate = useNavigate();
+  const urlLoja = localStorage.getItem("urlLoja"); // recupera a urlLoja do Local Storage
+  console.log(lojx);
+  const lojxComUrl = lojx.filter((loja) => loja.url === urlLoja);
+  const lojxEncontrada = lojxComUrl[0];
+  return (
+    <div className="homeLoja">
+      <HeaderLoja />
+      <h1>{lojxEncontrada.nome}</h1>
+    </div>
+  );
 }
