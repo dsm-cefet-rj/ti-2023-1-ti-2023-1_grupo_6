@@ -73,7 +73,7 @@ const RoutesApp = () => {
                             nome={loja.nome}
                             animais_atendidos={loja.animais_atendidos}
                             contato={loja.contato}
-                            avaliacao={loja.avaliacao}
+                            avaliacaso={loja.avaliacao}
                             endereco={loja.endereco}
                             img={loja.img}
                             image={loja.image}
