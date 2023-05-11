@@ -26,8 +26,7 @@ import LoginEstabelecimento from "../components/Pages/LoginEstabelecimento/index
 import PedidosAndamento from "../components/Pages/pedidoEmAndamento/index.js";
 import HomeLoja from "../components/Pages/homeLoja/index.js";
 import { LojaProvider } from "../contexts/LojasContext.jsx";
-import { Provider } from 'react-redux';
-import { PProvider  } from "../contexts/p.jsx";
+import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
 const Private = ({ Item }) => {
   const { signed } = useAuth();
 
@@ -38,7 +37,7 @@ const Private = ({ Item }) => {
 const RoutesApp = () => {
   return (
     <HashRouter>  
-        <PProvider>
+        <ProdutosProvider>
         <LojaProvider>
           <CarrinhoContextProvider>
             <Fragment>
@@ -69,7 +68,7 @@ const RoutesApp = () => {
             </Fragment>
           </CarrinhoContextProvider>
         </LojaProvider>
-        </PProvider>
+        </ProdutosProvider>
     </HashRouter>
   );
 };

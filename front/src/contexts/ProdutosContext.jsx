@@ -181,9 +181,9 @@ const initialState = [{
     img: roupapassaro
 }, ];
 
-export const ProdutoContext = createContext();
+export const ProdutosContext = createContext();
 
-export const ProdutoProvider = ({ children }) => {
+export const ProdutosProvider = ({ children }) => {
     const [produtos, setProdutos] = useState(initialState);
 
     const allProdutos = () => {
@@ -191,8 +191,8 @@ export const ProdutoProvider = ({ children }) => {
     };
 
     return (
-        <ProdutoContext.Provider value={{ allProdutos }}>
+        <ProdutosContext.Provider value={{ allProdutos }}>
             {children}
-        </ProdutoContext.Provider>
+        </ProdutosContext.Provider>
     );
 }

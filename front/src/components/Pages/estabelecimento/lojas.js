@@ -2,7 +2,6 @@ import React from "react";
 import "./style2.css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from 'react-redux';
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext.js";
@@ -11,52 +10,38 @@ import Header from "../Header/index.js";
 import Menu from "../menu/index.js";
 import mostrarConfirmacao from "../../../utils/confirmacao-compra";
 import { LojaContext } from "../../../contexts/LojasContext";
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Lojas = () => {
     const navigate = useNavigate();
+    const { buscasLoja } = useContext(LojaContext);
     const { id } = useParams();
     const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
-    const { buscasLoja } = useContext(LojaContext);
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
-    const [carrinho, setCarrinho] = useState([]);
     const [exibirIframe, setExibirIframe] = useState(false);
     const [nome, setNome] = useState("");
     const [animais_atendidos, setAnimais_atendidos] = useState("");
     const [contato, setContato] = useState("");
-    const [avaliacao, setAvaliacao] = useState("");
     const [endereco, setEndereco] = useState("");
-    const [img, setImg] = useState(null);
-    const [image, setImage] = useState(null);
-    const [descricao, setDescricao] = useState("");
-    const [produtosArray, setProdutosArray] = useState([]);
-    const produtos = useSelector((state) => state.produtos) ?? [];
+    const { allProdutos } = useContext(ProdutosContext);
+
+    
     React.useEffect(() => {
-        // const handleResize = () => {
-        //   setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
-        // };
+        const handleResize = () => {
+          setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
+        };
 
         const {
         nome,
         animais_atendidos,
         contato,
-        avaliacao,
         endereco,
-        img,
-        image,
-        descricao,
-        produtosArray,
         } = buscasLoja(id);
 
         setNome(nome);
         setAnimais_atendidos(animais_atendidos);
         setContato(contato);
-        setAvaliacao(avaliacao);
         setEndereco(endereco);
-        setImg(img);
-        setImage(image);
-        setDescricao(descricao);
-        setProdutosArray(produtos);
-
     }, []);
 
     
@@ -92,7 +77,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Saúde</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Saúde', produtos).map((produto) => (
+                    {getProdutosByCategoria('Saúde', allProdutos()).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -105,10 +90,11 @@ const Lojas = () => {
                     ))}
                 </ul>
             </section>
+            
             <section className="animais-promocoes-loja1">
                 <h3>Promoções</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Promoções', produtos).map((produto) => (
+                    {getProdutosByCategoria('Promoções', allProdutos()).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -128,7 +114,7 @@ const Lojas = () => {
             <section className="animais-servicos-loja1">
                 <h3>Diversão</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Diversão', produtos).map((produto) => (
+                    {getProdutosByCategoria('Diversão', allProdutos()).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -144,7 +130,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Alimentação</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Alimentacao', produtos).map((produto) => (
+                    {getProdutosByCategoria('Alimentacao', allProdutos()).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -160,7 +146,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Conforto</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Conforto', produtos).map((produto) => (
+                    {getProdutosByCategoria('Conforto', allProdutos()).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -176,7 +162,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Atrativos</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Atrativos', produtos).map((produto) => (
+                    {getProdutosByCategoria('Atrativos', allProdutos()).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">

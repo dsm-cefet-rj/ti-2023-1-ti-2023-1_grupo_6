@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import React from "react";
 import Menu from "../menu/index.js";
-import { PContext } from "../../../contexts/p";
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Dogs = () => {
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
@@ -14,7 +14,7 @@ const Dogs = () => {
   const handleAdicionarProduto = (produto) => {
     adicionarProdutoCarrinho(produto);
   };
-  const { allProdutos } = useContext(PContext)
+  const { allProdutos } = useContext(ProdutosContext)
 
 
   React.useEffect(() => {

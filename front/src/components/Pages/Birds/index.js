@@ -5,11 +5,11 @@ import Nav from "../navbar/index.js";
 import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import Menu from "../menu/index.js";
-import { PContext } from "../../../contexts/p";
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Birds = () => {
   const [produtos, setProdutos] = React.useState([]); // [produtos, setProdutos
-  const { allProdutos } = useContext(PContext);
+  const { allProdutos } = useContext(ProdutosContext);
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
 
   const handleAdicionarProduto = (produto) => {

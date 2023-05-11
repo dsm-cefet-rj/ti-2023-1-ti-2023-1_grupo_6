@@ -5,11 +5,11 @@ import Navbar from "../navbar/index.js";
 import Menu from "../menu/index.js";
 import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
-import { PContext } from "../../../contexts/p";
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 const Cats = () => {
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
-  const { allProdutos } = useContext(PContext)
+  const { allProdutos } = useContext(ProdutosContext)
   const [produtos, setProdutos] = React.useState([]);
 
   const handleAdicionarProduto = (produto) => {
