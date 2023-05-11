@@ -1,12 +1,15 @@
 import "./style.css";
+import React from "react";
 import Header from "../Header/index.js";
 import Nav from "../navbar/index.js";
 import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import Menu from "../menu/index.js";
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Birds = () => {
-  const [produtos, setProdutos] = useContext(CarrinhoContext); // [produtos, setProdutos
+  const [produtos, setProdutos] = React.useState([]); // [produtos, setProdutos
+  const { allProdutos } = useContext(ProdutosContext);
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
 
   const handleAdicionarProduto = (produto) => {
@@ -19,7 +22,7 @@ const Birds = () => {
       <section className="produtos-birds">
         <h1>Produtos para Pássaro</h1>
         <ul className="ul-produtos-birds">
-          {produtos
+          {allProdutos()
             .filter((p) => p.animal === "passaro")
             .map((p) => (
               <li key={p.id}>

@@ -61,13 +61,15 @@ const MenuWeb = () => {
           onChange={handleSearch}
         />
 
-      {searchTerm && lojasFiltradas.length > 0 && lojaAtual !== lojasFiltradas[0].id && (
+      {searchTerm && lojasFiltradas.length > 0 && (
         <ul className="search-results" style={{ listStyle: "none" }}>
           {lojasFiltradas.map((loja) => (
             <li key={loja.id}>
               {loja && (
                 <Link to={`/loja/${loja.id}`}>
-                  <h3 className="categorias-filtro">{loja.nome}</h3>
+                  <h3 className="categorias-filtro">
+                  {loja.nome}
+                  </h3>
                 </Link>
               )}
             </li>

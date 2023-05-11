@@ -1,25 +1,23 @@
-import {
-    createSlice
-} from '@reduxjs/toolkit';
-import catnip from "../../../src/assets/catnip-gatos.png";
-import brinquedo from "../../../src/assets/brinquedo-cat.png";
-import shampoo from "../../../src/assets/shampoo-cachorro.png";
-import racao from "../../../src/assets/racao-cachorro.png";
-import suplemento from "../../../src/assets/suplemento-gato.png";
-import roupacirurgica from "../../../src/assets/roupacirurgica-gato.png";
-import antiparasitario from "../../../src/assets/antiparasitario-gato.png";
-import comidacoelho1 from "../../../src/assets/comida-coelho.png";
-import comidacoelho2 from "../../../src/assets/comida2-coelho.png";
-import comidapassaro1 from "../../../src/assets/comida2-passaro.png";
-import comidapassaro2 from "../../../src/assets/comida3-passaro.png";
-import comidapassaro3 from "../../../src/assets/comida4-passaro.png";
-import camacachorro from "../../../src/assets/cama-cachorro.png";
-import casagato from "../../../src/assets/casa-gato.png";
-import coleiracachorro from "../../../src/assets/coleira-cachorro.png";
-import gaiolacoelho from "../../../src/assets/gaiola-coelho.png";
-import gaiolapassaro from "../../../src/assets/gaiola-passaro.png";
-import prodcoelho from "../../../src/assets/prod-coelho.png";
-import roupapassaro from "../../../src/assets/roupa-passaro.png";
+import React, { createContext, useState } from 'react';
+import catnip from "../assets/catnip-gatos.png";
+import brinquedo from "../assets/brinquedo-cat.png";
+import shampoo from "../assets/shampoo-cachorro.png";
+import racao from "../assets/racao-cachorro.png";
+import suplemento from "../assets/suplemento-gato.png";
+import roupacirurgica from "../assets/roupacirurgica-gato.png";
+import antiparasitario from "../assets/antiparasitario-gato.png";
+import comidacoelho1 from "../assets/comida-coelho.png";
+import comidacoelho2 from "../assets/comida2-coelho.png";
+import comidapassaro1 from "../assets/comida2-passaro.png";
+import comidapassaro2 from "../assets/comida3-passaro.png";
+import comidapassaro3 from "../assets/comida4-passaro.png";
+import camacachorro from "../assets/cama-cachorro.png";
+import casagato from "../assets/casa-gato.png";
+import coleiracachorro from "../assets/coleira-cachorro.png";
+import gaiolacoelho from "../assets/gaiola-coelho.png";
+import gaiolapassaro from "../assets/gaiola-passaro.png";
+import prodcoelho from "../assets/prod-coelho.png";
+import roupapassaro from "../assets/roupa-passaro.png";
 
 const initialState = [{
     nome: 'Shampoo para cachorro',
@@ -183,10 +181,18 @@ const initialState = [{
     img: roupapassaro
 }, ];
 
-const produtossSlice = createSlice({
-    name: 'produtos',
-    initialState,
-});
+export const ProdutosContext = createContext();
 
+export const ProdutosProvider = ({ children }) => {
+    const [produtos, setProdutos] = useState(initialState);
 
-export default produtossSlice.reducer;
+    const allProdutos = () => {
+        return produtos;
+    };
+
+    return (
+        <ProdutosContext.Provider value={{ allProdutos }}>
+            {children}
+        </ProdutosContext.Provider>
+    );
+}

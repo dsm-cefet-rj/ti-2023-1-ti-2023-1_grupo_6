@@ -5,11 +5,13 @@ import Navbar from '../navbar/index.js';
 import Menu from "../menu/index.js";
 import { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext';
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Rabbit = () => {
-    const [produtos, setProdutos] = useContext([]); // [produtos, setProdutos
+    const [produtos, setProdutos] = React.useState([]);// [produtos, setProdutos
     const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+    const { allProdutos } = useContext(ProdutosContext)
 
     const handleAdicionarProduto = (produto) => {
         adicionarProdutoCarrinho(produto);
@@ -35,7 +37,7 @@ const Rabbit = () => {
             <h1>Produtos para Coelho</h1>
             <section className='produtos-rabbit'>
                 <ul className="ul-produtos-rabbit">
-                    {produtos.filter(p => p.animal === 'coelho').map(p => (
+                    {allProdutos().filter(p => p.animal === 'coelho').map(p => (
                         <li key={p.id}>
                             <div>
                                 <div className='img-produtos-rabbit'>
