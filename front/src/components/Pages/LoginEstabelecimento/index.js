@@ -5,7 +5,7 @@ import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const LoginEstabelecimento = () => {
-  const { signUpStore } = useAuth();
+  const { signInStore } = useAuth();
   const navigate = useNavigate();
 
   const [cnpj, setCnpj] = useState("");
@@ -17,7 +17,7 @@ const LoginEstabelecimento = () => {
       setError("Preencha todos os campos");
       return;
     }
-  const res = signUpStore(cnpj, password);
+  const res = signInStore(cnpj, password);
 
     if(res) {
       setError(res);
@@ -42,7 +42,7 @@ const LoginEstabelecimento = () => {
                     required
                     value = {cnpj}
                     id="name"
-                    type="email"
+                    type="text"
                     name="user"
                     placeholder="Inserir CNPJ"
                     onChange={(e) => [setCnpj(e.target.value), setError("")]}
