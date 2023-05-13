@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 import { LojaContext } from '../../../contexts/LojasContext';
 
 const LoginEstabelecimento = () => {
-  const { signUpStore } = useAuth();
+  const { signInStore } = useAuth();
   const navigate = useNavigate();
   const { buscasLojaCNPJ } = useContext(LojaContext);
   const [cnpj, setCnpj] = useState("");
@@ -18,10 +18,9 @@ const LoginEstabelecimento = () => {
       setError("Preencha todos os campos");
       return;
     }
-    const res = signUpStore(cnpj, password);
-    const loja = buscasLojaCNPJ(cnpj);
-    const nome = loja.nome;
-    console.log(loja);
+
+  const res = signInStore(cnpj, password);
+
     if(res) {
       setError(res);
       return;
@@ -45,7 +44,7 @@ const LoginEstabelecimento = () => {
                     required
                     value = {cnpj}
                     id="name"
-                    type="email"
+                    type="text"
                     name="user"
                     placeholder="Inserir CNPJ"
                     onChange={(e) => [setCnpj(e.target.value), setError("")]}

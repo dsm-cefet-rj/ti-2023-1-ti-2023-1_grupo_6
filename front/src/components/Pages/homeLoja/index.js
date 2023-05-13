@@ -11,6 +11,7 @@ export default function HomeLoja() {
   const { nome } = useParams();
   const loja = buscasLojaNome(nome);
 
+
   return (
     <div className="homeLoja">
       <HeaderLoja />
