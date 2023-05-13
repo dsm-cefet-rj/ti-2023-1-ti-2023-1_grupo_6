@@ -19,11 +19,11 @@ const LoginEstabelecimento = () => {
       console.log("aqui")
       return;
     }
-    const res = signInStore(cnpj, password);
-    const loja = buscasLojaCNPJ(cnpj);
-    console.log(loja);
-    const nome = loja.nome;
-    console.log("res" + res)
+
+  const res = signInStore(cnpj, password);
+  const loja = buscasLojaCNPJ(cnpj);
+  const nome = loja.nome;
+    
     if(res) {
       console.log("res" + res)
       setError(res);
@@ -48,7 +48,7 @@ const LoginEstabelecimento = () => {
                     required
                     value = {cnpj}
                     id="name"
-                    type="email"
+                    type="text"
                     name="user"
                     placeholder="Inserir CNPJ"
                     onChange={(e) => [setCnpj(e.target.value), setError("")]}
