@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import whiteIcon from '../../../assets/whiteIcon.png';
 import './../Login/style.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import { LojaContext } from '../../../contexts/LojasContext';
 
 const LoginEstabelecimento = () => {
   const { signInStore } = useAuth();
   const navigate = useNavigate();
-
+  const { buscasLojaCNPJ } = useContext(LojaContext);
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,6 +18,7 @@ const LoginEstabelecimento = () => {
       setError("Preencha todos os campos");
       return;
     }
+
   const res = signInStore(cnpj, password);
 
     if(res) {
@@ -24,7 +26,7 @@ const LoginEstabelecimento = () => {
       return;
     }
     
-    navigate("/homeLoja");
+    navigate(`/homeLoja/${nome}`);
   };
 
   return (

@@ -13,15 +13,18 @@ nav {
 .loja-id {
     background-color: red;
     padding: 100px;
-    color: white;
-    
+    color: white;   
 }
-
 
 body {
     margin: 0;
     height: 100%;
     margin: 0;
+}
+
+.ver-mais-link {
+    color: white;
+    text-decoration: none;
 }
 
 .text-lojas {
@@ -37,35 +40,42 @@ body {
 .lojas {
     margin-inline: 20px;
     display: inline-block;
-    border-bottom: 0.2px solid #048387;
-    background-color: #B6E0EC;
+
     border-radius: 20px;
-    height: 550px;
     width: 350px;
 }
 
+.lojas-l {
+
+}
+
+.lojaImage-lojas {
+    width: 350px;
+    height: 260px;
+}
+
 .ver-mais {
-    background-color: #FF8802;
-    padding: 10px;
+    position: relative;
+    top: 57px;
     border: 0;
     border-radius: 0px 0px 20px 20px;
     cursor: pointer;
 }
 
-.ver-mais:hover {
-    background-color: #FDA94A;
-}
+.lojas:hover {
+    border-bottom: 50px solid #FDA94A;
+}    
 
 @media only screen and (max-width: 1799px) {
 
     .lojas {
         margin-bottom: 60px;
         display: inline-block;
-        border-bottom: 0.2px solid #048387;
         background-color: #B6E0EC;
         border-radius: 20px;
-        height: 550px;
         width: 350px;
+        border-bottom: 50px solid #FF8802;
     }    
+
 
 }

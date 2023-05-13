@@ -2,20 +2,20 @@ import React from "react";
 import "./style.css";
 import HeaderLoja from "../HeaderLoja";
 import useAuth from "../../../hooks/useAuth";
+import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { LojaContext } from '../../../contexts/LojasContext';
+export default function HomeLoja() {
+  const { buscasLojaNome } = useContext(LojaContext);
+  const { nome } = useParams();
+  const loja = buscasLojaNome(nome);
 
-export default function HomeLoja({ nome, produtos }) {
-  // const { user } = useAuth();
-  // const [lojx, setLojx] = React.useState([]);
-  // const navigate = useNavigate();
-  // const urlLoja = localStorage.getItem("urlLoja"); // recupera a urlLoja do Local Storage
-  // console.log(lojx);
-  // const lojxComUrl = lojx.filter((loja) => loja.url === urlLoja);
-  // const lojxEncontrada = lojxComUrl[0];
-  // return (
-  //   <div className="homeLoja">
-  //     <HeaderLoja />
-  //     <h1>{lojxEncontrada.nome}</h1>
-  //   </div>
-  // );
+
+  return (
+    <div className="homeLoja">
+      <HeaderLoja />
+      {loja.nome}
+    </div>
+  );
 }

@@ -23,14 +23,13 @@ import LojaDetalhes from "../components/Pages/estabelecimento/lojas.js";
 import AddSection from "../components/Pages/AddSection/index.js";
 import AddProducts from "../components/Pages/AddProducts/index.js";
 import LoginEstabelecimento from "../components/Pages/LoginEstabelecimento/index.js";
-import PedidosAndamento from "../components/Pages/pedidoEmAndamento/index.js";
 import HomeLoja from "../components/Pages/homeLoja/index.js";
 import { LojaProvider } from "../contexts/LojasContext.jsx";
 import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
-const Private = ({ Item }) => {
-  const { signed } = useAuth();
 
-  return signed > 0 ? <Item/> : <Login/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
+const Private = ({ Item }) => {
+  const { signed } =  useAuth();
+  return signed > 0 ? <Item/> : <Item/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
 };
 
 
@@ -46,7 +45,8 @@ const RoutesApp = () => {
                 <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento />} />
                 <Route path="*" element={<Login />} />
                 <Route path="/home" element={<Private Item={Home} />} />
-                <Route path="/homeLoja" element={<Private Item={HomeLoja} />} />
+
+                <Route path="/homeLoja/:nome" element={<Private Item={HomeLoja} />} />
                 <Route path="/carrinho" element={<Private Item={Carrinho} />} />
                 <Route path="/registrar/usuario" element={<UserRegistration />} />
                 <Route path="/opcao/registrar" element={<OptionRegistration />} />

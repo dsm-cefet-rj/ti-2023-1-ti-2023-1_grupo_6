@@ -17,7 +17,6 @@ import { LojaContext } from '../../../contexts/LojasContext';
 import { Link } from 'react-router-dom';
 import './index.css';
 const Home = () => {
-  const [lojas, setLojas] = useState([]); // define o estado inicial do componente como um array vazio
   const { allLojas } = useContext(LojaContext);
 
   const navigate = useNavigate();
@@ -98,13 +97,13 @@ const Home = () => {
           className="carousel"
         >
         {allLojas().map((loja) => (
-          <div key={loja.id}>
-            <Link to={`/loja/${loja.id}`}>
-              <div className="lojsa">
-                  <p>{loja.img}</p>
-                  <h4>{loja.nome}</h4>
+          <div key={loja.nome} className="lojas-l">
+            <Link to={`/loja/${loja.id}`} className="link-loja-name-home">
+              <img src={loja.img ? window.location.origin + `/assets/petshop${loja.nome.replace(/\s+/g, '')}.png` : window.location.origin + '/assets/petshopDefault.png'} alt="lojaImage"/>
+              <div className="nameLoja">
+                {loja.nome}
               </div>
-            </Link>
+            </Link> 
           </div>
         ))}
         </Carousel>
