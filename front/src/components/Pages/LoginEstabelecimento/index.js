@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 import { LojaContext } from '../../../contexts/LojasContext';
 
 const LoginEstabelecimento = () => {
-  const { signUpStore } = useAuth();
+  const { signInStore } = useAuth();
   const navigate = useNavigate();
   const { buscasLojaCNPJ } = useContext(LojaContext);
   const [cnpj, setCnpj] = useState("");
@@ -16,13 +16,16 @@ const LoginEstabelecimento = () => {
   const handleLogin = () => {
     if(!cnpj || !password ){
       setError("Preencha todos os campos");
+      console.log("aqui")
       return;
     }
-    const res = signUpStore(cnpj, password);
+    const res = signInStore(cnpj, password);
     const loja = buscasLojaCNPJ(cnpj);
-    const nome = loja.nome;
     console.log(loja);
+    const nome = loja.nome;
+    console.log("res" + res)
     if(res) {
+      console.log("res" + res)
       setError(res);
       return;
     }
