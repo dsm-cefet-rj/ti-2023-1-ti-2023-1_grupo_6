@@ -20,7 +20,9 @@ const LoginEstabelecimento = () => {
     }
 
   const res = signInStore(cnpj, password);
-
+  const loja = buscasLojaCNPJ(cnpj);
+  const nome = loja.nome;
+    
     if(res) {
       setError(res);
       return;
