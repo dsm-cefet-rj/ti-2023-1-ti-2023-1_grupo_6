@@ -16,6 +16,7 @@ const LoginEstabelecimento = () => {
   const handleLogin = () => {
     if(!cnpj || !password ){
       setError("Preencha todos os campos");
+      console.log("aqui")
       return;
     }
 
@@ -24,6 +25,7 @@ const LoginEstabelecimento = () => {
   const nome = loja.nome;
     
     if(res) {
+      console.log("res" + res)
       setError(res);
       return;
     }
