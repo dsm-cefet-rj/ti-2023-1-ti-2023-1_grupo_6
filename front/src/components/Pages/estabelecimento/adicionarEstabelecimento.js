@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import whiteIcon from "../../../assets/whiteIcon.png";
 import useAuth from "../../../hooks/useAuth";
 import "./style.css";
+import { LojaContext } from "../../../contexts/LojasContext";
+import petshop1 from "../../../assets/petshop1.png";
 
 function AdicionarLoja() {
   const [nome, setNome] = useState("");
@@ -19,7 +21,7 @@ function AdicionarLoja() {
   const [cep, setCep] = useState("");
   const [url, setUrl] = useState("");
   const [password, setPassword] = useState("");
-
+  const { adicionarLojas } = useContext(LojaContext);
   const { signUpStore } = useAuth();
   const navigate = useNavigate();
 
@@ -72,6 +74,18 @@ function AdicionarLoja() {
       setError(res);
       return;
     }
+    adicionarLojas({
+      cnpj,
+      nome,
+      email,
+      animaisAtendidos,
+      cep,
+      endereco,
+      url,
+      contato,
+      password
+    })
+
     alert("Usuário cadastrado com sucesso!");
     navigate("/");
   };
@@ -192,6 +206,7 @@ function AdicionarLoja() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            {error && <div className="error-message">{error}</div>}
           </div>
         </form>
       </div>
