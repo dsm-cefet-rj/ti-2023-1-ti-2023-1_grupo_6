@@ -389,6 +389,102 @@
       "cnpj": "dadasasda",
       "nome": "sas",
       "id": 24
+    },
+    {
+      "id": "dads",
+      "nameProduct": "dasda",
+      "price": "2313",
+      "section": "dsadas"
+    },
+    {
+      "id": "dasad",
+      "nameProduct": "dsadas",
+      "price": "423",
+      "section": "dsda"
+    },
+    {
+      "id": "dsfaf",
+      "nameProduct": "adfdafda",
+      "price": "3123",
+      "section": "sads"
+    },
+    {
+      "id": "45",
+      "nameProduct": "GUACAMOLE",
+      "price": "123",
+      "section": "CHORO"
+    },
+    {
+      "id": "56",
+      "nameProduct": "opa",
+      "price": "134",
+      "section": "CHORO"
+    },
+    {
+      "id": "dfadfa",
+      "nameProduct": "fdfafdafdsf",
+      "price": "31231312",
+      "section": "dsfdasfa"
+    },
+    {
+      "id": "67",
+      "nameProduct": "BOLACHA",
+      "price": "765",
+      "section": "CHORO"
+    },
+    {
+      "id": "gr6456",
+      "nameProduct": "trgtrg",
+      "price": "342",
+      "section": "gtrgrt"
+    },
+    {
+      "id": "65",
+      "nameProduct": "PASTEL DE NUTELLA PARA GATOS",
+      "price": "98",
+      "section": "DELICIA"
+    },
+    {
+      "id": "ovdRicw",
+      "nameProduct": "PASTEL DE NUTELLA PARA GATOS",
+      "price": "98",
+      "section": "DELICIA HUMM"
+    },
+    {
+      "id": "e1d8_7J",
+      "nameProduct": "GFDGDF",
+      "price": "34",
+      "section": "DSFSDFS"
+    },
+    {
+      "id": "UKfGipS",
+      "nameProduct": "DSFSDFSDSD",
+      "price": "342",
+      "section": "43"
+    },
+    {
+      "id": "UmLaL2T",
+      "nameProduct": "PASTEL DE NUTELLA PARA GATOS",
+      "price": "8786",
+      "section": "CHORO"
+    },
+    {
+      "id": "LQLVQxa",
+      "nameProduct": "PAO DE ALHO PARA PASSARO",
+      "price": "456",
+      "section": "DELICIA HUMM"
+    },
+    {
+      "id": "6UI1ujR",
+      "nameProduct": "ROUPA DE MORANGUINHO PARA CALOPSITA",
+      "price": "150.77",
+      "section": "Atrativos"
+    },
+    {
+      "id": "8LXOnoI",
+      "nameProduct": "GATO FOFO",
+      "price": "67.80",
+      "section": "Atrativos"
     }
   ],
   "carrinho": [

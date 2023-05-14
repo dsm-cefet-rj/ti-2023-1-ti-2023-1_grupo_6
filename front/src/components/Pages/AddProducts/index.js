@@ -1,32 +1,50 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './style.css';
 import HeaderLoja from '../HeaderLoja';
 import useAuth from '../../../hooks/useAuth';
+import { ProdutosContext } from '../../../contexts/ProdutosContext';
+import { useParams } from "react-router-dom";
+import { LojaContext } from '../../../contexts/LojasContext';
 
 
 const AddProducts = () => {
   const navigate = useNavigate();
-  const [nameProduct, setProduct] = useState("");
-  const [price, setPrice] = useState("");
-  const [section, setSection] = useState("");
-  const [id, setId] = useState("");
+  const [nome, setProduct] = useState("");
+  const [valor, setValor] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [idProdutos, setIdProdutos] = useState("");
   const { signUpProduct } = useAuth();
   const [error, setError] = useState("");
+  const { adicionarProdutos } = useContext(ProdutosContext);
+  const { allProdutos } = useContext(ProdutosContext);
+  const { id } = useParams();
+  const { buscasLoja } = useContext(LojaContext);
 
   const handleAddProduct = () => {
-    if(!nameProduct || !price || !id || !section ){
+    if(!nome || !valor || !categoria ){
       setError("Preencha todos os campos");
       return;
     } 
 
-  const res = signUpProduct(id, nameProduct, price, section);
+    const res = signUpProduct(idProdutos, nome, valor, categoria);
     if(res) {
       setError(res);
       return;
     }
+    const loja = buscasLoja(id);
+    const lojaId = loja.id;
+    adicionarProdutos({
+    idProdutos,
+    valor,
+    nome,
+    categoria,
+    lojaId,
+    img: idProdutos
+    })
+    console.log(allProdutos());
     alert("Produto criado com sucesso!");
-    navigate("/homeLoja");
+    navigate(`/homeLoja/${loja.nome}`);
   };
 
   return (
@@ -44,9 +62,9 @@ const AddProducts = () => {
             <input 
             id='input-info' 
             type="text" 
-            placeholder="Digite o id do produto"
-            value={id}
-            onChange={(e) => [setId(e.target.value)]}
+            placeholder="Digite o idProdutos do produto"
+            value={idProdutos}
+            onChange={(e) => [setIdProdutos(e.target.value)]}
             />
           </div>
 
@@ -56,7 +74,7 @@ const AddProducts = () => {
             id='input-info' 
             type="text" 
             placeholder="Digite o nome do produto"
-            value={nameProduct}
+            value={nome}
             onChange={(e) => [setProduct(e.target.value)]}
             />
           </div>
@@ -67,8 +85,8 @@ const AddProducts = () => {
             id='input-info' 
             type="number" 
             placeholder="Digite o preço do produto"
-            value={price}
-            onChange={(e) => [setPrice(e.target.value)]}
+            value={valor}
+            onChange={(e) => [setValor(e.target.value)]}
             />
           </div>
 
@@ -80,8 +98,8 @@ const AddProducts = () => {
             id='input-info' 
             type="text" 
             placeholder="Digite a secao"
-            value={section}
-            onChange={(e) => [setSection(e.target.value)]}
+            value={categoria}
+            onChange={(e) => [setCategoria(e.target.value)]}
             />
           </div>
           

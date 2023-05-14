@@ -18,6 +18,7 @@ import gaiolacoelho from "../assets/gaiola-coelho.png";
 import gaiolapassaro from "../assets/gaiola-passaro.png";
 import prodcoelho from "../assets/prod-coelho.png";
 import roupapassaro from "../assets/roupa-passaro.png";
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = [{
     nome: 'Shampoo para cachorro',
@@ -178,25 +179,28 @@ const initialState = [{
     valor: '100,00',
     promocao: 'Não há promoção disponível para este produto.',
     categoria: 'Atrativos',
-    img: roupapassaro
 }, ];
 
 export const ProdutosContext = createContext();
 
 export const ProdutosProvider = ({ children }) => {
-    const [produtos, setProdutos] = useState(initialState);
+    const [produtos, setProdutos] = useState(() => {
+        const localData = localStorage.getItem("produtos");
+        return localData ? JSON.parse(localData) : initialState;
+    });
+    
+    const adicionarProdutos = (produto) => {
+        produto = { id: uuidv4(), ...produto };
+        setProdutos([...produtos, produto]);
+        localStorage.setItem("produtos", JSON.stringify([...produtos, produto]));
+    };
 
-    // const adicionarProdutos = (loja, produto) => {
-    //     const novaLoja = { id: uuidv4(), ...loja };
-    //     setProdutos([...loja, produto]);
-    //     localStorage.setItem("lojas", JSON.stringify([...lojas, novaLoja]));
-    // };
     const allProdutos = () => {
         return produtos;
     };
 
     return (
-        <ProdutosContext.Provider value={{ allProdutos }}>
+        <ProdutosContext.Provider value={{ allProdutos, adicionarProdutos }}>
             {children}
         </ProdutosContext.Provider>
     );

@@ -1,3 +1,21 @@
-.homeLoja{
-    color: red !important;
+html , body{
+    color:black !important;
+}
+
+.infos-lojas-home {
+    color: black;
+}
+
+.produtos-adicionados-na-loja {
+    color: black;
+}
+
+.link-products {
+    color: #048387;
+    text-decoration: none;
+}
+
+.disabled-link {
+    color: #FF8802;
+
 }

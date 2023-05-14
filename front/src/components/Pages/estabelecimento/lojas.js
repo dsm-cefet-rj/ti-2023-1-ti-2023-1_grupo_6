@@ -75,6 +75,22 @@ const Lojas = () => {
             <h1>{nome}</h1>
             <p>{animais_atendidos}, {endereco}, {contato}</p>
             <section className="animais-compras-loja1">
+                <h3>Adicionados Recentemente</h3>
+                <ul className="ul-loja">
+                    {allProdutos().filter(produto => id === produto.lojaId).map((produto) => (
+                        <li key={produto.nome}>
+                        <img src={produto.img} alt={produto.nome} />
+                            <div className="paragrafo-vendas">
+                                <p>{produto.nome}</p>
+                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                            </div>
+                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
+                            }} className='button-comprar-servicos'/>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+            <section className="animais-compras-loja1">
                 <h3>Saúde</h3>
                 <ul className="ul-loja">
                     {getProdutosByCategoria('Saúde', allProdutos()).map((produto) => (

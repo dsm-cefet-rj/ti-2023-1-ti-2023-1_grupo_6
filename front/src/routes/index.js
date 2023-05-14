@@ -62,7 +62,7 @@ const RoutesApp = () => {
                 <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />}/>
                 <Route path="/pedidos" element={<Private Item={Pedidos} />} />
                 <Route path="/adicionar/secao" element={<AddSection />} />
-                <Route path="/adicionar/produto" element={<AddProducts />} />
+                <Route path="/adicionar/produto/:id" element={<AddProducts />} />
                 <Route path="/loja/:id" element={<LojaDetalhes />} />
                 <Route path="/adicionarLoja" element={AdicionarLoja} />
               </Routes>
