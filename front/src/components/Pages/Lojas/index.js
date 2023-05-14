@@ -23,7 +23,7 @@ const Lojas = () => {
             {/* <div className="text-lojas">{loja.image}</div> */}
             <h2 className="text-lojas text-loja-individual">{loja.nome}</h2>
             <h3 className="text-lojas text-loja-individual">
-              {loja.animais_atendidos}
+              {loja.animaisAtendidos}
             </h3>
             <h3 className="text-lojas text-loja-individual">{loja.endereco}</h3>
             <h3 className="text-lojas text-loja-individual">{loja.contato}</h3>

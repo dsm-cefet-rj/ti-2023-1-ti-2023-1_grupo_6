@@ -28,8 +28,9 @@ html {
 .error-message-signup {
     color: rgb(255, 0, 0);
     font-size: 15px;
-    position: fixed;
-    bottom: 0px;
+    position: relative;
+    top: 75%;
+    right: 0%;
     width: 100%;
     display: flex;
     justify-content: center;

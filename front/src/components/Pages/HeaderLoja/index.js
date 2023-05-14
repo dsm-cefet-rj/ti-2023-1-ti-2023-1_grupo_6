@@ -1,15 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import blueIcon from "../../../assets/blueIcon.png";
 import "./style.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const HeaderLoja = ({ lj }) => {
+const HeaderLoja = ({ lj, id }) => {
+  const [nomeDaLoja, setNomeDaLoja] = useState("");
+  const [IdDaLoja, setIdDaLoja] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("nomeDaLoja", lj);
-  }, [lj]);
+    if (lj && id) {
+      localStorage.setItem("nomeDaLoja", lj);
+      localStorage.setItem("IdDaLoja", id);
+      setNomeDaLoja(lj);
+      setIdDaLoja(id);
+    }
+  }, [lj, id]);
 
-  const nomeDaLoja = localStorage.getItem("nomeDaLoja");
+  const storedNomeDaLoja = localStorage.getItem("nomeDaLoja");
+  const storedIdDaLoja = localStorage.getItem("IdDaLoja");
 
   return (
     <div className="app-menu-web">
@@ -19,14 +27,20 @@ const HeaderLoja = ({ lj }) => {
       <nav className="menu-nav menu-home-profile">
         <ul className="nav-ul">
           <li>
-            <Link to={`/homeLoja/${nomeDaLoja}`}>Início</Link>
+          {storedNomeDaLoja || nomeDaLoja ? (
+            <Link to={`/homeLoja/${storedNomeDaLoja || nomeDaLoja}`} className="link-products">  Início</Link>
+            ) : (
+              <span className="disabled-link">Início</span>
+          )}
           </li>
           <li>
             <Link to={`/perfil`}>Perfil</Link>
           </li>
-          <li>
-            <Link to={`/adicionar/produto`}>Produtos</Link>
-          </li>
+          {IdDaLoja ? (
+              <Link to={`/adicionar/produto/${IdDaLoja}`} className="link-products">Produtos</Link>
+            ) : (
+              <span className="disabled-link">Produtos</span>
+          )}
         </ul>
       </nav>
     </div>

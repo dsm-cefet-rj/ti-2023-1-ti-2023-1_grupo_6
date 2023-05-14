@@ -8,15 +8,54 @@ import useAuth from '../../../hooks/useAuth';
 const UserRegistration = () => {
   const { signUp } = useAuth();
   const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const [date, setDate] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-  const [image, setImage] = useState("");
   const [error, setError] = useState("");
+
+  function validarCpf(cpf) {
+    cpf = cpf.replace(/[^\d]+/g,''); // remover caracteres que não são números
+    
+    if(cpf === '') return false;
+    
+    // Verificar se tem 11 dígitos
+    if (cpf.length !== 11) return false;
+    
+    // Verificar se todos os dígitos são iguais
+    var igual = true;
+    for (var i = 1; i < 11 && igual; i++) {
+      if (cpf[i] !== cpf[0]) igual = false;
+    }
+    if (igual || cpf === "12345678909") return false;
+    
+    // Validar o primeiro dígito verificador
+    var soma = 0;
+    for (var i = 0; i < 9; i++) {
+      soma += parseInt(cpf.charAt(i)) * (10 - i);
+    }
+    var resto = 11 - (soma % 11);
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.charAt(9))) return false;
+    
+    // Validar o segundo dígito verificador
+    soma = 0;
+    for (var i = 0; i < 10; i++) {
+      soma += parseInt(cpf.charAt(i)) * (11 - i);
+    }
+    resto = 11 - (soma % 11);
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.charAt(10))) return false;
+    
+    // Se chegou até aqui, o CPF é válido
+    return true;
+  }
+
+  function validatePassword(password) {
+    return password.length >= 8;
+  }
 
   const handleSignUp = () => {
     if(!name || !cpf || !date || !email || !password || !passwordConf ){
@@ -25,21 +64,27 @@ const UserRegistration = () => {
     } else if(password !== passwordConf) {
       setError("As senhas não são iguais");
       return;
-    }
+    } else if(!validatePassword(password)) {
+      setError("A senha deve contém pelo menos 8 caracteres.")
+    } 
 
+  if(validarCpf(cpf)) {
   const res = signUp(email, password,name,cpf,date);
     if(res) {
       setError(res);
       return;
     }
-    alert("Usuário cadastrado com sucesso!");
-    navigate("/");
+      navigate("/");
+  }
+    else {
+      alert("CPF inválido");
+    }
   };
 
   return (
     <div className="app-user-registration">
     <div className="user-registration">
-      <img src={whiteIcon}/>
+      <img src={whiteIcon} alt="icon-petfast"/>
             <form className="form-user-registration">
                 <h2 className="name-user-registration">Cadastro de Consumidor</h2>
                 <div className="access-inputs">
@@ -65,7 +110,7 @@ const UserRegistration = () => {
                         <label htmlFor="cnpj" className="cnpj-label">
                             CPF:
                         </label>
-                        <input type="cpf" placeholder="Digite o CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+                        <input type="text" name="ao_cpf" id="ao_cpf" placeholder="Digite o CPF" value={cpf} onChange={(e) => setCpf(e.target.value)}/>
                     </div>
                     <div className="access acess-shop">
                         <label htmlFor="url" className="url-label">
