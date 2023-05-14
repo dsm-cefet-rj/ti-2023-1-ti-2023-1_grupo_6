@@ -52,11 +52,7 @@ h1 {
     text-transform: uppercase;
 }
 
-.access-inputs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
+
 
 .access {
     flex-basis: calc(28% - 5px);
@@ -65,7 +61,6 @@ h1 {
 .access-shop-inputs {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
 .access-shop {
@@ -160,7 +155,7 @@ input[type='checkbox']:checked::after {
 
 .botao-estabelecimento-adicionar {
     position: relative;
-    bottom: 60px;
+    bottom: 0px;
     background-color: #FF8802;
     color: #ffff;
     width: 200px;

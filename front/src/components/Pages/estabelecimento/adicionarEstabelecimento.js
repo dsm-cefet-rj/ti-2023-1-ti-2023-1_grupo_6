@@ -4,13 +4,11 @@ import whiteIcon from "../../../assets/whiteIcon.png";
 import useAuth from "../../../hooks/useAuth";
 import "./style.css";
 import { LojaContext } from "../../../contexts/LojasContext";
-import petshop1 from "../../../assets/petshop1.png";
 
 function AdicionarLoja() {
   const [nome, setNome] = useState("");
   const [animaisAtendidos, setAnimaisAtendidos] = useState("");
   const [contato, setContato] = useState("");
-  const [avaliacao, setAvaliacao] = useState("");
   const [endereco, setEndereco] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [img, setImg] = useState("");
@@ -78,6 +76,7 @@ function AdicionarLoja() {
       cnpj,
       nome,
       email,
+      descricao,  
       animaisAtendidos,
       cep,
       endereco,
@@ -171,17 +170,6 @@ function AdicionarLoja() {
                 placeholder="Digite o endereço"
                 value={endereco}
                 onChange={(e) => setEndereco(e.target.value)}
-              />
-            </div>
-            <div className="access access-shop">
-              <label htmlFor="url" className="url-label">
-                URL:
-              </label>
-              <input
-                type="text"
-                placeholder="Digite a URL da loja"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
               />
             </div>
             <div className="access access-shop">
