@@ -19,6 +19,7 @@ const MenuWeb = () => {
   const lojasFiltradas = allLojas().filter(
     (loja) => loja.nome.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
   );
+  const { quantidadeTotalItens } = useContext(CarrinhoContext);
 
   const handleSearch = (event) => {
     const value = event.target.value;
@@ -91,7 +92,7 @@ const MenuWeb = () => {
               }}
             >
               <p className="quant-itens-carrinho" style={{ fontSize: "15px" }}>
-                {carrinho.quantidade}
+                {quantidadeTotalItens}
               </p>
               <img src={bag} alt="carrinho" className="img-bag" />
             </Link>

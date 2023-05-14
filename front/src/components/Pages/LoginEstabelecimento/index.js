@@ -23,9 +23,7 @@ const LoginEstabelecimento = () => {
     const loja = buscasLojaCNPJ(cnpj);
     console.log(loja);
     const nome = loja.nome;
-    console.log("res" + res)
     if(res) {
-      console.log("res" + res)
       setError(res);
       return;
     }

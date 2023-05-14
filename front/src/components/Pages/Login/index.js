@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import whiteIcon from "../../../assets/whiteIcon.png";
 import "./../Login/style.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,7 +24,6 @@ const Login = () => {
       setError(res);
       return;
     }
-
     navigate("/home");
   };
 

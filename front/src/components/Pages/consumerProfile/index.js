@@ -7,6 +7,7 @@ import Menu from "../menu/index.js";
 import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
 import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
 import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
+import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 
 const ConsumerProfile = () => {
     const { user } = useAuth();
@@ -14,7 +15,6 @@ const ConsumerProfile = () => {
     const { signOut } = useAuth();
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
-    
 
     const handleSubmit = (event) => {
         event.preventDefault();

@@ -3,11 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 const initialState = [
     {
+        cnpj: "66735931",
+        id: "1",
         nome: "Gato pra Cachorro Pet Shop",
         animais_atendidos: "Gato • Cachorro • Coelho • Hamster",
         contato: "(21) 9 999-9999",
         endereco: "Avenida Gato Fofo, 164",
-        id: "1",
         descricao: "loja!",
         url: "/loja-gato-pra-cachorro-pet-shop",
         produtos: [
@@ -20,6 +21,7 @@ const initialState = [
         ],
     },
     {
+        cnpj: "23131931",
         id: "2",
         nome: "Cachorro Pet Shop",
         animais_atendidos: "Cachorro • Coelho • Hamster",
@@ -59,6 +61,7 @@ export const LojaProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("lojas", JSON.stringify(lojas));
     }, [lojas]);
+    
     const adicionarLojas = (loja) => {
         const novaLoja = { id: uuidv4(), ...loja };
         setLojas([...lojas, novaLoja]);

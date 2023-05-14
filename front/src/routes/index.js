@@ -29,7 +29,7 @@ import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
 
 const Private = ({ Item }) => {
   const { signed } =  useAuth();
-  return signed > 0 ? <Item/> : <Item/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
+  return signed > 0 ? <Item/> : <Login/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
 };
 
 

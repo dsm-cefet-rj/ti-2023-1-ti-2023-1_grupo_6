@@ -379,6 +379,16 @@
       "contato": "dasdas",
       "password": "asdasda",
       "id": 22
+    },
+    {
+      "cnpj": "dsadsa",
+      "nome": "dsada",
+      "id": 23
+    },
+    {
+      "cnpj": "dadasasda",
+      "nome": "sas",
+      "id": 24
     }
   ],
   "carrinho": [

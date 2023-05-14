@@ -16,9 +16,9 @@ import { useContext } from 'react';
 import { LojaContext } from '../../../contexts/LojasContext';
 import { Link } from 'react-router-dom';
 import './index.css';
+
 const Home = () => {
   const { allLojas } = useContext(LojaContext);
-
   const navigate = useNavigate();
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
   const getItemsToShow = () => {
@@ -30,7 +30,7 @@ const Home = () => {
       return 1;
     }
   };
-
+  
   React.useEffect(() => {
     const handleResize = () => {
       setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -42,7 +42,7 @@ const Home = () => {
       window.removeEventListener("resize", handleResize); // remove o listener do evento de redimensionamento da tela
     };
   }, []);
-
+//"asdada"
   return (
     <div className="App-home">
       <img src={blueIcon} alt="logo" className="img-blueIcon logo-home" />
@@ -102,6 +102,7 @@ const Home = () => {
               <img src={loja.img ? window.location.origin + `/assets/petshop${loja.nome.replace(/\s+/g, '')}.png` : window.location.origin + '/assets/petshopDefault.png'} alt="lojaImage"/>
               <div className="nameLoja">
                 {loja.nome}
+                
               </div>
             </Link> 
           </div>
