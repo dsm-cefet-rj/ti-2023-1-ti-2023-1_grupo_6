@@ -100,3 +100,54 @@ html {
 .confirmar:hover {
     background-color: #FDA94A
 }
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    left: 9px;
+    border: none;
+    border-radius: 0;
+    background-color: #B6E0EC;
+    padding: 10px 40px 10px 10px;
+    font-size: 16px;
+    width: 94%;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+.form-group select::-ms-expand {
+    display: none;
+}
+
+.form-group:after {
+    content: "\25bc";
+    font-size: 16px;
+    color: #FF8802;
+    pointer-events: none;
+    position: absolute;
+    top: 70%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.form-group select:focus {
+    outline: none;
+    background-color: #B6E0EC;
+}
+
+.form-group select:focus+label,
+.form-group select:not(:placeholder-shown)+label {
+    transform: translateY(-25px) scale(0.75);
+    color: #FF8802;
+}

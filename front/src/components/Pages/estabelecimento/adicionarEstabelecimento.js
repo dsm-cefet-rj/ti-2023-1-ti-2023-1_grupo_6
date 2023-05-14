@@ -50,8 +50,7 @@ function AdicionarLoja() {
       !password ||
       !contato ||
       !endereco ||
-      !cep ||
-      !url
+      !cep
     ) {
       setError("Preencha todos os campos");
       return;

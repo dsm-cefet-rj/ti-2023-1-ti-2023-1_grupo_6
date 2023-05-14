@@ -1,5 +1,13 @@
-html , body{
-    color:black !important;
+.homeLoja-infos {
+    background-color: #B6E0EC;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    color: black;
+}
+
+.homeLoja-infos h1 {
+    margin: 0;
 }
 
 .infos-lojas-home {
@@ -18,4 +26,7 @@ html , body{
 .disabled-link {
     color: #FF8802;
 
+}
+
+.info-lojas-produtos {
 }

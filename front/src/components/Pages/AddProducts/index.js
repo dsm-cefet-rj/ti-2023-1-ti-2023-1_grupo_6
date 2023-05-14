@@ -39,12 +39,16 @@ const AddProducts = () => {
     valor,
     nome,
     categoria,
-    lojaId,
+    lojaId: lojaId,
     img: idProdutos
     })
     console.log(allProdutos());
     alert("Produto criado com sucesso!");
     navigate(`/homeLoja/${loja.nome}`);
+  };
+
+  const handleChangeCategoria = (event) => {
+    setCategoria(event.target.value); // Atualiza o estado com a categoria selecionada
   };
 
   return (
@@ -56,17 +60,6 @@ const AddProducts = () => {
 <form>
         <div className="product-box">
           <h2>Cadastro de produto</h2>
-
-          <div id='infos-product'>
-            <label id='input-description'>Id do produto: </label>
-            <input 
-            id='input-info' 
-            type="text" 
-            placeholder="Digite o idProdutos do produto"
-            value={idProdutos}
-            onChange={(e) => [setIdProdutos(e.target.value)]}
-            />
-          </div>
 
           <div id='infos-product'>
             <label id='input-description'>Nome do produto: </label>
@@ -83,7 +76,9 @@ const AddProducts = () => {
             <label id='input-description' >Valor: </label>
             <input 
             id='input-info' 
-            type="number" 
+            type="number"
+            step="0.01"
+            min="0"
             placeholder="Digite o preço do produto"
             value={valor}
             onChange={(e) => [setValor(e.target.value)]}
@@ -93,14 +88,17 @@ const AddProducts = () => {
         
 
           <div id='infos-product'>
-            <label id='input-description'>Seção do produto: </label>
-            <input 
-            id='input-info' 
-            type="text" 
-            placeholder="Digite a secao"
-            value={categoria}
-            onChange={(e) => [setCategoria(e.target.value)]}
-            />
+          <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" value={categoria} onChange={handleChangeCategoria}>
+              <option value="Atrativos">Atrativos</option>
+              <option value="Alimentacao">Alimentação</option>
+              <option value="Conforto">Conforto</option>
+              <option value="Diversão">Diversão</option>
+              <option value="Promoções">Promoções</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+          </div>
           </div>
           
 

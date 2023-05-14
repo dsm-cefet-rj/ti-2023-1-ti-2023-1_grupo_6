@@ -25,7 +25,7 @@ const CarrinhoContextProvider = ({ children }) => {
       setItems(updatedItems);
     };
     
-    const incrementItem = (itemId) => {
+  const incrementItem = (itemId) => {
       const updatedItems = items.map((item) =>
       item.id === itemId ? { ...item, quantidade: item.quantidade + 1 } : item
       );

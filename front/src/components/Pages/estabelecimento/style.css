@@ -36,8 +36,8 @@ h1 {
 }
 
 .form-shop-registration {
-    height: 495px;
-    max-height: 100%;
+    height: 805px;
+    max-height: 95%;
     border-radius: 10px;
     background-color: #048387;
 }
@@ -51,8 +51,6 @@ h1 {
     top: 30px;
     text-transform: uppercase;
 }
-
-
 
 .access {
     flex-basis: calc(28% - 5px);

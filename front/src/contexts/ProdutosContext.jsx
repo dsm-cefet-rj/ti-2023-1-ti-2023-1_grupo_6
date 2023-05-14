@@ -194,13 +194,18 @@ export const ProdutosProvider = ({ children }) => {
         setProdutos([...produtos, produto]);
         localStorage.setItem("produtos", JSON.stringify([...produtos, produto]));
     };
+    
+    const removerProduto = (id) => {
+        const newProdutos = produtos.filter((produto) => produto.id !== id);
+        setProdutos(newProdutos);
+    };
 
     const allProdutos = () => {
         return produtos;
     };
 
     return (
-        <ProdutosContext.Provider value={{ allProdutos, adicionarProdutos }}>
+        <ProdutosContext.Provider value={{ allProdutos, adicionarProdutos, removerProduto }}>
             {children}
         </ProdutosContext.Provider>
     );

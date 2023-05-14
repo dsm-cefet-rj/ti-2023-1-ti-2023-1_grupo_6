@@ -6,7 +6,7 @@ const initialState = [
         cnpj: "66735931",
         id: "1",
         nome: "Gato pra Cachorro Pet Shop",
-        animais_atendidos: "Gato • Cachorro • Coelho • Hamster",
+        animaisAtendidos: "Gato • Cachorro • Coelho • Hamster",
         contato: "(21) 9 999-9999",
         endereco: "Avenida Gato Fofo, 164",
         descricao: "loja!",
@@ -19,12 +19,13 @@ const initialState = [
                 lojaNome: "Gato pra Cachorro Pet Shop",
             },
         ],
+        password: "3"
     },
     {
         cnpj: "23131931",
         id: "2",
         nome: "Cachorro Pet Shop",
-        animais_atendidos: "Cachorro • Coelho • Hamster",
+        animaisAtendidos: "Cachorro • Coelho • Hamster",
         contato: "(21) 9 999-9999",
         endereco: "Rua Gatinho Fofinho, 277",
         descricao: "loja!",
@@ -33,7 +34,7 @@ const initialState = [
     {
         id: "3",
         nome: "Gato Pet Shop",
-        animais_atendidos: "Gato • Pássaro • Hamster",
+        animaisAtendidos: "Gato • Pássaro • Hamster",
         contato: "(21) 9 999-9999",
         endereco: "Rua Gabi , 1163",
         descricao: "loja!",
@@ -42,7 +43,7 @@ const initialState = [
     {
         id: "4",
         nome: "Pássaro Pet Shop",
-        animais_atendidos: "Pássaro • Gato • Hamster",
+        animaisAtendidos: "Pássaro • Gato • Hamster",
         contato: "(21) 9 999-9999",
         endereco: "Rua Isa, 999",
         descricao: "loja!",
