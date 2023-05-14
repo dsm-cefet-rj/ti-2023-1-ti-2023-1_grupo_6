@@ -16,6 +16,7 @@ const ConsumerProfile = () => {
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         //enviar imagem para o servidor

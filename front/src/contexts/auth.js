@@ -147,26 +147,6 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("user_token");
     }
 
-    // const deleteAccount = (email) => {
-    //     UserInformation.getAll().then((result)=>{
-    //         if(result instanceof ApiException){
-    //             alert(result.message);
-    //         }else{
-    //             const hasUser = result?.filter((user) => user.email === email);
-
-    //             if(hasUser.length === 0){
-    //                 return "a conta não foi encontrada";
-    //             } else{
-    //                 try{
-    //                     UserInformation.deleteById(hasUser[0].id);
-    //                 }catch(err){
-    //                     return "não foi possivel excluir a conta!";
-    //                 }
-    //             }
-    //         }
-    //     });
-    // };
-
     const deleteAccount = (email) => {
         UserInformation.getAll().then((result) => {
             if (result instanceof ApiException) {

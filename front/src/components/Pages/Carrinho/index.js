@@ -7,11 +7,9 @@ import Menu from "../menu/index.js"
 import React from 'react';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
-import useAuth from '../../../hooks/useAuth';
 
 const Carrinho = () => {
     const navigate = useNavigate();
-    const { user } = useAuth();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { items } = useContext(CarrinhoContext);
     const { adicionarProdutoCarrinho, quantidadeTotalItens, incrementItem, decrementItem, compraFinalizada, valorTotalItens } = useContext(CarrinhoContext);
@@ -36,6 +34,10 @@ const Carrinho = () => {
     const handleDecrementClick = (itemId) => {
         decrementItem(itemId);
     };
+    
+    // const handleCompraFinalizada = () => {
+    //     compraFinalizada();
+    // };
 
 
     return (
@@ -46,7 +48,7 @@ const Carrinho = () => {
             <div className='carrinho'>
                 <form className="form-carrinho">
                     <div className="produtos-carrinho"> 
-                    <h2>Carrinho de compras de {user.email}</h2>
+                    <h2>Carrinho de compras</h2>
                         <ul className="ul-produtos">
                             {itensExibicao.map(item => (
                                 <li key={item.id}>
