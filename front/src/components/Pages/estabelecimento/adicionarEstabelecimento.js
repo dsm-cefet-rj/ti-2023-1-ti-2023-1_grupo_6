@@ -83,7 +83,7 @@ function AdicionarLoja() {
       endereco,
       url,
       contato,
-      password
+      password,
     })
 
     alert("Usuário cadastrado com sucesso!");

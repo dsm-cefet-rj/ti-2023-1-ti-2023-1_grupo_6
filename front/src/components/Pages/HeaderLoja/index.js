@@ -1,12 +1,16 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import blueIcon from "../../../assets/blueIcon.png";
 import "./style.css";
 import { Link} from "react-router-dom";
 
-const HeaderLoja = () => {
-  const navigate = useNavigate();
-  const urlLoja = localStorage.getItem("urlLoja"); // recupera a urlLoja do Local Storage
+const HeaderLoja = ({ lj }) => {
+
+  useEffect(() => {
+    localStorage.setItem("nomeDaLoja", lj);
+  }, [lj]);
+
+  const nomeDaLoja = localStorage.getItem("nomeDaLoja");
+
   return (
     <div className="app-menu-web">
       <div className="icon-nav">
@@ -15,19 +19,13 @@ const HeaderLoja = () => {
       <nav className="menu-nav menu-home-profile">
         <ul className="nav-ul">
           <li>
-            <Link to={`/loja/estabelecimento${urlLoja}`}>
-              Início
-            </Link>
+            <Link to={`/homeLoja/${nomeDaLoja}`}>Início</Link>
           </li>
           <li>
-            <Link to="/perfil">
-              Perfil
-            </Link>
+            <Link to={`/perfil`}>Perfil</Link>
           </li>
           <li>
-            <Link to="/adicionar/produto">
-              Produtos
-            </Link>
+            <Link to={`/adicionar/produto`}>Produtos</Link>
           </li>
         </ul>
       </nav>

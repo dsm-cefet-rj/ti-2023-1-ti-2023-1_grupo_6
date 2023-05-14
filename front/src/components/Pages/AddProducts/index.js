@@ -14,7 +14,7 @@ const AddProducts = () => {
   const { signUpProduct } = useAuth();
   const [error, setError] = useState("");
 
-  const handleSignUp = () => {
+  const handleAddProduct = () => {
     if(!nameProduct || !price || !id || !section ){
       setError("Preencha todos os campos");
       return;
@@ -87,7 +87,7 @@ const AddProducts = () => {
           
 
           <div className='button-product'>
-            <button className='confirmar' type="submit" onClick = {handleSignUp}>Confirmar</button>
+            <button className='confirmar' type="submit" onClick = {handleAddProduct}>Confirmar</button>
           </div>
 
         </div>

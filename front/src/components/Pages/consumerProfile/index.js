@@ -15,7 +15,7 @@ const ConsumerProfile = () => {
     const { signOut } = useAuth();
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
-    const { limparCarrinho } = useContext(CarrinhoContext);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();

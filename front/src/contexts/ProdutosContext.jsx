@@ -186,6 +186,11 @@ export const ProdutosContext = createContext();
 export const ProdutosProvider = ({ children }) => {
     const [produtos, setProdutos] = useState(initialState);
 
+    // const adicionarProdutos = (loja, produto) => {
+    //     const novaLoja = { id: uuidv4(), ...loja };
+    //     setProdutos([...loja, produto]);
+    //     localStorage.setItem("lojas", JSON.stringify([...lojas, novaLoja]));
+    // };
     const allProdutos = () => {
         return produtos;
     };
