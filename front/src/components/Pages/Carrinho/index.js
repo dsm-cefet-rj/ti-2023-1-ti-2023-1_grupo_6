@@ -7,26 +7,30 @@ import Menu from "../menu/index.js"
 import React from 'react';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
+import useAuth from '../../../hooks/useAuth';
 
 const Carrinho = () => {
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { items } = useContext(CarrinhoContext);
-    const { adicionarProdutoCarrinho, quantidadeTotalItens, incrementItem, decrementItem, compraFinalizada, valorTotalItens } = useContext(CarrinhoContext);
+    const { adicionarProdutoCarrinho, quantidadeTotalItens, incrementItem, decrementItem, compraFinalizada, valorTotalItens, limparCarrinho } = useContext(CarrinhoContext);
     const itensExibicao = items.filter(item => item.quantidade > 0);
+    const { user } = useAuth();
+    console.log("items");
+    console.log(items);
     React.useEffect(() => {
         const handleResize = () => {
-        setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
+            setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
         };
 
         handleResize(); // define a largura da tela na montagem inicial do componente
         window.addEventListener('resize', handleResize); // adiciona um listener para o evento de redimensionamento da tela
         return () => {
-        window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
+            window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
         };
     }, 
     []);
-
+    
     const handleIncrementClick = (itemId) => {
         incrementItem(itemId);
     };
@@ -35,13 +39,31 @@ const Carrinho = () => {
         decrementItem(itemId);
     };
     
-    // const handleCompraFinalizada = () => {
-    //     compraFinalizada();
-    // };
-
-
-    return (
-        <div className="carrinho-background">
+    const handleFinalizarCompra = () => {
+        // Verificar se já há um carrinho salvo no localStorage para o usuário atual
+        const carrinhoExistente = localStorage.getItem(`carrinho_${user.email}`);
+    
+        // Se já houver um carrinho existente, adicionar o novo pedido ao carrinho existente
+        if (carrinhoExistente) {
+            const carrinhoAtual = JSON.parse(carrinhoExistente);
+            carrinhoAtual.items.push(...items);
+            carrinhoAtual.valorTotal += valorTotalItens;
+            localStorage.setItem(`carrinho_${user.email}`, JSON.stringify(carrinhoAtual));
+        } 
+        // Caso contrário, criar um novo carrinho com o pedido atual
+        else {
+            const carrinho = {
+                items: items,
+                valorTotal: valorTotalItens
+            };
+            localStorage.setItem(`carrinho_${user.email}`, JSON.stringify(carrinho));
+        }
+        limparCarrinho();
+    };
+    
+        
+        return (
+            <div className="carrinho-background">
             <div>
             {isScreenWideEnough && <Header />}
             </div>
@@ -84,10 +106,10 @@ const Carrinho = () => {
                         Cancelar
                     </button>
                     <button type="submit" className='botaoConfirmar' onClick={() => {
-                        navigate(`/compraEfetuada`, { state: items});
-                        // handleCompraFinalizada();
-                    }}> 
-                        Finalizar Compra
+                    handleFinalizarCompra();
+                    navigate(`/pedidos`, { state: { user: user}});
+                    }}>
+                    Finalizar Compra
                     </button>
                     </div>
                 </form>

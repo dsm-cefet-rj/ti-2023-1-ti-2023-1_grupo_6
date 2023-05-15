@@ -7,10 +7,12 @@ import blueIcon from "../../../assets/blueIcon.png";
 import "./style.css";
 import { Link} from "react-router-dom";
 import { LojaContext } from '../../../contexts/LojasContext';
+import useAuth from "../../../hooks/useAuth.js";
 
 
 const MenuWeb = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { carrinho } = useContext(CarrinhoContext);
   const [lojaAtual, setLojaAtual] = useState(null);
   const [lojas, setLojas] = useState([]);
@@ -20,7 +22,8 @@ const MenuWeb = () => {
     (loja) => loja.nome.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
   );
   const { quantidadeTotalItens } = useContext(CarrinhoContext);
-
+  console.log("user")
+  console.log(user)
   const handleSearch = (event) => {
     const value = event.target.value;
     setSearchTerm(value);
@@ -45,8 +48,14 @@ const MenuWeb = () => {
             </Link>
           </li>
           <li>
-            <Link to="/pedidos">
-              Pedidos
+            <Link to={{ 
+                pathname: '/pedidos',
+                state: { 
+                    user: user, 
+                    items: carrinho 
+                }
+            }}>
+                Pedidos
             </Link>
           </li>
         </ul>

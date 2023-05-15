@@ -16,11 +16,14 @@ import { useContext } from 'react';
 import { LojaContext } from '../../../contexts/LojasContext';
 import { Link } from 'react-router-dom';
 import './index.css';
+import useAuth from "../../../hooks/useAuth";
 
 const Home = () => {
   const { allLojas } = useContext(LojaContext);
   const navigate = useNavigate();
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
+  const { user } = useAuth();
+
   const getItemsToShow = () => {
     if (window.innerWidth >= 1200) {
       return 4;
@@ -30,7 +33,7 @@ const Home = () => {
       return 1;
     }
   };
-  
+  console.log(user)
   React.useEffect(() => {
     const handleResize = () => {
       setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -42,7 +45,7 @@ const Home = () => {
       window.removeEventListener("resize", handleResize); // remove o listener do evento de redimensionamento da tela
     };
   }, []);
-//"asdada"
+
   return (
     <div className="App-home">
       <img src={blueIcon} alt="logo" className="img-blueIcon logo-home" />
