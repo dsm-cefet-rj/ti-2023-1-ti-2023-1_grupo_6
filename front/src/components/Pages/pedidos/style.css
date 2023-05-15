@@ -38,3 +38,7 @@
     font-family: "Baloo 2";
     margin-top: 45px;
 }
+
+.item-pedido img{
+    width: 40%;
+}
