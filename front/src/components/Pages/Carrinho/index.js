@@ -8,16 +8,20 @@ import React from 'react';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import useAuth from '../../../hooks/useAuth';
+import { useState } from 'react';
+import CompraFinalizada from '../CompraFinalizada';
+import { Link} from "react-router-dom";
 
 const Carrinho = () => {
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { items } = useContext(CarrinhoContext);
-    const { adicionarProdutoCarrinho, quantidadeTotalItens, incrementItem, decrementItem, compraFinalizada, valorTotalItens, limparCarrinho } = useContext(CarrinhoContext);
+    const { adicionarProdutoCarrinho, quantidadeTotalItens, incrementItem, decrementItem, valorTotalItens, limparCarrinho } = useContext(CarrinhoContext);
     const itensExibicao = items.filter(item => item.quantidade > 0);
     const { user } = useAuth();
-    console.log("items");
-    console.log(items);
+
+
+
     React.useEffect(() => {
         const handleResize = () => {
             setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -59,6 +63,7 @@ const Carrinho = () => {
             localStorage.setItem(`carrinho_${user.email}`, JSON.stringify(carrinho));
         }
         limparCarrinho();
+        navigate(`/compraEfetuada`);
     };
     
         
@@ -107,7 +112,6 @@ const Carrinho = () => {
                     </button>
                     <button type="submit" className='botaoConfirmar' onClick={() => {
                     handleFinalizarCompra();
-                    navigate(`/pedidos`, { state: { user: user}});
                     }}>
                     Finalizar Compra
                     </button>
