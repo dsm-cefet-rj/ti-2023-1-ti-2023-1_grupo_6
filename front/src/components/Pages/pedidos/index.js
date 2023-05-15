@@ -7,46 +7,17 @@ import  { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import { useNavigate } from 'react-router-dom';
 import PedidosAndamento from "../pedidoEmAndamento";
+import useAuth from "../../../hooks/useAuth";
+
 const renderProdutos = (props) =>{
     ReactDOM.render(<PedidosAndamento produtos={props}/>, document.getElementById('root'));
 }
 
 const Pedidos = () => {
-    const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
-
-    const pedidosProduto = [{
-        "id": 1,
-        "idUser": 1,
-        "idStore": 1,
-        "nameStore": "Pássaro Pet Shop",
-        "totalValue" : 35.99,
-        "products": [
-            {
-            "id": 1,
-            "class": "Limpeza",
-            "name": "Shampoo para cachorro",
-            "value": 35.99,
-            "amount": 1
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "idUser": 1,
-        "idStore": 1,
-        "nameStore": "Pássaro Pet Shop",
-        "totalValue" : 35.99,
-        "products": [
-            {
-            "id": 1,
-            "class": "Limpeza",
-            "name": "gato cachorro carpete",
-            "value": 35.99,
-            "amount": 1
-            }
-        ]
-    }]
+    const { user } = useAuth();
+    const carrinhoUser = JSON.parse(localStorage.getItem(`carrinho_${user.email}`));
+    
     React.useEffect(() => {
         const handleResize = () => {
         setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -65,24 +36,15 @@ const Pedidos = () => {
             {isScreenWideEnough && <Header />}
             </div>
             <h2>Seus pedidos:</h2>
-            
-            {pedidosProduto.length > 0 ? (
-                <ul class="ul-pedidos">
-                {pedidosProduto.map((pedido) => {
-                    const produtos = pedido.products
-                return(
-                    <li key={pedido.id}>
-                    <h2>Número do pedido: {pedido.id}</h2>
-                    <h3>Loja: {pedido.nameStore} <br/> Total: R$ {pedido.totalValue} </h3>
-                    <button className="botao-pedido" onClick={() => navigate('/pedidos-em-andamento', {state: {produtos}})}>
-                    Visualizar pedido
-                    </button>
+            <ul class="ul-pedidos">
+                {carrinhoUser.items.map(item => (
+                    <li key={item.id}>
+                        <div>
+                            <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} </h3>
+                        </div>
                     </li>
-                )})}
-                </ul>
-            ) : (
-                <p> Você ainda não fez nenhum pedido </p>
-            ) }
+                ))}
+            </ul>
         </div>
     );
 };
