@@ -1,0 +1,28 @@
+.homeLoja-infos {
+    background-color: #B6E0EC;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    color: black;
+}
+
+.homeLoja-infos h1 {
+    margin: 0;
+}
+
+.infos-lojas-home {
+    color: black;
+}
+
+.produtos-adicionados-na-loja {
+    color: black;
+}
+
+.link-products {
+    color: #048387;
+    text-decoration: none;
+}
+
+.store-link {
+    color: #048387;
+}

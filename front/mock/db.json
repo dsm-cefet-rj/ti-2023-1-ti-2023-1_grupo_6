@@ -184,60 +184,6 @@
   ],
   "consumerData": [
     {
-      "id": 1,
-      "name": "Rafael",
-      "cpf": "11111111111",
-      "bornDate": "11/11/1999",
-      "email": "rafael@email.com",
-      "password": "123456"
-    },
-    {
-      "name": "Caique",
-      "cpf": "11111111111",
-      "bornDate": "1999-07-05",
-      "email": "caique@email.com",
-      "password": "123456",
-      "id": 4
-    },
-    {
-      "name": "fdfda",
-      "cpf": "23131231",
-      "bornDate": "131231-12-13",
-      "email": "ge@email.com",
-      "password": "12",
-      "id": 5
-    },
-    {
-      "name": "Isa",
-      "cpf": "123456789",
-      "bornDate": "2003-03-06",
-      "email": "isa@gmail.com",
-      "password": "123456",
-      "id": 6
-    },
-    {
-      "cnpj": "fsdfs",
-      "nome": "sfsdfsf",
-      "animaisAtendidos": "fsdf",
-      "cep": "ssdfs",
-      "endereco": "sdfsdf",
-      "url": "sfsd",
-      "contato": "fsdf",
-      "password": "sdfsf",
-      "id": 7
-    },
-    {
-      "cnpj": "123456789",
-      "nome": "Cachorro",
-      "animaisAtendidos": "Cachorro",
-      "cep": "123456",
-      "endereco": "rua dog",
-      "url": "cachorro",
-      "contato": "9999999999",
-      "password": "123456",
-      "id": 8
-    },
-    {
       "id": "fsefs",
       "nameProduct": "fsefs",
       "price": "3543453",
@@ -737,6 +683,23 @@
       "nameProduct": "MEL PARA GATINHO",
       "price": "78.90",
       "section": "Alimentacao"
+    },
+    {
+      "cnpj": "6",
+      "nome": "isinha linda",
+      "animaisAtendidos": "Gatos fofos",
+      "cep": "2222222222",
+      "endereco": "Rua Animal",
+      "url": "",
+      "contato": "99999999",
+      "password": "7",
+      "id": "el3HFAG"
+    },
+    {
+      "id": "Oz_lkSs",
+      "nameProduct": "fdfsdfsd",
+      "price": "5500",
+      "section": "Diversão"
     }
   ],
   "carrinho": [

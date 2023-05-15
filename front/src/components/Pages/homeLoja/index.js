@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import HeaderLoja from "../HeaderLoja";
 import useAuth from "../../../hooks/useAuth";
 import { useContext, useEffect, useState } from 'react';

@@ -26,6 +26,7 @@ import LoginEstabelecimento from "../components/Pages/LoginEstabelecimento/index
 import HomeLoja from "../components/Pages/homeLoja/index.js";
 import { LojaProvider } from "../contexts/LojasContext.jsx";
 import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
+import  StoreProfile  from "../components/Pages/storeProfile/index.js";
 
 const Private = ({ Item }) => {
   const { signed } =  useAuth();
@@ -62,9 +63,10 @@ const RoutesApp = () => {
                 <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />}/>
                 <Route path="/pedidos" element={<Private Item={Pedidos} />} />
                 <Route path="/adicionar/secao" element={<AddSection />} />
-                <Route path="/adicionar/produto/:id" element={<AddProducts />} />
+                <Route path="/adicionarProduto/:id" element={<AddProducts />} />
                 <Route path="/loja/:id" element={<LojaDetalhes />} />
                 <Route path="/adicionarLoja" element={AdicionarLoja} />
+                <Route path="/perfilLoja/:nome" element={<Private Item={StoreProfile}/>} />
               </Routes>
             </Fragment>
           </CarrinhoContextProvider>

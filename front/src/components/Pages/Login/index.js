@@ -37,7 +37,7 @@ const Login = () => {
           <div className="acess-inputs">
             <div className="acess">
               <label htmlFor="name" className="userName">
-                Email
+                E-mail
               </label>
               <input
                 required
@@ -45,7 +45,7 @@ const Login = () => {
                 id="name"
                 type="email"
                 name="user"
-                placeholder="Usuário"
+                placeholder="Inserir e-mail"
                 onChange={(e) => [setEmail(e.target.value), setError("")]}
               />
             </div>

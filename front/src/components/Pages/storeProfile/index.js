@@ -1,6 +1,5 @@
 import './style.css';
 import React, { useState, useEffect, useContext } from 'react';
-import Header from '../Header/index.js';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import Menu from "../menu/index.js";
@@ -8,25 +7,25 @@ import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
 import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
 import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
+import HeaderLoja from '../HeaderLoja';
 
-const ConsumerProfile = () => {
+const StoreProfile = () => {
     const { user } = useAuth();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { signOut } = useAuth();
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         //enviar imagem para o servidor
     }
 
-    async function handleDelete(emailUser) {
+    async function handleDelete(cnpj) {
         const result = await confirmDelete();
         console.log(result);
         if(result === true) {
-            deleteAccount("email", emailUser);
+            deleteAccount("cnpj", cnpj);
             infoDelete();
             navigate("/")
         } 
@@ -57,15 +56,14 @@ const ConsumerProfile = () => {
     return (
         <div className="profile">
             <div>
-            {isScreenWideEnough && <Header />}
+            {isScreenWideEnough && <HeaderLoja />}
             </div>
 
-            <h1 className="profile-title">Meu Perfil {user.name}</h1>
+            <h1 className="profile-title">Minha Loja</h1>
 
             <form onSubmit={handleSubmit} className='form-pic-username'>
-                <text className='user-text'>conta: {user.email}</text>
+                <text className='user-text'>cnpj: {user.cnpj}</text>
             </form>
-
 
             <div className = "box-buttons">
                 <button 
@@ -74,11 +72,11 @@ const ConsumerProfile = () => {
                 >Sair</button>
                 <button
                 className="profile-button"
-                onClick={() => handleDelete(user.email)}>Deletar conta</button>                    
+                onClick={() => handleDelete(user.cnpj)}>Deletar conta</button>                    
             </div>
             <Menu />
         </div>
     );
 }
 
-export default ConsumerProfile;
+export default StoreProfile;

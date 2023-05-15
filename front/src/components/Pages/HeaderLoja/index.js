@@ -28,19 +28,25 @@ const HeaderLoja = ({ lj, id }) => {
         <ul className="nav-ul">
           <li>
           {storedNomeDaLoja || nomeDaLoja ? (
-            <Link to={`/homeLoja/${storedNomeDaLoja || nomeDaLoja}`} className="link-products">  Início</Link>
+            <Link to={`/homeLoja/${storedNomeDaLoja || nomeDaLoja}`} className="link-products">Início</Link>
             ) : (
-              <span className="disabled-link">Início</span>
+              <span className="store-link">Início</span>
           )}
           </li>
           <li>
-            <Link to={`/perfil`}>Perfil</Link>
-          </li>
-          {IdDaLoja ? (
-              <Link to={`/adicionar/produto/${IdDaLoja}`} className="link-products">Produtos</Link>
+          {storedNomeDaLoja || nomeDaLoja ? (
+            <Link to={`/perfilLoja/${storedNomeDaLoja || nomeDaLoja}`} className="link-products">Perfil</Link>
             ) : (
-              <span className="disabled-link">Produtos</span>
+              <span className="store-link">Perfil</span>
           )}
+          </li>
+          <li>
+          {IdDaLoja ? (
+              <Link to={`/adicionarProduto/${IdDaLoja}`} className="link-products">Produtos</Link>
+            ) : (
+              <span className="store-link">Produtos</span>
+          )}
+          </li>
         </ul>
       </nav>
     </div>
