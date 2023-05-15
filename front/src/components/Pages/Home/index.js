@@ -96,10 +96,10 @@ const Home = () => {
           paginationClassName="custom-carousel"
           className="carousel"
         >
-        {allLojas().map((loja) => (
+      {allLojas().map((loja) => (
           <div key={loja.nome} className="lojas-l">
             <Link to={`/loja/${loja.id}`} className="link-loja-name-home">
-              <img src={loja.img ? window.location.origin + `/assets/petshop${loja.nome.replace(/\s+/g, '')}.png` : window.location.origin + '/assets/petshopDefault.png'} alt="lojaImage"/>
+              <img src={loja.image} alt="lojaImage"/>
               <div className="nameLoja">
                 {loja.nome}
                 
