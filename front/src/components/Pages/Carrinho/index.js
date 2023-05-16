@@ -1,6 +1,4 @@
 import './style.css';
-import whiteIcon from '../../../assets/whiteIcon.png';
-import del from '../../../assets/del.png'
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/index.js';
 import Menu from "../menu/index.js"
@@ -8,19 +6,14 @@ import React from 'react';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import useAuth from '../../../hooks/useAuth';
-import { useState } from 'react';
-import CompraFinalizada from '../CompraFinalizada';
-import { Link} from "react-router-dom";
 
 const Carrinho = () => {
     const navigate = useNavigate();
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { items } = useContext(CarrinhoContext);
-    const { adicionarProdutoCarrinho, quantidadeTotalItens, incrementItem, decrementItem, valorTotalItens, limparCarrinho } = useContext(CarrinhoContext);
+    const {quantidadeTotalItens, incrementItem, decrementItem, valorTotalItens, limparCarrinho } = useContext(CarrinhoContext);
     const itensExibicao = items.filter(item => item.quantidade > 0);
     const { user } = useAuth();
-
-
 
     React.useEffect(() => {
         const handleResize = () => {

@@ -33,8 +33,7 @@ const Home = () => {
       return 1;
     }
   };
-  console.log(user)
-  console.log(allLojas());
+
   React.useEffect(() => {
     const handleResize = () => {
       setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -103,7 +102,6 @@ const Home = () => {
       {allLojas().map((loja) => (
           <div key={loja.nome} className="lojas-l">
             <Link to={`/loja/${loja.id}`} className="link-loja-name-home">
-              <img src={loja.image} alt="lojaImage"/>
               <div className="nameLoja">
                 {loja.nome}
                 

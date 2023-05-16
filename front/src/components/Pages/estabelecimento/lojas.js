@@ -11,6 +11,7 @@ import Menu from "../menu/index.js";
 import mostrarConfirmacao from "../../../utils/confirmacao-compra";
 import { LojaContext } from "../../../contexts/LojasContext";
 import { ProdutosContext } from "../../../contexts/ProdutosContext";
+import useAuth from "../../../hooks/useAuth";
 
 const Lojas = () => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Lojas = () => {
     const [contato, setContato] = useState("");
     const [endereco, setEndereco] = useState("");
     const { allProdutos } = useContext(ProdutosContext);
-
+    const { user } = useAuth();
     
     React.useEffect(() => {
         const handleResize = () => {
@@ -67,6 +68,8 @@ const Lojas = () => {
 
     const handleAdicionarProduto = (produto) => {
         adicionarProdutoCarrinho(produto);
+        localStorage.setItem(`carrinho_${user.cpf}`, JSON.stringify(produto));
+        console.log(localStorage.getItem(`carrinho_${user.cpf}`));
         setExibirIframe(true);
     };
 

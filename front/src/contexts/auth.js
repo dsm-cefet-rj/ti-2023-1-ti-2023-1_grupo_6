@@ -1,6 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { UserInformation } from "../services/api/userInformation/UserInformation";
 import { ApiException } from "../services/api/ApiException";
+import { CarrinhoContext } from "./CarrinhoContext";
 
 export const AuthContext = createContext({});
 
