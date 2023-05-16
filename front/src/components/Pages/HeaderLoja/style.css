@@ -1,3 +1,11 @@
+.app-menu-web-consumer {
+}
+
+.sair-deletar {
+    margin: 0;
+    position: relative;
+    left: 700px;
+}
 .homeLoja-infos {
     background-color: #B6E0EC;
     margin: 0;
@@ -26,11 +34,4 @@
 .store-link {
     color: #048387;
 }
-.app-menu-web-consumer {
-}
 
-.sair-deletar {
-    margin: 0;
-    position: relative;
-    left: 700px;
-}
