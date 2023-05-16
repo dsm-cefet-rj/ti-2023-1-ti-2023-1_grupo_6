@@ -95,6 +95,7 @@ async function handleExit() {
               <Link onClick={() => handleDelete(IdDaLoja)}>Deletar loja</Link>
             </li>
           </div> 
+          
         </ul>
       </nav>
     </div>
