@@ -150,13 +150,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("user_token");
     }
 
-    const deleteAccount = (field, value) => {
+    const deleteAccount = (email) => {
         UserInformation.getAll().then((result) => {
             if (result instanceof ApiException) {
                 alert(result.message);
             } else {
-                const hasUser = result?.filter((user) => user[field] === value);
-    
+                const hasUser = result?.filter((user) => user.email === email);
                 if (hasUser.length === 0) {
                     return "A conta não foi encontrada";
                 } else {
@@ -164,16 +163,40 @@ export const AuthProvider = ({ children }) => {
                         UserInformation.deleteById(hasUser[0].id);
                         setUser(null); // <-- set the user state to null after deleting the account
                     } catch (err) {
-                        return "Não foi possível excluir a conta!";
+                    return "Não foi possível excluir a conta!";
                     }
                 }
             }
         });
     };
 
+    const deleteAccountStore = (cnpj) => {
+        UserInformation.getAll().then((result) => {
+            if (result instanceof ApiException) {
+                alert(result.message);
+            } else {
+            const hasUser = result?.filter((user) => user.cnpj === cnpj);
+            localStorage.removeItem(user);
+                if (hasUser.length === 0) {
+                    return "A conta não foi encontrada";
+                } else {
+                    try {
+                        const storeId = hasUser[0].cnpj;
+                        UserInformation.deleteById(storeId);
+                        setUser(null);
+                    } catch (err) {
+                        return "Não foi possível excluir a conta!";
+                    }
+                }
+            }
+        });
+    };
+        
+
+
     return (
     <AuthContext.Provider
-        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore, signUpProduct } }
+        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore, signUpProduct, deleteAccountStore  } }
     >
         {children}
     </AuthContext.Provider>
