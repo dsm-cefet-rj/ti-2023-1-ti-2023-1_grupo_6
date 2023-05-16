@@ -14,28 +14,36 @@ const LoginEstabelecimento = () => {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    if(!cnpj || !password ){
+    if (!cnpj || !password) {
       setError("Preencha todos os campos");
       return;
     }
-
-  const res = signInStore(cnpj, password);
-
-    if(res) {
+  
+    const res = signInStore(cnpj, password);
+  
+    if (res) {
       setError(res);
       return;
     }
-    const loja = buscasLojaCNPJ(cnpj);
-    const nome = loja.nome;
-    navigate(`/homeLoja/${nome}`);
+  
+    try {
+      const loja = buscasLojaCNPJ(cnpj);
+      if (!loja || !loja.nome) {
+        setError("A loja não foi encontrada ou não possui um nome definido.");
+        return;
+      } else {
+        const nome = loja.nome;
+        navigate(`/homeLoja/${nome}`);
+      }
+    } catch (error) {
+      setError("Ocorreu um erro ao acessar a loja. Por favor, tente novamente.");
+    }
   };
-
+  
   return (
     <div className="App-login">
       <img src={whiteIcon} alt="logo"/>
-
       <div className="login">
-
         <form className="form-login">
             <h2 className="name-login">login Estabelecimento</h2>
             <div className="acess-inputs">

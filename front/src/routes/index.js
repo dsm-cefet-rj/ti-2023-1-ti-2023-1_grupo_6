@@ -9,6 +9,7 @@ import Menu from "../components/Pages/menu/index.js";
 import OptionRegistration from "../components/Pages/OptionRegistration/index.js";
 import Lojas from "../components/Pages/Lojas";
 import ConsumerProfile from "../components/Pages/consumerProfile/index.js";
+import StoreProfile from "../components/Pages/storeProfile/index.js";
 import ShopRegistration from "../components/Pages/estabelecimento/adicionarEstabelecimento.js";
 import Birds from "../components/Pages/Birds/index.js";
 import Cats from "../components/Pages/Cats/index.js";
@@ -53,6 +54,7 @@ const RoutesApp = () => {
                 <Route path="/menu" element={<Private Item={Menu} />} />
                 <Route path="/lojas" element={<Private Item={Lojas} />} />
                 <Route path="/perfil" element={<Private Item={ConsumerProfile} />}/>
+                <Route path="/profileStore" element={<Private Item={StoreProfile} />}/>
                 <Route path="/registrar/estabelecimento" element={<ShopRegistration />}/>
                 <Route path="/passaros" element={<Private Item={Birds} />} />
                 <Route path="/gatos" element={<Private Item={Cats} />} />

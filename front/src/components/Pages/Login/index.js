@@ -25,7 +25,9 @@ const Login = () => {
       return;
     }
     navigate("/home");
+    
   };
+  
 
   return (
     <div className="App-login">

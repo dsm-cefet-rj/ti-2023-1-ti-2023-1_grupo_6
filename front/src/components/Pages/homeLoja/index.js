@@ -16,7 +16,7 @@ export default function HomeLoja() {
   const n = loja.nome;
   const id = loja.id;
   const [produtos, setProdutos] = useState([]);
-
+  
   useEffect(() => {
     const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos') || '[]');
     setProdutos(produtosLocalStorage);

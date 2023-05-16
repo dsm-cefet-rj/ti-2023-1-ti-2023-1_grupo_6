@@ -1,3 +1,6 @@
+html, body {
+    background-color: red;
+}
 .homeLoja-infos {
     background-color: #B6E0EC;
     margin: 0;
@@ -24,9 +27,18 @@
 }
 
 .disabled-link {
-    color: #FF8802;
+    color: #048387;
 
 }
 
 .info-lojas-produtos {
 }
+
+/* <div className="sair-deletar">
+<li>
+  <Link onClick={() => handleExit()}>Sair</Link>
+</li>
+<li>
+  <Link onClick={() => handleDelete(IdDaLoja)}>Deletar loja</Link>
+</li>
+</div> */

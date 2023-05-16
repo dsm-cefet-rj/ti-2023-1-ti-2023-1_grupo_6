@@ -34,6 +34,7 @@ const Home = () => {
     }
   };
   console.log(user)
+  console.log(allLojas());
   React.useEffect(() => {
     const handleResize = () => {
       setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
