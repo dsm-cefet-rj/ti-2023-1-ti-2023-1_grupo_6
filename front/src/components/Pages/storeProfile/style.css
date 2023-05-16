@@ -1,4 +1,4 @@
-.profile-title{
+.profile-store-title{
     color: #000000;
     font-size: 24px;
     font-weight: bold;
@@ -10,6 +10,7 @@
     align-items: center;
     margin-top: 50px;
 }
+
 
 .user-text {
     color: #000000;
@@ -34,7 +35,7 @@
 
 }
 
-.profile-button {
+.profile-store-button {
     margin-top: 20px;
     padding: 10px 60px;
     border-radius: 15px;
@@ -46,6 +47,6 @@
     font-family: 'Baloo 2';
 }
 
-.profile-button:hover {
+.profile-store-button:hover {
     background-color: #fe972f
 }
