@@ -6,7 +6,6 @@ import Menu from "../menu/index.js";
 import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
 import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
 import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
-import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import HeaderLoja from '../HeaderLoja';
 
 const StoreProfile = () => {
@@ -16,16 +15,17 @@ const StoreProfile = () => {
     const { deleteAccount } = useAuth();
     const navigate = useNavigate();
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         //enviar imagem para o servidor
     }
 
-    async function handleDelete(cnpj) {
+    async function handleDelete(emailUser) {
         const result = await confirmDelete();
         console.log(result);
         if(result === true) {
-            deleteAccount("cnpj", cnpj);
+            deleteAccount(emailUser);
             infoDelete();
             navigate("/")
         } 
@@ -54,25 +54,26 @@ const StoreProfile = () => {
     []);
 
     return (
-        <div className="profile">
+        <div className="profile-store">
             <div>
             {isScreenWideEnough && <HeaderLoja />}
             </div>
 
-            <h1 className="profile-title">Minha Loja</h1>
+            <h1 className="profile-store-title">Meu Perfil {user.name}</h1>
 
             <form onSubmit={handleSubmit} className='form-pic-username'>
-                <text className='user-text'>cnpj: {user.cnpj}</text>
+                <text className='user-text'>CNPJ: {user.cnpj}</text>
             </form>
+
 
             <div className = "box-buttons">
                 <button 
-                className="profile-button"
+                className="profile-store-button"
                 onClick={() => handleExit()}
                 >Sair</button>
                 <button
-                className="profile-button"
-                onClick={() => handleDelete(user.cnpj)}>Deletar conta</button>                    
+                className="profile-store-button"
+                onClick={() => handleDelete(user.email)}>Deletar conta</button>                    
             </div>
             <Menu />
         </div>
