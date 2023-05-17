@@ -193,6 +193,7 @@ function AdicionarLoja() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            
             {error && <div className="error-message">{error}</div>}
           </div>
         </form>
