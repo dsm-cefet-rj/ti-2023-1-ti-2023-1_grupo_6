@@ -785,6 +785,28 @@
       "contato": "212222",
       "password": "9",
       "id": "J16ENbb"
+    },
+    {
+      "cnpj": "123",
+      "nome": "isinha linda",
+      "animaisAtendidos": "dasdada",
+      "cep": "fdsfsef",
+      "endereco": "sfsfsdf",
+      "url": "",
+      "contato": "fsdfsf",
+      "password": "1",
+      "id": "GITo_sO"
+    },
+    {
+      "cnpj": "3574",
+      "nome": "gatinhoooooooo",
+      "animaisAtendidos": "dasdsad",
+      "cep": "adsasda",
+      "endereco": "asdasd",
+      "url": "",
+      "contato": "asdad",
+      "password": "123456789",
+      "id": "hXm53D5"
     }
   ],
   "carrinho": [

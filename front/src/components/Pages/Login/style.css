@@ -124,23 +124,17 @@ input[type="checkbox"] + label::before {
 }
 
 .error-message-signin {
-  color: black;
+  color: #ffff;
+  background-color: red;
   font-size: 14px;
-  position: fixed;
-  display: flex;
-  width: 100%;
-  margin-left: 100px;
+  display: inline-block;
+  position: relative;
 }
 
-.message {
-  color: black;
-  font-size: 14px;
-  margin-top: 10px;
-}
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .error-message-signin {
     margin-left: 60px;
     text-align: center;
   }
-}
+} */

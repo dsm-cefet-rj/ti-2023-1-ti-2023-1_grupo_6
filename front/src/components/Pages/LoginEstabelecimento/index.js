@@ -11,24 +11,33 @@ const LoginEstabelecimento = () => {
   const { buscasLojaCNPJ } = useContext(LojaContext);
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = () => {
-    if(!cnpj || !password ){
-      setError("Preencha todos os campos");
+  setTimeout(() => {
+    setErrorMessage("");
+  }, 8000);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+  
+    if (!cnpj || !password) {
+      setErrorMessage("Preencha todos os campos");
       return;
     }
-
-  const res = signInStore(cnpj, password);
-
-    if(res) {
-      setError(res);
-      return;
+  
+    try {
+      const result = await signInStore(cnpj, password);
+  
+      if (result && result.success) {
+        const loja = buscasLojaCNPJ(cnpj);
+        const nome = loja.nome;
+        navigate(`/homeLoja/${nome}`);
+      } 
+    } catch (error) {
+      setErrorMessage(error);
     }
-    const loja = buscasLojaCNPJ(cnpj);
-    const nome = loja.nome;
-    navigate(`/homeLoja/${nome}`);
   };
+
 
   return (
     <div className="App-login">
@@ -48,7 +57,7 @@ const LoginEstabelecimento = () => {
                     type="text"
                     name="user"
                     placeholder="Inserir CNPJ"
-                    onChange={(e) => [setCnpj(e.target.value), setError("")]}
+                    onChange={(e) => [setCnpj(e.target.value), setErrorMessage("")]}
                   />
               </div>
 
@@ -61,19 +70,21 @@ const LoginEstabelecimento = () => {
                     type="password"
                     name="password"
                     placeholder="Senha"
-                    onChange={(e) => [setPassword(e.target.value), setError("")]}
+                    onChange={(e) => [setPassword(e.target.value), setErrorMessage("")]}
                   />
               </div>
 
-              {error && <labelErro className='error-message-signin'>{error}</labelErro>}
             </div>
           
           <div className="clicks">
-            <input className="enviar-login" 
-              type="submit" 
-              value="Acessar" 
+          <button
+              className="enviar-login"
+              type="submit"
               onClick={handleLogin}
-            />
+              
+            >
+              Acessar
+            </button>
 
             <div className="options">
                 <p onClick={() => {navigate("/")}}>Entrar como Cliente</p>
@@ -83,7 +94,7 @@ const LoginEstabelecimento = () => {
           </div>
 
         </form>
-
+        {errorMessage && <div className="error-message-signin">{errorMessage}</div>}
       </div>
 
     </div>  

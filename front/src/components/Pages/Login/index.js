@@ -3,28 +3,37 @@ import whiteIcon from "../../../assets/whiteIcon.png";
 import "./../Login/style.css";
 import { useContext, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
+import { ApiException } from "../../../services/api/ApiException";
 
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = (e) => {
+  setTimeout(() => {
+    setErrorMessage("");
+  }, 8000);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
+  
     if (!email || !password) {
-      setError("Preencha todos os campos");
+      setErrorMessage("Preencha todos os campos");
       return;
     }
-    const res = signIn(email, password);
-
-    if (res) {
-      setError(res);
-      return;
+  
+    try {
+      const result = await signIn(email, password, true);
+  
+      if (result && result.success) {
+        console.log("ok");
+        navigate("/home");
+      } 
+    } catch (error) {
+      setErrorMessage(error);
     }
-    navigate("/home");
   };
 
   return (
@@ -32,6 +41,7 @@ const Login = () => {
       <img src={whiteIcon} alt="logo" />
 
       <div className="login">
+        
         <form className="form-login">
           <h2 className="name-login">login Cliente</h2>
           <div className="acess-inputs">
@@ -46,7 +56,7 @@ const Login = () => {
                 type="email"
                 name="user"
                 placeholder="Inserir e-mail"
-                onChange={(e) => [setEmail(e.target.value), setError("")]}
+                onChange={(e) => [setEmail(e.target.value), setErrorMessage("")]}
               />
             </div>
 
@@ -61,13 +71,12 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Senha"
-                onChange={(e) => [setPassword(e.target.value), setError("")]}
+                onChange={(e) => [setPassword(e.target.value), setErrorMessage("")]}
               />
             </div>
 
-            {error && (
-              <labelErro className="error-message-signin">{error}</labelErro>
-            )}
+
+            
           </div>
 
           <div className="clicks">
@@ -75,10 +84,12 @@ const Login = () => {
               className="enviar-login"
               type="submit"
               onClick={handleLogin}
+              
             >
               Acessar
             </button>
-            {message && <div className="message">{message}</div>}
+
+            
 
             <div className="options">
               <p
@@ -98,9 +109,10 @@ const Login = () => {
             </div>
           </div>
         </form>
+          {errorMessage && <div className="error-message-signin">{errorMessage}</div>}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Login;
