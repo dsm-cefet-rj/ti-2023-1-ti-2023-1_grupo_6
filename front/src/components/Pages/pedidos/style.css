@@ -13,20 +13,19 @@
 }
 
 .pedidos-usuario .ul-pedidos {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 10px;
     display: flex;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 3fr);
-    grid-gap: 25px;
+    flex-wrap: wrap;
     border-radius: 10px;
 }
 
 .pedidos-usuario .ul-pedidos li {
+    margin: 20px;
     background-color: #B6E0EC;
     border-radius: 10px;
     border: 1px solid #04ABAB;
     padding: 20px;
+    flex-basis: 25%; /* Mostrar apenas de 4 em 4 (25% de 4 = 100%) */
 }
 
 .botao-pedido {
