@@ -12,7 +12,7 @@ function AdicionarLoja() {
   const [endereco, setEndereco] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [img, setImg] = useState("");
-  const [Image, setImage] = useState("");
+  const [image, setImage] = useState("");
   const [produto, setProduto] = useState("");
   const [descricao, setDescricao] = useState("");
   const [email, setEmail] = useState("");
@@ -39,7 +39,6 @@ function AdicionarLoja() {
     setUrl("");
     setPassword("");
     setProduto("");
-    localStorage.removeItem('storeImage');
   }
 
   const handleSignUp = () => {
@@ -51,8 +50,7 @@ function AdicionarLoja() {
       !password ||
       !contato ||
       !endereco ||
-      !cep ||
-      !Image
+      !cep
     ) {
       setError("Preencha todos os campos");
       return;
@@ -67,8 +65,7 @@ function AdicionarLoja() {
       endereco,
       url,
       contato,
-      password,
-      Image
+      password
     );
     if (res) {
       setError(res);
@@ -85,7 +82,6 @@ function AdicionarLoja() {
       url,
       contato,
       password,
-      Image: localStorage.getItem('storeImage'),
     })
 
     alert("Usuário cadastrado com sucesso!");
@@ -96,17 +92,6 @@ function AdicionarLoja() {
     handleSignUp();
     handleAdicionarLoja();
   };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      localStorage.setItem("image", reader.result);
-      setImage(reader.result);
-    };
-  };
-  
 
   return (
     <div className="app-shop-registration">
@@ -207,23 +192,6 @@ function AdicionarLoja() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-            <div className="access access-shop">
-              <label htmlFor="url" className="url-label">
-                Senha:
-              </label>
-              <input
-                type="password"
-                placeholder="Digite a senha loja"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="access access-shop">
-            <label>
-              Selecione uma imagem:
-              <input type="file" onChange={handleImageChange} />
-            </label>
             </div>
             {error && <div className="error-message">{error}</div>}
           </div>
