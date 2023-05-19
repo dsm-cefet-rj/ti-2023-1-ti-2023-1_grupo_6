@@ -4,25 +4,17 @@ var router = express.Router();
 let lojas = [
   {
       cnpj: "66735931",
-      id: "1",
+      id: 1,
       nome: "Gato pra Cachorro Pet Shop",
       animais_atendidos: "Gato • Cachorro • Coelho • Hamster",
       contato: "(21) 9 999-9999",
       endereco: "Avenida Gato Fofo, 164",
       descricao: "loja!",
       url: "/loja-gato-pra-cachorro-pet-shop",
-      produtos: [
-          {
-              nome: "de",
-              preco: 31.22,
-              id: "1",
-              lojaNome: "Gato pra Cachorro Pet Shop",
-          },
-      ],
   },
   {
       cnpj: "23131931",
-      id: "2",
+      id: 2,
       nome: "Cachorro Pet Shop",
       animais_atendidos: "Cachorro • Coelho • Hamster",
       contato: "(21) 9 999-9999",
@@ -31,7 +23,7 @@ let lojas = [
       url: "/loja-cachorro-pet-shop",
   },
   {
-      id: "3",
+      id: 3,
       nome: "Gato Pet Shop",
       animais_atendidos: "Gato • Pássaro • Hamster",
       contato: "(21) 9 999-9999",
@@ -40,7 +32,7 @@ let lojas = [
       url: "/loja-gato-pet-shop",
   },
   {
-      id: "4",
+      id: 4,
       nome: "Pássaro Pet Shop",
       animais_atendidos: "Pássaro • Gato • Hamster",
       contato: "(21) 9 999-9999",
@@ -57,24 +49,34 @@ router.route('/').get(function(req, res, next) {
   res.json(lojas);
 });
 
-router.route('/:id').delete(function(req, res, next) {
+router.route('/:id')
+.delete(function(req, res, next) {
   res.statusCode = 200;
-  const newArr = lojas.filter((loja) => {
+  lojas = lojas.filter((loja) => {
     return loja.id != req.params.id;
   });
-  console.log(req.params.id);
   res.setHeader('Content-Type', 'application/json');
-  res.json(newArr);
+  res.json(lojas);
+})
+.put((req, res, next) => {
+  let index = lojas.map(p => p.id).indexOf(parseInt(req.params.id));
+  console.log(index, parseInt(req.params.id));
+  lojas.splice(index, 1, ([{...req.body, id: index+1}]));
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.json(lojas);
+})
+;
+
+router.route('/adicionarLoja')
+.post(function(req, res, next) {
+  let proxId = 1 + lojas.map(p => p.id).reduce((x, y) => Math.max(x,y));
+  console.log(req.body);
+  lojas.push([{...req.body, id: proxId}]);
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.json(lojas);
 });
-// router.get('/', function(req, res, next) {
-//   res.statusCode = 200;
-//   res.setHeader('Content-Type', 'application/json');
-//   res.json([
-//     {
-//       name: 'HAHAHAHA BORGES',
-//       productor: 'MAINSTREET'
-//     }
-//   ]);
-// });
+
 
 module.exports = router;
