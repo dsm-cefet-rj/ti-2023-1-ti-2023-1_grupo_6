@@ -87,6 +87,13 @@ async function handleExit() {
               <span className="disabled-link">Produtos</span>
               )}
           </li>
+          <li>
+          {IdDaLoja ?  (
+            <Link to={`/visualizar/pedidos/${IdDaLoja}`} className="link-products">Pedidos</Link>
+            ) : (
+              <span className="disabled-link">Pedidos</span>
+              )}
+          </li>
           <div className="sair-deletar">
             <li>
               <Link onClick={() => handleExit()}>Sair</Link>

@@ -40,7 +40,7 @@ const Pedidos = () => {
                 {carrinhoUser.items.map(item => (
                     <li key={item.id}>
                         <div>
-                            <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} </h3>
+                            <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} {item.loja}</h3>
                             <div className="item-pedido">
                                 <img src={item.img} alt="img-pedido"/>
                             </div>
