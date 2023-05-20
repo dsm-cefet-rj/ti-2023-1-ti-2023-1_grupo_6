@@ -72,7 +72,7 @@ router.route('/adicionarLoja')
 .post(function(req, res, next) {
   let proxId = 1 + lojas.map(p => p.id).reduce((x, y) => Math.max(x,y));
   console.log(req.body);
-  lojas.push([{...req.body, id: proxId}]);
+  lojas.push({...req.body, id: proxId});
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.json(lojas);
