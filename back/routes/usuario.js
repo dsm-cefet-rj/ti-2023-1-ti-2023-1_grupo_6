@@ -52,7 +52,7 @@ router.route('/:id')
 // update user
 .put((req, res, next) => {
   let index = usuarios.map(u => u.id).indexOf(parseInt(req.params.id));
-  usuarios.splice(index, 1, ([{...req.body, id: index+1}]));
+  usuarios.splice(index, 1, ({...req.body, id: index+1}));
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.json(usuarios);
