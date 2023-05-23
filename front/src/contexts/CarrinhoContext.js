@@ -56,8 +56,9 @@ const CarrinhoContextProvider = ({ children }) => {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key.startsWith("carrinho_")) {
-        const carrinho = localStorage.getItem(key);
-        carrinhos.push(JSON.parse(carrinho));
+            const email = key.substring("carrinho_".length); // Extrai o email do usuário do nome da chave
+            const carrinho = localStorage.getItem(key);
+            carrinhos.push({ email: email, carrinho: JSON.parse(carrinho) });
         }
     }
     return carrinhos;

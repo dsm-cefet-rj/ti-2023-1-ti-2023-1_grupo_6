@@ -13,3 +13,12 @@
     margin-top: 30px;
     background-color: black;
 }
+
+.btn-confirmar-pedido:hover {
+    background-color: #FF8802;
+    /* background-color: #04ABAB; */
+}
+
+.email-item {
+    color: red;
+}
