@@ -6,6 +6,7 @@ import React from 'react';
 import  { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import useAuth from '../../../hooks/useAuth';
+import {  useState } from "react";
 
 const Carrinho = () => {
     const navigate = useNavigate();
@@ -14,6 +15,9 @@ const Carrinho = () => {
     const {quantidadeTotalItens, incrementItem, decrementItem, valorTotalItens, limparCarrinho } = useContext(CarrinhoContext);
     const itensExibicao = items.filter(item => item.quantidade > 0);
     const { user } = useAuth();
+    const [address, setAddress] = useState("");
+    const [number, setNumber] = useState("");
+    const [CEP, setCEP] = useState("");
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -35,32 +39,40 @@ const Carrinho = () => {
     const handleDecrementClick = (itemId) => {
         decrementItem(itemId);
     };
+
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    };
+
+    const handleNumberChange = (event) => {
+        setNumber(event.target.value);
+    };
+
+    const handleCEPChange = (event) => {
+        setCEP(event.target.value);
+    };
     
     const handleFinalizarCompra = () => {
-        // Verificar se já há um carrinho salvo no localStorage para o usuário atual
         const carrinhoExistente = localStorage.getItem(`carrinho_${user.email}`);
-    
-        // Se já houver um carrinho existente, adicionar o novo pedido ao carrinho existente
+        
         if (carrinhoExistente) {
             const carrinhoAtual = JSON.parse(carrinhoExistente);
-            carrinhoAtual.items.push(...items);
+            carrinhoAtual.items.push(...items.map(item => ({ ...item, address }))); // Adicionar o endereço a cada item
             carrinhoAtual.valorTotal += valorTotalItens;
             localStorage.setItem(`carrinho_${user.email}`, JSON.stringify(carrinhoAtual));
-        } 
-        // Caso contrário, criar um novo carrinho com o pedido atual
-        else {
+        } else {
             const carrinho = {
-                items: items,
-                valorTotal: valorTotalItens
-            };
+            items: items.map(item => ({ ...item})), // Adicionar o endereço a cada item
+            valorTotal: valorTotalItens,
+            endereco: address,
+            numero: number,
+        };
             localStorage.setItem(`carrinho_${user.email}`, JSON.stringify(carrinho));
         }
-        console.log("OI");
-        localStorage.setItem(`pedidos`, JSON.stringify(carrinhoExistente));
-        console.log(localStorage.getItem(`pedidos`));
         limparCarrinho();
         navigate(`/compraEfetuada`); 
     };
+
     return (
             <div className="carrinho-background">
             <div>
@@ -92,13 +104,13 @@ const Carrinho = () => {
                     </div>
 
                     <div className='endereco etapa'> 
-                    <h2 className='textoCarrinho'>Endereço</h2>
-                    <input type="text" placeholder='Insira o seu endereço' className="input-address" required/>
+                        <h2 className='textoCarrinho'>Endereço de Entrega: </h2>
+                        <input type="text" placeholder='Insira o seu endereço' className="input-address" value={address} onChange={handleAddressChange}
+                        required/>
                     </div>
-
                     <div className='pagamento etapa'> 
-                    <h2 className='textoCarrinho'>Forma de pagamento</h2>
-                    <p className='exemplo'>O pagamento será feito na hora da entrega.</p>
+                        <h2 className='textoCarrinho'>Forma de pagamento</h2>
+                        <p className='exemplo'>O pagamento será feito na hora da entrega.</p>
                     </div>
                     <div className='botaoBox'>
                     <button className='botaoCancelar' onClick={()=>{navigate("/home")}}>
