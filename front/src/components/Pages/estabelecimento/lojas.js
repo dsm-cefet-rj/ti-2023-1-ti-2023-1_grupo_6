@@ -27,7 +27,7 @@ const Lojas = () => {
     const [endereco, setEndereco] = useState("");
     const { allProdutos } = useContext(ProdutosContext);
     const { user } = useAuth();
-    
+    console.log(id);
     React.useEffect(() => {
         const handleResize = () => {
           setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
@@ -79,6 +79,10 @@ const Lojas = () => {
             <div className='loja'>
             <h1>{nome}</h1>
             <p>{animaisAtendidos}{animais_atendidos}, {endereco}, {contato}</p>
+            {allProdutos().filter(produto => id === produto.lojaId).length === 0 ? (
+                <p>Ainda não há produtos nessa loja.</p>
+            ) : (
+            <>
             <section className="animais-compras-loja1">
                 <h3>Adicionados Recentemente</h3>
                 <ul className="ul-loja">
@@ -98,7 +102,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Saúde</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Saúde', allProdutos()).map((produto) => (
+                    {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -115,7 +119,7 @@ const Lojas = () => {
             <section className="animais-promocoes-loja1">
                 <h3>Promoções</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Promoções', allProdutos()).map((produto) => (
+                    {getProdutosByCategoria('Promoções', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -135,7 +139,7 @@ const Lojas = () => {
             <section className="animais-servicos-loja1">
                 <h3>Diversão</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Diversão', allProdutos()).map((produto) => (
+                    {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -151,7 +155,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Alimentação</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Alimentacao', allProdutos()).map((produto) => (
+                    {getProdutosByCategoria('Alimentacao', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -167,7 +171,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Conforto</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Conforto', allProdutos()).map((produto) => (
+                    {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -183,7 +187,7 @@ const Lojas = () => {
             <section className="animais-compras-loja1">
                 <h3>Atrativos</h3>
                 <ul className="ul-loja">
-                    {getProdutosByCategoria('Atrativos', allProdutos()).map((produto) => (
+                    {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
                         <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
@@ -196,10 +200,13 @@ const Lojas = () => {
                     ))}
                     </ul>
             </section>
+            </>
+            )}
+
             </div>
             </div>
             <Menu />
             </div>
-  );
+);
 };
 export default Lojas;
