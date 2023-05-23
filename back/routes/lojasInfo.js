@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {getLojasInfo, deleteLoja, atualizarLoja, getLojaInfo, criaLoja} = require('./lojas')
+const {getLojasInfo, deleteLoja, atualizarLoja, getLojaInfo, criaLoja, getLoginInfo} = require('./lojas')
 
 /* GET users listing. */
 router.route('/')
@@ -62,6 +62,20 @@ router.route('/adicionarLoja')
     res.json(false);
   }
 });
+
+router.route('/login')
+.post((req, res, next)=>{
+    const id = getLoginInfo(req.body);
+    if(id){
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(id);
+    }else{
+        res.statusCode = 400;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(id);
+    }
+})
 
 
 module.exports = router;
