@@ -11,9 +11,12 @@ import { useContext, useState, useEffect } from 'react';
 import { ProdutosContext } from '../../../contexts/ProdutosContext';
 import HeaderLoja from "../HeaderLoja";
 
-const renderProdutos = (props) =>{
-    ReactDOM.render(<PedidosAndamento produtos={props}/>, document.getElementById('root'));
-}
+const renderProdutos = (props) => {
+    ReactDOM.render(
+        <PedidosAndamento produtos={props} />,
+        document.getElementById("root")
+    );
+};
 
 const StoreOrders = () => {
     const { user } = useAuth();
@@ -27,6 +30,8 @@ const StoreOrders = () => {
     const { getAllCarrinhos } = useContext(CarrinhoContext);
     const produtos = allProdutos();
     const t = getAllCarrinhos();
+    const [enviado, setEnviado] = useState(false);
+    const [itensEnviados, setItensEnviados] = useState([]);
 
     const itensFiltrados = t.flatMap(carrinho => {
         if (carrinho.items) {
@@ -34,6 +39,20 @@ const StoreOrders = () => {
         }
         return [];
     });
+      // ...
+
+    const handleEnviarItem = (itemId) => {
+        // Atualize o item no carrinho para marcar como enviado
+        const novoCarrinho = carrinhoUser.items.map(item => {
+            if (item.id === itemId) {
+                return { ...item, enviado: true };
+            }
+            return item;
+        });
+
+        // Atualize o carrinho no localStorage
+        localStorage.setItem(`carrinho_${user.email}`, JSON.stringify({ items: novoCarrinho }));
+    };
 
     return (
         <div className="pedidos-usuario">
@@ -46,8 +65,9 @@ const StoreOrders = () => {
                         <li key={item.id}>
                             <div>
                                 <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} {item.loja}</h3>
+                                {item.enviado && <p>Pedido Enviado</p>}
                                 <div className="item-pedido">
-                                    <img src={item.img} alt="img-pedido"/>
+                                {/* <button className='btn-confirmar-pedido' type="submit" onClick={() => handleEnviarItem(item.id)}>Enviar Item</button> */}
                                 </div>
                             </div>
                         </li>
