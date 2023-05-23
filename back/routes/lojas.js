@@ -65,6 +65,16 @@ const pegaUrl = (nome) => {
 }
 
 module.exports = {
+    getLoginInfo: (value) => {
+        const loja = lojas.filter((loja)=>{
+            return loja.login.cnpj == value.cnpj;
+        })
+        if(loja[0].login.cnpj == value.cnpj && loja[0].login.senha == value.senha){
+            return loja[0].id;
+        }else{
+            return 0;
+        }
+    },
     getLojasInfo: function(){
         const informacoes = lojas.map(loja=>loja.informacoes)
         return informacoes
