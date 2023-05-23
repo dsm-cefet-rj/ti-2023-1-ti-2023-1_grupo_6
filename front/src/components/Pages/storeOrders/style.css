@@ -1,7 +1,15 @@
-.storeOrders {
-
-}
-
 .teste {
     color: black;
+}
+
+.btn-confirmar-pedido {
+    border: 0;
+    color: white;
+    border-radius: 7px;
+    font-size: 18px;
+    cursor: pointer;
+    padding-block: 10px;
+    padding-inline: 30px;
+    margin-top: 30px;
+    background-color: black;
 }

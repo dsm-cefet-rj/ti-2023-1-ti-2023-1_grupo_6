@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { LojaContext } from '../../../contexts/LojasContext';
 import { ProdutosContext } from "../../../contexts/ProdutosContext";
 import { Link} from "react-router-dom";
+import './style.css';
 
 export default function HomeLoja() {
   const { buscasLojaNome } = useContext(LojaContext);
@@ -39,10 +40,10 @@ export default function HomeLoja() {
         <div className="produtos-adicionados-na-loja">
           <h2>Produtos existentes na loja</h2>
         </div>
-        <div>
+        <div className="produtos-home-loja">
         {produtos.filter(p => loja.id === p.lojaId).map((p) => (
-          <div key={p.id} className="info-lojas-produtos">
-              <input type="button" value="-" onClick={() => handleRemoveClick(p.id)} className="decrementar-item"/>
+          <div key={p.id} className="info-lojas-produtos produto-item">
+              <input type="button" value="-" onClick={() => handleRemoveClick(p.id)} className="decrementar-item-loja"/>
               {p.nome}
             </div>
         ))}

@@ -1,0 +1,28 @@
+.produtos-home-loja {
+    align-items: center;
+    margin-left: 40%;
+}
+
+.produto-item {
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.decrementar-item-loja {
+    margin-right: 20px;
+    background-color: black;
+    color: #ffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 90%;
+    height: 40px;
+    width: 42px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.decrementar-item-loja:hover,
+.incrementar-item-loja:hover {
+    background-color: #FF8802;
+}

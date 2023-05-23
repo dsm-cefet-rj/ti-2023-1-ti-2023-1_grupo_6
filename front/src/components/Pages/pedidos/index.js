@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './style.css';
 import Header from '../Header/index.js';
 import { useLocation } from 'react-router-dom';
-import  { useContext } from 'react';
+import  { useContext, useState } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import { useNavigate } from 'react-router-dom';
 import PedidosAndamento from "../pedidoEmAndamento";
@@ -13,11 +13,11 @@ const renderProdutos = (props) =>{
     ReactDOM.render(<PedidosAndamento produtos={props}/>, document.getElementById('root'));
 }
 
-const Pedidos = () => {
+const Pedidos = ({ pedidoEnviado }) => {
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const { user } = useAuth();
     const carrinhoUser = JSON.parse(localStorage.getItem(`carrinho_${user.email}`));
-    
+
     React.useEffect(() => {
         const handleResize = () => {
         setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -43,6 +43,7 @@ const Pedidos = () => {
                             <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} {item.loja}</h3>
                             <div className="item-pedido">
                                 <img src={item.img} alt="img-pedido"/>
+                            {pedidoEnviado && <p>Pedido Enviado</p>}
                             </div>
                         </div>
                     </li>
