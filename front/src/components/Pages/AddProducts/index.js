@@ -15,23 +15,26 @@ const AddProducts = () => {
   const [categoria, setCategoria] = useState("");
   const [idProdutos, setIdProdutos] = useState("");
   const { signUpProduct } = useAuth();
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const { adicionarProdutos } = useContext(ProdutosContext);
   const { allProdutos } = useContext(ProdutosContext);
   const { id } = useParams();
   const { buscasLoja } = useContext(LojaContext);
 
-  const handleAddProduct = () => {
-    if(!nome || !valor || !categoria ){
-      setError("Preencha todos os campos");
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+
+    if(!nome || !valor ){
+      setErrorMessage("Preencha todos os campos");
       return;
     } 
 
-    const res = signUpProduct(idProdutos, nome, valor, categoria);
-    if(res) {
-      setError(res);
-      return;
-    }
+    // const res = signUpProduct(idProdutos, nome, valor, categoria);
+    // if(res) {
+    //   setErrorMessage(res);
+    //   return;
+    // }
+
     const loja = buscasLoja(id);
     const lojaId = loja.id;
     adicionarProdutos({
@@ -42,8 +45,19 @@ const AddProducts = () => {
     lojaId: lojaId,
     img: idProdutos
     })
-    alert("Produto criado com sucesso!");
-    navigate(`/homeLoja/${loja.nome}`);
+
+    try {
+      const result = await signUpProduct(idProdutos, nome, valor, categoria);
+      if (result && result.success) {
+        alert("Produto criado com sucesso!");
+        navigate(`/homeLoja/${loja.nome}`);
+      } 
+    } catch (error) {
+      setErrorMessage(error);
+    }
+
+    // alert("Produto criado com sucesso!");
+    // navigate(`/homeLoja/${loja.nome}`);
   };
 
   const handleChangeCategoria = (event) => {
@@ -107,7 +121,7 @@ const AddProducts = () => {
 
         </div>
 </form>
-
+{errorMessage && <div className="error-message-signin">{errorMessage}</div>}
       </div>
 
     </div>  

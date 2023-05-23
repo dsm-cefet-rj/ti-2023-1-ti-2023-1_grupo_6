@@ -129,25 +129,28 @@ export const AuthProvider = ({ children }) => {
     }
 
     const signUpProduct = (id, nameProduct, price, section) => {
-        UserInformation.getAll().then((result)=>{
-            if(result instanceof ApiException){
-                setMessage(result.message);
-            }else{
-                const hasUser = result?.filter((user) => user.id === id);
-        
-                if(hasUser?.length){
-                    setMessage("Esse produto já foi cadastrado");
-                } else{
-                    let newUser= {
-                        id: id,
-                        nameProduct: nameProduct,
-                        price: price,
-                        section: section,
-                    };
-                    UserInformation.create(newUser);
-                    setMessage("Produto criado com sucesso");
+        return new Promise((resolve, reject) => {
+            UserInformation.getAll().then((result)=>{
+                if(result instanceof ApiException){
+                    reject(result.message);
+                }else{
+                    const hasUser = result?.filter((user) => user.id === id);
+            
+                    if(hasUser?.length){
+                        reject("Esse produto já foi cadastrado");
+                    } else{
+                        let newUser= {
+                            id: id,
+                            nameProduct: nameProduct,
+                            price: price,
+                            section: section,
+                        };
+                        UserInformation.create(newUser);
+                        resolve({success: true});
+                        setMessage("Produto criado com sucesso");
+                    }
                 }
-            }
+            });
         });
     }
 
