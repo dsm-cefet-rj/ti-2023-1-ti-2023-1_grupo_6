@@ -114,6 +114,18 @@ html .carrinho-background {
     width: 350px;
     height: 40px;
     color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.input-number {
+    margin-left: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+.input-CEP {
+    margin-left: 10px;
+    text-align: center;
 }
 
 .img-excluir {
@@ -143,8 +155,6 @@ html .carrinho-background {
     flex-grow: 1;
 
 }
-
-
 
 .uni-prod {
     margin-left: 0;

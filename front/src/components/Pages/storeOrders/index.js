@@ -2,13 +2,10 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import './style.css';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
-import { useNavigate } from 'react-router-dom';
 import PedidosAndamento from "../pedidoEmAndamento";
-import useAuth from "../../../hooks/useAuth";
 import { LojaContext } from '../../../contexts/LojasContext';
 import { useParams } from "react-router-dom";
-import { useContext, useState, useEffect } from 'react';
-import { ProdutosContext } from '../../../contexts/ProdutosContext';
+import { useContext } from 'react';
 import HeaderLoja from "../HeaderLoja";
 
 const renderProdutos = (props) => {
@@ -19,19 +16,12 @@ const renderProdutos = (props) => {
 };
 
 const StoreOrders = () => {
-    const { user } = useAuth();
-    //const { carrinhoUser } = useContext(CarrinhoContext);
     const { id } = useParams();
     const { buscasLoja } = useContext(LojaContext);
     const loja = buscasLoja(id);
     const lojaId = loja.id;
-    const { allProdutos } = useContext(ProdutosContext);
     const { getAllCarrinhos } = useContext(CarrinhoContext);
-    const produtos = allProdutos();
     const t = getAllCarrinhos();
-    const [enviado, setEnviado] = useState(false);
-    const [itensEnviados, setItensEnviados] = useState([]);
-    const { email } = user; // Acesso ao email do usuário
 
     const itensFiltrados = t.flatMap(carrinho => {
         if (carrinho.carrinho.items) {
@@ -41,11 +31,14 @@ const StoreOrders = () => {
                 nome: item.nome, // Adicione a propriedade 'nome'
                 valor: item.valor, // Adicione a propriedade 'valor'
                 loja: item.loja, // Adicione a propriedade 'loja'
-                email: carrinho.email // Acesse o email do carrinho
+                email: carrinho.email, // Acesse o email do usuario que comprou o item
+                endereco: item.endereco, /// Acesse o endereco do usuario que comprou o item
             }));
         }
         return [];
     });
+
+    console.log(itensFiltrados);
 
     return (
         <div className="pedidos-usuario">
@@ -60,7 +53,8 @@ const StoreOrders = () => {
                             <h3>
                                 Pedido: {item.nome} <br />
                                 Total: R$ {item.valor} {item.loja} <br />
-                                Comprado por:  <span className="email-item">{item.email}</span>
+                                Comprado por:  <span className="email-item">{item.email}</span> <br />
+                                Endereço de envio: <span className="endereco-item">{item.endereco}</span>
                             </h3>
                             <button className="btn-confirmar-pedido">
                                 Enviar Pedido
