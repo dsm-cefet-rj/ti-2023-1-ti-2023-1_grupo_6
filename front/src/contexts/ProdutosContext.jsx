@@ -17,7 +17,6 @@ import coleiracachorro from "../assets/coleira-cachorro.png";
 import gaiolacoelho from "../assets/gaiola-coelho.png";
 import gaiolapassaro from "../assets/gaiola-passaro.png";
 import prodcoelho from "../assets/prod-coelho.png";
-import roupapassaro from "../assets/roupa-passaro.png";
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = [{

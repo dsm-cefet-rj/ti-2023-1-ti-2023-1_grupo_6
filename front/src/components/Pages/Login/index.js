@@ -28,7 +28,6 @@ const Login = () => {
       const result = await signIn(email, password, true);
   
       if (result && result.success) {
-        console.log("ok");
         navigate("/home");
       } 
     } catch (error) {

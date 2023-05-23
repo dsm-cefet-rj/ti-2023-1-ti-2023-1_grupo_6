@@ -23,7 +23,6 @@ const StoreProfile = () => {
 
     async function handleDelete(emailUser) {
         const result = await confirmDelete();
-        console.log(result);
         if(result === true) {
             deleteAccount(emailUser);
             infoDelete();
@@ -33,7 +32,6 @@ const StoreProfile = () => {
 
     async function handleExit() {
         const result = await confirmExit();
-        console.log(result);
         if(result === true) {
             signOut();
             navigate("/")

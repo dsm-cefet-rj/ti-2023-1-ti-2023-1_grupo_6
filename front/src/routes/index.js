@@ -25,6 +25,7 @@ import AddSection from "../components/Pages/AddSection/index.js";
 import AddProducts from "../components/Pages/AddProducts/index.js";
 import LoginEstabelecimento from "../components/Pages/LoginEstabelecimento/index.js";
 import HomeLoja from "../components/Pages/homeLoja/index.js";
+import StoreOrders from "../components/Pages/storeOrders/index.js";
 import { LojaProvider } from "../contexts/LojasContext.jsx";
 import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
 
@@ -63,10 +64,11 @@ const RoutesApp = () => {
                 <Route path="/coelho" element={<Private Item={Rabbit} />} />
                 <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />}/>
                 <Route path="/pedidos" element={<Private Item={Pedidos} />} />
-                <Route path="/adicionar/secao" element={<AddSection />} />
-                <Route path="/adicionar/produto/:id" element={<AddProducts />} />
-                <Route path="/loja/:id" element={<LojaDetalhes />} />
-                <Route path="/adicionarLoja" element={AdicionarLoja} />
+                <Route path="/adicionar/secao" element={<Private Item={AddSection} />} />
+                <Route path="/adicionar/produto/:id" element={<Private Item={AddProducts} />} />
+                <Route path="/loja/:id" element={<Private Item ={LojaDetalhes} />} />
+                <Route path="/adicionarLoja" element={<Private Item={AdicionarLoja} />} />
+                <Route path="/visualizar/pedidos/:id" element={<Private Item={StoreOrders} />} />
               </Routes>
             </Fragment>
           </CarrinhoContextProvider>

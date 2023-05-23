@@ -17,6 +17,7 @@ import { LojaContext } from '../../../contexts/LojasContext';
 import { Link } from 'react-router-dom';
 import './index.css';
 import useAuth from "../../../hooks/useAuth";
+import { UserInformation } from "../../../services/api/userInformation/UserInformation"; 
 
 const Home = () => {
   const { allLojas } = useContext(LojaContext);

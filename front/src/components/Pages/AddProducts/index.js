@@ -42,7 +42,6 @@ const AddProducts = () => {
     lojaId: lojaId,
     img: idProdutos
     })
-    console.log(allProdutos());
     alert("Produto criado com sucesso!");
     navigate(`/homeLoja/${loja.nome}`);
   };

@@ -22,8 +22,6 @@ const MenuWeb = () => {
     (loja) => loja.nome.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
   );
   const { quantidadeTotalItens } = useContext(CarrinhoContext);
-  console.log("user")
-  console.log(user)
   const handleSearch = (event) => {
     const value = event.target.value;
     setSearchTerm(value);

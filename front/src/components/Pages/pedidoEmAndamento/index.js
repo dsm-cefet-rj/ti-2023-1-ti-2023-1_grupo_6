@@ -8,7 +8,6 @@ const PedidosAndamento = (props) => {
     const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
     const location = useLocation();
     const { state: {produtos} } = location;
-    console.log(produtos);
     React.useEffect(() => {
         const handleResize = () => {
         setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
@@ -22,7 +21,6 @@ const PedidosAndamento = (props) => {
     }, []);
 
     return (
-        (console.log(props)),
         <div class="pedidos-usuario">
             <div>
             {isScreenWideEnough && <Header />}

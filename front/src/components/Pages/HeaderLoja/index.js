@@ -31,7 +31,6 @@ const HeaderLoja = ({ lj, id }) => {
     const loja = buscasLoja(IdDaLoja);
     const cnpj = loja.cnpj;
     const result = await confirmDelete();
-    console.log(result);
     if (result === true) {
       deleteAccountStore(cnpj);
       infoDelete();
@@ -58,7 +57,6 @@ const HeaderLoja = ({ lj, id }) => {
 
 async function handleExit() {
     const result = await confirmExit();
-    console.log(result);
     if(result === true) {
         signOut();
         navigate("/")
@@ -85,6 +83,13 @@ async function handleExit() {
             <Link to={`/adicionar/produto/${IdDaLoja}`} className="link-products">Produtos</Link>
             ) : (
               <span className="disabled-link">Produtos</span>
+              )}
+          </li>
+          <li>
+          {IdDaLoja ?  (
+            <Link to={`/visualizar/pedidos/${IdDaLoja}`} className="link-products">Pedidos</Link>
+            ) : (
+              <span className="disabled-link">Pedidos</span>
               )}
           </li>
           <div className="sair-deletar">

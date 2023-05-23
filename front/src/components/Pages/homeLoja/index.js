@@ -20,7 +20,6 @@ export default function HomeLoja() {
     const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos') || '[]');
     setProdutos(produtosLocalStorage);
   }, []);
-  console.log(produtos);
 
   const handleRemoveClick = (id) => {
     removerProduto(id);

@@ -51,6 +51,18 @@ const CarrinhoContextProvider = ({ children }) => {
 
   const itemsComQuantidade = items.filter((item) => item.quantidade > 0);
 
+  const getAllCarrinhos = () => {
+    const carrinhos = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("carrinho_")) {
+        const carrinho = localStorage.getItem(key);
+        carrinhos.push(JSON.parse(carrinho));
+        }
+    }
+    return carrinhos;
+  };
+
   return (
     <CarrinhoContext.Provider
       value={{
@@ -62,6 +74,7 @@ const CarrinhoContextProvider = ({ children }) => {
         items: itemsComQuantidade,
         quantidadeTotalItens,
         valorTotalItens,
+        getAllCarrinhos,
       }}
     >
       {children}
