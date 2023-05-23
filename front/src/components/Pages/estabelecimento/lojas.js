@@ -69,7 +69,6 @@ const Lojas = () => {
     const handleAdicionarProduto = (produto) => {
         adicionarProdutoCarrinho(produto);
         localStorage.setItem(`carrinho_${user.cpf}`, JSON.stringify(produto));
-        console.log(localStorage.getItem(`carrinho_${user.cpf}`));
         setExibirIframe(true);
     };
 

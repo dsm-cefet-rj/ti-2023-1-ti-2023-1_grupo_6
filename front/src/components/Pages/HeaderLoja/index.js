@@ -31,7 +31,6 @@ const HeaderLoja = ({ lj, id }) => {
     const loja = buscasLoja(IdDaLoja);
     const cnpj = loja.cnpj;
     const result = await confirmDelete();
-    console.log(result);
     if (result === true) {
       deleteAccountStore(cnpj);
       infoDelete();
@@ -58,7 +57,6 @@ const HeaderLoja = ({ lj, id }) => {
 
 async function handleExit() {
     const result = await confirmExit();
-    console.log(result);
     if(result === true) {
         signOut();
         navigate("/")

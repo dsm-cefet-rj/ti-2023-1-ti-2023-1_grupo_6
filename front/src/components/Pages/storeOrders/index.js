@@ -24,15 +24,16 @@ const StoreOrders = () => {
     const loja = buscasLoja(id);
     const lojaId = loja.id;
     const { allProdutos } = useContext(ProdutosContext);
+    const { getAllCarrinhos } = useContext(CarrinhoContext);
     const produtos = allProdutos();
-    console.log(produtos);
-    console.log(lojaId);
+    const t = getAllCarrinhos();
 
-          // Filtrar os itens do carrinho com base no lojaId
-            const itemsDaLoja = produtos.filter(item => item.lojaId === lojaId);
-            console.log(itemsDaLoja);
-
-    
+    const itensFiltrados = t.flatMap(carrinho => {
+        if (carrinho.items) {
+            return carrinho.items.filter(item => item.lojaId === lojaId);
+        }
+        return [];
+    });
 
     return (
         <div className="pedidos-usuario">
@@ -41,7 +42,7 @@ const StoreOrders = () => {
             </div>
             <h2>Pedidos recebidos:</h2>
             <ul className="ul-pedidos">
-                {itemsDaLoja.map(item => (
+                {itensFiltrados.map((item) =>
                         <li key={item.id}>
                             <div>
                                 <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} {item.loja}</h3>
@@ -50,8 +51,8 @@ const StoreOrders = () => {
                                 </div>
                             </div>
                         </li>
-                    ))}
-            </ul>
+                )}
+            </ul> 
         </div>
     );
 };

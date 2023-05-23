@@ -55,12 +55,13 @@ const Carrinho = () => {
             };
             localStorage.setItem(`carrinho_${user.email}`, JSON.stringify(carrinho));
         }
+        console.log("OI");
+        localStorage.setItem(`pedidos`, JSON.stringify(carrinhoExistente));
+        console.log(localStorage.getItem(`pedidos`));
         limparCarrinho();
-        navigate(`/compraEfetuada`);
+        navigate(`/compraEfetuada`); 
     };
-    
-        
-        return (
+    return (
             <div className="carrinho-background">
             <div>
             {isScreenWideEnough && <Header />}

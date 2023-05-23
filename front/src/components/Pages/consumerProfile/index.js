@@ -24,7 +24,6 @@ const ConsumerProfile = () => {
 
     async function handleDelete(emailUser) {
         const result = await confirmDelete();
-        console.log(result);
         if(result === true) {
             deleteAccount("email", emailUser);
             infoDelete();
