@@ -36,7 +36,7 @@ const Dogs = () => {
         <h1>Produtos para Cachorro</h1>
         <ul className="ul-produtos-dogs">
           {allProdutos()
-            .filter((p) => p.animal === "cachorro")
+            .filter((p) =>  p.animal && p.animal.includes("Cachorro") ||  p.animal && p.animal.includes("cachorro"))
             .map((p) => (
               <li key={p.id}>
                 <div class="produtoss">
