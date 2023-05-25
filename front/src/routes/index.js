@@ -40,8 +40,6 @@ const Private = ({ Item }) => {
   }
 };
 
-
-
 const RoutesApp = () => {
   const { signed } = useAuth();
 
@@ -59,7 +57,7 @@ const RoutesApp = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento />} />
                 <Route path="/home" element={<Private Item={Home} />} />
-                <Route path="/homeLoja/:nome" element={<Private Item={HomeLoja} />} />
+                <Route path="/homeLoja/:id" element={<Private Item={HomeLoja} />} />
                 <Route path="/carrinho" element={<Private Item={Carrinho} />} />
                 <Route path="/registrar/usuario" element={<UserRegistration />} />
                 <Route path="/opcao/registrar" element={<OptionRegistration />} />

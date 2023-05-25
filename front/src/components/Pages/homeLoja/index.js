@@ -9,14 +9,12 @@ import { Link} from "react-router-dom";
 import './style.css';
 
 export default function HomeLoja() {
-  const { buscasLojaNome } = useContext(LojaContext);
+  const { buscasLoja } = useContext(LojaContext);
   const { allProdutos, removerProduto } = useContext(ProdutosContext);
-  const { nome } = useParams();
-  const loja = buscasLojaNome(nome);
-  const n = loja.nome;
-  const id = loja.id;
+  const { id } = useParams();
   const [produtos, setProdutos] = useState([]);
-
+  const loja = buscasLoja(id);
+  
   useEffect(() => {
     const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos') || '[]');
     setProdutos(produtosLocalStorage);
@@ -32,7 +30,7 @@ export default function HomeLoja() {
 
   return (
     <div className="homeLoja">
-      <HeaderLoja lj={n} id={id} />
+      <HeaderLoja/>
       <div className="homeLoja-infos">
         <div className="infos-lojas-home">
           <h1>{loja.nome}</h1>
@@ -47,7 +45,7 @@ export default function HomeLoja() {
               {p.nome}
             </div>
         ))}
-        </div>
+        </div> 
       </div>
     </div>
   );

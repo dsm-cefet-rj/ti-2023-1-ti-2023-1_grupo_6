@@ -8,24 +8,14 @@ import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
 import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
 import confirmExit from '../../../utils/iframe-confirmacao-sair-conta';
 import { LojaContext } from "../../../contexts/LojasContext";
+import { useParams } from "react-router-dom";
 
-const HeaderLoja = ({ lj, id }) => {
-  const [nomeDaLoja, setNomeDaLoja] = useState("");
-  const [IdDaLoja, setIdDaLoja] = useState("");
+const HeaderLoja = () => {
   const { signOut } = useAuth();
   const { deleteAccountStore } = useAuth();
   const navigate = useNavigate();
   const { buscasLoja } = useContext(LojaContext)
-  useEffect(() => {
-    if (lj && id) {
-      localStorage.setItem("nomeDaLoja", lj);
-      localStorage.setItem("IdDaLoja", id);
-      setNomeDaLoja(lj);
-      setIdDaLoja(id);
-    }
-  }, [lj, id]);
-  
-  const storedNomeDaLoja = localStorage.getItem("nomeDaLoja");
+  const { id } = useParams();
   
   async function handleDelete(IdDaLoja) {
     const loja = buscasLoja(IdDaLoja);
@@ -72,8 +62,8 @@ async function handleExit() {
       <nav className="menu-nav menu-home-profile">
         <ul className="nav-ul">
           <li>
-            {storedNomeDaLoja || nomeDaLoja ? (
-              <Link to={`/homeLoja/${storedNomeDaLoja || nomeDaLoja}`} className="link-products">
+            {id ? (
+              <Link to={`/homeLoja/${id}`} className="link-products">
                 Início
               </Link>
             ) : (
@@ -81,15 +71,15 @@ async function handleExit() {
             )}
           </li>
           <li>
-          {IdDaLoja ? (
-            <Link to={`/adicionar/produto/${IdDaLoja}`} className="link-products">Produtos</Link>
+          {id ? (
+            <Link to={`/adicionar/produto/${id}`} className="link-products">Produtos</Link>
             ) : (
               <span className="disabled-link">Produtos</span>
               )}
           </li>
           <li>
-          {IdDaLoja ?  (
-            <Link to={`/visualizar/pedidos/${IdDaLoja}`} className="link-products">Pedidos</Link>
+          {id ?  (
+            <Link to={`/visualizar/pedidos/${id}`} className="link-products">Pedidos</Link>
             ) : (
               <span className="disabled-link">Pedidos</span>
               )}
@@ -99,7 +89,7 @@ async function handleExit() {
               <Link onClick={() => handleExit()}>Sair</Link>
             </li>
             <li>
-              <Link onClick={() => handleDelete(IdDaLoja)}>Deletar loja</Link>
+              <Link onClick={() => handleDelete(id)}>Deletar loja</Link>
             </li>
           </div> 
         </ul>
