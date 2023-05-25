@@ -99,44 +99,28 @@ const Lojas = () => {
                     ))}
                 </ul>
             </section>
+            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
             <section className="animais-compras-loja1">
-                <h3>Saúde</h3>
-                <ul className="ul-loja">
-                    {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
+                    <>
+                    <h3>Saúde</h3>
+                    <ul className="ul-loja">
+                        {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
                         <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
+                            <img src={produto.img} alt={produto.nome} />
                             <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                            <p>{produto.nome}</p>
+                            <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
                             </div>
-                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
+                            <input type="submit" value="Comprar" onClick={() => { handleAdicionarProduto(produto); mostrarConfirmacao(); }} className='button-comprar-servicos' />
                         </li>
-                    ))}
-                </ul>
-            </section>
-            
-            <section className="animais-promocoes-loja1">
-                <h3>Promoções</h3>
-                <ul className="ul-loja">
-                    {getProdutosByCategoria('Promoções', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
-                        <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'>
-                                <span className='cifrao'>R$</span>{produto.promocao}
-                                {produto.valor !== produto.promocao &&
-                                    <span className='preco-antigo'>R${produto.valor}</span>}
-                                </p>
-                                <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
+                        ))}
+                    </ul>
+                    </>
+                </section>
+            )}
+            {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
             <section className="animais-servicos-loja1">
+                        <>
                 <h3>Diversão</h3>
                 <ul className="ul-loja">
                     {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
@@ -151,8 +135,12 @@ const Lojas = () => {
                         </li>
                     ))}
                     </ul>
+                    </>
             </section>
+            )}
+            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
             <section className="animais-compras-loja1">
+                <>
                 <h3>Alimentação</h3>
                 <ul className="ul-loja">
                     {getProdutosByCategoria('Alimentacao', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
@@ -167,8 +155,12 @@ const Lojas = () => {
                         </li>
                     ))}
                 </ul>
+                </>
             </section>
+            )}
+            {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
             <section className="animais-compras-loja1">
+                <>
                 <h3>Conforto</h3>
                 <ul className="ul-loja">
                     {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
@@ -183,8 +175,12 @@ const Lojas = () => {
                         </li>
                     ))}
                 </ul>
+                </>
             </section>
+            )}
+            {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
             <section className="animais-compras-loja1">
+                <>
                 <h3>Atrativos</h3>
                 <ul className="ul-loja">
                     {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
@@ -199,7 +195,9 @@ const Lojas = () => {
                         </li>
                     ))}
                     </ul>
+                    </>
             </section>
+            )}
             </>
             )}
 
