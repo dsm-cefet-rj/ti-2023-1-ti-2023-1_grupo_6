@@ -1,6 +1,5 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Fragment, useEffect } from "react";
-import Cookies from 'js-cookie';
+import { Fragment } from "react";
 import Login from "../components/Pages/Login/index.js";
 import Home from "../components/Pages/Home/index.js";
 import Carrinho from "../components/Pages/Carrinho/index.js";
@@ -41,24 +40,15 @@ const Private = ({ Item }) => {
   }
 };
 
+
+
 const RoutesApp = () => {
   const { signed } = useAuth();
 
-  useEffect(() => {
-    if (signed) {
-      // Armazena a rota atual no localStorage quando o usuário estiver autenticado
-      localStorage.setItem('lastRoute', window.location.pathname);
-    }
-  }, [signed]);
+  if (!signed && window.location.pathname === "/home") {
+    window.location.pathname = "/";
+  }
 
-  const lastRoute = localStorage.getItem('lastRoute');
-
-  useEffect(() => {
-    if (!signed && window.location.pathname === '/home' && lastRoute) {
-      // Se o usuário não estiver autenticado, redireciona para a última rota armazenada no localStorage
-      return <Navigate to={lastRoute} replace />;
-    }
-  }, [signed, lastRoute]);
   return (
     <HashRouter>  
         <ProdutosProvider>
