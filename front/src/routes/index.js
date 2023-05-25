@@ -45,7 +45,7 @@ const Private = ({ Item }) => {
 const RoutesApp = () => {
   const { signed } = useAuth();
 
-  if (!signed && window.location.pathname === "/home") {
+  if (!signed && window.location.pathname === "/home" || !signed && window.location.pathname === "/homeLoja") {
     window.location.pathname = "/";
   }
 
