@@ -16,6 +16,7 @@ const HeaderLoja = ({ lj, id }) => {
   const { deleteAccountStore } = useAuth();
   const navigate = useNavigate();
   const { buscasLoja } = useContext(LojaContext)
+  
   useEffect(() => {
     if (lj && id) {
       localStorage.setItem("nomeDaLoja", lj);

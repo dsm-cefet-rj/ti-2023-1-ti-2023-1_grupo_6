@@ -1,5 +1,6 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
-import { Fragment } from "react";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import Cookies from 'js-cookie';
 import Login from "../components/Pages/Login/index.js";
 import Home from "../components/Pages/Home/index.js";
 import Carrinho from "../components/Pages/Carrinho/index.js";
@@ -28,14 +29,36 @@ import HomeLoja from "../components/Pages/homeLoja/index.js";
 import StoreOrders from "../components/Pages/storeOrders/index.js";
 import { LojaProvider } from "../contexts/LojasContext.jsx";
 import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
+import NotFound from "../components/Pages/NotFound/index.js";
 
 const Private = ({ Item }) => {
-  const { signed } =  useAuth();
-  return signed > 0 ? <Item/> : <Login/>; //se estiver logado, retorna o item que foi passado. Caso contrário, irá para a página de login.
+  const { signed } = useAuth();
+
+  if (signed > 0) {
+    return <Item />;
+  } else {
+    return <Navigate to="/" replace />;
+  }
 };
 
-
 const RoutesApp = () => {
+  const { signed } = useAuth();
+
+  useEffect(() => {
+    if (signed) {
+      // Armazena a rota atual no localStorage quando o usuário estiver autenticado
+      localStorage.setItem('lastRoute', window.location.pathname);
+    }
+  }, [signed]);
+
+  const lastRoute = localStorage.getItem('lastRoute');
+
+  useEffect(() => {
+    if (!signed && window.location.pathname === '/home' && lastRoute) {
+      // Se o usuário não estiver autenticado, redireciona para a última rota armazenada no localStorage
+      return <Navigate to={lastRoute} replace />;
+    }
+  }, [signed, lastRoute]);
   return (
     <HashRouter>  
         <ProdutosProvider>
@@ -45,9 +68,7 @@ const RoutesApp = () => {
               <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/LoginEstabelecimento" element={<LoginEstabelecimento />} />
-                <Route path="*" element={<Login />} />
                 <Route path="/home" element={<Private Item={Home} />} />
-
                 <Route path="/homeLoja/:nome" element={<Private Item={HomeLoja} />} />
                 <Route path="/carrinho" element={<Private Item={Carrinho} />} />
                 <Route path="/registrar/usuario" element={<UserRegistration />} />
@@ -69,6 +90,7 @@ const RoutesApp = () => {
                 <Route path="/loja/:id" element={<Private Item ={LojaDetalhes} />} />
                 <Route path="/adicionarLoja" element={<Private Item={AdicionarLoja} />} />
                 <Route path="/visualizar/pedidos/:id" element={<Private Item={StoreOrders} />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Fragment>
           </CarrinhoContextProvider>
