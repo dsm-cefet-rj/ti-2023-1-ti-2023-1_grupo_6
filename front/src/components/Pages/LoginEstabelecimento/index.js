@@ -30,8 +30,8 @@ const LoginEstabelecimento = () => {
   
       if (result && result.success) {
         const loja = buscasLojaCNPJ(cnpj);
-        const nome = loja.nome;
-        navigate(`/homeLoja/${nome}`);
+        const id = loja.id;
+        navigate(`/homeLoja/${id}`);
       } 
     } catch (error) {
       setErrorMessage(error);

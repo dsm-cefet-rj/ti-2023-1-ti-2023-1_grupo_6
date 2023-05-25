@@ -37,8 +37,9 @@ const Rabbit = () => {
             <h1>Produtos para Coelho</h1>
             <section className='produtos-rabbit'>
                 <ul className="ul-produtos-rabbit">
-                    {allProdutos().filter(p => p.animal === 'coelho').map(p => (
+                    {allProdutos().filter(p =>  p.animal && p.animal.includes("Coelho") || p.animal && p.animal.includes("coelho")).map(p => (
                         <li key={p.id}>
+                            {console.log(p.animal.includes("Coelho"))}
                             <div>
                                 <div className='img-produtos-rabbit'>
                                     <img src={p.img}></img>

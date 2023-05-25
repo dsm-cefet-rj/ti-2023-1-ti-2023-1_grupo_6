@@ -34,8 +34,9 @@ const Cats = () => {
       <section className="produtos-cats">
         <ul className="ul-produtos-cats">
           {allProdutos()
-            .filter((p) => p.animal === "gato")
+            .filter((p) => p.animal && p.animal.includes("gato") ||  p.animal && p.animal.includes("Gato"))
             .map((p) => (
+
               <li key={p.id}>
                 <div>
                   <div className="img-produtos-cats">

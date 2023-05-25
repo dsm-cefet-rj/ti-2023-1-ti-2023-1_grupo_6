@@ -873,6 +873,72 @@
       "nameProduct": "OIIII1",
       "price": "0.01",
       "section": "Saúde"
+    },
+    {
+      "id": "hvHljFr",
+      "nameProduct": "óleo de peixe",
+      "price": "1.23",
+      "section": "Atrativos"
+    },
+    {
+      "id": "-utucEw",
+      "nameProduct": "Brinquedo de pelúcia",
+      "price": "34.78",
+      "section": "Atrativos"
+    },
+    {
+      "id": "SLAI2YW",
+      "nameProduct": "Catnip",
+      "price": "67.98",
+      "section": "Atrativos"
+    },
+    {
+      "id": "o1Q2z2l",
+      "nameProduct": "camisa de dormir",
+      "price": "0.3",
+      "section": "Atrativos"
+    },
+    {
+      "id": "LvPRl0N",
+      "nameProduct": "espelho para gato",
+      "price": "345.63",
+      "section": "Atrativos"
+    },
+    {
+      "id": "GftX9Nk",
+      "nameProduct": "peneira",
+      "price": "454.6",
+      "section": "Atrativos"
+    },
+    {
+      "id": "yl-X-BO",
+      "nameProduct": "Farelo de rato",
+      "price": "1056.98",
+      "section": "Atrativos"
+    },
+    {
+      "id": "A-yYj-8",
+      "nameProduct": "Caminha de Algodão Peruano",
+      "price": "45.98",
+      "section": "Conforto"
+    },
+    {
+      "id": "RPMPGTI",
+      "nameProduct": "TESTE",
+      "price": "4341.87",
+      "section": "Atrativos"
+    },
+    {
+      "id": "5IAkZzu",
+      "nameProduct": "teste2",
+      "price": "3432324.75",
+      "section": "Atrativos"
+    },
+    {
+      "id": "4a8FN3T",
+      "nameProduct": "Caminha confortável para seu animalzinho",
+      "price": "45.78",
+      "section": "Conforto"
     }
   ],
   "carrinho": [

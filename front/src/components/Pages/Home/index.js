@@ -18,13 +18,15 @@ import { Link } from 'react-router-dom';
 import './index.css';
 import useAuth from "../../../hooks/useAuth";
 import { UserInformation } from "../../../services/api/userInformation/UserInformation"; 
+import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Home = () => {
   const { allLojas } = useContext(LojaContext);
+  const { allProdutos } = useContext(ProdutosContext);
   const navigate = useNavigate();
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
   const { user } = useAuth();
-
+console.log(allProdutos());
   const getItemsToShow = () => {
     if (window.innerWidth >= 1200) {
       return 4;

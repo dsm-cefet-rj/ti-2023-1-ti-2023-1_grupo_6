@@ -151,3 +151,11 @@ html {
     transform: translateY(-25px) scale(0.75);
     color: #FF8802;
 }
+
+.check-name-category {
+    color: black;
+}
+
+.check-list {
+    border: red;
+}
