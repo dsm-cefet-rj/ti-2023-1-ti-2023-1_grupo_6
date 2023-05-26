@@ -17,7 +17,7 @@ import { LojaContext } from '../../../contexts/LojasContext';
 import { Link } from 'react-router-dom';
 import './index.css';
 import useAuth from "../../../hooks/useAuth";
-import { UserInformation } from "../../../services/api/userInformation/UserInformation"; 
+import { UserInformation } from "../../../services/api/userInformation/UserInformation";
 import { ProdutosContext } from "../../../contexts/ProdutosContext";
 
 const Home = () => {
@@ -26,7 +26,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
   const { user } = useAuth();
-console.log(allProdutos());
+  console.log(allProdutos());
   const getItemsToShow = () => {
     if (window.innerWidth >= 1200) {
       return 4;
@@ -102,16 +102,15 @@ console.log(allProdutos());
           paginationClassName="custom-carousel"
           className="carousel"
         >
-      {allLojas().map((loja) => (
-          <div key={loja.nome} className="lojas-l">
-            <Link to={`/loja/${loja.id}`} className="link-loja-name-home">
-              <div className="nameLoja">
-                {loja.nome}
-                
-              </div>
-            </Link> 
-          </div>
-        ))}
+          {allLojas().map((loja) => (
+            <div key={loja.nome} className="lojas-l">
+              {<Link to={`/loja/${loja.id}`} className="link-loja-name-home">
+                <div className="nameLoja">
+                  {loja.nome}
+                </div>
+              </Link>}
+            </div>
+          ))}
         </Carousel>
         <div className="commercial">
           <img

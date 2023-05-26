@@ -27,7 +27,7 @@ import LoginEstabelecimento from "../components/Pages/LoginEstabelecimento/index
 import HomeLoja from "../components/Pages/homeLoja/index.js";
 import StoreOrders from "../components/Pages/storeOrders/index.js";
 import { LojaProvider } from "../contexts/LojasContext.jsx";
-import { ProdutosProvider  } from "../contexts/ProdutosContext.jsx";
+import { ProdutosProvider } from "../contexts/ProdutosContext.jsx";
 import NotFound from "../components/Pages/NotFound/index.js";
 
 const Private = ({ Item }) => {
@@ -48,8 +48,8 @@ const RoutesApp = () => {
   }
 
   return (
-    <HashRouter>  
-        <ProdutosProvider>
+    <HashRouter>
+      <ProdutosProvider>
         <LojaProvider>
           <CarrinhoContextProvider>
             <Fragment>
@@ -63,19 +63,19 @@ const RoutesApp = () => {
                 <Route path="/opcao/registrar" element={<OptionRegistration />} />
                 <Route path="/menu" element={<Private Item={Menu} />} />
                 <Route path="/lojas" element={<Private Item={Lojas} />} />
-                <Route path="/perfil" element={<Private Item={ConsumerProfile} />}/>
-                <Route path="/profileStore" element={<Private Item={StoreProfile} />}/>
-                <Route path="/registrar/estabelecimento" element={<ShopRegistration />}/>
+                <Route path="/perfil" element={<Private Item={ConsumerProfile} />} />
+                <Route path="/profileStore" element={<Private Item={StoreProfile} />} />
+                <Route path="/registrar/estabelecimento" element={<ShopRegistration />} />
                 <Route path="/passaros" element={<Private Item={Birds} />} />
                 <Route path="/gatos" element={<Private Item={Cats} />} />
                 <Route path="/cachorros" element={<Private Item={Dogs} />} />
                 <Route path="/hamsters" element={<Private Item={Hamsters} />} />
                 <Route path="/coelho" element={<Private Item={Rabbit} />} />
-                <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />}/>
+                <Route path="/compraEfetuada" element={<Private Item={CompraFinalizada} />} />
                 <Route path="/pedidos" element={<Private Item={Pedidos} />} />
                 <Route path="/adicionar/secao" element={<Private Item={AddSection} />} />
                 <Route path="/adicionar/produto/:id" element={<Private Item={AddProducts} />} />
-                <Route path="/loja/:id" element={<Private Item ={LojaDetalhes} />} />
+                <Route path="/loja/:id" element={<Private Item={LojaDetalhes} />} />
                 <Route path="/adicionarLoja" element={<Private Item={AdicionarLoja} />} />
                 <Route path="/visualizar/pedidos/:id" element={<Private Item={StoreOrders} />} />
                 <Route path="*" element={<NotFound />} />
@@ -83,7 +83,7 @@ const RoutesApp = () => {
             </Fragment>
           </CarrinhoContextProvider>
         </LojaProvider>
-        </ProdutosProvider>
+      </ProdutosProvider>
     </HashRouter>
   );
 };

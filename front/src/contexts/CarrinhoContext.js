@@ -4,6 +4,7 @@ export const CarrinhoContext = createContext();
 
 const CarrinhoContextProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [compraRealizada, setCompraRealizada] = useState(false);
 
   const adicionarProdutoCarrinho = (produto) => {
     const index = items.findIndex((item) => item.id === produto.id);
@@ -21,14 +22,14 @@ const CarrinhoContextProvider = ({ children }) => {
   const updateItem = (itemId, newQuantity) => {
     const updatedItems = items.map((item) =>
       item.id === itemId ? { ...item, quantidade: newQuantity } : item
-      );
-      setItems(updatedItems);
-    };
-    
+    );
+    setItems(updatedItems);
+  };
+
   const incrementItem = (itemId) => {
-      const updatedItems = items.map((item) =>
+    const updatedItems = items.map((item) =>
       item.id === itemId ? { ...item, quantidade: item.quantidade + 1 } : item
-      );
+    );
     setItems(updatedItems);
   };
 
@@ -54,14 +55,22 @@ const CarrinhoContextProvider = ({ children }) => {
   const getAllCarrinhos = () => {
     const carrinhos = [];
     for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith("carrinho_")) {
-            const email = key.substring("carrinho_".length); // Extrai o email do usuário do nome da chave
-            const carrinho = localStorage.getItem(key);
-            carrinhos.push({ email: email, carrinho: JSON.parse(carrinho) });
-        }
+      const key = localStorage.key(i);
+      if (key.startsWith("carrinho_")) {
+        const email = key.substring("carrinho_".length); // Extrai o email do usuário do nome da chave
+        const carrinho = localStorage.getItem(key);
+        carrinhos.push({ email: email, carrinho: JSON.parse(carrinho) });
+      }
     }
     return carrinhos;
+  };
+
+  const marcarCompraRealizada = () => {
+    setCompraRealizada(true);
+  };
+
+  const resetarCompraRealizada = () => {
+    setCompraRealizada(false);
   };
 
   return (
@@ -76,6 +85,9 @@ const CarrinhoContextProvider = ({ children }) => {
         quantidadeTotalItens,
         valorTotalItens,
         getAllCarrinhos,
+        compraRealizada,
+        marcarCompraRealizada,
+        resetarCompraRealizada
       }}
     >
       {children}

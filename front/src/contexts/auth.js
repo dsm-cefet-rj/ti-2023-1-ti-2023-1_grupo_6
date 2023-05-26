@@ -13,30 +13,30 @@ export const AuthProvider = ({ children }) => {
         const userToken = localStorage.getItem("user_token");
         const usersStorage = localStorage.getItem("users_db");
 
-        if(userToken && usersStorage){
+        if (userToken && usersStorage) {
             const hasUser = JSON.parse(usersStorage)?.filter(
                 (user) => user.email === JSON.parse(userToken).email
             );
 
-            if(hasUser) setUser(hasUser[0]);
+            if (hasUser) setUser(hasUser[0]);
         }
 
     }, []);
 
     const signIn = (email, password) => {
         return new Promise((resolve, reject) => {
-            UserInformation.getAll().then((result)=>{
-                if(result instanceof ApiException){
+            UserInformation.getAll().then((result) => {
+                if (result instanceof ApiException) {
                     reject(result.message);
-                }else{
+                } else {
                     const hasUser = result?.filter((user) => user.email === email);
-                
-                    if(hasUser?.length){
-                        if(hasUser[0].email === email && hasUser[0].password === password) {
+
+                    if (hasUser?.length) {
+                        if (hasUser[0].email === email && hasUser[0].password === password) {
                             const token = Math.random().toString(36).substring(2);
                             localStorage.setItem("user_token", JSON.stringify({ email, token }));
                             setUser({ email, password });
-                            resolve({success: true});
+                            resolve({ success: true });
                         } else {
                             reject("Senha incorreta");
                         }
@@ -51,18 +51,18 @@ export const AuthProvider = ({ children }) => {
 
     const signInStore = (cnpj, password) => {
         return new Promise((resolve, reject) => {
-            UserInformation.getAll().then((result)=>{
-                if(result instanceof ApiException){
+            UserInformation.getAll().then((result) => {
+                if (result instanceof ApiException) {
                     reject(result.message);
-                }else{
+                } else {
                     const hasUser = result?.filter((user) => user.cnpj === cnpj);
-                
-                    if(hasUser?.length){
-                        if(hasUser[0].cnpj === cnpj && hasUser[0].password === password) {
+
+                    if (hasUser?.length) {
+                        if (hasUser[0].cnpj === cnpj && hasUser[0].password === password) {
                             const token = Math.random().toString(36).substring(2);
                             localStorage.setItem("user_token", JSON.stringify({ cnpj, token }));
                             setUser({ cnpj, password });
-                            resolve({success: true});
+                            resolve({ success: true });
                         } else {
                             reject("Senha incorreta");
                         }
@@ -76,42 +76,42 @@ export const AuthProvider = ({ children }) => {
 
     const signUp = (email, password, name, cpf, bornDate) => {
         UserInformation.getAll().then((result) => {
-        if (result instanceof ApiException) {
-            setMessage(result.message);
-        } else {
-            const hasUserWithEmail = result?.some((user) => user.email === email);
-            const hasUserWithCpf = result?.some((user) => user.cpf === cpf);
-
-            if (hasUserWithEmail) {
-                alert("Já existe uma conta cadastrada com esse e-mail");
-            } else if (hasUserWithCpf) {
-                alert("Já existe uma conta cadastrada com esse CPF");
+            if (result instanceof ApiException) {
+                setMessage(result.message);
             } else {
-            let newUser = {
-                name: name,
-                cpf: cpf,
-                bornDate: bornDate,
-                email: email,
-                password: password,
-            };
-            UserInformation.create(newUser);
-            alert("Usuário criado com sucesso");
+                const hasUserWithEmail = result?.some((user) => user.email === email);
+                const hasUserWithCpf = result?.some((user) => user.cpf === cpf);
+
+                if (hasUserWithEmail) {
+                    alert("Já existe uma conta cadastrada com esse e-mail");
+                } else if (hasUserWithCpf) {
+                    alert("Já existe uma conta cadastrada com esse CPF");
+                } else {
+                    let newUser = {
+                        name: name,
+                        cpf: cpf,
+                        bornDate: bornDate,
+                        email: email,
+                        password: password,
+                    };
+                    UserInformation.create(newUser);
+                    alert("Usuário criado com sucesso");
+                }
             }
-        }
         });
     };
 
     const signUpStore = (cnpj, nome, email, animaisAtendidos, cep, endereco, url, contato, password) => {
-        UserInformation.getAll().then((result)=>{
-            if(result instanceof ApiException){
+        UserInformation.getAll().then((result) => {
+            if (result instanceof ApiException) {
                 setMessage(result.message);
-            }else{
+            } else {
                 const hasUser = result?.filter((user) => user.cnpj === cnpj);
-        
-                if(hasUser?.length){
+
+                if (hasUser?.length) {
                     setMessage("Já existe uma conta cadastrada com esse e-mail");
-                } else{
-                    let newUser= {
+                } else {
+                    let newUser = {
                         cnpj: cnpj,
                         nome: nome,
                         animaisAtendidos: animaisAtendidos,
@@ -130,23 +130,23 @@ export const AuthProvider = ({ children }) => {
 
     const signUpProduct = (id, nameProduct, price, section) => {
         return new Promise((resolve, reject) => {
-            UserInformation.getAll().then((result)=>{
-                if(result instanceof ApiException){
+            UserInformation.getAll().then((result) => {
+                if (result instanceof ApiException) {
                     reject(result.message);
-                }else{
+                } else {
                     const hasUser = result?.filter((user) => user.id === id);
-            
-                    if(hasUser?.length){
+
+                    if (hasUser?.length) {
                         reject("Esse produto já foi cadastrado");
-                    } else{
-                        let newUser= {
+                    } else {
+                        let newUser = {
                             id: id,
                             nameProduct: nameProduct,
                             price: price,
                             section: section,
                         };
                         UserInformation.create(newUser);
-                        resolve({success: true});
+                        resolve({ success: true });
                         setMessage("Produto criado com sucesso");
                     }
                 }
@@ -165,7 +165,7 @@ export const AuthProvider = ({ children }) => {
                 alert(result.message);
             } else {
                 const hasUser = result?.filter((user) => user[field] === value);
-    
+
                 if (hasUser.length === 0) {
                     return "A conta não foi encontrada";
                 } else {
@@ -182,11 +182,11 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-    <AuthContext.Provider
-        value = { { user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore, signUpProduct} }
-    >
-        {children}
-    </AuthContext.Provider>
+        <AuthContext.Provider
+            value={{ user, signed: !!user, signIn, signUp, signOut, deleteAccount, signInStore, signUpStore, signUpProduct }}
+        >
+            {children}
+        </AuthContext.Provider>
     );
 
 };

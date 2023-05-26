@@ -19,7 +19,7 @@ const Lojas = () => {
       <nav width="200px">
         {allLojas().map((loja) => (
           <div key={loja.nome} className="lojas">
-            <img src={loja.image ? window.location.origin + `/assets/petshop${loja.nome.replace(/\s+/g, '')}.png` : window.location.origin + '/assets/petshopDefault.png'} alt="lojaImage-lojas" className="lojaImage-lojas"/>
+            <img src={loja.image ? window.location.origin + `/assets/petshop${loja.nome.replace(/\s+/g, '')}.png` : window.location.origin + '/assets/petshopDefault.png'} alt="lojaImage-lojas" className="lojaImage-lojas" />
             {/* <div className="text-lojas">{loja.image}</div> */}
             <h2 className="text-lojas text-loja-individual">{loja.nome}</h2>
             <h3 className="text-lojas text-loja-individual">
@@ -35,7 +35,7 @@ const Lojas = () => {
               <h3 class="ver-mais" >
                 Ver mais
               </h3>
-            </Link> 
+            </Link>
           </div>
         ))}
       </nav>

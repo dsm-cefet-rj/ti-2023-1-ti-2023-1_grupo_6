@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import blueIcon from "../../../assets/blueIcon.png";
 import "./style.css";
 import useAuth from '../../../hooks/useAuth';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import infoDelete from '../../../utils/home-confirmacao-conta-deletada';
 import confirmDelete from '../../../utils/iframe-confirmacao-deletar-conta';
@@ -16,7 +16,7 @@ const HeaderLoja = () => {
   const navigate = useNavigate();
   const { buscasLoja } = useContext(LojaContext)
   const { id } = useParams();
-  
+
   async function handleDelete(IdDaLoja) {
     const loja = buscasLoja(IdDaLoja);
     const cnpj = loja.cnpj;
@@ -44,16 +44,16 @@ const HeaderLoja = () => {
 
     }
   }
-  
 
-async function handleExit() {
+
+  async function handleExit() {
     const result = await confirmExit();
     console.log(result);
-    if(result === true) {
-        signOut();
-        navigate("/")
-    } 
-}
+    if (result === true) {
+      signOut();
+      navigate("/LoginEstabelecimento")
+    }
+  }
   return (
     <div className="app-menu-web">
       <div className="icon-nav">
@@ -63,26 +63,26 @@ async function handleExit() {
         <ul className="nav-ul">
           <li>
             {id ? (
-              <Link to={`/homeLoja/${id}`} className="link-products">
+              <NavLink to={`/homeLoja/${id}`} className="link-products">
                 Início
-              </Link>
+              </NavLink>
             ) : (
               <span className="disabled-link">Início</span>
             )}
           </li>
           <li>
-          {id ? (
-            <Link to={`/adicionar/produto/${id}`} className="link-products">Produtos</Link>
+            {id ? (
+              <NavLink to={`/adicionar/produto/${id}`} className="link-products">Produtos</NavLink>
             ) : (
               <span className="disabled-link">Produtos</span>
-              )}
+            )}
           </li>
           <li>
-          {id ?  (
-            <Link to={`/visualizar/pedidos/${id}`} className="link-products">Pedidos</Link>
+            {id ? (
+              <NavLink to={`/visualizar/pedidos/${id}`} className="link-products">Pedidos</NavLink>
             ) : (
               <span className="disabled-link">Pedidos</span>
-              )}
+            )}
           </li>
           <div className="sair-deletar">
             <li>
@@ -91,7 +91,7 @@ async function handleExit() {
             <li>
               <Link onClick={() => handleDelete(id)}>Deletar loja</Link>
             </li>
-          </div> 
+          </div>
         </ul>
       </nav>
     </div>

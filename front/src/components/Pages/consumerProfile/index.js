@@ -24,39 +24,39 @@ const ConsumerProfile = () => {
 
     async function handleDelete(emailUser) {
         const result = await confirmDelete();
-        if(result === true) {
+        if (result === true) {
             deleteAccount("email", emailUser);
             infoDelete();
             navigate("/")
-        } 
+        }
     }
 
     async function handleExit() {
         const result = await confirmExit();
-        if(result === true) {
+        if (result === true) {
             limparCarrinho();
             signOut();
             navigate("/")
-        } 
+        }
     }
 
     React.useEffect(() => {
         const handleResize = () => {
-        setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
+            setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
         };
 
         handleResize(); // define a largura da tela na montagem inicial do componente
         window.addEventListener('resize', handleResize); // adiciona um listener para o evento de redimensionamento da tela
         return () => {
-        window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
+            window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
         };
-    }, 
-    []);
+    },
+        []);
 
     return (
         <div className="profile">
             <div>
-            {isScreenWideEnough && <Header />}
+                {isScreenWideEnough && <Header />}
             </div>
 
             <h1 className="profile-title">Meu Perfil {user.name}</h1>
@@ -66,14 +66,14 @@ const ConsumerProfile = () => {
             </form>
 
 
-            <div className = "box-buttons">
-                <button 
-                className="profile-button"
-                onClick={() => handleExit()}
+            <div className="box-buttons">
+                <button
+                    className="profile-button"
+                    onClick={() => handleExit()}
                 >Sair</button>
                 <button
-                className="profile-button"
-                onClick={() => handleDelete(user.email)}>Deletar conta</button>                    
+                    className="profile-button"
+                    onClick={() => handleDelete(user.email)}>Deletar conta</button>
             </div>
             <Menu />
         </div>

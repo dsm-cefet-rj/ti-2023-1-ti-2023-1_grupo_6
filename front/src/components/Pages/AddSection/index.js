@@ -10,7 +10,7 @@ const NewSection = () => {
   return (
     <div className="section-registration">
       <div id='Logo'>
-        <img src={blueIcon} alt="logo"/>
+        <img src={blueIcon} alt="logo" />
       </div>
 
       <div className='Registration'>
@@ -20,18 +20,18 @@ const NewSection = () => {
 
           <div id='infos'>
             <label id='input-description'>Nome da seção: </label>
-            <input 
-            id='input-info' 
-            type="text" 
-            placeholder="Digite o nome da seção"
-            value={nameSection}
-            onChange={(e) => [setName(e.target.value)]}
+            <input
+              id='input-info'
+              type="text"
+              placeholder="Digite o nome da seção"
+              value={nameSection}
+              onChange={(e) => [setName(e.target.value)]}
             />
           </div>
 
-          
+
           <div id='Buttons'>
-            <button id='Voltar' onClick={()=>{navigate("/home")}}>Voltar</button>
+            <button id='Voltar' onClick={() => { navigate("/home") }}>Voltar</button>
             <button id='Confirmar' type="submit">Confirmar</button>
           </div>
 
@@ -39,7 +39,7 @@ const NewSection = () => {
 
       </div>
 
-    </div>  
+    </div>
   );
 }
 

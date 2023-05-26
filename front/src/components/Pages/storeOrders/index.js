@@ -27,13 +27,13 @@ const StoreOrders = () => {
         if (carrinho.carrinho.items) {
             return carrinho.carrinho.items.filter(item => item.lojaId === lojaId)
                 .map(item => ({
-                id: item.id, // Adicione a propriedade 'id'
-                nome: item.nome, // Adicione a propriedade 'nome'
-                valor: item.valor, // Adicione a propriedade 'valor'
-                loja: item.loja, // Adicione a propriedade 'loja'
-                email: carrinho.email, // Acesse o email do usuario que comprou o item
-                endereco: item.endereco, /// Acesse o endereco do usuario que comprou o item
-            }));
+                    id: item.id, // Adicione a propriedade 'id'
+                    nome: item.nome, // Adicione a propriedade 'nome'
+                    valor: item.valor, // Adicione a propriedade 'valor'
+                    loja: item.loja, // Adicione a propriedade 'loja'
+                    email: carrinho.email, // Acesse o email do usuario que comprou o item
+                    endereco: item.endereco, /// Acesse o endereco do usuario que comprou o item
+                }));
         }
         return [];
     });
@@ -48,8 +48,8 @@ const StoreOrders = () => {
             <h2>Pedidos recebidos:</h2>
             <ul className="ul-pedidos">
                 {itensFiltrados.map((item) =>
-                        <li key={item.id}>
-                            <div>
+                    <li key={item.id}>
+                        <div>
                             <h3>
                                 Pedido: {item.nome} <br />
                                 Total: R$ {item.valor} {item.loja} <br />
@@ -60,11 +60,11 @@ const StoreOrders = () => {
                                 Enviar Pedido
                             </button>
                             <div className="item-pedido">
-                                </div>
                             </div>
-                        </li>
+                        </div>
+                    </li>
                 )}
-            </ul> 
+            </ul>
         </div>
     );
 };

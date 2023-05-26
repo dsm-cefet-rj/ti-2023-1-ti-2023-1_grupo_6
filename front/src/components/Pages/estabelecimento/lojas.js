@@ -12,7 +12,6 @@ import mostrarConfirmacao from "../../../utils/confirmacao-compra";
 import { LojaContext } from "../../../contexts/LojasContext";
 import { ProdutosContext } from "../../../contexts/ProdutosContext";
 import useAuth from "../../../hooks/useAuth";
-
 const Lojas = () => {
     const navigate = useNavigate();
     const { buscasLoja } = useContext(LojaContext);
@@ -27,19 +26,25 @@ const Lojas = () => {
     const [endereco, setEndereco] = useState("");
     const { allProdutos } = useContext(ProdutosContext);
     const { user } = useAuth();
-    console.log(id);
+
     React.useEffect(() => {
         const handleResize = () => {
-          setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
+            setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
         };
+        const lojaData = buscasLoja(id); // Armazena os dados da loja em uma variável
 
         const {
-        nome,
-        animais_atendidos,
-        animaisAtendidos,
-        contato,
-        endereco,
-        } = buscasLoja(id);
+            nome,
+            animais_atendidos,
+            animaisAtendidos,
+            contato,
+            endereco,
+        } = lojaData || {};
+
+        if (!lojaData) {
+            navigate('*'); // Redirecionar para a página de "Not Found" caso não haja dados da loja
+            return;
+        }
 
         setNome(nome);
         setAnimaisAtendidos(animaisAtendidos);
@@ -48,7 +53,7 @@ const Lojas = () => {
         setEndereco(endereco);
     }, []);
 
-    
+
     React.useEffect(() => {
         const handleResize = () => {
             setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o menu
@@ -59,8 +64,8 @@ const Lojas = () => {
         return () => {
             window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
         };
-        },
-    []);
+    },
+        []);
 
     const getProdutosByCategoria = (categoria, produtos) => {
         return produtos.filter((produto) => produto.categoria === categoria);
@@ -73,138 +78,143 @@ const Lojas = () => {
     };
 
     return (
-    <div>
+        <div>
             <div className='services-lojas'>
-            {isScreenWideEnough && <Header />}
-            <div className='loja'>
-            <h1>{nome}</h1>
-            <p>{animaisAtendidos}{animais_atendidos}, {endereco}, {contato}</p>
-            {allProdutos().filter(produto => id === produto.lojaId).length === 0 ? (
-                <p>Ainda não há produtos nessa loja.</p>
-            ) : (
-            <>
-            <section className="animais-compras-loja1">
-                <h3>Adicionados Recentemente</h3>
-                <ul className="ul-loja">
-                    {allProdutos().filter(produto => id === produto.lojaId).map((produto) => (
-                        <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor.replace('.',',')}</p>
-                            </div>
-                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
-            <section className="animais-compras-loja1">
-                    <>
-                    <h3>Saúde</h3>
-                    <ul className="ul-loja">
-                        {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
-                        <li key={produto.nome}>
-                            <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                            <p>{produto.nome}</p>
-                            <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
-                            </div>
-                            <input type="submit" value="Comprar" onClick={() => { handleAdicionarProduto(produto); mostrarConfirmacao(); }} className='button-comprar-servicos' />
-                        </li>
-                        ))}
-                    </ul>
-                    </>
-                </section>
-            )}
-            {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
-            <section className="animais-servicos-loja1">
+                {isScreenWideEnough && <Header />}
+                <div className='loja'>
+                    <h1>{nome}</h1>
+                    <p>{animaisAtendidos}{animais_atendidos}, {endereco}, {contato}</p>
+                    {allProdutos().filter(produto => id === produto.lojaId).length === 0 ? (
+                        <p>Ainda não há produtos nessa loja.</p>
+                    ) : (
                         <>
-                <h3>Diversão</h3>
-                <ul className="ul-loja">
-                    {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
-                        <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
-                            </div>
-                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
-                        </li>
-                    ))}
-                    </ul>
-                    </>
-            </section>
-            )}
-            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
-            <section className="animais-compras-loja1">
-                <>
-                <h3>Alimentação</h3>
-                <ul className="ul-loja">
-                    {getProdutosByCategoria('Alimentacao', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
-                        <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
-                            </div>
-                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
-                        </li>
-                    ))}
-                </ul>
-                </>
-            </section>
-            )}
-            {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
-            <section className="animais-compras-loja1">
-                <>
-                <h3>Conforto</h3>
-                <ul className="ul-loja">
-                    {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
-                        <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
-                            </div>
-                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
-                        </li>
-                    ))}
-                </ul>
-                </>
-            </section>
-            )}
-            {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
-            <section className="animais-compras-loja1">
-                <>
-                <h3>Atrativos</h3>
-                <ul className="ul-loja">
-                    {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
-                        <li key={produto.nome}>
-                        <img src={produto.img} alt={produto.nome} />
-                            <div className="paragrafo-vendas">
-                                <p>{produto.nome}</p>
-                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
-                            </div>
-                            <input type="submit" value="Comprar" onClick={() => {handleAdicionarProduto(produto); mostrarConfirmacao();
-                            }} className='button-comprar-servicos'/>
-                        </li>
-                    ))}
-                    </ul>
-                    </>
-            </section>
-            )}
-            </>
-            )}
+                            <section className="animais-compras-loja1">
+                                <h3>Adicionados Recentemente</h3>
+                                <ul className="ul-loja">
+                                    {allProdutos().filter(produto => id === produto.lojaId).map((produto) => (
+                                        <li key={produto.nome}>
+                                            <img src={produto.img} alt={produto.nome} />
+                                            <div className="paragrafo-vendas">
+                                                <p>{produto.nome}</p>
+                                                <p className='preco'><span className='cifrao'>R$</span>{produto.valor ? produto.valor.replace('.', ',') : ''}</p>
+                                            </div>
+                                            <input type="submit" value="Comprar" onClick={() => {
+                                                handleAdicionarProduto(produto); mostrarConfirmacao();
+                                            }} className='button-comprar-servicos' />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
+                                <section className="animais-compras-loja1">
+                                    <>
+                                        <h3>Saúde</h3>
+                                        <ul className="ul-loja">
+                                            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
+                                                <li key={produto.nome}>
+                                                    <img src={produto.img} alt={produto.nome} />
+                                                    <div className="paragrafo-vendas">
+                                                        <p>{produto.nome}</p>
+                                                        <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                                    </div>
+                                                    <input type="submit" value="Comprar" onClick={() => { handleAdicionarProduto(produto); mostrarConfirmacao(); }} className='button-comprar-servicos' />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                </section>
+                            )}
+                            {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
+                                <section className="animais-servicos-loja1">
+                                    <>
+                                        <h3>Diversão</h3>
+                                        <ul className="ul-loja">
+                                            {getProdutosByCategoria('Diversão', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
+                                                <li key={produto.nome}>
+                                                    <img src={produto.img} alt={produto.nome} />
+                                                    <div className="paragrafo-vendas">
+                                                        <p>{produto.nome}</p>
+                                                        <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                                    </div>
+                                                    <input type="submit" value="Comprar" onClick={() => {
+                                                        handleAdicionarProduto(produto); mostrarConfirmacao();
+                                                    }} className='button-comprar-servicos' />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                </section>
+                            )}
+                            {getProdutosByCategoria('Saúde', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
+                                <section className="animais-compras-loja1">
+                                    <>
+                                        <h3>Alimentação</h3>
+                                        <ul className="ul-loja">
+                                            {getProdutosByCategoria('Alimentacao', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
+                                                <li key={produto.nome}>
+                                                    <img src={produto.img} alt={produto.nome} />
+                                                    <div className="paragrafo-vendas">
+                                                        <p>{produto.nome}</p>
+                                                        <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                                    </div>
+                                                    <input type="submit" value="Comprar" onClick={() => {
+                                                        handleAdicionarProduto(produto); mostrarConfirmacao();
+                                                    }} className='button-comprar-servicos' />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                </section>
+                            )}
+                            {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
+                                <section className="animais-compras-loja1">
+                                    <>
+                                        <h3>Conforto</h3>
+                                        <ul className="ul-loja">
+                                            {getProdutosByCategoria('Conforto', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
+                                                <li key={produto.nome}>
+                                                    <img src={produto.img} alt={produto.nome} />
+                                                    <div className="paragrafo-vendas">
+                                                        <p>{produto.nome}</p>
+                                                        <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                                    </div>
+                                                    <input type="submit" value="Comprar" onClick={() => {
+                                                        handleAdicionarProduto(produto); mostrarConfirmacao();
+                                                    }} className='button-comprar-servicos' />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                </section>
+                            )}
+                            {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).length > 0 && (
+                                <section className="animais-compras-loja1">
+                                    <>
+                                        <h3>Atrativos</h3>
+                                        <ul className="ul-loja">
+                                            {getProdutosByCategoria('Atrativos', allProdutos().filter((p) => p.lojaId === id)).map((produto) => (
+                                                <li key={produto.nome}>
+                                                    <img src={produto.img} alt={produto.nome} />
+                                                    <div className="paragrafo-vendas">
+                                                        <p>{produto.nome}</p>
+                                                        <p className='preco'><span className='cifrao'>R$</span>{produto.valor}</p>
+                                                    </div>
+                                                    <input type="submit" value="Comprar" onClick={() => {
+                                                        handleAdicionarProduto(produto); mostrarConfirmacao();
+                                                    }} className='button-comprar-servicos' />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                </section>
+                            )}
+                        </>
+                    )}
 
-            </div>
+                </div>
             </div>
             <Menu />
-            </div>
-);
+        </div>
+    );
 };
 export default Lojas;
