@@ -23,7 +23,7 @@ const Birds = () => {
         <h1>Produtos para Pássaro</h1>
         <ul className="ul-produtos-birds">
           {allProdutos()
-            .filter((p) =>  p.animal && p.animal.includes("Pássaro") || p.animal && p.animal.includes("passaro"))
+            .filter((p) => p.animal && p.animal.includes("Pássaro") || p.animal && p.animal.includes("passaro"))
             .map((p) => (
               <li key={p.id}>
                 <div>

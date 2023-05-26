@@ -58,11 +58,11 @@ export const LojaProvider = ({ children }) => {
         const localData = localStorage.getItem("lojas");
         return localData ? JSON.parse(localData) : initialState;
     });
-    
+
     useEffect(() => {
         localStorage.setItem("lojas", JSON.stringify(lojas));
     }, [lojas]);
-    
+
     const adicionarLojas = (loja) => {
         const novaLoja = { id: uuidv4(), ...loja };
         setLojas([...lojas, novaLoja]);
@@ -85,9 +85,9 @@ export const LojaProvider = ({ children }) => {
         return lojaProcuradaId;
     };
 
-    const buscasLojaNome= (nome) => {
+    const buscasLojaNome = (nome) => {
         const localData = JSON.parse(localStorage.getItem("lojas"));
-        const lojaProcuradaId = localData.find((loja) => loja.nome  === nome);
+        const lojaProcuradaId = localData.find((loja) => loja.nome === nome);
         return lojaProcuradaId;
     };
 

@@ -126,7 +126,7 @@
 
 .services-lojas .ul-loja li:hover {
     transition: box-shadow 0.2s;
-    transform:scale(1.05);
+    transform: scale(1.05);
 }
 
 .button-comprar-servicos {
@@ -136,4 +136,3 @@
 .button-comprar-servicos:hover {
     background-color: #FF8802 !important;
 }
-

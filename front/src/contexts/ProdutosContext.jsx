@@ -178,7 +178,7 @@ const initialState = [{
     valor: '100,00',
     promocao: 'Não há promoção disponível para este produto.',
     categoria: 'Atrativos',
-}, ];
+},];
 
 export const ProdutosContext = createContext();
 
@@ -187,13 +187,13 @@ export const ProdutosProvider = ({ children }) => {
         const localData = localStorage.getItem("produtos");
         return localData ? JSON.parse(localData) : initialState;
     });
-    
+
     const adicionarProdutos = (produto) => {
         produto = { id: uuidv4(), ...produto };
         setProdutos([...produtos, produto]);
         localStorage.setItem("produtos", JSON.stringify([...produtos, produto]));
     };
-    
+
     const removerProduto = (id) => {
         const newProdutos = produtos.filter((produto) => produto.id !== id);
         setProdutos(newProdutos);

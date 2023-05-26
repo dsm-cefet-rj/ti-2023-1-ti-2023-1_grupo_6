@@ -22,6 +22,7 @@ const AddProducts = () => {
   const [idProdutos, setIdProdutos] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [categoriasSelecionadas, setCategoriasSelecionadas] = useState([]);
+  const [quantProdutos, setQuantProdutos] = useState("");
 
   const categoriasProdutos = [
     'Atrativos',
@@ -50,7 +51,7 @@ const AddProducts = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
 
-    if (!nome || !valor || !categoriasSelecionadas) {
+    if (!nome || !valor || !categoriasSelecionadas || !quantProdutos) {
       setErrorMessage("Preencha todos os campos");
       return;
     }
@@ -65,18 +66,22 @@ const AddProducts = () => {
       categoria,
       animal: categoriasSelecionadas,
       lojaId: lojaId,
-      img: idProdutos
+      img: idProdutos,
+      quantProdutos
     });
 
-    console.log( idProdutos,
+    console.log(idProdutos,
       valor,
       nome,
       categoria,
       categoriasSelecionadas,
       lojaId,
-      idProdutos);
+      idProdutos,
+      quantProdutos
+    );
+
     try {
-      const result = await signUpProduct(idProdutos, nome, valor, categoria);
+      const result = await signUpProduct(idProdutos, nome, valor, categoria, categoriasAnimais, quantProdutos);
       if (result && result.success) {
         alert("Produto criado com sucesso!");
         navigate(`/homeLoja/${id}`);
@@ -110,13 +115,24 @@ const AddProducts = () => {
             <h2>Cadastro de produto</h2>
 
             <div id='infos-product'>
-              <label id='input-description'>Nome do produto: </label>
+              <label id='input-description'>Nome Do Produto: </label>
               <input
                 id='input-info'
                 type="text"
-                placeholder="Digite o nome do produto"
+                placeholder="Digite O Nome Do Produto"
                 value={nome}
                 onChange={(e) => setProduct(e.target.value)}
+              />
+            </div>
+
+            <div id='infos-product'>
+              <label id='input-description'>Quantidade do Produto: </label>
+              <input
+                id='input-info'
+                type="text"
+                placeholder="Quantidade"
+                value={quantProdutos}
+                onChange={(e) => setQuantProdutos(e.target.value)}
               />
             </div>
             <div id='infos-product'>
@@ -126,7 +142,7 @@ const AddProducts = () => {
                 type="number"
                 step="0.01"
                 min="0"
-                placeholder="Digite o preço do produto"
+                placeholder="Digite O Preço Do Produto"
                 value={valor}
                 onChange={(e) => setValor(e.target.value)}
               />
@@ -142,30 +158,30 @@ const AddProducts = () => {
               </div>
             </div>
             <div id='infos-product' className='check-list'>
-            {checkboxes.map((checkbox, index) => (
-              <CheckboxLabel key={index}>
-                <Checkbox
-                  type="checkbox"
-                  checked={checkbox.checked}
-                  onChange={() => {
-                    const newCheckboxes = [...checkboxes];
-                    newCheckboxes[index].checked = !newCheckboxes[index].checked;
-                    setCheckboxes(newCheckboxes);
+              {checkboxes.map((checkbox, index) => (
+                <CheckboxLabel key={index}>
+                  <Checkbox
+                    type="checkbox"
+                    checked={checkbox.checked}
+                    onChange={() => {
+                      const newCheckboxes = [...checkboxes];
+                      newCheckboxes[index].checked = !newCheckboxes[index].checked;
+                      setCheckboxes(newCheckboxes);
 
-                    if (newCheckboxes[index].checked) {
-                      setCategoriasSelecionadas([...categoriasSelecionadas, checkbox.name]);
-                    } else {
-                      const updatedCategorias = categoriasSelecionadas.filter(
-                        (categoria) => categoria !== checkbox.name
-                      );
-                      setCategoriasSelecionadas(updatedCategorias);
-                    }
-                  }}
-                />
-                <span className='check-name-category'>{checkbox.name}</span>
-              </CheckboxLabel>
-            ))}
-          </div>
+                      if (newCheckboxes[index].checked) {
+                        setCategoriasSelecionadas([...categoriasSelecionadas, checkbox.name]);
+                      } else {
+                        const updatedCategorias = categoriasSelecionadas.filter(
+                          (categoria) => categoria !== checkbox.name
+                        );
+                        setCategoriasSelecionadas(updatedCategorias);
+                      }
+                    }}
+                  />
+                  <span className='check-name-category'>{checkbox.name}</span>
+                </CheckboxLabel>
+              ))}
+            </div>
 
             <div className='button-product'>
               <button className='confirmar' type="submit" onClick={handleAddProduct}>Confirmar</button>

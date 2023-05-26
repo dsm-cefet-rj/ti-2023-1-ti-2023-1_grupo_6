@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import './style.css';
 import Header from '../Header/index.js';
 import { useLocation } from 'react-router-dom';
-import  { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 import { useNavigate } from 'react-router-dom';
 import PedidosAndamento from "../pedidoEmAndamento";
 import useAuth from "../../../hooks/useAuth";
 
-const renderProdutos = (props) =>{
-    ReactDOM.render(<PedidosAndamento produtos={props}/>, document.getElementById('root'));
+const renderProdutos = (props) => {
+    ReactDOM.render(<PedidosAndamento produtos={props} />, document.getElementById('root'));
 }
 
 const Pedidos = ({ pedidoEnviado }) => {
@@ -20,30 +20,30 @@ const Pedidos = ({ pedidoEnviado }) => {
 
     React.useEffect(() => {
         const handleResize = () => {
-        setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
+            setIsScreenWideEnough(window.innerWidth >= 768); // define a condição de largura mínima para exibir o Navbar
         };
 
         handleResize(); // define a largura da tela na montagem inicial do componente
         window.addEventListener('resize', handleResize); // adiciona um listener para o evento de redimensionamento da tela
         return () => {
-        window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
+            window.removeEventListener('resize', handleResize); // remove o listener do evento de redimensionamento da tela
         };
     }, []);
 
     return (
         <div class="pedidos-usuario">
             <div>
-            {isScreenWideEnough && <Header />}
+                {isScreenWideEnough && <Header />}
             </div>
             <h2>Seus pedidos:</h2>
             <ul class="ul-pedidos">
                 {carrinhoUser.items.map(item => (
                     <li key={item.id}>
                         <div>
-                            <h3>Pedido: {item.nome} <br/> Total: R$ {item.valor} {item.loja}</h3>
+                            <h3>Pedido: {item.nome} <br /> Total: R$ {item.valor} {item.loja}</h3>
                             <div className="item-pedido">
-                                <img src={item.img} alt="img-pedido"/>
-                            {pedidoEnviado && <p>Pedido Enviado</p>}
+                                <img src={item.img} alt="img-pedido" />
+                                {pedidoEnviado && <p>Pedido Enviado</p>}
                             </div>
                         </div>
                     </li>

@@ -939,6 +939,101 @@
       "nameProduct": "Caminha confortável para seu animalzinho",
       "price": "45.78",
       "section": "Conforto"
+    },
+    {
+      "id": "zlzN39k",
+      "nameProduct": "dsdadasdsada",
+      "price": "23.45",
+      "section": "Diversão"
+    },
+    {
+      "id": "z3f1DEp",
+      "nameProduct": "testando",
+      "price": "123.232",
+      "section": "Diversão"
+    },
+    {
+      "id": "4RHQnrW",
+      "nameProduct": "dadada",
+      "price": "23",
+      "section": "Saúde"
+    },
+    {
+      "id": "KVEvlt-",
+      "nameProduct": "OPA",
+      "price": "23.90",
+      "section": "Diversão"
+    },
+    {
+      "id": "5huoCIS",
+      "nameProduct": "teste",
+      "price": "213.34",
+      "section": "Diversão"
+    },
+    {
+      "id": "4dyvDvd",
+      "nameProduct": "dadad",
+      "price": "2323",
+      "section": "Promoções"
+    },
+    {
+      "id": "CHXjQQJ",
+      "nameProduct": "dsada",
+      "price": "21321",
+      "section": "Promoções"
+    },
+    {
+      "id": "Equ8BCD",
+      "nameProduct": "OPA",
+      "price": "231.90",
+      "section": "Conforto"
+    },
+    {
+      "id": "heBi0Ii",
+      "nameProduct": "DADADSA",
+      "price": "313",
+      "section": "Saúde"
+    },
+    {
+      "id": "4Q-CqvJ",
+      "nameProduct": "GABRIELA DE LACERDA SILVA",
+      "price": "34.98",
+      "section": "Alimentação"
+    },
+    {
+      "id": "kQMxdxb",
+      "nameProduct": "fdsfsdfsd",
+      "price": "23.87",
+      "section": "Promoções"
+    },
+    {
+      "id": "-mvoN_y",
+      "nameProduct": "rsrr",
+      "price": "455",
+      "section": "Diversão"
+    },
+    {
+      "id": "fZg1Tu4",
+      "nameProduct": "aaeaweeqeweqw",
+      "price": "34.87",
+      "section": "Promoções"
+    },
+    {
+      "id": "QEXTIaC",
+      "nameProduct": "rerewewrw",
+      "price": "455",
+      "section": "Alimentação"
+    },
+    {
+      "cnpj": "8",
+      "nome": "lojaTESTE",
+      "animaisAtendidos": "Cachorro, Coelho, Gato",
+      "cep": "26556-030",
+      "endereco": "Rua Augustino Cardosino",
+      "url": "",
+      "contato": "(21)9999-999",
+      "password": "9",
+      "id": "ePyFA8N"
     }
   ],
   "carrinho": [

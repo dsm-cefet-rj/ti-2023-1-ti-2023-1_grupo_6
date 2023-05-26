@@ -19,20 +19,20 @@ const LoginEstabelecimento = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     if (!cnpj || !password) {
       setErrorMessage("Preencha todos os campos");
       return;
     }
-  
+
     try {
       const result = await signInStore(cnpj, password);
-  
+
       if (result && result.success) {
         const loja = buscasLojaCNPJ(cnpj);
         const id = loja.id;
         navigate(`/homeLoja/${id}`);
-      } 
+      }
     } catch (error) {
       setErrorMessage(error);
     }
@@ -41,54 +41,54 @@ const LoginEstabelecimento = () => {
 
   return (
     <div className="App-login">
-      <img src={whiteIcon} alt="logo"/>
+      <img src={whiteIcon} alt="logo" />
 
       <div className="login">
 
         <form className="form-login">
-            <h2 className="name-login">login Estabelecimento</h2>
-            <div className="acess-inputs">
-              <div className="acess">
-                <label htmlFor="name" className="userName">CNPJ</label>
-                  <input
-                    required
-                    value = {cnpj}
-                    id="name"
-                    type="text"
-                    name="user"
-                    placeholder="Inserir CNPJ"
-                    onChange={(e) => [setCnpj(e.target.value), setErrorMessage("")]}
-                  />
-              </div>
-
-              <div className="acess">
-                <label htmlFor="password" className="password">Senha</label>
-                  <input
-                    required
-                    value = {password}
-                    id="password"
-                    type="password"
-                    name="password"
-                    placeholder="Senha"
-                    onChange={(e) => [setPassword(e.target.value), setErrorMessage("")]}
-                  />
-              </div>
-
+          <h2 className="name-login">login Estabelecimento</h2>
+          <div className="acess-inputs">
+            <div className="acess">
+              <label htmlFor="name" className="userName">CNPJ</label>
+              <input
+                required
+                value={cnpj}
+                id="name"
+                type="text"
+                name="user"
+                placeholder="Inserir CNPJ"
+                onChange={(e) => [setCnpj(e.target.value), setErrorMessage("")]}
+              />
             </div>
-          
+
+            <div className="acess">
+              <label htmlFor="password" className="password">Senha</label>
+              <input
+                required
+                value={password}
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Senha"
+                onChange={(e) => [setPassword(e.target.value), setErrorMessage("")]}
+              />
+            </div>
+
+          </div>
+
           <div className="clicks">
-          <button
+            <button
               className="enviar-login"
               type="submit"
               onClick={handleLogin}
-              
+
             >
               Acessar
             </button>
 
             <div className="options">
-                <p onClick={() => {navigate("/")}}>Entrar como Cliente</p>
-                <p onClick={() => {navigate("/opcao/registrar")}}>Cadastre-se</p>
+              <p onClick={() => { navigate("/") }}>Entrar como Cliente</p>
+              <p onClick={() => { navigate("/opcao/registrar") }}>Cadastre-se</p>
             </div>
 
           </div>
@@ -97,7 +97,7 @@ const LoginEstabelecimento = () => {
         {errorMessage && <div className="error-message-signin">{errorMessage}</div>}
       </div>
 
-    </div>  
+    </div>
   );
 }
 

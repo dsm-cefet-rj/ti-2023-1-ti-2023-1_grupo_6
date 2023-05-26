@@ -2,7 +2,7 @@ import './style.css';
 import finalizado from '../../../assets/finalizado.png';
 import sinalmenor from '../../../assets/sinal-menor.png';
 import { useNavigate } from 'react-router-dom';
-import  { useContext } from 'react';
+import { useContext } from 'react';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext.js';
 
 const CompraFinalizada = () => {
@@ -11,11 +11,12 @@ const CompraFinalizada = () => {
     return (
         <div className="compra-finalizada">
             <div className='voltar'>
-                <img src={sinalmenor} onClick={()=>{navigate("/carrinho")}}></img>
+                <img src={sinalmenor} onClick={() => { navigate("/carrinho") }}></img>
             </div>
             <img src={finalizado}></img>
             <h4 className="text-compra-finalizada">Compra efetuada.</h4>
-            <button className="button-compra-finalizada" onClick={() => {navigate(`/pedidos`);
+            <button className="button-compra-finalizada" onClick={() => {
+                navigate(`/pedidos`);
             }}>Acompanhar pedidos</button>
         </div>
     );

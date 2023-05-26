@@ -5,7 +5,7 @@ import { useContext } from "react";
 import bag from "../../../assets/bag.svg";
 import blueIcon from "../../../assets/blueIcon.png";
 import "./style.css";
-import { Link} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { LojaContext } from '../../../contexts/LojasContext';
 import useAuth from "../../../hooks/useAuth.js";
 
@@ -36,17 +36,17 @@ const MenuWeb = () => {
       <nav className="menu-nav menu-home-profile">
         <ul className="nav-ul">
           <li>
-            <Link to="/home">
+            <NavLink to="/home">
                 Início
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/perfil">
+            <NavLink to="/perfil">
               Perfil
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={{ 
+            <NavLink to={{ 
                 pathname: '/pedidos',
                 state: { 
                     user: user, 
@@ -54,7 +54,7 @@ const MenuWeb = () => {
                 }
             }}>
                 Pedidos
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -74,11 +74,11 @@ const MenuWeb = () => {
           {lojasFiltradas.map((loja) => (
             <li key={loja.id}>
               {loja && (
-                <Link to={`/loja/${loja.id}`}>
+                <NavLink to={`/loja/${loja.id}`}>
                   <h3 className="categorias-filtro">
                   {loja.nome}
                   </h3>
-                </Link>
+                </NavLink>
               )}
             </li>
           ))}
@@ -92,7 +92,7 @@ const MenuWeb = () => {
       <nav className="menu-nav nav-search-carrinho">
         <ul className="nav-ul">
           <li>
-          <Link to="/carrinho"
+          <NavLink to="/carrinho"
               href="#"
               onClick={() => {
                 navigate("/carrinho");
@@ -102,7 +102,7 @@ const MenuWeb = () => {
                 {quantidadeTotalItens}
               </p>
               <img src={bag} alt="carrinho" className="img-bag" />
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

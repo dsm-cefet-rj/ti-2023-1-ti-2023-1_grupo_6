@@ -18,18 +18,18 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     if (!email || !password) {
       setErrorMessage("Preencha todos os campos");
       return;
     }
-  
+
     try {
       const result = await signIn(email, password, true);
-  
+
       if (result && result.success) {
         navigate("/home");
-      } 
+      }
     } catch (error) {
       setErrorMessage(error);
     }
@@ -40,7 +40,7 @@ const Login = () => {
       <img src={whiteIcon} alt="logo" />
 
       <div className="login">
-        
+
         <form className="form-login">
           <h2 className="name-login">login Cliente</h2>
           <div className="acess-inputs">
@@ -75,7 +75,7 @@ const Login = () => {
             </div>
 
 
-            
+
           </div>
 
           <div className="clicks">
@@ -83,12 +83,12 @@ const Login = () => {
               className="enviar-login"
               type="submit"
               onClick={handleLogin}
-              
+
             >
               Acessar
             </button>
 
-            
+
 
             <div className="options">
               <p
@@ -108,7 +108,7 @@ const Login = () => {
             </div>
           </div>
         </form>
-          {errorMessage && <div className="error-message-signin">{errorMessage}</div>}
+        {errorMessage && <div className="error-message-signin">{errorMessage}</div>}
       </div>
     </div>
   )
