@@ -11,67 +11,66 @@ let carrinho = [
                 price: 34.99,
                 section: "1",
                 idLoja: 1,
-                quantidade: 10
-            },
-            {
-                id: 3,
-                nome: "brinquedo de gato",
-                price: 14.99,
-                section: "1",
-                idLoja: 1,
-                quantidade: 8
+                quantidade: 2
             }
         ]
     }
 ];
 
-const {atualizaQuantidade, getProduto} = require('./produtos');
+const {getProduto} = require('./produtos');
 
 router.route("/:id")
 .get((req, res, next)=>{
     const produtosUsuario = carrinho.filter(c => c.idUsuario == parseInt(req.params.id));
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json(produtosUsuario[0].produto);
+    if(produtosUsuario.length > 0){
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(produtosUsuario[0].produto);
+    }else{
+        res.statusCode = 400;
+        res.setHeader('Content-Type', 'application/json');
+        res.json([]);
+    }
     }
 )
-
 router.route("/adicionar")
 .post((req, res, next)=>{
     try{
-        const idProduto = req.body.id;
+        const idProduto = req.body.idProduto;
+        const quantidade = req.body.quantidade;
         const idUsuario = req.body.idUsuario;
-        const carrinhoUsuario = carrinho.filter(c => c.idUsuario == parseInt(idUsuario));
-        let qtd = req.body.qtd;
-        if(carrinhoUsuario.length > 0){
-            const index = carrinho.indexOf(carrinhoUsuario[0]);
-            const indexProduto = carrinhoUsuario[0].produto.indexOf(prod[0]);
-            let prod = carrinhoUsuario[0].produto.filter(p => p.id == idProduto);
-            if(!prod){
-                carrinho[index].produto.push(getProduto(idProduto, qtd));
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(true);
-            }else{
-                atualizaQuantidade(-prod[0].quantidade);
-                const produtoAtualizado = getProduto(idProduto, qtd);
-                carrinho[index].produto[indexProduto] = produtoAtualizado;
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(true);
-            }
-        }else{
-            const proxId = 1 + carrinho.map(c => c.id).reduce((x, y) => Math.max(x,y));
-            let carrinhoNovoUsuario = {
-                id: proxId,
-                produtos: ([{...getProduto(idProduto, qtd)}])
-            }
-            carrinho.push(carrinhoNovoUsuario);
+        let carrinhoUsuario = carrinho.filter(c=> c.idUsuario === idUsuario);
+        if(carrinhoUsuario.length == 0){
+            const produtoUsuario = getProduto(idProduto, quantidade);
+            carrinhoUsuario = {
+                idUsuario: idUsuario,
+                produto: [produtoUsuario]
+            };
+            carrinho.push(carrinhoUsuario);
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(true);
+            res.json(carrinhoUsuario[0].produto);
+        }else{
+            let produto = carrinhoUsuario[0].produto.filter(p => p.id == idProduto);
+            if(produto.length > 0){
+                const indexCarrinho = carrinho.indexOf(carrinhoUsuario[0])
+                const indexProduto = carrinhoUsuario[0].produto.indexOf(produto[0]);
+                const qtd = produto[0].quantidade + quantidade;
+                produto = getProduto(idProduto, qtd);
+                carrinho[indexCarrinho].produto[indexProduto].quantidade = produto.quantidade;
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(carrinhoUsuario[0].produto);
+            }else{
+                const produtoUsuario = getProduto(idProduto, quantidade);
+                carrinhoUsuario[0].produto.push(produtoUsuario);
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(carrinhoUsuario[0].produto);
+            }
         }
-    }catch{
+    }catch(err){
+        console.log(err)
         res.statusCode = 400;
         res.setHeader('Content-Type', 'application/json');
         res.json(false);
@@ -81,67 +80,26 @@ router.route("/adicionar")
 router.route("/")
 .delete((req, res, next)=>{
     try{
-        const idProduto = parseInt(req.body.id);
-        const idUsuario = parseInt(req.body.idUsuario);
-        const aux = carrinho.filter(c => c.idUsuario == idUsuario);
-        const indexCarrinho = carrinho.indexOf(aux[0]);
-        let produtosUsuario = aux[0].produto;
-        const produto = produtosUsuario.filter((prod) => {
-            return prod.id == idProduto;
-        });
-        if(produto.length > 0){
-            const index = produtosUsuario.indexOf(produto[0]);
-            produtosUsuario.splice(index, 1);
-            carrinho[indexCarrinho].produto = produtosUsuario;
+        const idProduto = req.body.idProduto;
+        const idUsuario = req.body.idUsuario;
+        let carrinhoUsuario = carrinho.filter(c=> c.idUsuario === idUsuario);
+        let produto = carrinhoUsuario[0].produto.filter(p => p.id == idProduto);
+        const indexCarrinho = carrinho.indexOf(carrinhoUsuario[0])
+        const indexProduto = carrinhoUsuario[0].produto.indexOf(produto[0]);
+        const qtd = produto[0].quantidade -1;
+        if(qtd > 0){
+            console.log(1)
+            produto = getProduto(idProduto, qtd);
+            carrinho[indexCarrinho].produto[indexProduto].quantidade = produto.quantidade;
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(true);
+            res.json(carrinhoUsuario[0].produto);
         }else{
-            res.statusCode = 400;
-            res.setHeader('Content-Type', 'application/json');
-            res.json(false);
-        }
-    }catch{
-        res.statusCode = 400;
-        res.setHeader('Content-Type', 'application/json');
-        res.json(false);
-    }
-})
-
-router.route("/")
-.put((req, res, next)=>{
-    try{
-        const idProduto = parseInt(req.body.id);
-        const idUsuario = parseInt(req.body.idUsuario);
-        let qtd = parseInt(req.body.quantidade);
-        const aux = carrinho.filter(c => c.idUsuario == idUsuario);
-        const indexCarrinho = carrinho.indexOf(aux[0]);
-        let produtosUsuario = aux[0].produto;
-        const produto = produtosUsuario.filter((prod) => {
-            return prod.id == idProduto;
-        });
-        const indexProduto = produtosUsuario.indexOf(produto[0]);
-        if(qtd == 0){
-            atualizaQuantidade(produto[0].quantidade);
-            if(produto.length > 0){
-                produtosUsuario.splice(index, 1);
-                carrinho[indexCarrinho].produto = produtosUsuario;
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(produtosUsuario);
-            }else{
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(produtosUsuario);
-            }
-        }else{
-            qtd -= produto[0].quantidade;
-            const produtoAtualizado = atualizaQuantidade(qtd);
-            produtosUsuario[indexProduto] = produtoAtualizado;
-            carrinho[indexCarrinho].produto = produtosUsuario;
+            console.log(2)
+            carrinho[indexCarrinho].produto.splice(indexProduto, 1);
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(produtosUsuario);
+            res.json(carrinhoUsuario[0].produto);
         }
     }catch{
         res.statusCode = 400;

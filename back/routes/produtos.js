@@ -26,25 +26,12 @@ let produtos = [
 ];
 
 module.exports = {
-    atualizaQuantidade: (qtd, id) =>{
+    getProduto: (id, quantidade) => {
         let prod = produtos.filter(p => p.id == id);
-        const index = produtos.indexOf(prod[0]);
-        if(qtd > prod[0].quantidade){
-            return false;
-        }else{
-            prod[0].quantidade -= qtd;
-            produtos[index] = prod[0];
-            return true;
-        }
-    },
-    getProduto: (id, qtd) => {
-        let prod = produtos.filter(p => p.id == id);
-        const index = produtos.indexOf(prod[0]);
-        if(prod[0].quantidade >= qtd){
-            prod[0].quantidade -= qtd;
-            produtos[index] = prod[0];
-            prod[0].quantidade = qtd;
-            return prod[0];
+        if(prod[0].quantidade >= quantidade && prod[0].quantidade>0){
+            let p = {...prod[0]};
+            p.quantidade = quantidade;
+            return p;
         }else{
             return undefined;
         }
