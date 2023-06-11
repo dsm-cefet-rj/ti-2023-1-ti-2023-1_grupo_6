@@ -25,5 +25,4 @@ app.use('/produtoInfo', produtosRouter);
 app.use('/carrinho', carrinhoRouter);
 app.use('/pedido', pedidosRouter);
 
-
 module.exports = app;
