@@ -25,8 +25,19 @@ let produtos = [
     },
 ];
 
+function getProduto(id, quantidade){
+    let prod = produtos.filter(p => p.id == id);
+    if(prod[0].quantidade >= quantidade && prod[0].quantidade>0){
+        let p = {...prod[0]};
+        p.quantidade = quantidade;
+        return p;
+    }else{
+        return undefined;
+    }
+}
+
 module.exports = {
-    getProduto: (id, quantidade) => {
+    getProduto: function(id, quantidade){
         let prod = produtos.filter(p => p.id == id);
         if(prod[0].quantidade >= quantidade && prod[0].quantidade>0){
             let p = {...prod[0]};
@@ -108,6 +119,16 @@ module.exports = {
         }catch{
             return false;
         }
+    },
+    verificaProduto: function(produtosPedido) {
+        for (let prod of produtosPedido){
+            if(!getProduto(prod.id, prod.quantidade)){
+                return false;
+            }
+        }
+        for (let prod of produtosPedido){
+            produtos[prod.id-1].quantidade = produtos[prod.id-1].quantidade - prod.quantidade; 
+        }
+        return true;
     }
-
 }
