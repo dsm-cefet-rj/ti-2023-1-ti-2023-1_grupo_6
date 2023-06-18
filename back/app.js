@@ -1,4 +1,5 @@
 var express = require('express');
+const cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -89,6 +90,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 app.use('/', indexRouter);
 app.use('/lojasInfo', lojasRouter);
@@ -96,5 +98,9 @@ app.use('/usuario', usuariosRouter);
 app.use('/produtoInfo', produtosRouter);
 app.use('/carrinho', carrinhoRouter);
 app.use('/pedido', pedidosRouter);
+
+app.listen(3003, ()=>{
+    console.log("servidor rodando em http://localhost:3003")
+})
 
 module.exports = app;
