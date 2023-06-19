@@ -88,7 +88,7 @@ html .carrinho-background {
 
 .botaoCancelar {
     background-color: #D9D9D9;
-    font-weight: bold;
+    font-family: 'Baloo 2';
     border-radius: 5px;
     border: none;
     width: 136px;
@@ -101,7 +101,7 @@ html .carrinho-background {
 .botaoConfirmar {
     background-color: #FF8802;
     color: #fff;
-    font-weight: bold;
+    font-family: 'Baloo 2';
     border-radius: 5px;
     border: none;
     width: 200px;

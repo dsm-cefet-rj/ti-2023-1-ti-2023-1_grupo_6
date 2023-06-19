@@ -16,6 +16,7 @@ const Carrinho = () => {
     const itensExibicao = items.filter(item => item.quantidade > 0);
     const { user } = useAuth();
     const [address, setAddress] = useState("");
+    const [isAddressValid, setIsAddressValid] = useState(false);
     const [number, setNumber] = useState("");
     const [CEP, setCEP] = useState("");
 
@@ -55,6 +56,14 @@ const Carrinho = () => {
     const handleFinalizarCompra = () => {
         const carrinhoExistente = localStorage.getItem(`carrinho_${user.email}`);
 
+        if(!address){
+            return;
+        }
+        
+        if (!carrinhoExistente || itensExibicao.length === 0) {
+            alert("Seu carrinho está vazio!")
+        }
+
         if (carrinhoExistente) {
             const carrinhoAtual = JSON.parse(carrinhoExistente);
             carrinhoAtual.items.push(...items.map(item => ({ ...item, address }))); // Adicionar o endereço a cada item
@@ -72,6 +81,7 @@ const Carrinho = () => {
 
         limparCarrinho();
         navigate(`/compraEfetuada`);
+    
     };
 
     return (
@@ -106,8 +116,7 @@ const Carrinho = () => {
 
                     <div className='endereco etapa'>
                         <h2 className='textoCarrinho'>Endereço de Entrega: </h2>
-                        <input type="text" placeholder='Insira o seu endereço' className="input-address" value={address} onChange={handleAddressChange}
-                            required />
+                        <input required type="text" placeholder='Insira o seu endereço' className="input-address" value={address} onChange={handleAddressChange} /> 
                     </div>
                     <div className='pagamento etapa'>
                         <h2 className='textoCarrinho'>Forma de pagamento</h2>
