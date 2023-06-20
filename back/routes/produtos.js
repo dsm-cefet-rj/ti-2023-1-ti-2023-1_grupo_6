@@ -25,66 +25,66 @@ let produtos = [
     },
 ];
 
-function getProduto(id, quantidade){
+function getProduto(id, quantidade) {
     let prod = produtos.filter(p => p.id == id);
-    if(prod[0].quantidade >= quantidade && prod[0].quantidade>0){
-        let p = {...prod[0]};
+    if (prod[0].quantidade >= quantidade && prod[0].quantidade > 0) {
+        let p = { ...prod[0] };
         p.quantidade = quantidade;
         return p;
-    }else{
+    } else {
         return undefined;
     }
 }
 
 module.exports = {
-    getProduto: function(id, quantidade){
+    getProduto: function (id, quantidade) {
         let prod = produtos.filter(p => p.id == id);
-        if(prod[0].quantidade >= quantidade && prod[0].quantidade>0){
-            let p = {...prod[0]};
+        if (prod[0].quantidade >= quantidade && prod[0].quantidade > 0) {
+            let p = { ...prod[0] };
             p.quantidade = quantidade;
             return p;
-        }else{
+        } else {
             return undefined;
         }
     },
     getByLoja: (idLoja) => {
         let produtosLoja = produtos.filter((prod) => {
             return prod.idLoja == idLoja;
-          });
+        });
         return produtosLoja;
     },
     deletaProduto: (body) => {
-        try{
+        try {
             const idProduto = body.id;
             const idLoja = body.idLoja;
             const prodLoja = produtos.filter((prod) => {
                 return prod.idLoja == idLoja;
-              });
+            });
             const produto = prodLoja.filter((prod) => {
                 return prod.id == idProduto;
             });
-            if(produto.length > 0){
+            if (produto.length > 0) {
                 const index = produtos.indexOf(produto[0]);
                 produtos.splice(index, 1);
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch{
+        } catch {
             return false;
         }
     },
     atualizaProduto: (body) => {
-        try{
+        try {
             const idProduto = body.id;
             const idLoja = body.idLoja;
             const prodLoja = produtos.filter((prod) => {
                 return prod.idLoja == idLoja;
-              });
+            });
             const produto = prodLoja.filter((prod) => {
                 return prod.id == idProduto;
             });
-            if(produto.length >0){
+            if (produto.length > 0) {
                 const index = produtos.indexOf(produto[0]);
                 const prod = {
                     id: produto[0].id,
@@ -96,16 +96,16 @@ module.exports = {
                 }
                 produtos[index] = prod;
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch{
+        } catch {
             return false;
         }
     },
     addProduto: (body) => {
-        try{
-            const proxId = 1 + produtos.map(p => p.id).reduce((x, y) => Math.max(x,y));
+        try {
+            const proxId = 1 + produtos.map(p => p.id).reduce((x, y) => Math.max(x, y));
             const prod = {
                 id: proxId,
                 nome: body.nome,
@@ -116,18 +116,18 @@ module.exports = {
             };
             produtos.push(prod);
             return true;
-        }catch{
+        } catch {
             return false;
         }
     },
-    verificaProduto: function(produtosPedido) {
-        for (let prod of produtosPedido){
-            if(!getProduto(prod.id, prod.quantidade)){
+    verificaProduto: function (produtosPedido) {
+        for (let prod of produtosPedido) {
+            if (!getProduto(prod.id, prod.quantidade)) {
                 return false;
             }
         }
-        for (let prod of produtosPedido){
-            produtos[prod.id-1].quantidade = produtos[prod.id-1].quantidade - prod.quantidade; 
+        for (let prod of produtosPedido) {
+            produtos[prod.id - 1].quantidade = produtos[prod.id - 1].quantidade - prod.quantidade;
         }
         return true;
     }

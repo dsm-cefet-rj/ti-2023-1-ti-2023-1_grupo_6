@@ -6,6 +6,8 @@ import Menu from "../menu/index.js";
 import { useContext } from "react";
 import { CarrinhoContext } from "../../../contexts/CarrinhoContext";
 import { ProdutosContext } from "../../../contexts/ProdutosContext";
+import axios from "axios";
+
 const Cats = () => {
   const { adicionarProdutoCarrinho } = useContext(CarrinhoContext);
   const [isScreenWideEnough, setIsScreenWideEnough] = React.useState(false);
@@ -15,6 +17,17 @@ const Cats = () => {
   const handleAdicionarProduto = (produto) => {
     adicionarProdutoCarrinho(produto);
   };
+
+  // const test = axios.get(`http://localhost:3003/produtoInfo`)
+  //   .then(function (response) {
+  //     console.log(response.data);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
+  // console.log(test);
+
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -34,7 +47,7 @@ const Cats = () => {
       <section className="produtos-cats">
         <ul className="ul-produtos-cats">
           {allProdutos()
-            .filter((p) => p.animal && p.animal.includes("gato") ||  p.animal && p.animal.includes("Gato"))
+            .filter((p) => p.animal && p.animal.includes("gato") || p.animal && p.animal.includes("Gato"))
             .map((p) => (
 
               <li key={p.id}>

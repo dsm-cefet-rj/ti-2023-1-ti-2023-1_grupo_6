@@ -5,13 +5,13 @@ var lojas = [
             cnpj: "1234567891415",
             senha: "12345678"
         },
-        informacoes:{
+        informacoes: {
             nome: "Gato pra Cachorro Pet Shop",
             animais_atendidos: "Gato • Cachorro • Coelho • Hamster",
             contato: "(21) 9 999-9999",
             endereco: "Avenida Gato Fofo, 164",
             descricao: "loja!",
-            url: "/loja-gato-pra-cachorro-pet-shop"
+            url: "/loja-gato-pra-cachorro-pet-shop",
         }
     },
     {
@@ -20,13 +20,13 @@ var lojas = [
             cnpj: "1234567891213",
             senha: "12345678"
         },
-        informacoes:{
+        informacoes: {
             nome: "Cachorro Pet Shop",
             animais_atendidos: "Cachorro • Coelho • Hamster",
             contato: "(21) 9 999-9999",
             endereco: "Rua Gatinho Fofinho, 277",
             descricao: "loja!",
-            url: "/loja-cachorro-pet-shop"
+            url: "/loja-cachorro-pet-shop",
         }
     },
     {
@@ -61,25 +61,25 @@ var lojas = [
     }
 ];
 const pegaUrl = (nome) => {
-    return "/"+nome;
+    return "/" + nome;
 }
 
 module.exports = {
     getLoginInfo: (value) => {
-        const loja = lojas.filter((loja)=>{
+        const loja = lojas.filter((loja) => {
             return loja.login.cnpj == value.cnpj;
         })
-        if(loja[0].login.cnpj == value.cnpj && loja[0].login.senha == value.senha){
+        if (loja[0].login.cnpj == value.cnpj && loja[0].login.senha == value.senha) {
             return loja[0].id;
-        }else{
+        } else {
             return 0;
         }
     },
-    getLojasInfo: function(){
-        const informacoes = lojas.map(loja=>loja.informacoes)
+    getLojasInfo: function () {
+        const informacoes = lojas.map(loja => loja.informacoes)
         return informacoes
     },
-    getLojaInfo: function(id){
+    getLojaInfo: function (id) {
         let blabla = lojas.filter((loja) => {
             return loja.id == id;
         });
@@ -93,12 +93,12 @@ module.exports = {
     },
     atualizarLoja: (id, body) => {
         let index = lojas.map(p => p.id).indexOf(parseInt(id));
-        lojas[index].informacoes = {... body, url: pegaUrl(body.nome)};
+        lojas[index].informacoes = { ...body, url: pegaUrl(body.nome) };
         return true
     },
-    criaLoja : (body) => {
+    criaLoja: (body) => {
         try {
-            let proxId = 1 + lojas.map(l => l.id).reduce((x, y) => Math.max(x,y));
+            let proxId = 1 + lojas.map(l => l.id).reduce((x, y) => Math.max(x, y));
             const novaLoja = {
                 id: proxId,
                 login: {
@@ -116,7 +116,7 @@ module.exports = {
             }
             lojas.push(novaLoja)
             return true
-        }catch{
+        } catch {
             return false
         }
     }
