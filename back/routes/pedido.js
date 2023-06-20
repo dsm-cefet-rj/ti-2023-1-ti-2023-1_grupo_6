@@ -1,56 +1,43 @@
 var express = require('express');
 var router = express.Router();
+const Order = require('../models/pedido');
 
-let pedidos = [
-    {
-        idUsuario: 1,
-        idPedido: 1,
-        produto: [
-            {
-                id: 1,
-                nome: "racao de cachorro",
-                price: 34.99,
-                section: "1",
-                idLoja: 1,
-                quantidade: 2
-            }
-        ]
+router.get("/:idUsuario", async(req, res) => {
+    const id_usuario = req.params.id_usuario
+
+    try {
+        const orders = await Order.findOne({id_usuario: id_usuario})
+        if (!shop) {
+            res.status(422).json({message: 'Usuário não encontrado!'})
+            return
     }
-];
-
-const {verificaProduto} = require('./produtos');
-
-router.route("/:idUsuario")
-.get((req, res, next)=>{
-    const pedidosUsuario = pedidos.filter(c => c.idUsuario == parseInt(req.params.idUsuario));
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json(pedidosUsuario);
+    res.status(200).json(orders)
     }
-)
-router.route("/adicionar")
-.post((req, res, next)=>{
-    try{
-        let pedidoAtual = {...req.body};
-        if(verificaProduto(pedidoAtual.produto))
-        {
-            const proxId = 1 + pedidos.map(p => p.idPedido).reduce((x, y) => Math.max(x,y));
-            pedidoAtual = {id: proxId, ...pedidoAtual}
-            pedidos.push(pedidoAtual);
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            res.json(true);
-        }else{
-            res.statusCode = 400;
-            res.setHeader('Content-Type', 'application/json');
-            res.json(false);
+    catch (error) {
+        res.status(500).json({ error: error })
+    }
+});
+
+router.post("/criar_pedido", async(req, res) => {
+    const{id_usuario, quantidade, id_loja, categoria, preco, nome_produto, id_produto} = req.body
+    const orders ={
+        id_usuario,
+        produto:{
+            id_produto,
+            nome_produto,
+            preco,
+            categoria,
+            id_loja,
+            quantidade
         }
-    }catch(err){
-        console.log(err)
-        res.statusCode = 400;
-        res.setHeader('Content-Type', 'application/json');
-        res.json(false);
     }
-})
+    try {
+        await Order.create(orders)
+        res.status(201).json({message: 'Pedido iniciado com sucesso!'})
+    } 
+    catch (error) {
+        res.status(500).json({ error: error })
+    }
+});
 
 module.exports = router;

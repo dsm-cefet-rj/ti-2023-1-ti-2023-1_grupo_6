@@ -11,7 +11,6 @@ const shopInfoSchema = new mongoose.Schema({
 });
 
 const shopSchema = new mongoose.Schema({    
-    id: { type: Number, required: true, unique: true },
     cnpj: { type: Number, required: true, unique: true },
     password: { type: String, required: true },
     informacoes: shopInfoSchema,
