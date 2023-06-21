@@ -3,11 +3,11 @@ var router = express.Router();
 const Person = require('../models/usuario');
 
 //get user
-router.get('/:id', async(req, res) => {
-    const id = req.params.id
+router.get('/:email', async(req, res) => {
+    const email = req.params.email
 
     try {
-        const person = await Person.findOne({_id: id})
+        const person = await Person.findOne({email: email})
         if (!person) {
             res.status(422).json({message: 'Usuário não encontrado!'})
             return
@@ -38,7 +38,7 @@ router.delete('/:id', async(req, res) => {
     }
 });
 // add user
-router.post('/usuario', async (req, res) =>{
+router.post('/', async (req, res) =>{
     const {email, senha, nome, cpf, dataNascimento} = req.body
     const person ={
         email,
@@ -48,7 +48,7 @@ router.post('/usuario', async (req, res) =>{
         dataNascimento
     }
     try {
-
+        console.log('aqui');
         await Person.create(person)
         
         res.status(201).json({message: 'Usuário criado com sucesso!'})
