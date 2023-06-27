@@ -1053,6 +1053,142 @@
       "contato": "fasfa",
       "password": "123",
       "id": "ON_H9HU"
+    },
+    {
+      "name": "sdadasd",
+      "cpf": "404.195.300-61",
+      "bornDate": "0222-02-12",
+      "email": "sada@sdadas",
+      "password": "12345678",
+      "id": "cRPr0rS"
+    },
+    {
+      "name": "gabe",
+      "cpf": "112.424.640-18",
+      "bornDate": "11111-11-11",
+      "email": "gabe@email.com",
+      "password": "12345678",
+      "id": "P2C7BLx"
+    },
+    {
+      "name": "gabi",
+      "cpf": "421.228.110-48",
+      "bornDate": "11111-11-11",
+      "email": "gabi@email.com",
+      "password": "12345678",
+      "id": "7Uk4wlT"
+    },
+    {
+      "name": "ri",
+      "cpf": "321.112.670-82",
+      "bornDate": "111111-11-11",
+      "email": "ri@email.com",
+      "password": "12345678",
+      "id": "-GKr9Wm"
+    },
+    {
+      "name": "antonella",
+      "cpf": "950.270.970-50",
+      "bornDate": "11111-11-11",
+      "email": "antonella@email.com",
+      "password": "12345678",
+      "id": "adaAjoi"
+    },
+    {
+      "name": "teste1",
+      "cpf": "056.020.910-09",
+      "bornDate": "2222-02-22",
+      "email": "teste@email.com",
+      "password": "12345678",
+      "id": "cHvGkoC"
+    },
+    {
+      "cnpj": "111",
+      "nome": "novaLoja",
+      "animaisAtendidos": "gato, coelho, cachorro ",
+      "cep": "21556050",
+      "endereco": "Rua Augustinho 24",
+      "url": "",
+      "contato": "21995239888",
+      "password": "222",
+      "id": "WPtGpYb"
+    },
+    {
+      "cnpj": "333",
+      "nome": "LojaNova",
+      "animaisAtendidos": "cachorro,coelho,hamster",
+      "cep": "21993324",
+      "endereco": "Rua Augustinho",
+      "url": "",
+      "contato": "21995239888",
+      "password": "444",
+      "id": "UIGbLAn"
+    },
+    {
+      "cnpj": "555",
+      "nome": "GabiLoja",
+      "animaisAtendidos": "Cachorro, gato, hamster",
+      "cep": "87747422",
+      "endereco": "Rua Augustinho",
+      "url": "",
+      "contato": "21995239888",
+      "password": "666",
+      "id": "gd2smEh"
+    },
+    {
+      "cnpj": "888",
+      "nome": "TesteLoja",
+      "animaisAtendidos": "cachorro, gato",
+      "cep": "21888455",
+      "endereco": "Rua Auguto 34",
+      "url": "",
+      "contato": "21995239888",
+      "password": "999",
+      "id": "oc1W80Y"
+    },
+    {
+      "cnpj": "444",
+      "nome": "testeLoja",
+      "animaisAtendidos": "Cachorro, Coelho, Hamster",
+      "cep": "45567676",
+      "endereco": "Rua Augusto",
+      "url": "",
+      "contato": "21995239888",
+      "password": "555",
+      "id": "ELOEKhM"
+    },
+    {
+      "cnpj": "1212",
+      "nome": "testeLojas",
+      "animaisAtendidos": "Cachorro, Gato, Hasmter",
+      "cep": "25506667",
+      "endereco": "Rua Augusto",
+      "url": "",
+      "contato": "21995239888",
+      "password": "1313",
+      "id": "hhzmM58"
+    },
+    {
+      "cnpj": "88",
+      "nome": "testeLoja",
+      "animaisAtendidos": "Cachorro, Gato",
+      "cep": "21999334",
+      "endereco": "Rua Augusto ",
+      "url": "",
+      "contato": "21995239888",
+      "password": "99",
+      "id": "AL1GZDp"
+    },
+    {
+      "cnpj": "43",
+      "nome": "texteLoja",
+      "animaisAtendidos": "Cachorro, Gato",
+      "cep": "2134566",
+      "endereco": "Rua Augusto Cardoso",
+      "url": "",
+      "contato": "21995239888",
+      "password": "44",
+      "id": "XQv98dj"
     }
   ],
   "carrinho": [

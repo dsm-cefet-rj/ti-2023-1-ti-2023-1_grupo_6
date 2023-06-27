@@ -73,15 +73,12 @@ function AdicionarLoja() {
     }
     adicionarLojas({
       cnpj,
+      senha: password,
       nome,
-      email,
-      descricao,
       animaisAtendidos,
-      cep,
-      endereco,
-      url,
       contato,
-      password,
+      endereco,
+      descricao
     })
 
     alert("Usuário cadastrado com sucesso!");

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { UserInformation } from "../services/api/userInformation/UserInformation";
 import { ApiException } from "../services/api/ApiException";
 import { CarrinhoContext } from "./CarrinhoContext";
-
+import axios from "axios";
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
@@ -23,56 +23,49 @@ export const AuthProvider = ({ children }) => {
 
     }, []);
 
+
     const signIn = (email, password) => {
         return new Promise((resolve, reject) => {
-            UserInformation.getAll().then((result) => {
-                if (result instanceof ApiException) {
-                    reject(result.message);
-                } else {
-                    const hasUser = result?.filter((user) => user.email === email);
-
-                    if (hasUser?.length) {
-                        if (hasUser[0].email === email && hasUser[0].password === password) {
-                            const token = Math.random().toString(36).substring(2);
-                            localStorage.setItem("user_token", JSON.stringify({ email, token }));
-                            setUser({ email, password });
-                            resolve({ success: true });
-                        } else {
-                            reject("Senha incorreta");
-                        }
+            axios
+                .post("http://localhost:3003/usuario/login", { email, senha: password })
+                .then((response) => {
+                    if (response) {
+                        setUser({ email, password });
+                        resolve({ success: true });
                     } else {
-                        reject("E-mail não cadastrado");
+                        reject("Credenciais inválidas");
                     }
-                }
-            });
+                })
+                .catch((error) => {
+                    reject("Ocorreu um erro ao autenticar o usuário");
+                });
         });
     };
 
 
     const signInStore = (cnpj, password) => {
         return new Promise((resolve, reject) => {
-            UserInformation.getAll().then((result) => {
-                if (result instanceof ApiException) {
-                    reject(result.message);
-                } else {
-                    const hasUser = result?.filter((user) => user.cnpj === cnpj);
+            axios
+                .get(`http://localhost:3003/lojas/${cnpj}`)
+                .then((response) => {
+                    if (response) {
+                        console.log("response");
+                        console.log(response);
 
-                    if (hasUser?.length) {
-                        if (hasUser[0].cnpj === cnpj && hasUser[0].password === password) {
-                            const token = Math.random().toString(36).substring(2);
-                            localStorage.setItem("user_token", JSON.stringify({ cnpj, token }));
-                            setUser({ cnpj, password });
-                            resolve({ success: true });
-                        } else {
-                            reject("Senha incorreta");
-                        }
+                        const user = { cnpj, password }; // Crie o objeto do usuário corretamente
+                        setUser(user); // Defina o valor do usuário usando a função setUser
+                        resolve({ success: true });
                     } else {
-                        reject("CNPJ não cadastrado");
+                        reject("Credenciais inválidas");
                     }
-                }
-            });
+                })
+                .catch((error) => {
+                    reject("Ocorreu um erro ao autenticar o usuário");
+                });
         });
     };
+
+
 
     const signUp = (email, password, name, cpf, bornDate) => {
         UserInformation.getAll().then((result) => {
@@ -128,29 +121,21 @@ export const AuthProvider = ({ children }) => {
         });
     }
 
-    const signUpProduct = (id, nameProduct, price, section) => {
+    const signUpProduct = (id, nameProduct, price, section, quantProdutos, categoriasAnimais) => {
         return new Promise((resolve, reject) => {
-            UserInformation.getAll().then((result) => {
-                if (result instanceof ApiException) {
-                    reject(result.message);
-                } else {
-                    const hasUser = result?.filter((user) => user.id === id);
-
-                    if (hasUser?.length) {
-                        reject("Esse produto já foi cadastrado");
-                    } else {
-                        let newUser = {
-                            id: id,
-                            nameProduct: nameProduct,
-                            price: price,
-                            section: section,
-                        };
-                        UserInformation.create(newUser);
+            axios
+                .post("http://localhost:3003/produtoInfo/adicionarProduto", { nameProduct, price, section, id, quantProdutos, categoriasAnimais })
+                .then((response) => {
+                    if (response) {
+                        console.log("produto postado")
                         resolve({ success: true });
-                        setMessage("Produto criado com sucesso");
+                    } else {
+                        reject("Credenciais inválidas");
                     }
-                }
-            });
+                })
+                .catch((error) => {
+                    reject("Ocorreu um erro ao autenticar o usuário");
+                });
         });
     }
 

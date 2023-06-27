@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var lojasRouter = require('./routes/lojasInfo');
+var lojasRouter = require('./routes/lojas');
+var lojasInfoRouter = require('./routes/lojasInfo');
 var usuariosRouter = require('./routes/usuario');
 var produtosRouter = require('./routes/produtoInfo');
 var carrinhoRouter = require('./routes/carrinho');
@@ -19,7 +20,7 @@ const url = 'mongodb+srv://admin:admin@petfast.bhwro9t.mongodb.net/PetFast-API?r
 const connect = mongoose.connect(url);
 
 connect.then((db) => {
-    app.listen(3003, ()=>{
+    app.listen(3003, () => {
         console.log("servidor rodando em http://localhost:3003")
     })
 }, (err) => { console.log(err); });
@@ -59,7 +60,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
 app.use('/', indexRouter);
-app.use('/lojasInfo', lojasRouter);
+app.use('/lojasInfo', lojasInfoRouter)
+app.use('/lojas', lojasRouter);
 app.use('/usuario', usuariosRouter);
 app.use('/produtoInfo', produtosRouter);
 app.use('/carrinho', carrinhoRouter);
