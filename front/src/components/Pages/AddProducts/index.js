@@ -50,7 +50,7 @@ const AddProducts = () => {
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
-
+    console.log("0-------------")
     if (!nome || !valor || !categoriasSelecionadas || !quantProdutos) {
       setErrorMessage("Preencha todos os campos");
       return;
@@ -70,6 +70,15 @@ const AddProducts = () => {
       quantProdutos
     });
 
+    console.log("idProdutos",
+      "valor",
+      "nome",
+      "categoria",
+      "categoriasSelecionadas",
+      "lojaId",
+      "idProdutos",
+      "quantProdutos"
+    );
     console.log(idProdutos,
       valor,
       nome,
@@ -81,7 +90,8 @@ const AddProducts = () => {
     );
 
     try {
-      const result = await signUpProduct(idProdutos, nome, valor, categoria, categoriasAnimais, quantProdutos);
+      const result = await signUpProduct(idProdutos, nome, valor, categoria, quantProdutos, categoriasAnimais);
+      console.log(result);
       if (result && result.success) {
         alert("Produto criado com sucesso!");
         navigate(`/homeLoja/${id}`);

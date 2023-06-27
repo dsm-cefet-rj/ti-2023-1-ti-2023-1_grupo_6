@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 const initialState = [
   {
     cnpj: "66735931",
@@ -63,9 +64,20 @@ export const LojaProvider = ({ children }) => {
   }, [lojas]);
 
   const adicionarLojas = (loja) => {
-    const novaLoja = { id: uuidv4(), ...loja };
-    setLojas([...lojas, novaLoja]);
-    localStorage.setItem("lojas", JSON.stringify([...lojas, novaLoja]));
+    try {
+      const response = axios
+        .post(`http://localhost:3003/lojas/`, loja)
+        .then((response) => {
+          console.log(response.data);
+        });
+      console.log(response.data);
+      console.log(response);
+      if (response === 200) {
+        console.log("homeLoja");
+      }
+    } catch (error) {
+      console.error("Erro ao encontrar usuário:", error);
+    }
   };
 
   const removerLoja = (id) => {

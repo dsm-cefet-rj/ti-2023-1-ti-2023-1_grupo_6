@@ -27,13 +27,13 @@ const LoginEstabelecimento = () => {
 
     try {
       const result = await signInStore(cnpj, password);
-
-      if (result && result.success) {
-        const loja = buscasLojaCNPJ(cnpj);
-        const id = loja.id;
-        navigate(`/homeLoja/${id}`);
+      console.log("result");
+      console.log(result);
+      if (result.success) {
+        navigate(`/homeLoja/${cnpj}`);
       }
     } catch (error) {
+      console.log(error);
       setErrorMessage(error);
     }
   };

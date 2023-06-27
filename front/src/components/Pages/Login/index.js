@@ -4,6 +4,7 @@ import "./../Login/style.css";
 import { useContext, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { ApiException } from "../../../services/api/ApiException";
+import axios from "axios";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -11,7 +12,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+  const person = {
+    email,
+    password,
+  }
   setTimeout(() => {
     setErrorMessage("");
   }, 8000);
@@ -23,10 +27,8 @@ const Login = () => {
       setErrorMessage("Preencha todos os campos");
       return;
     }
-
     try {
       const result = await signIn(email, password, true);
-
       if (result && result.success) {
         navigate("/home");
       }

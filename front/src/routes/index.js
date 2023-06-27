@@ -32,7 +32,7 @@ import NotFound from "../components/Pages/NotFound/index.js";
 
 const Private = ({ Item }) => {
   const { signed } = useAuth();
-
+  console.log("signed", signed);
   if (signed > 0) {
     return <Item />;
   } else {
